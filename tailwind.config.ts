@@ -1,13 +1,13 @@
 import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
     darkMode: ["class"],
     content: ["./src/**/*.tsx"],
   theme: {
   	extend: {
-  		fontFamily: {
-  			sans: ["var(--font-geist-sans)", ...fontFamily.sans]
+		fontFamily: {
+			montserrat:["var(--font-montserrat)"],
+			dmsans:["var(--font-dmsans)"]
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -58,5 +58,6 @@ export default {
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
