@@ -7,7 +7,7 @@ export default {
   	extend: {
 		fontFamily: {
 			montserrat:["var(--font-montserrat)"],
-			dmsans:["var(--font-dmsans)"]
+			opensans:["var(--font-opensans)"]
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
