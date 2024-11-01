@@ -4,10 +4,18 @@ export default {
     darkMode: ["class"],
     content: ["./src/**/*.tsx"],
   theme: {
+	container: {
+		center: true,
+		padding: "2rem",
+		screens: {
+		  "2xl": "1400px",
+		},
+	  },
   	extend: {
 		fontFamily: {
 			montserrat:["var(--font-montserrat)"],
-			opensans:["var(--font-opensans)"]
+			opensans:["var(--font-opensans)"],
+			manrope:["var(--font-manrope)"]
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
