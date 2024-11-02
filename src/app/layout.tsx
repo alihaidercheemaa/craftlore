@@ -8,7 +8,7 @@ import { Header } from "~/components/general/headers/header";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: "400",
+  weight: "800",
   variable: "--font-montserrat",
 });
 
