@@ -122,31 +122,32 @@ export const BANNERS = [
     },
 
 ]
+
 export const SERVICES = [
     {
-      icon: '/icons/profile.png',
-      title: "CRAFT PROFILE",
-      description: "History, Art, Science of Crafts"
+        icon: '/icons/profile.png',
+        title: "CRAFT PROFILE",
+        description: "History, Art, Science of Crafts"
     },
     {
-      icon: '/icons/location.png',
-      title: "GEOGRAPHICAL INDICATION",
-      description: "Geo-Certified Kashmir Craft Origins"
+        icon: '/icons/location.png',
+        title: "GEOGRAPHICAL INDICATION",
+        description: "Geo-Certified Kashmir Craft Origins"
     },
     {
-      icon: '/icons/blockchain.png',
-      title: "BLOCK-CHAIN TRACEABILITY",
-      description: "Verified Journey, Counterfeit Protection"
+        icon: '/icons/blockchain.png',
+        title: "BLOCK-CHAIN TRACEABILITY",
+        description: "Verified Journey, Counterfeit Protection"
     },
     {
-      icon:'/icons/carbon.png',
-      title: "CARBON FOOTPRINT",
-      description: "Eco-Friendly Crafts, Carbon Tracked"
+        icon: '/icons/carbon.png',
+        title: "CARBON FOOTPRINT",
+        description: "Eco-Friendly Crafts, Carbon Tracked"
     },
     {
-      icon:'/icons/money.png',
-      title:"CRAFT-PRICE VALUATION",
-      description:"Self-Priced Kashmir Crafts Valuation"
+        icon: '/icons/money.png',
+        title: "CRAFT-PRICE VALUATION",
+        description: "Self-Priced Kashmir Crafts Valuation"
     }
 ];
 
@@ -167,4 +168,52 @@ export const TYPETEXT = [
     "Using trusted data from key regulatory bodies worldwide.",
     "Sources include Better Business Bureau, Trustpilot, and CFPB",
     "Plus FTC and the Securities & Exchange Commission."
-  ];
+];
+
+export const REGISTER = [
+    {
+        icon: '/icons/profile.png',
+        title: "Craft Profiling",
+        description: "Historical, Artistic, & Scientific Exploration of Kashmir Craft"
+    },
+    {
+        icon: '/icons/location.png',
+        title: "Geographical Indicators",
+        description: "Geo-Certification Protocols and Standardization of Kashmir Craft"
+    },
+    {
+        icon: '/icons/blockchain.png',
+        title: "Block Chain Traceability",
+        description: "Verified Kashmir Craft Journey against the Threat of Counterfeits"
+    },
+    {
+        icon: '/icons/carbon.png',
+        title: "Craft Carbon Footprint",
+        description: "Measuring and Endorsing Kashmir Eco-Friendly Practices in Artisan Crafts"
+    },
+    {
+        icon: '/icons/money.png',
+        title: "Craft Price Valuation",
+        description: "Self Estimator – Your Kashmir Craft, Your Price, Your Value"
+    },
+    {
+        icon: '/icons/vulnerability.png',
+        title: "Craft Vulnerability",
+        description: "Undermining authenticity & disrupting the Kashmir Craft Industry"
+    },
+    {
+        icon: '/icons/economy.png',
+        title: "Craft Economics",
+        description: "The Lifeblood of Kashmir Craft Artisans and Heritage Industry"
+    },
+    {
+        icon: '/icons/business.png',
+        title: "Craft Business Evaluation",
+        description: "Regulating Ethical Standards in Kashmir Craft Commerece as Whistleblower"
+    },
+    {
+        icon: '/icons/wages.png',
+        title: "Fair Wages Monitoring",
+        description: "Empowerment through Education, building a sustainable future for artisans"
+    }
+];
