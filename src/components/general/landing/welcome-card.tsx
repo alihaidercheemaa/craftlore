@@ -6,7 +6,7 @@ import { TYPETEXT } from "~/constants"
 
 export const WelcomeCards = () => {
     return (
-        <section className="col-span-12 container mx-auto grid grid-cols-2 gap-4 mt-16 ">
+        <section className="col-span-12 container mx-auto grid grid-cols-2 gap-4 my-32">
             <div className="col-span-2 lg:col-span-1 flex flex-col items-center container">
 
                 <Image src={'/images/pic2.png'} alt="guru image" width={300} height={384} className="transition-all duration-2000 transform animate-ghoomo" />

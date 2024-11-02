@@ -1,5 +1,7 @@
 
 import { Banner } from "~/components/general/landing/banner";
+import { GraphCard } from "~/components/general/landing/graph-card";
+import { RegisterCard } from "~/components/general/landing/register-card";
 import { ServiceCard } from "~/components/general/landing/service-card";
 import { WelcomeCards } from "~/components/general/landing/welcome-card";
 export default async function Home() {
@@ -9,6 +11,8 @@ export default async function Home() {
       <Banner />
       <ServiceCard />
       <WelcomeCards/>
+      <RegisterCard/>
+      <GraphCard/>
     </main>
   );
 }
