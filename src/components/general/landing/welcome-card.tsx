@@ -1,4 +1,6 @@
 import Image from "next/image"
+import { TypedComponent } from "~/components/animations/typo"
+import { TYPETEXT } from "~/constants"
 
 
 
@@ -8,9 +10,9 @@ export const WelcomeCards = () => {
             <div className="col-span-2 lg:col-span-1 flex flex-col items-center container">
 
                 <Image src={'/images/pic2.png'} alt="guru image" width={300} height={384} className="transition-all duration-2000 transform animate-ghoomo" />
-                <h2 className="text-center text-primary text-[40px] font-extrabold font-montserrat">Craft Guru</h2>
-                <h6 className="text-center text-gray-900 text-sm font-extrabold font-montserrat mb-[17px]">Future-Proofing the Kashmir Handicraft Sector</h6>
-                <p className="font-opensans text-xl text-left">We are the driving force behind CraftLore, bringing together the expertise of a diverse group of professionals—<b>Ethnographers, Material Scientists, Craft Educators, Cultural Theorists, Art Historians, Designers, Sociologists, Environmentalists, and Technologists</b>. United in our mission, we are committed to preserving and advancing the timeless heritage of Kashmiri crafts for future generations.
+                <h2 className="text-center text-primary text-7xl font-extrabold font-montserrat">Craft Guru</h2>
+                <TypedComponent text={TYPETEXT} className="text-center text-secondary text-sm font-extrabold font-montserrat mb-[17px]" />
+                <p className="font-opensans text-sm lg:text-xl text-justify">We are the driving force behind CraftLore, bringing together the expertise of a diverse group of professionals—<b>Ethnographers, Material Scientists, Craft Educators, Cultural Theorists, Art Historians, Designers, Sociologists, Environmentalists, and Technologists</b>. United in our mission, we are committed to preserving and advancing the timeless heritage of Kashmiri crafts for future generations.
                     <br /><br />
                     At<b> Craft Guru</b>, we operate on a non-commercial basis under the mandate of the <b>Hamadan Craft Revival Foundation</b>, a dedicated craft policy think tank for Kashmir. We do not sell, endorse, or promote any business, nor do we influence your decisions. Instead, we empower you with knowledge and tools to make informed, independent choices, free from external pressure or bias.
                     <br /><br />
@@ -18,27 +20,29 @@ export const WelcomeCards = () => {
                     <br /><br />
                 </p>
             </div>
-            <div className="col-span-2 lg:col-span-1 bg-primary rounded-lg shadow-lg container">
-                <h2 className="text-center pt-8 text-secondary text-[40px] font-extrabold font-montserrat">Welcome to CraftLore</h2>
-                <h6 className="text-center text-white pb-[17px] font-montserrat font-extrabold">Eliminating Middleman, Empowering Artisans/Buyers<br /></h6><br />
-                <p className="font-opnsans text-2xl text-white">
+            <div className="group col-span-2 lg:col-span-1 bg-primary text-white hover:bg-secondary rounded-lg shadow-lg container">
+                <h2 className="text-center pt-8 text-secondary text-xl lg:text-4xl font-extrabold font-montserrat group-hover:text-primary">Welcome to CraftLore</h2>
+                <h6 className="text-center pb-[17px] text-sm lg:text-base font-montserrat font-extrabold group-hover:text-primary">Eliminating Middleman, Empowering Artisans/ Buyers
+                </h6>
+                <br />
+                <p className="font-opnsans text-base lg:text-2xl group-hover:text-black text-justify">
                     CraftLore is a cutting-edge, <b>Non-Commercial</b> digital platform engineered for the in-depth analysis of Kashmir&apos;s<b> 700+</b> year craft heritage. By seamlessly blending historical, artistic, and scientific frameworks, CraftLore sets the benchmark for authenticity and transparency.
                     <br /><br />
                 </p>
-                <ul className="text-white list-disc list-inside space-y-4 text-2xl">
-                    <li>
+                <ul className="group-hover:text-black list-disc list-inside space-y-4 text-base lg:text-2xl">
+                    <li className="text-justify">
                         CraftLore uses advanced <b>Geo-Certification protocols</b> to ensure precise geospatial verification of craft origins, delivering unmatched accuracy in counterfeit prevention.
                     </li>
-                    <li>
+                    <li className="text-justify">
                         Our <b>Craft Profile Registry</b> stands as a dynamic digital powerhouse, delivering in-depth insights into the origins, techniques, & materials of authentic Kashmiri crafts, empowering instant recognition of imitations and safeguarding heritage with precision.
                     </li>
-                    <li>
+                    <li className="text-justify">
                         We track the <b>Carbon Footprint</b> of each craft, enabling artisans to embrace sustainable practices and empowering consumers to choose eco-friendly products, collectively reducing impact.
                     </li>
-                    <li>
+                    <li className="text-justify">
                         CraftLore offers an <b>Immutable Blockchain Record</b> of every craft’s journey, guaranteeing authenticity, preventing counterfeits, and ensuring sustainability, empowering consumers with confidence.
                     </li>
-                    <li>
+                    <li className="text-justify">
                         Our <b>Valuation Tool-Calculator</b> delivers fair, <b>Dynamic Data-Driven Pricing</b> for authentic Kashmiri crafts, providing accurate pricing for buyers and fair compensation for artisans.
                     </li>
                 </ul>

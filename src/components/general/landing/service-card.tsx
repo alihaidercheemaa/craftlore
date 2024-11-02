@@ -11,7 +11,7 @@ export const ServiceCard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 hover:cursor-pointer">
           {SERVICES.map((service, index) => (
             <div
-              className="group flex flex-col gap-2 bg-white transition-all duration-300 hover:shadow-2xl p-2 hover:bg-secondary rounded-lg"
+              className="group flex flex-col gap-2 bg-white transition-all duration-300 hover:shadow-2xl p-2 hover:bg-secondary rounded-lg border"
               key={index}
             >
               <div className="container flex flex-col justify-center items-center py-5 gap-2">
