@@ -122,32 +122,49 @@ export const BANNERS = [
     },
 
 ]
-
 export const SERVICES = [
     {
       icon: '/icons/profile.png',
       title: "CRAFT PROFILE",
-      description: "Historical, Artistic, & Scientific Exploration of Kashmir Craft"
+      description: "History, Art, Science of Crafts"
     },
     {
       icon: '/icons/location.png',
       title: "GEOGRAPHICAL INDICATION",
-      description: "Geo Certification Protocols of Kashmir Craft"
+      description: "Geo-Certified Kashmir Craft Origins"
     },
     {
       icon: '/icons/blockchain.png',
       title: "BLOCK-CHAIN TRACEABILITY",
-      description: "Verified Craft Journey  Blocking Counterfeits"
+      description: "Verified Journey, Counterfeit Protection"
     },
     {
       icon:'/icons/carbon.png',
       title: "CARBON FOOTPRINT",
-      description: "Eco-Friendly Crafts, Measured & Endorsed"
+      description: "Eco-Friendly Crafts, Carbon Tracked"
     },
     {
       icon:'/icons/money.png',
       title:"CRAFT-PRICE VALUATION",
-      description:"Self Estimator – Your Kashmir Craft,Your Price, Your Value"
+      description:"Self-Priced Kashmir Crafts Valuation"
     }
+];
+
+export const TYPETEXT = [
+    "CraftLore is the World’s Largest Kashmir Craft Platform",
+    "Interactive and Transformative for Global Craft Enthusiasts Everywhere",
+    "Access Over One Million Elements on Kashmir Crafts",
+    "With Data Representing 28 Major Kashmir Craft Traditions.",
+    "We combat Counterfeit Products and Middlemen Exploitation, head-on.",
+    "CraftLore defends Kashmir’s craft identity and artisans' livelihoods",
+    "Safeguarding against global dilution of our heritage.",
+    "A powerful stand for authenticity and cultural preservation.",
+    "Buyer’s Academy-CraftLore: empowering confident, informed decisions.",
+    "Gain insights and expertise for navigating Kashmir’s marketplace.",
+    "A transformative guide to the world of authentic handicrafts.",
+    "Experience the art of informed, impactful purchasing today.",
+    "CraftLore integrates a robust verification system for authenticity",
+    "Using trusted data from key regulatory bodies worldwide.",
+    "Sources include Better Business Bureau, Trustpilot, and CFPB",
+    "Plus FTC and the Securities & Exchange Commission."
   ];
-  
