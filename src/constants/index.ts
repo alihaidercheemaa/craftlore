@@ -61,7 +61,7 @@ export const BANNERS = [
         "buttonText": "Explore Features"
     },
     {
-        "title": `CraftLore ${dayjs().add(1,'year').year()} Milestones`,
+        "title": `CraftLore ${dayjs().year()} Milestones`,
         "subtitle": "Data-backed commitment to authenticity and artisan empowerment.",
         "buttonText": "View Milestones"
     },
@@ -122,3 +122,32 @@ export const BANNERS = [
     },
 
 ]
+
+export const SERVICES = [
+    {
+      icon: '/icons/profile.png',
+      title: "CRAFT PROFILE",
+      description: "Historical, Artistic, & Scientific Exploration of Kashmir Craft"
+    },
+    {
+      icon: '/icons/location.png',
+      title: "GEOGRAPHICAL INDICATION",
+      description: "Geo Certification Protocols of Kashmir Craft"
+    },
+    {
+      icon: '/icons/blockchain.png',
+      title: "BLOCK-CHAIN TRACEABILITY",
+      description: "Verified Craft Journey  Blocking Counterfeits"
+    },
+    {
+      icon:'/icons/carbon.png',
+      title: "CARBON FOOTPRINT",
+      description: "Eco-Friendly Crafts, Measured & Endorsed"
+    },
+    {
+      icon:'/icons/money.png',
+      title:"CRAFT-PRICE VALUATION",
+      description:"Self Estimator – Your Kashmir Craft,Your Price, Your Value"
+    }
+  ];
+  
