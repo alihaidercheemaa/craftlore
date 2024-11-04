@@ -217,3 +217,41 @@ export const REGISTER = [
         description: "Empowerment through Education, building a sustainable future for artisans"
     }
 ];
+
+
+export const HELPUS = [
+    { image: '/images/11.png' },
+    { image: '/images/22.png' },
+    { image: '/images/33.png' },
+    { image: '/images/44.png' },
+    { image: '/images/55.png' },
+]
+
+export const NETWORK = [
+    { title: 'Grant Support', description: 'B2B Connect USA', link: 'www.b2b.dekosgurcrafts.com', redirect: '' },
+    { title: 'Administrative Support', description: 'Hamdan Craft Revival Foundation', link: 'www.hcrf.com', redirect: '#' },
+    { title: 'Technology Support', description: 'Prime Logic Solutions USA', link: 'www.primelogical.com', redirect: '#' },
+    { title: 'Marketing Support', description: 'Kasmir ArtStay India', link: 'Kashmirstay.com', redirect: '#' },
+]
+
+export const COUNTER = [
+    { name: 'Artisans', value: 2000 },
+    { name: 'Craft Associations', value: 18 },
+    { name: 'Craft Insitutions', value: 5 },
+    { name: 'Donor', value: 4 }
+]
+
+
+export const MISSIONS = [
+    {
+        id: 1, title: 'Biggest Craft Repository of Kashmir',
+        description: 'Our mission is to establish CraftLore as the largest and most comprehensive repository of Kashmiri crafts, preserving and promoting the rich artisanal heritage, craftsmanship methodologies, and artisan profiles of the region. Through a centralized data ecosystem, we aim to deliver deep-dive intelligence on Kashmiri crafts, offering stakeholders unparalleled insights into the cultural and economic significance of each craft. We aim to be the single source of truth for artisans, consumers, and researchers, providing scalable, data-driven insights into craft authenticity, innovation pathways, and market dynamics. Our mission is to reinforce Kashmir’s position as a global leader in artisanal excellence and ensure the continued growth and sustainability of its craft industry.'
+    },
+    { id: 2, title: 'Transforming Colonial Narrative', description: 'Our mission is to transform the colonial business narrative of Kashmiri crafts by adopting a science-based approach that documents the history, material sourcing, and production techniques through data-driven, empirical methodologies. By shifting the narrative, we ensure that every craft is validated with scientific rigor, preserving its authenticity and historical significance. Through scientific validation, CraftLore aims to strengthen the credibility and global positioning of Kashmiri crafts, elevating them to the status of verified cultural assets with measurable economic and cultural value, free from subjective biases and rooted in empirical evidence.' },
+    { id: 3, title: 'Setting a Universal Craft Price Model', description: 'Our mission is to pioneer a universal craft pricing model that establishes a globally aligned pricing structure for Kashmiri crafts. This framework ensures equitable and consistent pricing across international markets, driven by metrics such as craftsmanship excellence, authenticity validation, and market demand dynamics. We are committed to creating a value-based pricing architecture that reflects the true economic and cultural value of Kashmiri crafts. This pricing system guarantees fair market compensation for artisans while maintaining the premium positioning of their products in global markets, ensuring both economic sustainability and brand prestige.' },
+    { id: 4, title: 'Education & Market Awareness', description: 'Our mission is to implement a global consumer education strategy that elevates the value proposition of authentic Kashmiri crafts. By promoting the cultural significance, craftsmanship, and heritage of Kashmiri products, we aim to foster deeper consumer engagement and drive demand in premium markets. Through targeted market intelligence, sustainable practices education, and technological training, CraftLore empowers artisans with the expertise required to excel in the global economy. Our knowledge-driven approach ensures artisans stay ahead of industry trends and leverage cutting-edge tools to enhance both their craft and market presence.' },
+    { id: 5, title: 'Blockchain-Backed Digital Authentication', description: 'Our mission is to utilize blockchain-backed digital authentication to create indelible, tamper-proof records for each artisanal product. This advanced system guarantees fraud prevention and ensures the authenticity of every Kashmiri craft, providing an elevated level of security in the global market. By leveraging this blockchain-powered verification system, CraftLore significantly enhances market confidence and builds trust between artisans and global consumers. Our mission is to ensure that only genuine, high-quality Kashmiri products are traded internationally, fostering long-term consumer confidence and reinforcing brand integrity.' },
+    { id: 6, title: 'Big Data-Driven Craft Platform', description: 'Our mission is to leverage a big data-driven platform that delivers real-time economic intelligence, providing granular insights into the financial health and market dynamics of the Kashmiri craft sector. By utilizing advanced analytics, we empower artisans to make data-driven, precision decisions that enhance their economic sustainability and competitiveness in global markets. Through predictive data models and market trend analysis, CraftLore enables artisans to refine production workflows and adapt strategies for maximum profitability. Our platform’s AI-powered insights help artisans align their operations with shifting global demand, ensuring smarter, more profitable business decisions.' },
+    { id: 7, title: 'Sustainable Craft Leadership', description: 'Our mission is to lead the sustainable transformation of the craft industry by ensuring that all materials are ethically sourced and that production processes align with the highest environmental responsibility standards. Through our commitment to eco-conscious methodologies, we minimize environmental impact and foster long-term sustainability. As a leader in sustainable craftsmanship, CraftLore positions Kashmiri products as eco-friendly luxury goods in the global market. By championing green practices and setting new industry standards, we are building a sustainable future for the craft sector, reinforcing the environmental and cultural value of Kashmiri crafts.' },
+    { id: 8, title: 'Advanced Counterfeit Detection', description: 'Our mission is to deploy cutting-edge counterfeit detection infrastructure that dynamically identifies and neutralizes fraudulent products in real time. This system ensures uncompromising protection for both artisans and consumers, safeguarding the authenticity of every Kashmiri craft in the global marketplace. By implementing advanced counterfeit detection protocols, CraftLore protects the cultural and economic integrity of Kashmiri crafts, preventing market dilution from counterfeit goods. This proactive approach ensures that the brand equity of genuine artisanal products is preserved, reinforcing their premium status in global markets.' },
+]

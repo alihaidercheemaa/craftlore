@@ -1,12 +1,12 @@
 import { type Config } from "tailwindcss";
-
+import animate from "tailwindcss-animate";
 export default {
 	darkMode: ["class"],
 	content: ["./src/**/*.tsx"],
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem",
+			padding: "4rem",
 			screens: {
 				"2xl": "1400px",
 			},
@@ -75,6 +75,5 @@ export default {
 			},
 		}
 	},
-	// eslint-disable-next-line @typescript-eslint/no-require-imports
-	plugins: [require("tailwindcss-animate")],
+	plugins: [animate],
 } satisfies Config;

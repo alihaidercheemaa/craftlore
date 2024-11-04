@@ -5,8 +5,7 @@ import { SERVICES } from '~/constants';
 
 export const ServiceCard = () => {
   return (
-    // Remove absolute positioning and use negative margin instead
-    <div className="col-span-12 relative -mt-16 "> {/* Negative margin to overlap */}
+    <div className="col-span-12 relative -mt-16"> 
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 hover:cursor-pointer">
           {SERVICES.map((service, index) => (
