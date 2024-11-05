@@ -4,6 +4,7 @@ import { Montserrat, Open_Sans, Manrope } from "next/font/google";
 import { Providers } from "~/app/provider";
 import { type Metadata } from "next";
 import { Header } from "~/components/general/headers/header";
+import { Footer } from "~/components/general/footers/footer";
 
 
 const montserrat = Montserrat({
@@ -37,11 +38,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable} ${opensans.variable} ${manrope.variable}`}>
       <body className="grid grid-cols-12">
-        <Header />
+
         <Providers>
+          <Header />
           <main className="col-span-12 grid grid-cols-12">
             {children}
           </main>
+          <Footer />
         </Providers>
       </body>
     </html>
