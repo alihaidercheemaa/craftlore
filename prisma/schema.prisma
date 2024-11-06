@@ -3,11 +3,23 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
-model Testing {
-    id   String @id @default(uuid())
-    name String @default("none")
+model AppliedJob {
+    jobId       String @id @default(uuid())
+    fullName    String @default("none")
+    email       String @default("none")
+    job         String @default("none")
+    jobCode     String @default("none")
+    resume      String @default("none")
+    coverLetter String @default("none")
+}
+
+model Employ {
+    employId     String @id @default(uuid())
+    fullName     String @default("none")
+    skills       String @default("none")
+    contribution String @default("none")
 }

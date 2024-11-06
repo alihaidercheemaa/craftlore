@@ -1,61 +1,86 @@
-"use client"
+'use client'
 
-import dayjs from "dayjs"
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card"
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "~/components/ui/chart"
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import dayjs from 'dayjs';
 
-const chartData = [
-    { name: "Counterfeit Prevention Outreach", value: 80 },
-    { name: "Middlemen Blocked", value: 60 },
-    { name: "Counterfeit Reports Received", value: 40 },
-    { name: "Total Authenticity Verifications", value: 50 },
-    { name: "Craft Business Blacklist Data Inquiries", value: 10 },
-    { name: "Craft Blockchain Traceability Queries", value: 25 },
-    { name: "Craft Carbon Footprint Valuations", value: 30 },
-    { name: "Craft GI Integration", value: 10 },
-    { name: "Craft Profile Enquiries", value: 20 },
-]
 
-const chartConfig = {
-    label: {
-        color: "#000",
-    },
-} satisfies ChartConfig
+// Register Chart.js components
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const MilestonePercentageGraph = () => {
+    const data = {
+        labels: [
+            "Counterfeit Prevention Outreach",
+            "Middlemen Blocked",
+            "Counterfeit Reports Received",
+            "Total Authenticity Verifications",
+            "Craft Business Blacklist Data Inquiries",
+            "Craft Blockchain Traceability Queries",
+            "Craft Carbon Footprint Valuations",
+            "Craft GI Integration",
+            "Craft Profile Enquiries"
+        ],
+        datasets: [
+            {
+                data: [80, 60, 40, 50, 10, 25, 30, 10, 20],
+                backgroundColor: 'hsl(212 99% 24%)',
+                barThickness: 20,
+                maxBarThickness: 30,
+            }
+        ]
+    };
+
+    const options = {
+        indexAxis: 'y' as const,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: `CraftLore Milestrones (Percentage) ${dayjs().year()}`,  
+            },
+            tooltip: {
+                backgroundColor: 'white',
+                titleColor: 'black',
+                bodyColor: 'black',
+                borderColor: 'rgb(240, 240, 240)',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: false,
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    color: '#f0f0f0',
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    },
+                },
+                max: 100
+            },
+            y: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 12
+                    }
+                }
+            }
+        }
+    };
+
     return (
-        <Card className="bg-transparent border-none shadow-none">
-            <CardHeader>
-                <CardTitle className="text-sm">CraftLore Milestones (Percentage) {dayjs().year()}</CardTitle>
-                <CardDescription className="text-primary">January - June {dayjs().year()}</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <ChartContainer config={chartConfig} className="w-base">
-                    <BarChart
-                        data={chartData}
-                        layout="vertical"
-                        className="text-sm text-gray-900"
-                    >
-                        <CartesianGrid stroke="#f0f0f0" horizontal={true} />
-                        <XAxis type="number" dataKey="value" axisLine={true} />
-                        <YAxis
-                            className="text-gray-900"
-                            dataKey="name"
-                            type="category"
-                            width={200}
-                            tickLine={false}
-                            tickMargin={0}
-                            axisLine={false}
-                        />
-                        <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent />}
-                        />
-                        <Bar dataKey="value" fill="hsl(212 99% 24%)" radius={0} />
-                    </BarChart>
-                </ChartContainer>
-            </CardContent>
-        </Card>
-    )
-}
+        <div className="h-[360px] w-[600px]">
+            <Bar data={data} options={options} />
+        </div>
+    );
+};

@@ -456,3 +456,39 @@ export const SPONSORS = [
         description: 'A technology and digital marketing firm that provides support to the handicraft sector, helping artisans and businesses enhance their online presence and operational efficiency.',
     },
 ];
+
+export const JOBS = [
+    {
+        name:'1. Data Analyst – Craft Analytics',
+        date: '2024-12-10',
+        jobCode:'DA-101',
+        overview:"We are seeking a highly skilled Data Analyst to join our team at CraftLore. The ideal candidate will be responsible for analyzing large datasets related to artisans, market trends, and consumer behavior within the handicraft sector.",
+        responibilities:"Utilize advanced statistical techniques and tools (e.g., Python, R, SQL) to extract insights from data. Develop predictive models to forecast market demand and inform strategic decisions. Create visualizations and reports to communicate findings to stakeholders effectively.",
+        qualification:"Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
+    },
+    {
+        name:'2. Blockchain Developer – CraftTrace System',
+        date: '2024-12-15',
+        jobCode:'BD-101',
+        overview:"CraftLore is looking for a talented Blockchain Developer to enhance our blockchain-based CraftTrace system. This system ensures the authenticity and traceability of Kashmiri crafts from artisan to consumer.",
+        responibilities:"Design, develop, and implement blockchain solutions using Ethereum or Hyperledger frameworks. Collaborate with cross-functional teams to define and implement smart contracts. Ensure system security and integrity by conducting code reviews and vulnerability assessments.",
+        qualification:"Master’s degree in Environmental Science, Sustainability, or a related field. Proven experience in carbon footprint analysis and sustainability consulting. Strong communication skills and the ability to educate stakeholders on sustainability practices."
+    },
+    {
+        name:'3. Sustainability Consultant – Carbon Footprint Initiatives',
+        date: '2024-12-20',
+        jobCode:'SC-101',
+        overview:"We seek a passionate Sustainability Consultant to lead initiatives focused on measuring and reducing the carbon footprint of handicraft production processes within Kashmir.",
+        responibilities:"Conduct lifecycle assessments to identify carbon emissions in various crafts. Develop and implement strategies for sustainable sourcing and production practices. Collaborate with artisans and organizations to promote eco-friendly methods and materials.",
+        qualification:"Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
+    },
+    {
+        name:'4. Digital Marketing Specialist – Craft Promotion',
+        date: '2024-12-30',
+        jobCode:'DM-101',
+        overview:"CraftLore is looking for a Digital Marketing Specialist to develop and execute online marketing strategies that enhance the visibility of Kashmiri crafts and engage a global audience.",
+        responibilities:"Manage and optimize digital marketing campaigns across various platforms (social media, email, SEO). Analyze campaign performance using analytics tools and adjust strategies accordingly. Collaborate with content creators to develop compelling narratives that resonate with target audiences.",
+        qualification:"Bachelor’s degree in Marketing, Communications, or a related field. Strong understanding of digital marketing principles and tools (Google Analytics, SEMrush, etc.). Proven experience in managing successful online marketing campaigns."
+    },
+    
+]
