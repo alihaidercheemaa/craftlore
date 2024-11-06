@@ -78,6 +78,9 @@ export const Header = () => {
                 { title: 'REGISTRY ARCHITECTURE', href: '/about/architecture' },
                 { title: 'NETWORKS', href: '/about/network' },
                 { title: 'SPONSORS', href: '/about/sponsor' },
+                { title: 'CAREER', href: '/about/career' },
+                { title: 'TEAM', href: '/about/team' },
+                { title: 'CONTACT US', href: '/about/contact-us' },
             ]
         },
     ]

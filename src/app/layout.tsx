@@ -5,6 +5,7 @@ import { Providers } from "~/app/provider";
 import { type Metadata } from "next";
 import { Header } from "~/components/general/headers/header";
 import { Footer } from "~/components/general/footers/footer";
+import { Toaster } from "~/components/ui/toaster";
 
 
 const montserrat = Montserrat({
@@ -45,6 +46,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Toaster/>
         </Providers>
       </body>
     </html>
