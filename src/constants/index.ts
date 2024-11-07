@@ -318,119 +318,119 @@ export const ARCHITECTURE = [
 ]
 
 export const ORGANIZATIONS = [
-    { 
-        name: 'Smithsonian Institution', 
-        mission: 'Promotes culture and history through education and exhibitions', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Smithsonian Institution',
+        mission: 'Promotes culture and history through education and exhibitions',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'American Craft Council', 
-        mission: 'Supports artists and artisans in the craft industry', 
-        logo: '/logo/craftcouncil.svg' 
+    {
+        name: 'American Craft Council',
+        mission: 'Supports artists and artisans in the craft industry',
+        logo: '/logo/craftcouncil.svg'
     },
-    { 
-        name: 'National Endowment for the Arts', 
-        mission: 'Funds artistic projects to strengthen community engagement', 
-        logo: 'https://www.arts.gov/themes/gesso/images/logo.svg' 
+    {
+        name: 'National Endowment for the Arts',
+        mission: 'Funds artistic projects to strengthen community engagement',
+        logo: 'https://www.arts.gov/themes/gesso/images/logo.svg'
     },
-    { 
-        name: 'The Craft and Hobby Association', 
-        mission: 'Fosters creative expression in crafts and hobbies', 
-        logo: '/logo/craftcouncil.svg' 
+    {
+        name: 'The Craft and Hobby Association',
+        mission: 'Fosters creative expression in crafts and hobbies',
+        logo: '/logo/craftcouncil.svg'
     },
-    { 
-        name: 'The Center for Craft', 
-        mission: 'Encourages exploration and innovation in craft-making', 
-        logo: '/logo/craftcouncil.svg' 
+    {
+        name: 'The Center for Craft',
+        mission: 'Encourages exploration and innovation in craft-making',
+        logo: '/logo/craftcouncil.svg'
     },
-    { 
-        name: 'The Artisans Guild', 
-        mission: 'Advances traditional skills and artisan communities globally', 
-        logo: 'https://images.squarespace-cdn.com/content/v1/5cae7afd815512e9bf249e7d/1554938767274-T2OOTFZU44BN24CADZC0/AGA%2BLogo%2BCMYK.jpg?format=1500w' 
+    {
+        name: 'The Artisans Guild',
+        mission: 'Advances traditional skills and artisan communities globally',
+        logo: 'https://images.squarespace-cdn.com/content/v1/5cae7afd815512e9bf249e7d/1554938767274-T2OOTFZU44BN24CADZC0/AGA%2BLogo%2BCMYK.jpg?format=1500w'
     },
-    { 
-        name: 'The National Museum of Women in the Arts', 
-        mission: 'Showcases art by women artists across centuries', 
-        logo: 'https://nmwa.org/wp-content/themes/nmwa/dev/dist/imgs/nmwa-logo.svg' 
+    {
+        name: 'The National Museum of Women in the Arts',
+        mission: 'Showcases art by women artists across centuries',
+        logo: 'https://nmwa.org/wp-content/themes/nmwa/dev/dist/imgs/nmwa-logo.svg'
     },
-    { 
-        name: 'Ethereum Foundation', 
-        mission: 'Supports decentralized applications using blockchain technology', 
-        logo: '/logo/entherium.png' 
+    {
+        name: 'Ethereum Foundation',
+        mission: 'Supports decentralized applications using blockchain technology',
+        logo: '/logo/entherium.png'
     },
-    { 
-        name: 'Hyperledger', 
-        mission: 'Promotes blockchain development for enterprise solutions worldwide', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Hyperledger',
+        mission: 'Promotes blockchain development for enterprise solutions worldwide',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'Consensys', 
-        mission: 'Builds decentralized software for the Ethereum blockchain', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Consensys',
+        mission: 'Builds decentralized software for the Ethereum blockchain',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'Ford Foundation', 
-        mission: 'Addresses inequality and social justice through grants', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Ford Foundation',
+        mission: 'Addresses inequality and social justice through grants',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'The Alliance of Artists Communities', 
-        mission: 'Supports residency programs for artists across disciplines', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'The Alliance of Artists Communities',
+        mission: 'Supports residency programs for artists across disciplines',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'Oxfam', 
-        mission: 'Works to end poverty and promote human rights', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Oxfam',
+        mission: 'Works to end poverty and promote human rights',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'Ashoka', 
-        mission: 'Empowers social entrepreneurs to drive positive change', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'Ashoka',
+        mission: 'Empowers social entrepreneurs to drive positive change',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'UNESCO', 
-        mission: 'Promotes peace and sustainable development through education', 
-        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' 
+    {
+        name: 'UNESCO',
+        mission: 'Promotes peace and sustainable development through education',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
-    { 
-        name: 'ArtStay', 
-        mission: 'Connects art enthusiasts with Kashmiri artisans and culture', 
+    {
+        name: 'ArtStay',
+        mission: 'Connects art enthusiasts with Kashmiri artisans and culture',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'Ministry of Textiles, Government of India', 
-        mission: 'Supports development of textile sector and handicrafts', 
+    {
+        name: 'Ministry of Textiles, Government of India',
+        mission: 'Supports development of textile sector and handicrafts',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'The Crafts Council of India', 
-        mission: 'Promotes Indian crafts and artisan welfare nationally', 
+    {
+        name: 'The Crafts Council of India',
+        mission: 'Promotes Indian crafts and artisan welfare nationally',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'Rang De', 
-        mission: 'Provides affordable loans for marginalized communities', 
+    {
+        name: 'Rang De',
+        mission: 'Provides affordable loans for marginalized communities',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'Kashmir Handicrafts and Handloom Development Corporation', 
-        mission: 'Supports and markets traditional Kashmiri handicrafts', 
+    {
+        name: 'Kashmir Handicrafts and Handloom Development Corporation',
+        mission: 'Supports and markets traditional Kashmiri handicrafts',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'Jammu and Kashmir Entrepreneurship Development Institute', 
-        mission: 'Encourages entrepreneurial growth in Jammu and Kashmir', 
+    {
+        name: 'Jammu and Kashmir Entrepreneurship Development Institute',
+        mission: 'Encourages entrepreneurial growth in Jammu and Kashmir',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'Asian Heritage Foundation', 
-        mission: 'Promotes Asian cultural heritage and creative industries', 
+    {
+        name: 'Asian Heritage Foundation',
+        mission: 'Promotes Asian cultural heritage and creative industries',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
-    { 
-        name: 'National Institute of Fashion Technology (NIFT), Srinagar', 
-        mission: 'Educates and develops talent in fashion and design', 
+    {
+        name: 'National Institute of Fashion Technology (NIFT), Srinagar',
+        mission: 'Educates and develops talent in fashion and design',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
 ];
@@ -459,36 +459,379 @@ export const SPONSORS = [
 
 export const JOBS = [
     {
-        name:'1. Data Analyst – Craft Analytics',
+        name: '1. Data Analyst – Craft Analytics',
         date: '2024-12-10',
-        jobCode:'DA-101',
-        overview:"We are seeking a highly skilled Data Analyst to join our team at CraftLore. The ideal candidate will be responsible for analyzing large datasets related to artisans, market trends, and consumer behavior within the handicraft sector.",
-        responibilities:"Utilize advanced statistical techniques and tools (e.g., Python, R, SQL) to extract insights from data. Develop predictive models to forecast market demand and inform strategic decisions. Create visualizations and reports to communicate findings to stakeholders effectively.",
-        qualification:"Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
+        jobCode: 'DA-101',
+        overview: "We are seeking a highly skilled Data Analyst to join our team at CraftLore. The ideal candidate will be responsible for analyzing large datasets related to artisans, market trends, and consumer behavior within the handicraft sector.",
+        responibilities: "Utilize advanced statistical techniques and tools (e.g., Python, R, SQL) to extract insights from data. Develop predictive models to forecast market demand and inform strategic decisions. Create visualizations and reports to communicate findings to stakeholders effectively.",
+        qualification: "Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
     },
     {
-        name:'2. Blockchain Developer – CraftTrace System',
+        name: '2. Blockchain Developer – CraftTrace System',
         date: '2024-12-15',
-        jobCode:'BD-101',
-        overview:"CraftLore is looking for a talented Blockchain Developer to enhance our blockchain-based CraftTrace system. This system ensures the authenticity and traceability of Kashmiri crafts from artisan to consumer.",
-        responibilities:"Design, develop, and implement blockchain solutions using Ethereum or Hyperledger frameworks. Collaborate with cross-functional teams to define and implement smart contracts. Ensure system security and integrity by conducting code reviews and vulnerability assessments.",
-        qualification:"Master’s degree in Environmental Science, Sustainability, or a related field. Proven experience in carbon footprint analysis and sustainability consulting. Strong communication skills and the ability to educate stakeholders on sustainability practices."
+        jobCode: 'BD-101',
+        overview: "CraftLore is looking for a talented Blockchain Developer to enhance our blockchain-based CraftTrace system. This system ensures the authenticity and traceability of Kashmiri crafts from artisan to consumer.",
+        responibilities: "Design, develop, and implement blockchain solutions using Ethereum or Hyperledger frameworks. Collaborate with cross-functional teams to define and implement smart contracts. Ensure system security and integrity by conducting code reviews and vulnerability assessments.",
+        qualification: "Master’s degree in Environmental Science, Sustainability, or a related field. Proven experience in carbon footprint analysis and sustainability consulting. Strong communication skills and the ability to educate stakeholders on sustainability practices."
     },
     {
-        name:'3. Sustainability Consultant – Carbon Footprint Initiatives',
+        name: '3. Sustainability Consultant – Carbon Footprint Initiatives',
         date: '2024-12-20',
-        jobCode:'SC-101',
-        overview:"We seek a passionate Sustainability Consultant to lead initiatives focused on measuring and reducing the carbon footprint of handicraft production processes within Kashmir.",
-        responibilities:"Conduct lifecycle assessments to identify carbon emissions in various crafts. Develop and implement strategies for sustainable sourcing and production practices. Collaborate with artisans and organizations to promote eco-friendly methods and materials.",
-        qualification:"Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
+        jobCode: 'SC-101',
+        overview: "We seek a passionate Sustainability Consultant to lead initiatives focused on measuring and reducing the carbon footprint of handicraft production processes within Kashmir.",
+        responibilities: "Conduct lifecycle assessments to identify carbon emissions in various crafts. Develop and implement strategies for sustainable sourcing and production practices. Collaborate with artisans and organizations to promote eco-friendly methods and materials.",
+        qualification: "Bachelor’s or Master’s degree in Data Science, Statistics, or a related field. Proven experience in data analysis, with proficiency in analytical software and programming languages. Strong understanding of market research methodologies and consumer behavior analytics."
     },
     {
-        name:'4. Digital Marketing Specialist – Craft Promotion',
+        name: '4. Digital Marketing Specialist – Craft Promotion',
         date: '2024-12-30',
-        jobCode:'DM-101',
-        overview:"CraftLore is looking for a Digital Marketing Specialist to develop and execute online marketing strategies that enhance the visibility of Kashmiri crafts and engage a global audience.",
-        responibilities:"Manage and optimize digital marketing campaigns across various platforms (social media, email, SEO). Analyze campaign performance using analytics tools and adjust strategies accordingly. Collaborate with content creators to develop compelling narratives that resonate with target audiences.",
-        qualification:"Bachelor’s degree in Marketing, Communications, or a related field. Strong understanding of digital marketing principles and tools (Google Analytics, SEMrush, etc.). Proven experience in managing successful online marketing campaigns."
+        jobCode: 'DM-101',
+        overview: "CraftLore is looking for a Digital Marketing Specialist to develop and execute online marketing strategies that enhance the visibility of Kashmiri crafts and engage a global audience.",
+        responibilities: "Manage and optimize digital marketing campaigns across various platforms (social media, email, SEO). Analyze campaign performance using analytics tools and adjust strategies accordingly. Collaborate with content creators to develop compelling narratives that resonate with target audiences.",
+        qualification: "Bachelor’s degree in Marketing, Communications, or a related field. Strong understanding of digital marketing principles and tools (Google Analytics, SEMrush, etc.). Proven experience in managing successful online marketing campaigns."
     },
-    
+
+]
+
+
+export const CHALLENGES = [
+    {
+        title: 'Lack of Legal Protection',
+        description: 'Kashmiri artisans often lack access to adequate legal frameworks that protect their intellectual property rights. Traditional designs, techniques, and cultural symbols are frequently copied by mass producers globally, depriving artisans of recognition and fair compensation. This exploitation threatens the integrity of the crafts and undermines the economic viability of artisans.'
+    },
+    {
+        title: 'Unauthorized Use and Replication',
+        description: 'With no strong IP protections, Kashmiri crafts are vulnerable to unauthorized use and replication. Mass-produced goods, often sold at lower prices, flood global markets under the guise of being "authentic," leaving artisans unable to compete. This not only diminishes the value of the crafts but also impacts the livelihood of artisans who rely on the unique appeal of their handcrafted products.'
+    },
+    {
+        title: 'Consumer Confusion',
+        description: 'In many cases, consumers are unaware that the products they are purchasing are counterfeit. The lack of IP protections allows counterfeiters to replicate Kashmiri designs, leading to confusion in the market. Consumers end up buying imitation products, believing they are supporting genuine artisans, while the real craftspeople suffer financially.'
+    },
+    {
+        title: 'Global Market Exploitation',
+        description: 'Globalization has increased the exposure of Kashmiri crafts but has also led to greater exploitation. Artisans often do not have the resources or knowledge to pursue IP claims internationally, making it difficult for them to defend their rights in foreign markets where their designs are being replicated and sold without consent.'
+    },
+]
+
+
+export const INITIATIVES = [
+    {
+        title: '1. Education on Intellectual Property Rights',
+        description: 'CraftLore conducts workshops and outreach programs to educate Kashmiri artisans on their intellectual property rights. These programs empower artisans to understand the value of their designs and provide them with the tools and knowledge to protect their crafts. By raising awareness about IP protections, CraftLore ensures artisans are better equipped to safeguard their cultural heritage.'
+    },
+    {
+        title: '2. Geographical Indication (GI) Tags',
+        description: 'CraftLore supports the implementation of Geographical Indication (GI) tags for Kashmiri crafts like Pashmina, papier-mâché, and walnut wood carving. GI tags legally protect the origin and identity of these crafts, ensuring that only authentic products produced in Kashmir by skilled artisans can carry the Kashmiri name. This initiative not only preserves the heritage of these crafts but also gives artisans legal protection against counterfeiting.'
+    },
+    {
+        title: '3. Legal Support and Advocacy',
+        description: 'Through partnerships with legal organizations, CraftLore provides artisans with affordable access to legal support. This assistance helps artisans pursue claims of intellectual property infringement, both locally and globally. CraftLore advocates for stronger IP laws that recognize and protect traditional knowledge, ensuring that artisans have a legal recourse when their designs are copied without consent.'
+    },
+    {
+        title: '4. Blockchain for Craft Authentication',
+        description: 'CraftLore is pioneering the use of blockchain technology to provide artisans with a secure way to verify the authenticity of their crafts. By creating a tamper-proof digital record for each piece, blockchain ensures that consumers can trace the origin of their purchase, confirming its authenticity and supporting genuine artisans. This system protects against counterfeiting and ensures that artisans retain control over their intellectual property.'
+    },
+    {
+        title: '5. Certification Systems for Authentic Crafts',
+        description: 'To combat the issue of unauthorized replication, CraftLore has developed certification systems that distinguish authentic Kashmiri crafts from imitations. These certification systems include physical tags and digital certificates that validate the authenticity of each craft. Consumers can be confident that the products they are purchasing are genuine, and artisans are protected from the devaluation of their work.'
+    },
+    {
+        title: '6. Consumer Awareness Campaigns',
+        description: 'CraftLore runs global awareness campaigns to educate consumers on the importance of buying authentic Kashmiri crafts. These campaigns emphasize the value of supporting artisans directly and the negative impact counterfeit products have on the local economy and cultural heritage. By raising awareness, CraftLore helps build a market that values and demands authenticity, benefiting artisans who rely on their craft for their livelihood.'
+    }
+]
+
+
+export const COUNTERFEITCHALLENGES = [
+    {
+        title: 'Proliferation of Counterfeit Products',
+        description: 'The global market is saturated with counterfeit Kashmiri products, including Pashmina shawls, carpets, and other traditional crafts. These imitations are often mass-produced outside of Kashmir and sold at lower prices, deceiving consumers into believing they are purchasing authentic items. This flood of counterfeit goods undermines the value of genuine Kashmiri craftsmanship and damages the livelihood of artisans.'
+    },
+    {
+        title: 'Erosion of Artisan Income',
+        description: 'Counterfeit goods directly harm Kashmiri artisans by siphoning off market share and revenue. Genuine artisans, who painstakingly produce handcrafted items using traditional techniques, cannot compete with the low prices of fake products. As a result, their incomes are severely affected, leading to economic instability in the artisan community and discouraging future generations from pursuing these crafts.'
+    },
+    {
+        title: 'Damage to Consumer Trust',
+        description: 'The widespread presence of counterfeit goods has eroded consumer trust in the authenticity of Kashmiri products. Buyers, uncertain about the authenticity of their purchases, may turn away from the market altogether, further diminishing demand for genuine Kashmiri handicrafts. This loss of trust weakens the market for authentic products and makes it more difficult for artisans to build a loyal customer base.'
+    },
+    {
+        title: 'Cultural Dilution',
+        description: 'Counterfeiting not only impacts the financial wellbeing of artisans but also dilutes the cultural significance of Kashmiri crafts. When fake products are sold as authentic, the unique heritage, craftsmanship, and cultural history embedded in these works are lost. This undermines the identity of Kashmiri craftsmanship and devalues the centuries-old traditions that have been passed down through generations.'
+    },
+]
+
+
+export const COUNTERFEITSINITIATIVES = [
+    {
+        title: '1. Certification and Labeling Systems',
+        description: 'CraftLore has developed comprehensive certification systems to help consumers easily identify genuine Kashmiri products. This includes both physical labels and digital certificates of authenticity that are attached to certified products. These labels ensure transparency in the market and protect artisans from the financial harm caused by counterfeit goods. Consumers can trust that the products they buy with these certifications are made by skilled Kashmiri artisans.'
+    },
+    {
+        title: '2. Anti-Counterfeiting Awareness Campaigns',
+        description: 'CraftLore runs global awareness campaigns aimed at educating consumers about the detrimental effects of purchasing counterfeit Kashmiri products. These campaigns highlight the importance of supporting authentic Kashmiri artisans and how counterfeit goods damage both the economy and the cultural heritage of Kashmir. By fostering a more informed customer base, CraftLore encourages consumers to make ethical purchasing decisions.'
+    },
+    {
+        title: '3. Legal Action Against Counterfeiters',
+        description: 'CraftLore works closely with legal authorities and international trade organizations to combat the production and distribution of counterfeit Kashmiri goods. The platform supports artisans in taking legal action against counterfeiters, ensuring that fake products are removed from the market. CraftLore also advocates for stricter enforcement of intellectual property rights to protect artisans from counterfeiters.'
+    },
+    {
+        title: '4. Blockchain Technology for Verification',
+        description: 'To further combat counterfeiting, CraftLore is utilizing blockchain technology to verify the authenticity of Kashmiri crafts. By creating an unchangeable digital record for each craft, blockchain ensures that each product is traceable back to the artisan who created it. This transparency guarantees consumers are purchasing authentic Kashmiri products while also protecting artisans from the financial harm caused by counterfeit goods.'
+    },
+    {
+        title: '5. Empowering Artisans Through Digital Tools',
+        description: 'CraftLore empowers artisans by equipping them with digital tools that allow them to track and protect their products in the global market. These tools help artisans mark their crafts with unique identifiers, ensuring that their work can be distinguished from counterfeits. Additionally, CraftLore provides artisans with access to e-commerce platforms, allowing them to sell directly to global consumers and avoid the risks posed by counterfeit products in traditional retail markets'
+    },
+    {
+        title: '6. Strengthening Consumer Trust',
+        description: 'CraftLore’s initiatives work to rebuild consumer trust in the Kashmiri craft market. By ensuring that genuine products are clearly distinguishable from counterfeits through certification and blockchain verification, CraftLore helps restore confidence in the authenticity of Kashmiri crafts. This renewed trust encourages consumers to invest in authentic products, which directly benefits artisans and helps preserve the integrity of Kashmiri craftsmanship.'
+    }
+]
+
+export const DEPENDCYCHALLENGES = [
+    {
+        title: 'Dependence on Middlemen',
+        description: 'Kashmiri artisans are often heavily reliant on middlemen to access markets, sell their products, and obtain raw materials. These intermediaries often take a significant share of the profits, leaving artisans with little financial reward for their labor. This dependency limits artisans’ control over their business, reducing their ability to negotiate fair prices and increase their earnings.'
+    },
+    {
+        title: 'Limited Market Access',
+        description: 'Many artisans struggle to access direct markets, both locally and globally, due to logistical, financial, or technological barriers. This forces them to rely on middlemen who control market entry. As a result, artisans miss out on the opportunity to directly engage with consumers, and they have little say in how their products are marketed or priced.'
+    },
+    {
+        title: 'Raw Material Dependency',
+        description: 'The supply chain for raw materials in the Kashmiri handicraft sector is often controlled by external agents who charge high prices or provide inconsistent supplies. This dependency on third parties for raw materials can delay production, increase costs, and reduce the artisans’ ability to maintain sustainable growth, especially when there are fluctuations in material availability.'
+    },
+    {
+        title: 'Financial Constraints',
+        description: 'Access to capital is a major barrier for many Kashmiri artisans, making them dependent on loans or financing from intermediaries who may exploit their financial vulnerability. Without direct access to fair and affordable financing options, artisans are often forced to accept unfavorable terms, which further perpetuates their dependency on middlemen for survival.'
+    },
+]
+
+export const DEPENDCYINITIATIVES = [
+    {
+        title: '1. Direct-to-Consumer Marketplaces',
+        description: 'CraftLore is actively developing e-commerce platforms and direct market channels that empower artisans to sell their products directly to consumers, eliminating the need for intermediaries. These platforms provide artisans with full control over pricing, marketing, and customer engagement, ensuring they receive fair compensation for their work. By connecting artisans directly to global markets, CraftLore helps artisans retain more of the profits from their sales.'
+    },
+    {
+        title: '2. Microfinance Programs for Artisan Empowerment',
+        description: 'To reduce artisans’ dependency on exploitative loans or intermediaries, CraftLore has introduced microfinance programs that provide artisans with access to small, affordable loans. These loans allow artisans to purchase raw materials, expand production, or invest in their businesses without relying on middlemen. By supporting artisans with financial independence, CraftLore helps them grow their businesses sustainably.'
+    },
+    {
+        title: '3. Sustainable Raw Material Sourcing',
+        description: 'CraftLore is working to establish ethical and sustainable raw material supply chains for Kashmiri artisans. By connecting artisans with fair and reliable suppliers, CraftLore ensures that artisans have consistent access to high-quality materials at fair prices. This reduces their reliance on exploitative middlemen who often control the supply chain and inflate prices, enabling artisans to plan production and maintain sustainable business operations.'
+    },
+    {
+        title: '4. Artisan Cooperatives for Collective Bargaining',
+        description: "CraftLore promotes the formation of artisan cooperatives, where craftsmen and women can join together to negotiate better terms with suppliers and buyers. These cooperatives increase the artisans' bargaining power, allowing them to secure better deals on raw materials and receive fair prices for their products. Cooperatives also foster a sense of community, where artisans can share resources, knowledge, and skills to improve their collective well-being."
+    },
+    {
+        title: '5. Business and Entrepreneurial Training',
+        description: 'CraftLore offers training programs that teach artisans how to manage their businesses independently, covering areas such as finance, marketing, inventory management, and customer relations. These programs empower artisans with the skills they need to grow their businesses without relying on intermediaries. By fostering entrepreneurial skills, CraftLore helps artisans transition from being dependent on middlemen to becoming self-sufficient business owners.'
+    },
+    {
+        title: '6. Expanding Market Opportunities',
+        description: 'CraftLore collaborates with international trade bodies and fair-trade organizations to open new markets for Kashmiri artisans. These partnerships create opportunities for artisans to showcase their products at global fairs and exhibitions, where they can connect with international buyers and build long-term business relationships. By providing artisans with more market access, CraftLore helps reduce dependency on local markets controlled by intermediaries, ensuring artisans can grow their customer base and income streams.'
+    }
+]
+
+export const GAPCHALLENGES = [
+    {
+        title: 'Outdated E-Commerce Infrastructure',
+        description: 'The Kashmiri handicraft sector is constrained by outdated, monolithic e-commerce platforms that lack the flexibility and scalability needed to support global operations. These traditional systems are slow, rigid, and incapable of delivering the personalized, omnichannel experiences that modern consumers expect. Without access to advanced technology such as Tier 8 headless e-commerce platforms, artisans are unable to compete in the fast-paced digital marketplace, limiting their ability to engage consumers across multiple touchpoints.'
+    },
+    {
+        title: 'Limited Voice Search and AI Integration',
+        description: 'Kashmiri artisans face a significant disadvantage in the global market due to the absence of AI-driven voice search capabilities. As more consumers use smart assistants like Amazon Alexa and Google Assistant to search for products, Kashmiri e-commerce platforms lack the technology to tap into this growing trend. Without voice search optimization, artisans miss out on reaching tech-savvy consumers, which limits their product visibility in voice-enabled shopping environments.'
+    },
+    {
+        title: 'Ineffective Digital Marketing and Lack of Dynamic Creative Optimization (DCO)',
+        description: 'Artisans in Kashmir are disconnected from advanced digital marketing solutions like programmatic advertising and DCO. This gap results in inefficient ad spending, lack of personalized consumer engagement, and missed opportunities for real-time creative optimization. Without these tools, artisans struggle to reach global consumers with precision-targeted ads, reducing their ability to effectively market their products.'
+    },
+    {
+        title: 'Inadequate Immersive Technology for Consumer Engagement',
+        description: 'With the growing use of Augmented Reality (AR) and Virtual Reality (VR) in global markets, the Kashmiri handicraft sector lacks the ability to offer immersive digital experiences. Consumers are increasingly expecting AR-powered filters and VR showrooms that allow them to visualize products in real-world environments. Without access to these technologies, artisans are missing out on providing an interactive and engaging shopping experience that could significantly boost consumer interest and conversion rates.'
+    },
+    {
+        title: 'Lack of Predictive and Green Logistics',
+        description: 'Artisans in Kashmir face challenges in managing their supply chains efficiently due to a lack of AI-powered predictive logistics systems. This results in higher costs, shipping delays, and unreliable supply chains. Additionally, the absence of green logistics practices, such as carbon-neutral shipping and eco-friendly packaging, misaligns with the global push toward sustainability, making it harder for Kashmiri artisans to attract environmentally conscious consumers.'
+    },
+    {
+        title: 'Absence of Haptic Feedback Technology',
+        description: 'Haptic feedback technology, which simulates the sense of touch in digital environments, is notably absent from the Kashmiri handicraft sector. For artisans who rely on tactile engagement with their products—such as Pashmina shawls, carpets, and intricate woodwork—the inability to allow consumers to feel the texture, weight, or craftsmanship of their products online limits their appeal. Without this critical sensory dimension, artisans lose an essential way to showcase the high-quality craftsmanship that distinguishes their work.'
+    },
+    {
+        title: 'Lack of Geo-Fencing Marketing Technology',
+        description: 'Geo-fencing, which allows businesses to create virtual geographic boundaries and deliver targeted promotions or ads when consumers enter a designated area, is largely absent from the Kashmiri handicraft industry. This technological gap prevents artisans from leveraging location-based marketing strategies that could significantly boost foot traffic, engage local buyers, and even attract international tourists interested in authentic Kashmiri products. The absence of geo-fencing results in missed opportunities to deliver hyper-local, targeted marketing campaigns.'
+    },
+    {
+        title: 'Inadequate Customer Support Systems',
+        description: 'Kashmiri artisans struggle to provide round-the-clock, multi-channel customer support due to a lack of AI-powered systems. Without access to automated call centers and integrated customer support platforms, artisans miss opportunities to engage with global buyers in real-time. This results in delayed responses to inquiries, missed sales, and reduced customer satisfaction, particularly for buyers in different time zones. The absence of 24/7 support puts artisans at a competitive disadvantage in the global market.'
+    },
+]
+
+export const GAPINITIATIVES = [
+    {
+        title: '1. Tier 8 Headless E-Commerce Platforms',
+        description: 'This collaborative initiative integrates Tier 8 headless e-commerce platforms to empower Kashmiri artisans with advanced technology that decouples the front-end presentation from the back-end commerce engine. The API-driven architecture offers unparalleled flexibility, speed, and scalability, allowing artisans to deliver personalized shopping experiences across devices. This platform ensures seamless operations, real-time inventory management, and multi-currency transactions, enabling Kashmiri crafts to compete effectively in global markets.'
+    },
+    {
+        title: '2. Voice Search Optimization',
+        description: 'The collaboration is pioneering voice search optimization, bringing Kashmiri crafts to voice-activated shopping platforms like Amazon Alexa and Google Assistant. This technology allows consumers to discover Kashmiri products using voice commands, making them more accessible to tech-savvy consumers worldwide. By removing barriers to product discovery, this initiative ensures artisans can tap into the growing voice-enabled shopping segment.'
+    },
+    {
+        title: '3. Programmatic Advertising and Dynamic Creative Optimization (DCO)',
+        description: 'Through this collaboration, programmatic advertising and DCO are leveraged to automate and optimize digital ad campaigns for Kashmiri artisans. These technologies use AI to deliver precision-targeted ads based on real-time consumer behavior, dynamically adapting content to engage buyers more effectively. By maximizing ad performance and optimizing marketing spend, the initiative helps artisans reach global markets with personalized, high-impact campaigns at minimal cost.'
+    },
+    {
+        title: '4. Augmented Reality (AR) and Virtual Reality (VR) Showrooms',
+        description: "To bridge the gap between traditional craftsmanship and modern consumer expectations, this collaboration introduces AR-powered shopping experiences where customers can visualize products like Pashmina shawls and carpets in real-world settings. Additionally, fully immersive VR showrooms enable international buyers to explore Kashmiri workshops virtually, experiencing the craftsmanship firsthand. These technologies create engaging, interactive experiences, bringing Kashmiri handicrafts into the digital era."
+    },
+    {
+        title: '5. Predictive and Green Logistics',
+        description: 'The initiative integrates AI-powered predictive logistics to optimize delivery routes, forecast inventory needs, and streamline supply chain operations for Kashmiri artisans. This technology ensures efficient, real-time logistics management, reducing costs and improving delivery times. The collaboration also implements green logistics solutions such as carbon-neutral shipping and eco-friendly packaging, aligning with global sustainability goals and appealing to environmentally conscious consumers.'
+    },
+    {
+        title: '6. Haptic Feedback Technology',
+        description: 'This collaborative initiative pioneers the use of haptic feedback technology, enabling consumers to experience the tactile richness of Kashmiri handicrafts online. By incorporating haptic feedback into digital environments, consumers can feel the texture of Pashmina shawls, carpets, and other crafts through digital interfaces. This sensory immersion enhances the online shopping experience, allowing consumers to connect with Kashmiri craftsmanship on a deeper level, simulating the in-person tactile experience.'
+    },
+    {
+        title: '7. Geo-Fencing Marketing Solutions',
+        description: 'The collaboration introduces geo-fencing marketing technology to help Kashmiri artisans deliver location-based promotions and hyper-targeted ads. By creating virtual geographic boundaries, artisans can engage local and global consumers with personalized marketing campaigns. Geo-fencing allows promotions to be triggered when potential customers enter specific areas, driving foot traffic and increasing sales for Kashmiri handicrafts, especially in tourist hotspots or local markets.'
+    },
+    {
+        title: '8. AI-Powered Call Centers',
+        description: 'The collaborative initiative deploys AI-powered call centers to automate and optimize customer support for Kashmiri artisans. These AI-driven systems handle customer inquiries, product recommendations, and issue resolutions in real-time, providing 24/7 availability across different time zones. By integrating omnichannel AI-driven customer support, artisans can offer seamless communication across social media, live chat, email, and voice platforms, improving customer satisfaction and fostering long-term relationships with global buyers.'
+    }
+]
+export const SHIFTCHALLENGES = [
+    {
+        title: 'Declining Interest Among Younger Generations',
+        description: 'One of the most significant challenges facing the Kashmiri handicraft sector is the declining interest among younger generations. Many young people in Kashmir are opting for modern professions over traditional craftsmanship, perceiving handicrafts as less lucrative and outdated. This generational shift has led to a reduction in the number of skilled artisans, threatening the survival of centuries-old techniques and knowledge that are essential to preserving Kashmiri craftsmanship.'
+    },
+    {
+        title: 'Loss of Traditional Knowledge',
+        description: 'With fewer young people entering the craft industry, the transmission of traditional skills and knowledge from master artisans to apprentices is diminishing. Techniques that have been passed down through generations are at risk of being lost as older artisans retire without successors. This lack of continuity threatens the cultural heritage and identity of Kashmir, where craftsmanship is deeply intertwined with its history..'
+    },
+    {
+        title: 'Limited Professional Engagement and Modernization',
+        description: 'The craft sector in Kashmir is also struggling due to a lack of professional engagement. Younger artisans who do enter the industry often lack access to modern business training, digital tools, or entrepreneurial support that would help them grow and scale their businesses. The absence of modernization within the craft industry makes it difficult for young artisans to see the craft as a viable career option, further exacerbating the generational shift.'
+    },
+    {
+        title: 'Inadequate Access to Global Markets',
+        description: 'Without access to global markets, younger artisans are often unable to see the potential of Kashmiri handicrafts in international commerce. The traditional methods of selling crafts in local markets limit their exposure to the global demand for high-quality, authentic handmade products. This lack of market access discourages younger generations from engaging with the sector, as they do not see a path to financial sustainability and growth.'
+    },
+
+]
+
+export const SHIFTINITIATIVES = [
+    {
+        title: '1. Youth Engagement and Apprenticeship Programs',
+        description: 'The collaboration is working to engage younger generations by creating youth-focused initiatives that highlight the cultural and economic significance of Kashmiri craftsmanship. Apprenticeship programs connect young artisans with master craftsmen, ensuring that traditional techniques are passed down through mentorship. These programs foster a sense of pride in cultural heritage while providing young artisans with hands-on training and skills development.'
+    },
+    {
+        title: '2. Cultural Preservation Campaigns',
+        description: 'Through cultural preservation campaigns, the initiative educates both local communities and global audiences about the importance of safeguarding Kashmiri craft traditions. By showcasing the rich history of Kashmiri handicrafts, these campaigns aim to reignite interest in the younger generation, encouraging them to carry on the legacy of their ancestors while exploring new ways to innovate and modernize the craft.'
+    },
+    {
+        title: '3. Modern Business and Entrepreneurial Training',
+        description: 'Recognizing the importance of modernization, the collaborative initiative offers business and entrepreneurial training tailored to young artisans. These programs teach digital literacy, marketing, financial management, and global market navigation. By equipping younger artisans with the skills needed to succeed in the modern business landscape, this initiative bridges the gap between traditional craftsmanship and contemporary business practices.'
+    },
+    {
+        title: '4. Digital and E-Commerce Platform Integration',
+        description: "The initiative is integrating digital platforms and e-commerce solutions to help young artisans access global markets. By offering online storefronts and digital marketing tools, this initiative allows younger artisans to showcase their products to an international audience. This exposure encourages younger generations to view Kashmiri handicrafts as a viable, profitable career option with opportunities for innovation and global engagement."
+    },
+    {
+        title: '5. Craft Innovation and New Design Trends',
+        description: 'To appeal to younger artisans and modern consumers, the initiative promotes craft innovation by encouraging the fusion of traditional techniques with modern design trends. By introducing new tools, techniques, and creative ideas, the collaboration aims to keep Kashmiri crafts relevant in the global market while preserving their cultural roots. This balance of tradition and innovation ensures that the craft evolves without losing its authenticity.'
+    },
+    {
+        title: '6. Mentorship and Leadership Development',
+        description: 'The collaborative initiative emphasizes leadership development by fostering mentorship networks where experienced artisans guide younger generations in both craftsmanship and business leadership. These mentorship programs not only ensure the survival of traditional skills but also cultivate a new generation of artisan leaders who are capable of driving the craft sector forward into the digital age.'
+    }
+]
+
+export const PURPOSEVISION = [
+    {
+        title: 'Track economic trends',
+        description: 'across local, national, and global markets for deeper insights.'
+    },
+    {
+        title: 'Monitor production & exports',
+        description: 'to evaluate the economic contribution of each craft precisely.'
+    },
+    {
+        title: 'Identify vulnerabilities and challenges',
+        description: 'faced by artisans and businesses for informed decision-making.'
+    },
+    {
+        title: 'Providing actionable insights',
+        description: 'to enhance efficiency, profitability, and expand market opportunities.'
+    },
+    {
+        title: 'Promoting sustainable practices',
+        description: 'that preserve heritage while aligning with modern trade and environmental standards.'
+    },
+    {
+        title: 'Enhancing transparency',
+        description: 'by creating reliable data sources to advocate for artisan-supportive policies effectively.'
+    },
+]
+
+export const KEYCOMPONENTS = [
+    {
+        title:'1. Data-Driven Craft Economics',
+        desc:'The center uses real-time data collection and analysis to monitor fluctuations in production, export volumes, and pricing structures. By gathering data from a range of sources, including government export databases, industry reports, and trade associations, the Economics Monitoring Center helps identify economic opportunities and challenges for Kashmiri crafts.',
+        sub:'Big Data Integration',
+        subdesc:'Leveraging advanced analytics and big data, the center provides in-depth reports on the economic impact of each craft, from Pashmina shawls to hand-knotted carpets and wood carving. By understanding both local and global demand patterns, stakeholders can adapt more swiftly to changing market conditions.'
+    },
+    {
+        title:'2. Predictive Analytics for Market Insights',
+        desc:'One of the most innovative elements of the center is its ability to employ predictive analytics. By identifying patterns in historical data, the Economics Monitoring Center forecasts future trends in demand, pricing, and production. This allows artisans, manufacturers, and businesses to anticipate market changes and adjust their production or marketing strategies accordingly.',
+        sub:'Early Warning System',
+        subdesc:'This analytics-driven approach acts as an early warning system, helping stakeholders address risks such as supply chain disruptions, fluctuating raw material prices, or declining global demand before they negatively impact the market.'
+    },
+    {
+        title:'3. Real-Time Monitoring of Handicraft Production',
+        desc:'Through a dynamic dashboard system, the center tracks the real-time production of each handicraft. This helps identify which crafts are performing well in terms of economic output and which crafts are struggling, thus facilitating resource allocation and intervention where needed.',
+        sub:'Transparency in the Craft Supply Chain',
+        subdesc:'With real-time production data, the center offers unmatched transparency into the supply chain, helping businesses understand where bottlenecks occur and how to streamline production processes for maximum efficiency.'
+    },
+    {
+        title:'4. Export and Trade Monitoring',
+        desc:"Kashmir's handicrafts have long been a valuable export, driving revenue for the region and showcasing its cultural heritage globally. The Export and Trade Monitoring system within the Economics Monitoring Center tracks the performance of key handicrafts in international markets, analyzing trends such as global pricing, tariff impacts, and competition from other regions.",
+        sub:'Geopolitical and Market Intelligence',
+        subdesc:'The center assesses how international trade policies, geopolitical shifts, and market competition affect the ability of Kashmir’s handicrafts to penetrate and sustain in global markets.'
+    },
+    {
+        title:'5. Craft-Specific Economic Models',
+        desc:'CraftLore’s Economics Monitoring Center develops detailed, craft-specific economic models for the 16 major crafts of Kashmir, allowing for a granular understanding of their unique market dynamics. These models take into account factors such as raw material costs, labor input, production techniques, & consumer demand, helping businesses optimize their operations.',
+        sub:'Business Optimization & Market Value Model',
+        subdesc:'Analyzes production costs, labor input, and resource use to maximize efficiency, streamline processes, reduce waste, and improve profitability. Evaluates consumer demand, pricing strategies, and market trends, helping artisans determine the true market value of their craft for competitive pricing and strategic decision-making.'
+    },
+    {
+        title:'6. Sustainability and Environmental Economics',
+        desc:'With growing global interest in sustainability, the center also evaluates the economic impact of sustainable practices within the Kashmiri handicraft sector. By focusing on eco-friendly production methods, sustainable sourcing of raw materials, and the carbon footprint of exports, the center highlights how adopting green practices can improve both profitability and marketability.',
+        sub:'Carbon Footprint Analysis',
+        subdesc:'Integrated into the center is a carbon footprint calculator, which helps businesses track the environmental impact of their production and distribution processes, providing an opportunity to market their products as environmentally friendly, a key selling point in today’s eco-conscious global markets.'
+    },
+]
+
+export const STAKHOLDERS = [
+    { 
+        title:'1. For Artisans',
+        desc:'Artisans receive timely economic insights into the value and demand for their craft. This allows them to price their goods more competitively and plan their production in line with market demand, helping to mitigate risk and reduce wastage.'
+    },
+    { 
+        title:'2. For Business Owners',
+        desc:'Businesses benefit from enhanced visibility into production and export data, allowing them to make informed decisions about inventory management, supply chain optimization, and market positioning.'
+    },
+    { 
+        title:'3. For Policymakers',
+        desc:'The center provides invaluable data for policymakers looking to craft effective legislation and support programs. By identifying the most economically viable crafts, policymakers can direct investment and subsidies where they are most needed.'
+    },
+    { 
+        title:'4. For Global Consumers',
+        desc:'Consumers worldwide gain access to more transparent information about the economic and environmental impact of the products they buy. This builds trust and promotes ethical purchasing decisions.'
+    }
 ]
