@@ -3,8 +3,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { FaChevronRight, FaFacebook, FaLinkedin, FaLocationDot, FaPhone, FaSignal, FaTwitter } from 'react-icons/fa6'
+import { FaBars, FaChevronRight, FaFacebook, FaLinkedin, FaLocationDot, FaPhone, FaSignal, FaTwitter } from 'react-icons/fa6'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa6'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "~/components/ui/collapsible"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "~/components/ui/sheet"
 
 interface MenuItem {
     title: string;
@@ -92,7 +94,7 @@ export const Header = () => {
                         { title: 'WAGE EQUITY', href: '/economics/wage' },
                     ]
                 },
-              
+
             ]
         },
         {
@@ -112,14 +114,11 @@ export const Header = () => {
         },
     ]
 
-    const SubMenu= ({ items, isNested = false }:SubMenuProps) => (
+    const SubMenu = ({ items, isNested = false }: SubMenuProps) => (
         <ul className={`absolute ${isNested ? 'left-full top-0' : 'left-1/2 -translate-x-1/2 top-full'} bg-white border-t-2 border-secondary min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300`}>
             {items.map((item, index) => (
                 <li key={index} className="border-b relative group/nested">
-                    <Link
-                        href={item.href}
-                        className="text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full flex justify-between items-center"
-                    >
+                    <Link href={item.href} className="text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full flex justify-between items-center">
                         {item.title}
                         {item.submenu && <FaChevronRight size={10} />}
                     </Link>
@@ -127,10 +126,7 @@ export const Header = () => {
                         <ul className="absolute left-full top-0 bg-white border-t-2 border-secondary min-w-[200px] opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300">
                             {item.submenu.map((subItem, subIndex) => (
                                 <li key={subIndex} className="border-b">
-                                    <Link
-                                        href={subItem.href}
-                                        className="block text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full"
-                                    >
+                                    <Link href={subItem.href} className="block text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full">
                                         {subItem.title}
                                     </Link>
                                 </li>
@@ -145,38 +141,38 @@ export const Header = () => {
     return (
         <header className={`col-span-12 fixed top-0 flex flex-col items-center w-full z-20 transition-colors duration-300 ${isScrolled ? 'bg-primary' : 'bg-transparent'}`}>
             {/* Top bar */}
-            <div className="flex justify-between gap-6 py-2">
-                <div className="flex gap-6">
+            <div className="hidden lg:flex justify-between gap-6 py-2">
+                <div className="flex flex-col lg:flex-row  gap-6">
                     <p className="flex gap-2 items-center text-white">
                         <FaLocationDot className="text-secondary" />
-                        <span className="text-xs">ARTISAN LANE 2 DAR UL ZAMROOD GOUSIA COLONY EXT ZAKURA SRG INDIA</span>
+                        <span className="text-xs text-wrap">ARTISAN LANE 2 DAR UL ZAMROOD GOUSIA COLONY EXT ZAKURA SRG INDIA</span>
                     </p>
                     <p className="flex gap-2 items-center text-white">
                         <FaPhone className="text-secondary" />
                         <span>(+917) 814 - 3527</span>
                     </p>
                 </div>
-                <div className="flex gap-6">
-                    <Link className="flex gap-2 items-center text-white hover:text-secondary" href="">
+                <div className="flex gap-6 [&_a]:text-white ">
+                    <Link className="flex gap-2 items-center hover:text-secondary" href="#">
                         <FaTwitter />
                     </Link>
-                    <Link className="flex gap-2 items-center text-white hover:text-secondary" href="">
+                    <Link className="flex gap-2 items-center hover:text-secondary" href="#">
                         <FaFacebook />
                     </Link>
-                    <Link className="flex gap-2 items-center text-white hover:text-secondary" href="">
+                    <Link className="flex gap-2 items-center hover:text-secondary" href="#">
                         <FaLinkedin />
                     </Link>
-                    <Link className="flex gap-2 items-center text-white hover:text-secondary" href="">
+                    <Link className="flex gap-2 items-center hover:text-secondary" href="#">
                         <FaSignal />
                     </Link>
                 </div>
             </div>
 
-            {/* Main navigation */}
-            <div className="flex justify-between items-center px-6 py-4">
+            <div className="w-full  flex justify-between lg:justify-center items-center px-6 py-4">
                 <Image src="/logo/logo.png" alt="logo for craftlore" width={100} height={100} />
 
-                <nav className="flex justify-center">
+                {/* larger screens */}
+                <nav className="hidden lg:flex lg:justify-center">
                     <ul className="flex gap-6">
                         {menuItems.map((item, index) => (
                             <li key={index} className="relative group">
@@ -192,12 +188,57 @@ export const Header = () => {
                                         </span>
                                     )}
                                 </Link>
-                                {/* Render SubMenu if there are submenu items */}
                                 {item.submenu && <SubMenu items={item.submenu} />}
                             </li>
                         ))}
                     </ul>
                 </nav>
+
+                <Sheet>
+                    <SheetTrigger className="lg:hidden text-white">
+                        <FaBars />
+                    </SheetTrigger>
+                    <SheetContent className="bg-white">
+                        <SheetHeader>
+                            <SheetTitle>Craftlore </SheetTitle>
+                            <ul className="grid gap-6">
+                                {menuItems.map((item, index) => (
+                                    <li key={index} className="relative">
+                                        <Collapsible>
+                                            <CollapsibleTrigger asChild>
+                                                <Link
+                                                    href={item.href}
+                                                    className="text-gray-900 hover:text-secondary py-2 px-3 flex items-center text-sm gap-1"
+                                                >
+                                                    {item.title}
+                                                    {item.submenu && (
+                                                        <span className="inline-flex items-center ml-2">
+                                                            <FaChevronDown className="group-hover:hidden" size={10} />
+                                                            <FaChevronUp className="hidden group-hover:block" size={10} />
+                                                        </span>
+                                                    )}
+                                                </Link>
+                                            </CollapsibleTrigger>
+                                            {item.submenu && (
+                                                <CollapsibleContent>
+                                                    <ul className="pl-4">
+                                                        {item.submenu.map((subItem, subIndex) => (
+                                                            <li key={subIndex} className="py-2">
+                                                                <Link href={subItem.href} className="text-gray-700 hover:text-secondary text-sm block">
+                                                                    {subItem.title}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </CollapsibleContent>
+                                            )}
+                                        </Collapsible>
+                                    </li>
+                                ))}
+                            </ul>
+                        </SheetHeader>
+                    </SheetContent>
+                </Sheet>
             </div>
         </header>
     )

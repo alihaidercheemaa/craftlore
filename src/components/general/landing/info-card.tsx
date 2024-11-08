@@ -2,8 +2,8 @@ export const InfoCard = () => {
 
     return (
         <section className="col-span-12 bg-[#e5edf7] py-32">
-            <div className="container">
-                <div className="container">
+            <div className="mx-6  lg:container">
+                <div className="lg:container">
                     <h4 className="font-montserrat text-[40px] leading-[48px]" >Craftlore: A Preparatory School for Buyers</h4>
                     <h4 className="font-montserrat text-2xl my-3" >One Platform for Everything About Kashmiri Crafts</h4>
                     <div className="flex flex-col space-y-10 my-8">

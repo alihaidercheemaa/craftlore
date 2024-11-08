@@ -6,9 +6,9 @@ import { MilestonePercentageGraph } from "~/components/graphs/milestone-percenta
 export const GraphCard = () => {
 
     return (
-        <section className="col-span-12 container  gap-4">
-            <div className="container grid grid-cols-2">
-                <h4 className="col-span-2 bg-primary text-white text-center py-12 font-opensans text-4xl font-bold rounded-t-xl relative -mt-40  border-b-8 border-secondary">
+        <section className="col-span-12 mx-6  lg:container  gap-4">
+            <div className="lg:container grid grid-cols-2">
+                <h4 className="col-span-2 bg-primary text-white text-center py-12 font-opensans text-xl lg:text-4xl font-bold rounded-t-xl relative -mt-40  border-b-8 border-secondary">
                     Data Insights - CraftLore Platform Milestones : Year {dayjs().year()}
                 </h4>
                 <div className="col-span-2 grid grid-cols-2 my-20">

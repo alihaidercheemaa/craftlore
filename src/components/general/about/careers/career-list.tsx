@@ -21,15 +21,15 @@ export const CareerList = () => {
 
     return (
         <section className="col-span-12 bg-[#e5edf7] gap-4">
-            <div className="container">
-                <div className="container grid gap-7 mb-20  py-8">
+            <div className="mx-6 lg:container">
+                <div className="lg:container grid gap-7 mb-20  py-8">
                     <h1 className="text-5xl font-montserrat text-primary">Craftlore Openings</h1>
                     <div className="grid grid-cols-2 gap-8">
                         {sortedJobs.map((job, index) => {
                             const isJobClosed = dayjs(job.date).isBefore(currentDate,'day');
                             return (
                                 <div 
-                                    className={cn('p-6 bg-white rounded-lg shadow-md group hover:bg-primary duration-700 relative',
+                                    className={cn('col-span-2 lg:col-span-1 p-6 bg-white rounded-lg shadow-md group hover:bg-primary duration-700 relative',
                                         isJobClosed && 'opacity-50'
                                     )}
                                     key={index}

@@ -10,9 +10,9 @@ export default async function EconomyPage() {
         <>
             <div className="col-span-12 bg-[#e5edf7] h-60" />
             <section className="col-span-12 bg-[#e5edf7] gap-4">
-                <div className="container">
-                    <div className="container">
-                        <div className="container  grid gap-12 mb-32">
+                <div className="mx-3 lg:container">
+                    <div className="lg:container">
+                        <div className="lg:container grid gap-12 mb-32">
                             <h1 className="font-montserrat text-[40px]  text-primary">Kashmir Handicrafts Economics Monitoring</h1>
                             <p className="font-opensans text-xl leading-[31px]">The CraftLore Kashmir Handicrafts Economics Monitoring Center stands as a pioneering initiative dedicated to the ongoing assessment, analysis, and promotion of the economic health of the Kashmiri handicrafts sector. Designed as a comprehensive platform that integrates traditional wisdom with cutting-edge technology, the center seeks to revolutionize the way Kashmiri crafts are understood, marketed, and supported on a global scale. By focusing on real-time data and predictive analytics, the Economics Monitoring Center empowers stakeholders—from artisans to policymakers—to make informed, strategic decisions that drive sustainable growth for the industry.</p>
                             <h2 className="text-[40px] text-secondary font-montserrat">Purpose and Vision</h2>

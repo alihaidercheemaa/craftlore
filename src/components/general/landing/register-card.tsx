@@ -6,9 +6,9 @@ import { REGISTER } from "~/constants"
 export const RegisterCard = () => {
 
     return (
-        <section className="col-span-12  bg-[#e5edf7] pt-32 py-72">
-            <div className="container">
-                <div className="container grid grid-cols-3 gap-4">
+        <section className="col-span-12  bg-[#e5edf7] lg:pt-32 pb-72">
+            <div className="mx-6  lg:container">
+                <div className="lg:container grid grid-cols-3 gap-4">
                     <div className="col-span-3 lg:col-span-2">
                         <div className="border-2 border-secondary my-10" />
                         <h4 className="text-2xl leading-[29px] font-extrabold font-montserrat">Unlock Everything Our Platform Offers-At No Cost to You</h4>
@@ -26,7 +26,7 @@ export const RegisterCard = () => {
                         {
                             REGISTER.map((register, index) => (
                                 <div
-                                    className="group flex flex-col gap-2 bg-white transition-all duration-300 hover:shadow-2xl py-2 px-6 hover:bg-primary rounded-lg border cursor-pointer"
+                                    className="col-span-3 lg:col-span-1 group flex flex-col gap-2 bg-white transition-all duration-300 hover:shadow-2xl py-2 px-6 hover:bg-primary rounded-lg border cursor-pointer"
                                     key={index}
                                 >
                                     <div className="flex flex-col py-4 gap-2">

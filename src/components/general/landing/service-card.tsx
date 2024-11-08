@@ -6,7 +6,7 @@ import { SERVICES } from '~/constants';
 export const ServiceCard = () => {
   return (
     <div className="col-span-12 relative -mt-16"> 
-      <div className="container mx-auto">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 hover:cursor-pointer">
           {SERVICES.map((service, index) => (
             <div
@@ -17,7 +17,7 @@ export const ServiceCard = () => {
                 <Image 
                   className='transition-all duration-300 group-hover:[filter:brightness(0)_saturate(100%)_invert(1)]' 
                   src={service.icon} 
-                  alt='service icon' 
+                  alt='service icon'  
                   width={36} 
                   height={36} 
                 />
@@ -26,9 +26,9 @@ export const ServiceCard = () => {
                     <p key={index} className='text-center'>{text}</p>
                   )))}
                 </div>
-                <div className="grid text-gray-900 text-sm group-hover:text-white w-[15rem]">
-                  <p className='text-center'>{service.description.split(' ').slice(0, 3).join(' ')}</p>
-                  <p className='text-center'>{service.description.split(' ').slice(3).join(' ')}</p>
+                <div className="grid text-gray-900 text-sm group-hover:text-white w-[15rem] ">
+                  <p className='text-center '>{service.description.split(' ').slice(0, 3).join(' ')}</p>
+                  <p className='text-center '>{service.description.split(' ').slice(3).join(' ')}</p>
                 </div>
               </div>
             </div>

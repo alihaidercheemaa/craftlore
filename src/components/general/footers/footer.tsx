@@ -7,8 +7,8 @@ export const Footer = () => {
 
     return (
         <footer className="col-span-12 bg-primary text-white pt-10">
-            <div className="container">
-                <div className="container  grid grid-cols-1 md:grid-cols-4 gap-20 items-center font-opensans py-20">
+            <div className="mx-6 lg:container">
+                <div className="lg:container  grid grid-cols-1 md:grid-cols-4 gap-20 items-center font-opensans py-20">
                     <div className="text-center md:text-left grid gap-6">
                         <Image src="/logo/logo.png" alt="Logo" width={156} height={156} />
                         <p className="text-sm mb-4">

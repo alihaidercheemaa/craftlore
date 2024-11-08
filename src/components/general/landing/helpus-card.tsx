@@ -8,8 +8,8 @@ import { HELPUS } from "~/constants"
 export const HelpUs = () => {
 
     return (
-        <section className="col-span-12 container py-20">
-            <div className="container">
+        <section className="col-span-12 mx-6  lg:container py-20">
+            <div className="lg:container">
                 <h4 className="font-montserrat text-[40px] leading-[48px] text-secondary" >Help Us in Our Fight</h4>
                 <h5 className="font-montserrat text-xl my-3" >CraftLore&apos;s fight to protect Kashmir&apos;s craft identity and artisans&apos; livelihoods against the global dilution of our heritage, fueled by the legacy of the 19th century Anglicization of Kashmir name also known as &quot;Cashmere Conspiracy&quot; !</h5>
                 <h5 className="font-montserrat text-[30px] leading-[40px]" >Europeans Rebranded Kashmir’s Heritage and China&apos;s Profits Today</h5>
@@ -33,7 +33,7 @@ export const HelpUs = () => {
                     <div className="grid grid-cols-5 gap-6 my-20">
                         {
                             HELPUS.map((image, index) => (
-                                <Image className="border-2 border-secondary rounded-md hover:shadow-lg" src={image.image} alt="image" key={index} width={166} height={200} />
+                                <Image className="col-span-2 lg:col-span-1 border-2 border-secondary rounded-md hover:shadow-lg" src={image.image} alt="image" key={index} width={166} height={200} />
                             ))
                         }
                     </div>

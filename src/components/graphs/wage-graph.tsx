@@ -49,7 +49,8 @@ export const WageGraph = () => {
             },
             title: {
                 display: true,
-                text: 'Monthly Earnings Range by Craft Category'
+                text: 'Monthly Earnings Range by Craft Category',
+
             }
         },
         scales: {
@@ -57,14 +58,16 @@ export const WageGraph = () => {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Craft Categories'
+                    text: 'CRAFT CATEGORIES',
+                    color: '#000'
                 }
             },
             y: {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Monthly Earnings (₹)'
+                    text: 'Monthly Earnings (₹)',
+                    color: '#000'
                 },
                 ticks: {
                     callback: (value) => {
