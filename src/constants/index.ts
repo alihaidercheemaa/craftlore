@@ -320,120 +320,139 @@ export const ARCHITECTURE = [
 export const ORGANIZATIONS = [
     {
         name: 'Smithsonian Institution',
-        mission: 'Promotes culture and history through education and exhibitions',
+        mission: 'The Smithsonian Institution plays a major role internationally, partnering with museums, research institutions, and governments to advance cultural exchange, research, and education. Its global initiatives include exhibitions, partnerships, and conservation projects to protect heritage, preserve endangered artifacts, and support cultural preservation in regions impacted by conflict or natural disasters. The Smithsonian also conducts field research on biodiversity and anthropology across continents, enhancing global scientific knowledge. Through the Smithsonian Folklife Festival, it shares traditions and crafts, fostering cross-cultural understanding. These efforts position the Smithsonian as a leader in cultural and scientific diplomacy.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'American Craft Council',
-        mission: 'Supports artists and artisans in the craft industry',
+        mission: 'The American Craft Council (ACC) engages internationally by fostering connections between American artisans and global craft communities. While primarily focused on U.S.-based artists, the ACC collaborates with international organizations to highlight global craft traditions and bring international perspectives to American audiences. Through its publications, exhibitions, and events, the ACC showcases global influences in American craft, encouraging cultural exchange and inspiration. By exploring shared challenges, such as sustainability and preservation of traditional techniques, the ACC contributes to a global dialogue on the future of craft. These efforts help bridge diverse cultures, enhancing appreciation for craftsmanship worldwide.',
         logo: '/logo/craftcouncil.svg'
     },
     {
         name: 'National Endowment for the Arts',
-        mission: 'Funds artistic projects to strengthen community engagement',
+        mission: 'The National Endowment for the Arts (NEA) enhances its global impact by supporting cultural exchange and showcasing American art abroad. Through initiatives like the U.S. Artists International program, the NEA enables American artists to join international festivals and exhibitions, presenting U.S. creativity on the world stage. The NEA also collaborates with international arts councils and cultural organizations on joint projects, promoting cross-border artistic collaboration. These efforts foster mutual understanding, inspire American artists with global perspectives, and expose international audiences to the diversity and vibrancy of American arts and culture.',
         logo: 'https://www.arts.gov/themes/gesso/images/logo.svg'
     },
     {
-        name: 'The Craft and Hobby Association',
-        mission: 'Fosters creative expression in crafts and hobbies',
+        name: 'Association for Creative Industries (AFCI)',
+        mission: 'The Association for Creative Industries The Association for Creative Industries (AFCI), formerly known as the Craft and Hobby Association, engages internationally by connecting U.S.-based members with the global craft community. AFCI’s trade shows draw exhibitors and attendees worldwide, creating a platform for product exposure and cross-cultural collaboration. Through partnerships with international craft organizations, AFCI promotes knowledge-sharing and innovative practices across borders. It provides resources to help U.S. businesses navigate global markets, encouraging creative exchange and growth. These efforts reflect AFCI’s commitment to advancing the craft industry and fostering global connections in the creative sector.',
         logo: '/logo/craftcouncil.svg'
     },
     {
         name: 'The Center for Craft',
-        mission: 'Encourages exploration and innovation in craft-making',
+        mission: "The Center for Craft engages internationally by supporting research, exhibitions, and programs that explore craft's global cultural significance. Through initiatives like the Craft Research Fund, the Center funds projects involving international artists, scholars, and curators, fostering critical dialogue on craft’s role worldwide. Its exhibitions showcase diverse craft practices, bridging cultures and expanding public understanding of craft’s impact across societies. The Center also connects U.S. and international researchers and artists, promoting collaborative projects and exchange. These efforts highlight craft’s universal relevance, reinforcing the Center's commitment to advancing craft scholarship and appreciation on a global scale.",
         logo: '/logo/craftcouncil.svg'
     },
     {
         name: 'The Artisans Guild',
-        mission: 'Advances traditional skills and artisan communities globally',
+        mission: 'The Artisans Guild engages internationally by connecting local artisans with global markets and fostering cross-cultural exchange. Through partnerships with international craft organizations, the Guild showcases traditional techniques from diverse cultures, promoting the global appreciation of craftsmanship. It supports artisans by providing access to international exhibitions, fairs, and online platforms, expanding their reach and marketability. The Guild also hosts workshops and collaborative projects, enabling artisans to learn from global peers, preserve heritage skills, and innovate. These efforts strengthen the Guild’s mission to support artisans, preserve traditional crafts, and encourage sustainable, handmade artistry on a worldwide scale.',
         logo: 'https://images.squarespace-cdn.com/content/v1/5cae7afd815512e9bf249e7d/1554938767274-T2OOTFZU44BN24CADZC0/AGA%2BLogo%2BCMYK.jpg?format=1500w'
     },
     {
         name: 'The National Museum of Women in the Arts',
-        mission: 'Showcases art by women artists across centuries',
+        mission: 'The National Museum of Women in the Arts (NMWA) promotes gender equity globally by showcasing women artists from diverse cultures. Through international exhibitions and collaborations, NMWA brings attention to underrecognized female artists, fostering cross-cultural appreciation for women’s contributions to the arts. Its partnerships with global museums and institutions highlight works by women across time periods, encouraging dialogue on representation in the art world. Educational programs and research initiatives further elevate women’s visibility internationally. These efforts strengthen NMWA’s mission to champion women artists, promoting artistic diversity and gender equity on a worldwide scale.',
         logo: 'https://nmwa.org/wp-content/themes/nmwa/dev/dist/imgs/nmwa-logo.svg'
     },
     {
         name: 'Ethereum Foundation',
-        mission: 'Supports decentralized applications using blockchain technology',
+        mission: 'The Ethereum Foundation supports international craft industries by promoting blockchain solutions that enhance transparency, authenticity, and fair trade. Through partnerships and grants, the Foundation collaborates with craft organizations worldwide to implement Ethereum-based systems that verify product origins, protect artisan rights, and combat counterfeits. These initiatives allow global artisans to document and authenticate their work, fostering trust in handmade products. By supporting decentralized tools for traceability and fair compensation, the Ethereum Foundation empowers craft communities, helping artisans connect with global markets while preserving cultural heritage. These efforts contribute to sustainable, ethical practices within the international craft sector.',
         logo: '/logo/entherium.png'
     },
     {
         name: 'Hyperledger',
-        mission: 'Promotes blockchain development for enterprise solutions worldwide',
+        mission: 'Hyperledger, hosted by the Linux Foundation, advances international craft industries by providing open-source blockchain frameworks that enhance transparency and authenticity. Through partnerships with craft organizations worldwide, Hyperledger enables artisans to use blockchain for verifying product origins, protecting intellectual property, and ensuring fair trade. These tools empower global artisans to document their craft’s authenticity, connect with markets, and combat counterfeiting. Hyperledger’s decentralized solutions foster sustainable practices and support fair compensation, helping preserve cultural heritage. By facilitating secure, traceable transactions, Hyperledger strengthens the craft sector’s integrity, promoting ethical and transparent trade within the global artisanal community.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'Consensys',
-        mission: 'Builds decentralized software for the Ethereum blockchain',
+        mission: 'ConsenSys, a leader in blockchain technology, empowers the global craft industry through Ethereum-based solutions that enhance transparency, authenticity, and fair trade. By offering tools like Codefi and Truffle, ConsenSys enables artisans to verify product origins, protect intellectual property, and simplify supply chains. Working with international craft organizations, ConsenSys helps combat counterfeiting and supports ethical sourcing, building consumer trust in handmade goods. Additionally, ConsenSys leverages decentralized finance (DeFi) to ensure secure, fair payments for artisans. These initiatives foster sustainable practices, preserve cultural heritage, and integrate the craft sector into a transparent, blockchain-driven global marketplace.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'Ford Foundation',
-        mission: 'Addresses inequality and social justice through grants',
+        mission: 'The Ford Foundation advances international craft industries by supporting initiatives that preserve cultural heritage, promote economic equity, and empower artisans. Through grants and collaborations, the Foundation works with global craft organizations to protect traditional techniques, improve market access, and ensure fair wages for artisans, particularly in marginalized communities. Its funding helps craft communities address challenges like sustainable practices and economic resilience, providing training and resources that promote long-term stability. By fostering fair trade and cultural preservation, the Ford Foundation strengthens the global craft sector, supporting artisans and promoting equitable economic opportunities within the handmade industry.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'The Alliance of Artists Communities',
-        mission: 'Supports residency programs for artists across disciplines',
+        mission: 'The Alliance of Artists Communities (AAC) advances international craft by supporting artist residencies that foster creative growth, cultural exchange, and innovation. Through its global network, AAC connects craft-focused residencies where artisans can develop skills, experiment, and collaborate with peers from diverse backgrounds. By partnering with residency programs worldwide, AAC promotes cross-cultural dialogue, enabling artisans to share traditional and contemporary techniques. These initiatives help preserve heritage crafts, broaden artistic perspectives, and support sustainable practices. AAC’s efforts strengthen the craft sector globally, empowering artisans and enhancing cultural appreciation within the international creative community.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'Oxfam',
-        mission: 'Works to end poverty and promote human rights',
+        mission: 'Oxfam supports international craft industries by fostering fair trade partnerships that empower artisans economically. Collaborating with global craft communities, Oxfam helps artisans access markets and receive fair compensation for their work. Its initiatives include training in sustainable production, marketing, and business management, enabling artisans to strengthen their livelihoods. Oxfam also advocates for ethical sourcing and combats exploitation, helping preserve cultural heritage while promoting economic resilience. These efforts empower marginalized craft communities, fostering equitable trade practices that uplift artisans and contribute to sustainable development within the global craft sector.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'Ashoka',
-        mission: 'Empowers social entrepreneurs to drive positive change',
+        mission: 'Ashoka supports Kashmir’s craft industry by empowering social entrepreneurs who drive positive change within artisan communities. Through its global fellowship program, Ashoka identifies changemakers dedicated to preserving Kashmir’s traditional crafts, enhancing artisans’ livelihoods, and promoting sustainable practices. By connecting these leaders with resources, mentorship, and a global network, Ashoka enables initiatives that foster fair trade, ethical sourcing, and economic resilience in Kashmir’s craft sector. These efforts help artisans preserve their heritage, access broader markets, and receive fair compensation, reinforcing Kashmir’s craft industry’s role in cultural preservation and sustainable development.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'UNESCO',
-        mission: 'Promotes peace and sustainable development through education',
+        mission: 'UNESCO supports international craft industries by safeguarding traditional crafts through its Intangible Cultural Heritage Lists, which highlight and protect culturally significant practices. Working globally, UNESCO partners with countries and communities to preserve crafts at risk of extinction, promoting artisan training to ensure skills are passed down. Through these efforts, UNESCO fosters economic resilience and market access for artisans, encouraging fair trade and sustainable practices. By protecting cultural diversity and enhancing the visibility of traditional crafts, UNESCO strengthens craft communities and promotes equitable development in the global cultural landscape.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg'
     },
     {
         name: 'ArtStay',
-        mission: 'Connects art enthusiasts with Kashmiri artisans and culture',
+        mission: 'ArtStay supports international craft industries by facilitating cultural exchange through immersive stays with artisans. Focused on preserving traditional craftsmanship, ArtStay connects travelers with artisan communities, allowing them to experience local crafts and learn traditional techniques firsthand. These stays provide artisans with added income and global exposure, fostering appreciation for cultural heritage. ArtStay collaborates with craft organizations to promote ethical tourism and sustainable practices, helping artisans reach wider markets responsibly. These efforts strengthen craft communities, preserve heritage skills, and promote meaningful, experience-based travel that supports the global craft industry.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
         name: 'Ministry of Textiles, Government of India',
-        mission: 'Supports development of textile sector and handicrafts',
+        mission: 'The Ministry of Textiles, Government of India, supports Kashmir’s craft industry by promoting its traditional crafts on national and international stages. Through initiatives like the Pashmina Wool Development Scheme and the National Handicrafts Development Program, the Ministry aids Kashmiri artisans with skill development, quality improvement, and market access. It organizes exhibitions and trade fairs to showcase Kashmir’s rich crafts, such as Pashmina, carpets, and papier-mâché, fostering appreciation globally. These efforts preserve Kashmir’s cultural heritage, empower artisans with sustainable livelihoods, and strengthen the global reach of Kashmir’s crafts, supporting economic growth and cultural exchange for the region.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
         name: 'The Crafts Council of India',
-        mission: 'Promotes Indian crafts and artisan welfare nationally',
+        mission: 'The Crafts Council of India (CCI) actively supports Kashmir’s craft heritage by empowering artisans and promoting traditional crafts like Pashmina, carpets, and papier-mâché. Through training programs, design workshops, and exhibitions, CCI helps artisans adapt to modern markets while preserving cultural traditions. The Council works to enhance artisans’ skills, improve product quality, and expand market access, ensuring sustainable livelihoods. CCI also advocates for fair wages and ethical sourcing, supporting economic resilience within Kashmir’s craft sector. These initiatives strengthen the visibility of Kashmiri crafts, preserve heritage, and contribute to the region’s cultural and economic growth',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
         name: 'Rang De',
-        mission: 'Provides affordable loans for marginalized communities',
+        mission: 'Rang De supports Kashmir’s craft sector by offering low-interest loans that empower artisans to sustain and grow their businesses. Through a peer-to-peer lending model, Rang De connects socially conscious lenders with Kashmiri artisans, enabling them to invest in materials, boost production, and access broader markets. This financial support reduces artisans’ dependence on high-interest loans, fostering economic independence and resilience. By promoting fair financing, Rang De helps artisans preserve traditional crafts, improve livelihoods, and support the long-term viability of Kashmir’s craft industry, contributing to the region’s cultural heritage and economic stability',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
-        name: 'Kashmir Handicrafts and Handloom Development Corporation',
-        mission: 'Supports and markets traditional Kashmiri handicrafts',
+        name: 'Handicrafts & Handloom Development Corporation',
+        mission: 'The Kashmir Handicrafts and Handloom Development Corporation (KHHDC) is dedicated to preserving and promoting Kashmir’s traditional crafts, like Pashmina, carpets, and handloom textiles. KHHDC supports artisans through skill development, quality control, and expanded market access, helping them retain heritage techniques while meeting modern demands. By organizing national and international exhibitions, KHHDC boosts the visibility of Kashmiri crafts and connects artisans with new audiences. The corporation ensures fair wages and ethical practices, fostering sustainable livelihoods. These efforts strengthen Kashmir’s craft sector, preserving cultural heritage and enhancing economic stability for local artisans.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
-        name: 'Jammu and Kashmir Entrepreneurship Development Institute',
-        mission: 'Encourages entrepreneurial growth in Jammu and Kashmir',
+        name: 'J&K Entrepreneurship Development Institute',
+        mission: 'The J&K Entrepreneurship Development Institute (JKEDI) empowers Kashmir’s craft sector by providing artisans with training, mentorship, and financial resources. Through specialized programs, JKEDI helps artisans build sustainable businesses, improve product quality, and reach wider markets, blending traditional skills with modern entrepreneurship. This support promotes economic independence, enabling artisans to preserve Kashmir’s cultural heritage while adapting to evolving market needs. JKEDI fosters self-reliance within the artisan community, strengthening the craft industry and securing sustainable livelihoods. By advancing entrepreneurship, JKEDI contributes to cultural preservation and economic stability, helping artisans sustain their heritage in changing markets.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
         name: 'Asian Heritage Foundation',
-        mission: 'Promotes Asian cultural heritage and creative industries',
+        mission: 'The Asian Heritage Foundation supports Kashmir’s craft industry by empowering artisans through skill development, design innovation, and market access initiatives. Focused on preserving traditional techniques, the Foundation enables artisans to adapt to modern demands while honoring their heritage. By collaborating with local communities, it helps improve product quality and ensures artisans receive fair compensation, fostering sustainable livelihoods. The Foundation also organizes exhibitions and partnerships, enhancing global visibility for Kashmiri crafts like Pashmina and papier-mâché. These efforts strengthen the region’s craft sector, preserving cultural heritage and promoting economic resilience for Kashmir’s artisan communities.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
     {
         name: 'National Institute of Fashion Technology (NIFT), Srinagar',
-        mission: 'Educates and develops talent in fashion and design',
+        mission: 'The National Institute of Fashion Technology (NIFT) in Srinagar supports Kashmir’s craft industry by providing artisans and students with advanced design skills and education. NIFT Srinagar offers specialized courses in textile and fashion design, enabling artisans to blend traditional techniques with modern design practices. Through collaborations with local artisans, NIFT enhances the quality and appeal of crafts like Pashmina, carpets, and embroidery, making them more marketable. These efforts help preserve Kashmir’s cultural heritage while promoting economic growth, empowering artisans to reach broader markets and strengthening the region’s craft industry in sustainable ways.',
         logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
     },
+    {
+        name: 'Craft Development Institute',
+        mission: 'The Craft Development Institute (CDI) in Srinagar supports Kashmir’s craft sector by providing artisans with training, design innovation, and market access. CDI focuses on preserving traditional crafts like Pashmina, papier-mâché, and carpets while helping artisans adapt to modern market demands. Through specialized programs, CDI enhances product quality and boosts the visibility of Kashmiri crafts nationally and internationally. Collaborating with artisans, CDI promotes fair wages and ethical practices, fostering sustainable livelihoods. These efforts strengthen Kashmir’s craft industry, preserving cultural heritage and supporting economic resilience within the artisan community.',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
+    },
+    {
+        name: 'Hamdan Craft Revival Foundation',
+        mission: 'The Hamdan Craft Revival Foundation (HCRF) is a Kashmir-based policy think tank focused on preserving and advancing the region’s craft sector. HCRF conducts policy research, advocacy, and strategic planning to address issues faced by artisans, ensuring sustainable development for crafts like Pashmina, carpets, and papier-mâché. Through collaborations with stakeholders, the Foundation creates policies that protect artisan rights, enhance market access, and maintain quality standards. These efforts support Kashmir’s cultural heritage, promote fair labor practices, and foster economic resilience, strengthening the craft sector and ensuring long-term sustainability for local artisans.',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
+    },
+    {
+        name: 'De Koshur Crafts',
+        mission: 'De Koshur Crafts B2B Connect is a free, blockchain-backed platform designed for Kashmiri startups and artisans to reach global buyers directly. It includes tools for carbon footprint tracking, a craft registry, and transparent price valuation, promoting authenticity and sustainability in Kashmiri crafts like Pashmina, carpets, and papier-mâché. By verifying product origins and ensuring fair pricing, the platform fosters ethical sourcing and fair trade. B2B Connect empowers artisans by expanding market access and promoting economic resilience, supporting sustainable livelihoods and strengthening the cultural heritage of Kashmir’s craft sector in the global marketplace.',
+        logo: 'https://www.si.edu/sites/all/themes/si_baseline/images/logos/logo.svg' // Placeholder, replace with actual logo link
+    },
+
+
+    
 ];
+
 export const SPONSORS = [
     {
         name: 'De Koshur Crafts USA',
@@ -446,10 +465,6 @@ export const SPONSORS = [
     {
         name: 'Hamadan Craft Revival Foundation',
         description: 'A dedicated organization focused on revitalizing traditional Kashmiri crafts and supporting artisans through education, resources, and advocacy. The foundation works to preserve cultural heritage while fostering economic sustainability.',
-    },
-    {
-        name: 'Khan Foundation',
-        description: 'Committed to community development and empowerment, the Khan Foundation supports various initiatives aimed at enhancing the livelihoods of artisans and promoting Kashmiri crafts on a global platform.',
     },
     {
         name: 'Prime Logic Solutions USA',

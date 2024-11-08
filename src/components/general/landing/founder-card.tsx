@@ -5,13 +5,13 @@ import { Button } from "~/components/ui/button"
 
 export const FounderCard = () => {
     return (
-        <section className="col-span-12 container gap-4 mt-12">
-            <div className="container">
-                <div className="container grid grid-cols-2">
-                    <div className="col-span-2 grid grid-cols-2 gap-7 mt-20 mb-40  p-4">
-                        <div>
-                            <div className="bg-primary border-2 border-secondary rounded-md p-[60px] font-montserrat text-white space-y-8">
-                                <h6 className="text-[2.5rem] leading-[2.7rem]">
+        <section className="col-span-12 mx-6 lg:container gap-4 mt-6 lg:mt-12">
+            <div className="lg:container">
+                <div className="lg:container grid grid-cols-2">
+                    <div className="col-span-2 grid grid-cols-2 gap-7 mt-20 mb-20 lg:mb-40  p-4">
+                        <div className="col-span-2 lg:col-span-1">
+                            <div className="bg-primary border-2 border-secondary rounded-md p-8 lg:p-[60px] font-montserrat text-white space-y-8">
+                                <h6 className="text-xl lg:text-[2.5rem] leading-[2.7rem]">
                                     Join Craftlore, in exploring the vast repository and experience the artistry of Kashmir like never before!
                                 </h6>
                                 <div className="flex justify-end">
@@ -22,7 +22,7 @@ export const FounderCard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="">
+                        <div  className="col-span-2 lg:col-span-1">
                             <p className="font-montserrat text-lg">Unlocking 700+ Years of Kashmiri Craft Heritage:</p>
                             <h6 className="font-montserrat text-secondary text-3xl">Fully Digitized for a New Era, Backed by Science!</h6>
                             <div className="space-y-6 my-4 text-lg font-monorope">
@@ -40,8 +40,8 @@ export const FounderCard = () => {
                         <h6 className="font-montserrat text-4xl text-primary">Join our network for a better future of our Artisans & Craft Industry</h6>
                         <Counter />
                     </div>
-                    <div className="col-span-2 flex gap-16 justify-center items-center bg-primary text-white text-center py-12 font-opensans rounded-t-xl border-b-8 border-secondary mt-36">
-                        <FaUserPlus className="text-5xl font-bold " />
+                    <div className="col-span-2 flex flex-col lg:flex-row gap-6 lg:gap-16 justify-center items-center bg-primary text-white text-center py-12 font-opensans rounded-t-xl border-b-8 border-secondary mt-36">
+                        <FaUserPlus className="text-3xl lg:text-5xl font-bold " />
                         <p className="text-xl">Stay Connected to Craftlore-Kashmir Craft Repository</p>
                         <Button variant={'secondary'}>
                             SUBSCRIBE TODAY

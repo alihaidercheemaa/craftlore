@@ -64,8 +64,8 @@ export const CareerForm = () => {
     }
     return (
         <section className="col-span-12 bg-[#e5edf7] gap-4">
-            <div className="container">
-                <div className="container mb-32">
+            <div className="mx-6 lg:container">
+                <div className="lg:container mb-32">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(formSubmission)} className="space-y-6">
                             <FormField

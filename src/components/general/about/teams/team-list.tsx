@@ -7,13 +7,13 @@ export const TeamList = async () => {
 
     return (
         <section className="col-span-12 bg-[#e5edf7] gap-4">
-            <div className="container">
-                <div className="container grid gap-7 mb-32  py-8">
+            <div className="mx-6 lg:container">
+                <div className="lg:container grid gap-7 mb-32  py-8">
                     <h1 className="text-5xl font-montserrat text-primary">Craftlore Platform Team</h1>
                     <div className="grid grid-cols-3 gap-8">
                         {employees.map((employ) => (
                             <div
-                                className="p-8 bg-white rounded-xl shadow-lg group hover:bg-primary duration-700 relative"
+                                className="col-span-3 lg:col-span-1 p-8 bg-white rounded-xl shadow-lg group hover:bg-primary duration-700 relative"
                                 key={employ.employId}
                             >
                                 <div className="space-y-4">

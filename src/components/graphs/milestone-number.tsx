@@ -3,11 +3,31 @@
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import dayjs from 'dayjs';
+import { useState, useEffect } from 'react';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const MilestoneNumberGraph = () => {
+
+    const [fontSize, setFontSize] = useState<number>(12);
+
+    useEffect(() => {
+        // Adjust font size based on screen width
+        const handleResize = () => {
+            setFontSize(window.innerWidth < 640 ? 10 : 12);
+        };
+
+        // Initial font size set
+        handleResize();
+
+        // Add resize event listener
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup event listener on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
     const data = {
         labels: [
             "Counterfeit Prevention Outreach",
@@ -40,7 +60,7 @@ export const MilestoneNumberGraph = () => {
             },
             title: {
                 display: true,
-                text: `CraftLore Milestrones (Numbers) ${dayjs().year()}`,  
+                text: `CraftLore Milestrones (Numbers) ${dayjs().year()}`,
             },
             tooltip: {
                 backgroundColor: 'white',
@@ -59,7 +79,7 @@ export const MilestoneNumberGraph = () => {
                 },
                 ticks: {
                     font: {
-                        size: 12
+                        size:fontSize
                     }
                 }
             },
@@ -69,7 +89,7 @@ export const MilestoneNumberGraph = () => {
                 },
                 ticks: {
                     font: {
-                        size: 12
+                        size:fontSize
                     }
                 }
             }
@@ -77,8 +97,9 @@ export const MilestoneNumberGraph = () => {
     };
 
     return (
-        <div className="h-[360px] w-[600px]">
+        <div className="h-[360px] w-[300px] lg:w-[600px]">
             <Bar data={data} options={options} />
         </div>
+
     );
 };

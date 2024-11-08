@@ -35,7 +35,7 @@ export const Banner = () => {
     return (
         <section className="col-span-12 relative h-screen bg-primary text-white overflow-hidden">
             <div className="container grid items-center h-full">
-                <div className="container grid gap-2">
+                <div className=" lg:container grid gap-2">
                     <p
                         className={cn(
                             "font-extrabold font-manrope text-[2rem] md:text-[5.5rem] lg:text-[6.3rem] lg:leading-[7rem] transition-all duration-1000 ease-out text-wrap",
