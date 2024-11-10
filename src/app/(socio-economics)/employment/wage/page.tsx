@@ -1,4 +1,4 @@
-import { WageGraph } from "~/components/graphs/wage-graph";
+import { WageGraph } from "~/components/graphs/employment/wage-graph";
 
 export default async function WagePage() {
 

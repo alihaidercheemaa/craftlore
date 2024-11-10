@@ -1,6 +1,6 @@
 import { FaUserPlus } from "react-icons/fa6"
-import { Counter } from "~/components/animations/counter"
 import { Button } from "~/components/ui/button"
+import { CounterInfo } from "~/components/general/counter-info"
 
 
 export const FounderCard = () => {
@@ -22,7 +22,7 @@ export const FounderCard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div  className="col-span-2 lg:col-span-1">
+                        <div className="col-span-2 lg:col-span-1">
                             <p className="font-montserrat text-lg">Unlocking 700+ Years of Kashmiri Craft Heritage:</p>
                             <h6 className="font-montserrat text-secondary text-3xl">Fully Digitized for a New Era, Backed by Science!</h6>
                             <div className="space-y-6 my-4 text-lg font-monorope">
@@ -35,11 +35,7 @@ export const FounderCard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-2 grid gap-10">
-                        <h6 className="font-montserrat text-2xl text-secondary">Defend Authenticity, Empower Artisans: Join the Movement to Transform Kashmir’s Craft Future</h6>
-                        <h6 className="font-montserrat text-4xl text-primary">Join our network for a better future of our Artisans & Craft Industry</h6>
-                        <Counter />
-                    </div>
+                    <CounterInfo className="col-span-2" />
                     <div className="col-span-2 flex flex-col lg:flex-row gap-6 lg:gap-16 justify-center items-center bg-primary text-white text-center py-12 font-opensans rounded-t-xl border-b-8 border-secondary mt-36">
                         <FaUserPlus className="text-3xl lg:text-5xl font-bold " />
                         <p className="text-xl">Stay Connected to Craftlore-Kashmir Craft Repository</p>
