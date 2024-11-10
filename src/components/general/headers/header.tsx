@@ -56,8 +56,8 @@ export const Header = () => {
             ]
         },
         {
-            title: 'Fraft Industry Listing',
-            href: '#services',
+            title: 'CRAFT INDUSTRY LISTING',
+            href: '/listing',
             submenu: [
                 { title: 'Service 1', href: '#service-1' },
                 { title: 'Service 2', href: '#service-2' },
@@ -89,9 +89,18 @@ export const Header = () => {
                 },
                 {
                     title: 'EMPLOYMENT',
-                    href: '/economics',
+                    href: '/employment',
                     submenu: [
-                        { title: 'WAGE EQUITY', href: '/economics/wage' },
+                        { title: 'WAGE EQUITY', href: '/employment/wage' },
+                        { title: 'EMPLOYMENT TRENDS', href: '/employment/trend' },
+                        { title: 'EMPLOYMENT GROWTH', href: '/employment/growth' },
+                    ]
+                },
+                {
+                    title: 'GENDER DYNMAICS',
+                    href: '/gender',
+                    submenu: [
+                        { title: 'STATISTICAL INSIGHTS', href: '/gender/insight' },
                     ]
                 },
 
@@ -105,8 +114,14 @@ export const Header = () => {
                 { title: 'CRAFTLORE PROJECTS', href: '/about/project' },
                 { title: 'CRAFTLORE REGISTRY', href: '/about/registry' },
                 { title: 'REGISTRY ARCHITECTURE', href: '/about/architecture' },
-                { title: 'NETWORKS', href: '/about/network' },
-                { title: 'SPONSORS', href: '/about/sponsor' },
+                {
+                    title: 'CRAFT ALLIANCE',
+                    href: '#',
+                    submenu: [
+                        { title: 'NETWORKS', href: '/about/network' },
+                        { title: 'SPONSORS', href: '/about/sponsor' },
+                    ]
+                },
                 { title: 'CAREER', href: '/about/career' },
                 { title: 'TEAM', href: '/about/team' },
                 { title: 'CONTACT US', href: '/about/contact-us' },
@@ -220,7 +235,7 @@ export const Header = () => {
                                                 </Link>
                                             </CollapsibleTrigger>
                                             {item.submenu && (
-                                                <CollapsibleContent>
+                                                <CollapsibleContent className="flex flex-start">
                                                     <ul className="pl-4">
                                                         {item.submenu.map((subItem, subIndex) => (
                                                             <li key={subIndex} className="py-2">

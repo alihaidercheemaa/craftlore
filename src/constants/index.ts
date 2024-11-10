@@ -450,7 +450,7 @@ export const ORGANIZATIONS = [
     },
 
 
-    
+
 ];
 
 export const SPONSORS = [
@@ -795,58 +795,341 @@ export const PURPOSEVISION = [
 
 export const KEYCOMPONENTS = [
     {
-        title:'1. Data-Driven Craft Economics',
-        desc:'The center uses real-time data collection and analysis to monitor fluctuations in production, export volumes, and pricing structures. By gathering data from a range of sources, including government export databases, industry reports, and trade associations, the Economics Monitoring Center helps identify economic opportunities and challenges for Kashmiri crafts.',
-        sub:'Big Data Integration',
-        subdesc:'Leveraging advanced analytics and big data, the center provides in-depth reports on the economic impact of each craft, from Pashmina shawls to hand-knotted carpets and wood carving. By understanding both local and global demand patterns, stakeholders can adapt more swiftly to changing market conditions.'
+        title: '1. Data-Driven Craft Economics',
+        desc: 'The center uses real-time data collection and analysis to monitor fluctuations in production, export volumes, and pricing structures. By gathering data from a range of sources, including government export databases, industry reports, and trade associations, the Economics Monitoring Center helps identify economic opportunities and challenges for Kashmiri crafts.',
+        sub: 'Big Data Integration',
+        subdesc: 'Leveraging advanced analytics and big data, the center provides in-depth reports on the economic impact of each craft, from Pashmina shawls to hand-knotted carpets and wood carving. By understanding both local and global demand patterns, stakeholders can adapt more swiftly to changing market conditions.'
     },
     {
-        title:'2. Predictive Analytics for Market Insights',
-        desc:'One of the most innovative elements of the center is its ability to employ predictive analytics. By identifying patterns in historical data, the Economics Monitoring Center forecasts future trends in demand, pricing, and production. This allows artisans, manufacturers, and businesses to anticipate market changes and adjust their production or marketing strategies accordingly.',
-        sub:'Early Warning System',
-        subdesc:'This analytics-driven approach acts as an early warning system, helping stakeholders address risks such as supply chain disruptions, fluctuating raw material prices, or declining global demand before they negatively impact the market.'
+        title: '2. Predictive Analytics for Market Insights',
+        desc: 'One of the most innovative elements of the center is its ability to employ predictive analytics. By identifying patterns in historical data, the Economics Monitoring Center forecasts future trends in demand, pricing, and production. This allows artisans, manufacturers, and businesses to anticipate market changes and adjust their production or marketing strategies accordingly.',
+        sub: 'Early Warning System',
+        subdesc: 'This analytics-driven approach acts as an early warning system, helping stakeholders address risks such as supply chain disruptions, fluctuating raw material prices, or declining global demand before they negatively impact the market.'
     },
     {
-        title:'3. Real-Time Monitoring of Handicraft Production',
-        desc:'Through a dynamic dashboard system, the center tracks the real-time production of each handicraft. This helps identify which crafts are performing well in terms of economic output and which crafts are struggling, thus facilitating resource allocation and intervention where needed.',
-        sub:'Transparency in the Craft Supply Chain',
-        subdesc:'With real-time production data, the center offers unmatched transparency into the supply chain, helping businesses understand where bottlenecks occur and how to streamline production processes for maximum efficiency.'
+        title: '3. Real-Time Monitoring of Handicraft Production',
+        desc: 'Through a dynamic dashboard system, the center tracks the real-time production of each handicraft. This helps identify which crafts are performing well in terms of economic output and which crafts are struggling, thus facilitating resource allocation and intervention where needed.',
+        sub: 'Transparency in the Craft Supply Chain',
+        subdesc: 'With real-time production data, the center offers unmatched transparency into the supply chain, helping businesses understand where bottlenecks occur and how to streamline production processes for maximum efficiency.'
     },
     {
-        title:'4. Export and Trade Monitoring',
-        desc:"Kashmir's handicrafts have long been a valuable export, driving revenue for the region and showcasing its cultural heritage globally. The Export and Trade Monitoring system within the Economics Monitoring Center tracks the performance of key handicrafts in international markets, analyzing trends such as global pricing, tariff impacts, and competition from other regions.",
-        sub:'Geopolitical and Market Intelligence',
-        subdesc:'The center assesses how international trade policies, geopolitical shifts, and market competition affect the ability of Kashmir’s handicrafts to penetrate and sustain in global markets.'
+        title: '4. Export and Trade Monitoring',
+        desc: "Kashmir's handicrafts have long been a valuable export, driving revenue for the region and showcasing its cultural heritage globally. The Export and Trade Monitoring system within the Economics Monitoring Center tracks the performance of key handicrafts in international markets, analyzing trends such as global pricing, tariff impacts, and competition from other regions.",
+        sub: 'Geopolitical and Market Intelligence',
+        subdesc: 'The center assesses how international trade policies, geopolitical shifts, and market competition affect the ability of Kashmir’s handicrafts to penetrate and sustain in global markets.'
     },
     {
-        title:'5. Craft-Specific Economic Models',
-        desc:'CraftLore’s Economics Monitoring Center develops detailed, craft-specific economic models for the 16 major crafts of Kashmir, allowing for a granular understanding of their unique market dynamics. These models take into account factors such as raw material costs, labor input, production techniques, & consumer demand, helping businesses optimize their operations.',
-        sub:'Business Optimization & Market Value Model',
-        subdesc:'Analyzes production costs, labor input, and resource use to maximize efficiency, streamline processes, reduce waste, and improve profitability. Evaluates consumer demand, pricing strategies, and market trends, helping artisans determine the true market value of their craft for competitive pricing and strategic decision-making.'
+        title: '5. Craft-Specific Economic Models',
+        desc: 'CraftLore’s Economics Monitoring Center develops detailed, craft-specific economic models for the 16 major crafts of Kashmir, allowing for a granular understanding of their unique market dynamics. These models take into account factors such as raw material costs, labor input, production techniques, & consumer demand, helping businesses optimize their operations.',
+        sub: 'Business Optimization & Market Value Model',
+        subdesc: 'Analyzes production costs, labor input, and resource use to maximize efficiency, streamline processes, reduce waste, and improve profitability. Evaluates consumer demand, pricing strategies, and market trends, helping artisans determine the true market value of their craft for competitive pricing and strategic decision-making.'
     },
     {
-        title:'6. Sustainability and Environmental Economics',
-        desc:'With growing global interest in sustainability, the center also evaluates the economic impact of sustainable practices within the Kashmiri handicraft sector. By focusing on eco-friendly production methods, sustainable sourcing of raw materials, and the carbon footprint of exports, the center highlights how adopting green practices can improve both profitability and marketability.',
-        sub:'Carbon Footprint Analysis',
-        subdesc:'Integrated into the center is a carbon footprint calculator, which helps businesses track the environmental impact of their production and distribution processes, providing an opportunity to market their products as environmentally friendly, a key selling point in today’s eco-conscious global markets.'
+        title: '6. Sustainability and Environmental Economics',
+        desc: 'With growing global interest in sustainability, the center also evaluates the economic impact of sustainable practices within the Kashmiri handicraft sector. By focusing on eco-friendly production methods, sustainable sourcing of raw materials, and the carbon footprint of exports, the center highlights how adopting green practices can improve both profitability and marketability.',
+        sub: 'Carbon Footprint Analysis',
+        subdesc: 'Integrated into the center is a carbon footprint calculator, which helps businesses track the environmental impact of their production and distribution processes, providing an opportunity to market their products as environmentally friendly, a key selling point in today’s eco-conscious global markets.'
     },
 ]
 
 export const STAKHOLDERS = [
-    { 
-        title:'1. For Artisans',
-        desc:'Artisans receive timely economic insights into the value and demand for their craft. This allows them to price their goods more competitively and plan their production in line with market demand, helping to mitigate risk and reduce wastage.'
+    {
+        title: '1. For Artisans',
+        desc: 'Artisans receive timely economic insights into the value and demand for their craft. This allows them to price their goods more competitively and plan their production in line with market demand, helping to mitigate risk and reduce wastage.'
     },
-    { 
-        title:'2. For Business Owners',
-        desc:'Businesses benefit from enhanced visibility into production and export data, allowing them to make informed decisions about inventory management, supply chain optimization, and market positioning.'
+    {
+        title: '2. For Business Owners',
+        desc: 'Businesses benefit from enhanced visibility into production and export data, allowing them to make informed decisions about inventory management, supply chain optimization, and market positioning.'
     },
-    { 
-        title:'3. For Policymakers',
-        desc:'The center provides invaluable data for policymakers looking to craft effective legislation and support programs. By identifying the most economically viable crafts, policymakers can direct investment and subsidies where they are most needed.'
+    {
+        title: '3. For Policymakers',
+        desc: 'The center provides invaluable data for policymakers looking to craft effective legislation and support programs. By identifying the most economically viable crafts, policymakers can direct investment and subsidies where they are most needed.'
     },
-    { 
-        title:'4. For Global Consumers',
-        desc:'Consumers worldwide gain access to more transparent information about the economic and environmental impact of the products they buy. This builds trust and promotes ethical purchasing decisions.'
+    {
+        title: '4. For Global Consumers',
+        desc: 'Consumers worldwide gain access to more transparent information about the economic and environmental impact of the products they buy. This builds trust and promotes ethical purchasing decisions.'
     }
 ]
+
+
+export const EMPLOYMENTVISION = [
+    {
+        title: 'Track employment trends',
+        description: 'across local, national, and global markets to assess workforce growth and sustainability.'
+    },
+    {
+        title: 'Monitor workforce demographics',
+        description: 'including gender, age, and geographic distribution, to promote inclusivity in the sector.'
+    },
+    {
+        title: 'Identify challenges and barriers',
+        description: "affecting artisans' job stability and career development in the handicraft industry."
+    },
+    {
+        title: 'Provide actionable insights',
+        description: 'to support workforce development, skill training, and employment growth initiatives.'
+    },
+    {
+        title: 'Ensure fair wages and labor conditions',
+        description: 'for artisans, promoting ethical trade and equitable compensation across the sector.'
+    },
+    {
+        title: 'Foster job creation',
+        description: 'by providing real-time data that helps businesses and policymakers drive sustainable employment opportunities.'
+    },
+]
+
+export const EMPLOYMENTCOMPONENTS = [
+    {
+        title: '1. Employment Data Collection',
+        desc: 'The center systematically gathers real-time data on the number of women employed across various Kashmiri handicrafts, providing a gender-specific breakdown. By analyzing employment trends, it monitors workforce stability, job turnover rates, and participation levels across roles. This data provides a clear picture of women’s involvement in the sector, allowing stakeholders to assess how roles are distributed, how employment changes over time, and how it impacts the overall sector. These insights are essential for creating strategies that promote gender equality and ensure women’s active participation in the workforce.',
+    },
+    {
+        title: '2. Workforce Demographic Analysis',
+        desc: 'The center delivers comprehensive reports on the demographic composition of the workforce, detailing aspects such as gender, age, geographic location, and socio-economic background. These reports highlight underrepresented groups, particularly women from rural or marginalized communities, and their involvement in handicraft production. By identifying gaps, the center helps to promote more inclusive practices in hiring, participation, and training. This data-driven approach ensures that programs can be tailored to encourage greater participation from women in areas where they have traditionally been excluded or underrepresented.',
+    },
+    {
+        title: '3. Skill Development Tracking',
+        desc: 'The center evaluates the effectiveness of training and development programs designed for women artisans, ensuring they receive the necessary skills for career growth. It tracks the progress of these programs by measuring outcomes such as employment rates post-training, skill acquisition, and long-term impact on women’s career paths. By identifying areas that need improvement, the center helps develop more effective upskilling programs, empowering women to take on higher-skilled roles. This not only improves employability but also enables women to contribute more meaningfully to the sector’s growth.',
+    },
+    {
+        title: '4. Wage and Compensation Analysis',
+        desc: "The center conducts in-depth wage and compensation analysis to track gender-based wage gaps across different regions and crafts within the Kashmiri handicraft sector. By comparing the wages of male and female artisans, the center highlights any income disparities that may exist. This data is then used to advocate for equitable compensation for women, ensuring they are fairly compensated for their work. Fair wages not only help in promoting financial security for women artisans but also foster a more sustainable economic environment where gender equality is prioritized.",
+    },
+    {
+        title: '5. Job Growth and Sustainability',
+        desc: 'Through detailed analysis of workforce trends, the center provides insights into job creation and long-term employment sustainability for women artisans. By identifying sectors within the handicraft industry that offer potential for growth, the center helps businesses and policymakers develop strategies that create sustainable career opportunities for women. These strategies are aimed at reducing employment gaps, promoting job stability, and ensuring that women artisans can continue to thrive in their careers, contributing to the growth of the industry as a whole.',
+    },
+    {
+        title: '6. Fair Labor Practices',
+        desc: 'The center actively monitors compliance with ethical labor standards and fair trade practices across the Kashmiri handicraft sector. It ensures that women artisans receive fair wages, work in safe environments, and are not subjected to exploitation. Additionally, the center promotes gender-inclusive labor policies that protect the rights of women artisans and ensure they are treated equitably. By advocating for the adoption of fair labor practices, the center supports the development of a more just and sustainable handicraft industry that values the contributions of all artisans.',
+    },
+]
+
+export const EMPLOYMENTSTAKHOLDERS = [
+    {
+        title: '1. For Artisans',
+        desc: 'Artisans benefit from improved job security, fair wages, and access to training programs that enhance their skills and employability.'
+    },
+    {
+        title: '2. For Business Owners',
+        desc: 'Businesses gain visibility into workforce dynamics, helping them manage their artisans effectively, promote skill development, and optimize productivity.'
+    },
+    {
+        title: '3. For Policymakers',
+        desc: 'Policymakers can leverage employment data to create effective labor policies and support programs, fostering job creation and improving working conditions in the handicraft sector.'
+    },
+    {
+        title: '4. For Global Consumers',
+        desc: 'Consumers are assured that the products they purchase are created by artisans who work under fair labor conditions, supporting ethical practices and sustainable livelihoods.'
+    }
+]
+
+export const GENDERVISION = [
+    {
+        title: 'Analyzing gender-based economic trends',
+        description: 'to uncover opportunities and challenges faced by women artisans in the sector.'
+    },
+    {
+        title: 'Evaluating the contribution of women artisans',
+        description: 'to the economy, bringing visibility to their essential role in Kashmiri crafts.'
+    },
+    {
+        title: 'Identifying barriers and wage gaps',
+        description: "that hinder women’s full participation and success in the industry"
+    },
+    {
+        title: 'Supporting policy formulation',
+        description: 'aimed at promoting gender equality, fair wages, and sustainable opportunities for women artisans.'
+    },
+    {
+        title: 'Empowering women artisans',
+        description: 'through access to skill development programs and leadership roles.'
+    },
+    {
+        title: 'Fostering a gender-inclusive handicraft economy',
+        description: 'where women artisans receive equal opportunities and recognition for their contributions.'
+    },
+]
+
+export const GENDERCOMPONENTS = [
+    {
+        title: '1. Employment Data Collection',
+        desc: 'The center systematically gathers real-time data on the number of women employed across various Kashmiri handicrafts, providing a gender-specific breakdown. It tracks job turnover rates, participation levels across roles, and workforce stability. These insights provide a comprehensive understanding of women’s involvement in the sector and help create strategies that promote gender equality and ensure active participation.',
+    },
+    {
+        title: '2. Workforce Demographic Analysis',
+        desc: 'Detailed demographic reports highlight gender representation in the workforce, covering aspects such as age, geographic location, and socio-economic background. This analysis identifies gaps in workforce participation and offers data-driven solutions to encourage inclusivity, especially for women from rural and marginalized communities.',
+    },
+    {
+        title: '3. Skill Development Tracking',
+        desc: 'The center monitors the effectiveness of training and upskilling programs aimed at women artisans. By assessing the success of these programs, the center identifies areas for improvement, ensuring that women gain the skills necessary for career growth. It evaluates long-term impacts on employability and economic empowerment.',
+    },
+    {
+        title: '4. Wage and Compensation Analysis',
+        desc: "A thorough analysis of wage structures across the handicraft industry helps track and address gender pay disparities. By comparing wages between male and female artisans, the center ensures equitable compensation for women, advocating for policies that guarantee fair wages and improved financial security for women artisans.",
+    },
+    {
+        title: '5. Job Growth and Sustainability',
+        desc: 'The center analyzes job creation trends and provides insights into sustainable employment for women artisans. By identifying sectors within the handicraft industry that offer growth potential, it helps businesses and policymakers develop strategies that create long-term career opportunities, ensuring that women artisans thrive economically.',
+    },
+    {
+        title: '6. Fair Labor Practices',
+        desc: 'The center promotes adherence to fair labor standards by monitoring working conditions, wages, and compliance with ethical practices. It advocates for gender-inclusive labor policies that protect women artisans and ensure they work in safe environments, free from exploitation.',
+    },
+]
+
+export const GENDERSTAKHOLDERS = [
+    {
+        title: '1. For Women Artisans',
+        desc: 'Women artisans gain visibility and access to training, leadership roles, and fair wages, empowering them to contribute meaningfully to the craft sector.'
+    },
+    {
+        title: '2. For Business Owners',
+        desc: 'Businesses gain insights on how to create gender-inclusive work environments, ensuring fair wages and career advancement opportunities for women artisans.'
+    },
+    {
+        title: '3. For Policymakers',
+        desc: 'The center provides policymakers with critical data to support the development of gender-inclusive policies that promote economic equality in the handicraft sector.'
+    },
+    {
+        title: '4. For Global Consumers',
+        desc: 'Consumers can make informed choices by supporting businesses that practice fair trade, gender equality, and ethical labor practices.'
+    }
+]
+
+export const LISTINGBENEFITS = [
+    {
+        title: 'Buyer Community',
+        sub: [
+            {
+                title: 'Trust and Assurance:',
+                des: 'Buyers are provided with verified listings and rankings of artisans and businesses, ensuring that they are purchasing authentic, high-quality Kashmiri handicrafts. The blacklist feature protects them from fraudulent entities involved in counterfeiting.'
+            },
+            {
+                title: 'Ethical Shopping:',
+                des: "The registry promotes fair trade, ensuring that buyers are supporting ethically sourced and produced goods, which is increasingly important in today's conscious consumer market."
+            },
+            {
+                title: 'Informed Decision-Making:',
+                des: 'Through rankings based on quality, performance, and sustainability, buyers can make informed choices, selecting artisans and businesses that align with their preferences and values.'
+            },
+        ]
+    },
+    {
+        title: 'Global Exposure',
+        sub: [
+            {
+                title: 'Overview:',
+                des: 'The registry provides artisans with visibility in local and international markets. Their skills and craftsmanship are showcased to a broad audience, helping them attract new buyers and opportunities.'
+            },
+            {
+                title: 'Recognition and Ranking:',
+                des: "Artisans are ranked based on their skill level, quality, and contributions to the craft, which enhances their credibility and marketability. Higher-ranked artisans are positioned to attract premium buyers and more lucrative collaborations."
+            },
+            {
+                title: 'Protection Against Exploitation:',
+                des: 'The blacklist feature protects artisans from being undermined by counterfeiters or unethical businesses, ensuring their work is properly credited and compensated.'
+            },
+        ]
+    },
+    {
+        title: 'Businesses',
+        sub: [
+            {
+                title: 'Market Expansion:',
+                des: 'Verified businesses gain access to new markets, both locally and globally, with the credibility of being listed and ranked in the registry. This enhances their appeal to buyers seeking trusted, ethical trade partners.'
+            },
+            {
+                title: 'Reputation Building:',
+                des: "The ranking system allows businesses to differentiate themselves based on their ethical standards, product quality, and sustainability efforts, attracting more customers and partners who value integrity."
+            },
+            {
+                title: 'Collaboration Opportunities:',
+                des: 'Businesses can connect with verified artisans and institutions, forming partnerships that foster growth, innovation, and access to global supply chains.'
+            },
+        ]
+    },
+    {
+        title: 'Institutions',
+        sub: [
+            {
+                title: 'Enhanced Credibility:',
+                des: 'Institutions that support the handicraft industry gain recognition for their efforts in policy development, artisan training, and capacity building. Their ranking showcases their contributions and effectiveness.'
+            },
+            {
+                title: 'Impact Expansion:',
+                des: "Institutions can broaden their reach by collaborating with businesses and artisans through the registry, participating in initiatives that foster development, innovation, and sustainability in the craft sector."
+            },
+            {
+                title: 'Transparency and Accountability:',
+                des: 'The registry holds institutions accountable for their role in promoting fair trade, artisan welfare, and market transparency, enhancing their legitimacy and trust within the community.'
+            },
+        ]
+    }
+]
+
+export const BUSINESSLISTINGS = [
+    {
+      title: 'Artisan Listing',
+      desc: 'The CraftLore Artisan Listing highlights artisans based on skill level, craftsmanship quality, and market reach. This listing enables buyers to discover skilled artisans and ensures artisans gain recognition for their craft.',
+      criteria: [
+        { title: 'Skill Level', desc: 'Master, Skilled, Semi-Skilled, Apprentice, Hobbyist.' },
+        { title: 'Craftsmanship Quality', desc: 'Based on buyer feedback and market demand.' },
+        { title: 'Market Reach', desc: 'Local, national, or international exposure.' },
+        { title: 'Specialty', desc: 'Pashmina weaving, woodwork, or papier-mâché.' },
+      ],
+      categories: [
+        { title: 'Master Artisans', desc: 'Recognized experts with decades of experience.' },
+        { title: 'Skilled Artisans', desc: 'High craftsmanship and market growth.' },
+        { title: 'Semi-Skilled Artisans', desc: 'Emerging artisans with potential.' },
+        { title: 'Apprentice Artisans', desc: 'Artisans still learning.' },
+      ]
+    },
+    {
+      title: 'Business Listing',
+      desc: 'The CraftLore Business Listing features verified profiles of businesses in the Kashmiri handicraft sector, from local shops to international exporters, highlighting transparency, ethical practices, and market reach.',
+      criteria: [
+        { title: 'Business Type', desc: 'Master, Skilled, Semi-Skilled, Apprentice, Hobbyist.' },
+        { title: 'Market Reach', desc: 'Based on buyer feedback, peer reviews, and market demand.' },
+        { title: 'Quality Control', desc: 'Local, national, or international exposure.' },
+        { title: 'Sustainability', desc: 'Type of craft such as Pashmina weaving, woodwork etc.' },
+      ],
+      categories: [
+        { title: 'Large Enterprises', desc: 'Broad market reach.' },
+        { title: 'Mid-sized Businesses', desc: 'Consistent quality.' },
+        { title: 'Small Businesses', desc: 'Growing local footprint.' },
+        { title: 'Startups', desc: 'Businesses with potential for growth.' },
+      ]
+    },
+    {
+      title: 'Institution Listing',
+      desc: "CraftLore's Institution Listing highlights organizations that play a key role in governance, education, training, and policy development within the handicraft industry. These institutions contribute to artisan welfare and promote sustainability.",
+      criteria: [
+        { title: 'Institution Type', desc: 'Governance, NGO, Training, Educational body.' },
+        { title: 'Impact', desc: 'Artisan development, policy contribution, capacity building.' },
+        { title: 'Partnerships', desc: 'Collaborations with local or global institutions.' },
+        { title: 'Social Responsibility', desc: 'Gender equality, fair wages, environmental efforts.' },
+      ],
+      categories: [
+        { title: 'Global Institutions', desc: 'Far-reaching impact.' },
+        { title: 'Regional Institutions', desc: 'Focused on regional welfare.' },
+        { title: 'Local Institutions', desc: 'Community-based, localized impact.' },
+      ]
+    },
+    {
+      title: 'Blacklisted Listing',
+      desc: "CraftLore's Blacklisted Listing highlights artisans, businesses, and institutions that violated ethical standards in the handicraft industry. These entities failed to support artisan welfare, ignored sustainability, or engaged in corruption, harming the industry's integrity and communities.",
+      criteria: [
+        { title: 'Counterfeit', desc: 'Producing, selling, or distributing counterfeit handicrafts.' },
+        { title: 'Exploitation', desc: 'Unfair wages, poor working conditions.' },
+        { title: 'Environmental Violations', desc: 'Ignoring sustainable practices.' },
+        { title: 'Child Labor', desc: 'Employing underage workers in handicraft production.' },
+      ],
+      categories: [
+        { title: 'Severe Violations', desc: 'Permanently blacklisted.' },
+        { title: 'Moderate Violations', desc: 'Temporarily blacklisted.' },
+        { title: 'Minor Violations', desc: 'Under review with required corrective actions.' },
+      ]
+    }
+  ];
