@@ -1,3 +1,5 @@
+import Link from "next/link"
+import { Button } from "~/components/ui/button"
 
 
 
@@ -61,10 +63,11 @@ export const RegistrationProcess = () => {
                             <p className="text-gray-700">
                                 Get Started today by creating your account and becoming part of the CraftLore ecosystem, empowering Kashmiri artisans, businesses, and institutions through transparency, collaboration, and sustainability.
                             </p>
-
-                            <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 transition-colors">
-                                START NOW
-                            </button>
+                            <Button type="button" asChild>
+                                <Link href={'/listing/registration'}>
+                                    START NOW
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </div>

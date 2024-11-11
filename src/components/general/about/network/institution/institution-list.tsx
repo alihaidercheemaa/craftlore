@@ -1,17 +1,17 @@
-import { ORGANIZATIONS } from "~/constants"
+import { INDIAORGANIZATIONS } from "~/constants"
 
 
 
 
-export const NetworkList = () => {
+export const IndiaList = () => {
 
     return (
         <section className="col-span-12 bg-[#e5edf7] gap-4">
             <div className="mx-6 lg:container">
                 <div className="px-6 lg:container  grid gap-7 mb-32 py-8">
-                    <h1 className='text-5xl font-montserrat text-primary'>Craftlore International Network</h1>
+                    <h1 className='text-5xl font-montserrat text-primary'>Craftlore India Network</h1>
                     <div className="grid grid-cols-2 gap-8">
-                        {ORGANIZATIONS.map((organization, index) => (
+                        {INDIAORGANIZATIONS.map((organization, index) => (
                             <div
                                 className="col-span-2 lg:col-span-1 bg-white p-6 rounded-lg  shadow-sm group hover:bg-primary hover:shadow-lg text-gray-900 grid"
                                 key={index}
