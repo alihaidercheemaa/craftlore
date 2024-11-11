@@ -118,8 +118,16 @@ export const Header = () => {
                     title: 'CRAFT ALLIANCE',
                     href: '#',
                     submenu: [
-                        { title: 'NETWORKS', href: '/about/network' },
+
                         { title: 'SPONSORS', href: '/about/sponsor' },
+                    ]
+                },
+                {
+                    title: 'NETWORK',
+                    href: '#',
+                    submenu: [
+                        { title: 'INTERNATIONAL', href: '/about/network' },
+                        { title: 'INDIA', href: '/about/network/institution' },
                     ]
                 },
                 { title: 'CAREER', href: '/about/career' },
