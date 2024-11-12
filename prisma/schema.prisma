@@ -23,3 +23,135 @@ model Employ {
     skills       String @default("none")
     contribution String @default("none")
 }
+
+model User {
+    userId       String       @id @default(uuid())
+    fullName     String       @default("none")
+    phone        String       @default("none")
+    email        String
+    address      String       @default("none")
+    password     String       @default("none")
+    registerType RegisterType @default(None)
+    status       Status       @default(Pending)
+    Artisan      Artisan[]
+    Business     Business[]
+    Institute    Institute[]
+
+    @@unique([email])
+    @@index([email])
+}
+
+enum Status {
+    Pending
+    Actice
+}
+
+model Artisan {
+    artisanId       String          @id @default(uuid())
+    craftSpecialty  String          @default("none")
+    craftSkill      SkillLevel      @default(None)
+    craftExperience Int             @default(0)
+    craftAward      String          @default("none")
+    market          MarketType      @default(None)
+    documents       String[]        @default([])
+    userId          String
+    listingCriteria String
+    criteria        LisitingCritera @relation(fields: [listingCriteria], references: [criteraId])
+    user            User            @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model Business {
+    businessId       String        @id @default(uuid())
+    businessName     String        @default("none")
+    businessEmail    String
+    businessAddress  String        @default("none")
+    businessType     BusinessLevel @default(None)
+    businessSold     String        @default("none")
+    businessEmployee Int           @default(0)
+    documents        String[]      @default([])
+    userId           String
+    user             User          @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+
+    @@unique([businessEmail])
+    @@index([businessEmail])
+}
+
+model Institute {
+    instituteId      String          @id @default(uuid())
+    instituteName    String          @default("none")
+    instituteEmail   String
+    instituteType    InstitutionType @default(None)
+    instituteAddress String          @default("none")
+    instituteMission String          @default("none")
+    instituteRep     String          @default("none")
+    repDes           String          @default("none")
+    documents        String[]        @default([])
+    userId           String
+    user             User            @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+
+    @@unique([instituteEmail])
+    @@index([instituteEmail])
+}
+
+model LisitingCritera {
+    criteraId                 String    @id @default(uuid())
+    sourceOfMaterial          String    @default("none")
+    craftingProcess           String    @default("none")
+    sustainablePractices      Boolean   @default(false)
+    sustainabledescription    String    @default("none")
+    fairWage                  Boolean   @default(false)
+    genderSuport              Boolean   @default(false)
+    womenPercentage           Int       @default(0)
+    workplaceuphold           Boolean   @default(false)
+    workplaceDescription      String    @default("none")
+    childLabour               Boolean   @default(false)
+    fairTrade                 Boolean   @default(false)
+    fairtradeDoc              String[]  @default([])
+    giHold                    Boolean   @default(false)
+    giNumber                  String    @default("none")
+    blockChain                Boolean   @default(false)
+    blockChainDoc             String[]  @default([])
+    ethics                    Boolean   @default(false)
+    qualityReview             Boolean   @default(false)
+    profilePermission         Boolean   @default(false)
+    complianceAcknowledgement Boolean   @default(false)
+    Artisan                   Artisan[]
+}
+
+enum InstitutionType {
+    None
+    Governance
+    NGO
+    Training_Body
+    Educational_Body
+}
+
+enum BusinessLevel {
+    None
+    Large_Enterprice
+    Mid_sized_Business
+    Small_Business
+    Startup
+}
+
+enum SkillLevel {
+    None
+    Master
+    Skilled
+    Semi_Skilled
+    Apprentice
+}
+
+enum RegisterType {
+    None
+    Artisan
+    Business
+    Institution
+}
+
+enum MarketType {
+    None
+    Local
+    National
+    International
+}
