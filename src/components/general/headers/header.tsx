@@ -123,6 +123,35 @@ export const Header = () => {
                     ]
                 },
                 {
+                    title: 'MEMBERSHIP',
+                    href: '#',
+                    submenu: [
+                        { title: 'BUYER SUPPORT MEMBERSHIP', href: '/buyer' },
+                        { title: 'CORPORATE MEMBERSHIP', href: '/corporate' },
+                        { title: 'CRAFTLORE REGISTRY', href: '/about/registry' },
+                        { title: 'REGISTRY ARCHITECTURE', href: '/about/architecture' },
+                        {
+                            title: 'CRAFT ALLIANCE',
+                            href: '#',
+                            submenu: [
+
+                                { title: 'SPONSORS', href: '/about/sponsor' },
+                            ]
+                        },
+                        {
+                            title: 'NETWORK',
+                            href: '#',
+                            submenu: [
+                                { title: 'INTERNATIONAL', href: '/about/network' },
+                                { title: 'INDIA', href: '/about/network/institution' },
+                            ]
+                        },
+                        { title: 'CAREER', href: '/about/career' },
+                        { title: 'TEAM', href: '/about/team' },
+                        { title: 'CONTACT US', href: '/about/contact-us' },
+                    ]
+                },
+                {
                     title: 'NETWORK',
                     href: '#',
                     submenu: [

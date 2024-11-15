@@ -93,6 +93,25 @@ model Institute {
     @@index([instituteEmail])
 }
 
+model BusinessMembership {
+    businessId          String   @id @default(uuid())
+    buyerType           String   @default("none")
+    businessName        String   @default("none")
+    businessType        String   @default("none")
+    taxId               String   @default("none")
+    country             String   @default("none")
+    website             String   @default("none")
+    productInterest     String[] @default([])
+    orderVolume         String   @default("none")
+    authentication      String   @default("none")
+    traceability        String   @default("none")
+    sustainability      String[] @default([])
+    source              String   @default("none")
+    newsletter          Boolean  @default(false)
+    specialRequirements String   @default("none")
+    terms               Boolean  @default(false)
+}
+
 model LisitingCritera {
     criteraId                 String    @id @default(uuid())
     sourceOfMaterial          String    @default("none")
