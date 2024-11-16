@@ -1,29 +1,19 @@
 'use client';
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-    Form,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormControl,
-    FormMessage,
-} from "~/components/ui/form";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Button } from "~/components/ui/button";
-import {
-    Select,
-    SelectTrigger,
-    SelectValue,
-    SelectContent,
-    SelectItem,
-} from "~/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "~/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Textarea } from "~/components/ui/textarea";
 import { Card, CardHeader, CardContent, CardTitle } from "~/components/ui/card";
+import { CldUploadWidget, type CloudinaryUploadWidgetResults } from "next-cloudinary";
+import { api } from "~/trpc/react";
+import { useToast } from "~/hooks/use-toast";
 
 const formSchema = z.object({
     // Personal Information
@@ -64,7 +54,7 @@ const formSchema = z.object({
 
     // Marketing and Engagement
     engagementChannels: z.string(),
-    customerDemographic: z.array(z.string()).optional(),
+    customerDemographic: z.string(),
     brandMission: z.string().optional(),
 
     // Additional Information
@@ -81,12 +71,63 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export const CorporateMembershipForm = () => {
+
+    const { toast } = useToast()
+    const createMembership = api.membership.addCorporateMembership.useMutation({
+        onSuccess: () => {
+            form.reset()
+            toast({
+                title: 'Success!!!',
+                description: "Membership created successfully"
+            })
+        },
+        onError: () => {
+            toast({
+                variant: 'destructive',
+                title: 'Error!!!',
+                description: "Membership creation error"
+            })
+        }
+    })
+
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
     });
 
     const onSubmit = (data: FormValues) => {
-        console.log(data);
+        createMembership.mutate({
+            fullName: data.fullName,
+            email: data.email,
+            phone: data.phone,
+            password: data.password,
+            institutionName: data.institutionName,
+            institutionType: data.institutionType,
+            industry: data.industry,
+            yearEstablished: data.yearEstablished,
+            taxId: data.taxId ?? 'none',
+            primaryContact: data.primaryContact,
+            contactEmail: data.contactEmail,
+            contactPhone: data.contactPhone,
+            website: data.website ?? 'none',
+            headquartersAddress: data.headquartersAddress,
+            additionalLocations: data.additionalLocations ?? "none",
+            partnershipType: data.partnershipType,
+            partnershipGoals: data.partnershipGoals,
+            targetProducts: data.targetProducts,
+            csrInterest: data.csrInterest,
+            csrInitiatives: data.csrInitiatives ?? "none",
+            sustainabilityPractices: data.sustainabilityPractices ?? "none",
+            businessLicense: data.businessLicense ?? "none",
+            proofOfTaxID: data.proofOfTaxID ?? "none",
+            references: data.references ?? "none",
+            engagementChannels: data.engagementChannels,
+            customerDemographic: data.customerDemographic,
+            brandMission: data.brandMission ?? "none",
+            specificRequirements: data.specificRequirements ?? "none",
+            challenges: data.challenges ?? "none",
+            additionalComments: data.additionalComments ?? "none",
+            terms: data.terms,
+        })
     };
 
     return (
@@ -241,8 +282,159 @@ export const CorporateMembershipForm = () => {
                                     <FormLabel>Year Established</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="number"
+                                            type="text"
                                             placeholder="Enter year"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                if (
+                                                    value === "" ||
+                                                    (/^\d+$/.test(value) && parseInt(value) > 0)
+                                                ) {
+                                                    field.onChange(value === "" ? undefined : parseInt(value));
+                                                }
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="taxId"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Tax Id</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Enter tax id"
+                                            {...field}
+                                            value={field.value ?? ''} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="primaryContact"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Primary Contact Person</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter contact"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                if (
+                                                    value === "" ||
+                                                    (/^\d+$/.test(value) && parseInt(value) > 0)
+                                                ) {
+                                                    field.onChange(value === "" ? undefined : value);
+                                                }
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="contactEmail"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Contact Email</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter contact email"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="contactPhone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Contact Phone</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter contact phone"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                if (
+                                                    value === "" ||
+                                                    (/^\d+$/.test(value) && parseInt(value) > 0)
+                                                ) {
+                                                    field.onChange(value === "" ? undefined : value);
+                                                }
+                                            }}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="website"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Website or social media link</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter website link or social media link"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="headquartersAddress"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Headquarter Address</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter headquater address"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="additionalLocations"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Additionl location</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Enter additional locations"
                                             {...field}
                                             value={field.value ?? ''}
                                         />
@@ -309,8 +501,42 @@ export const CorporateMembershipForm = () => {
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="targetProducts"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Target Products</FormLabel>
+                                    {[
+                                        "Pashmina Shawls",
+                                        "Carpets and Rugs",
+                                        "Paper Mâché",
+                                        "Woodwork",
+                                        "Copperware",
+                                        "Embroidered Textiles",
+                                        "Other",
+                                    ].map((product) => (
+                                        <div key={product} className="flex items-center space-x-2">
+                                            <Checkbox
+                                                onCheckedChange={(checked) =>
+                                                    field.onChange(
+                                                        checked
+                                                            ? [...(field.value || []), product]
+                                                            : field.value?.filter((item) => item !== product)
+                                                    )
+                                                }
+                                                checked={field.value?.includes(product)}
+                                            />
+                                            <FormLabel>{product}</FormLabel>
+                                        </div>
+                                    ))}
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                     </CardContent>
                 </Card>
+
 
                 {/* CSR and Sustainability */}
                 <Card>
@@ -382,36 +608,93 @@ export const CorporateMembershipForm = () => {
                         <CardTitle>Verification and Documentation</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
+                        <div className="grid gap-3">
+                            <FormLabel>Business License</FormLabel>
+                            <Controller
+                                name="businessLicense"
+                                control={form.control}
+                                render={({ field }) => (
+                                    <CldUploadWidget
+                                        options={{
+                                            sources: ["local"],
+                                            maxFileSize: 5 * 1024 * 1024,
+                                            multiple: false
+                                        }}
+                                        uploadPreset="craftlore"
+                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                            const info = result.info
+                                            if (typeof info !== "string") {
+                                                const secure_url = info?.secure_url ?? 'none';
+                                                if (secure_url) {
+                                                    field.onChange(secure_url);
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        {({ open }) =>  {
+                                            function handleOnClick() {
+                                                open();
+                                            }
+                                            return (
+                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                    Upload file
+                                                </Button>
+                                            );
+                                        }}
+                                    </CldUploadWidget>
+                                )}
+                            />
+                                       <FormMessage/>
+                        </div>
+                        <div className="grid gap-3">
+                            <FormLabel>Proof of Tax ID</FormLabel>
+                            <Controller
+                                name="proofOfTaxID"
+                                control={form.control}
+                                render={({ field }) => (
+                                    <CldUploadWidget
+                                        options={{
+                                            sources: ["local"],
+                                            maxFileSize: 5 * 1024 * 1024,
+                                            multiple: false
+                                        }}
+                                        uploadPreset="craftlore"
+                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                            const info = result.info
+                                            if (typeof info !== "string") {
+                                                const secure_url = info?.secure_url ?? 'none';
+                                                if (secure_url) {
+                                                    field.onChange(secure_url);
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        {({ open }) =>  {
+                                            function handleOnClick() {
+                                                open();
+                                            }
+                                            return (
+                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                    Upload file
+                                                </Button>
+                                            );
+                                        }}
+                                    </CldUploadWidget>
+                                )}
+                            />
+                            <FormMessage/>
+                        </div>
                         <FormField
                             control={form.control}
-                            name="businessLicense"
+                            name="references"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Business License or Registration Certificate</FormLabel>
+                                    <FormLabel>References</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            type="file"
-                                            placeholder="Upload file"
+                                        <Textarea
+                                            placeholder="Provide references if applicable"
                                             {...field}
-                                            value={field.value ?? ''}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="proofOfTaxID"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Proof of Tax ID</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="file"
-                                            placeholder="Upload file"
-                                            {...field}
-                                            value={field.value ?? ''}
+                                            value={field.value ?? ""}
                                         />
                                     </FormControl>
                                     <FormMessage />
@@ -420,6 +703,7 @@ export const CorporateMembershipForm = () => {
                         />
                     </CardContent>
                 </Card>
+
 
                 {/* Marketing and Engagement */}
                 <Card>
@@ -477,6 +761,66 @@ export const CorporateMembershipForm = () => {
                     </CardContent>
                 </Card>
 
+                {/* Additional Information */}
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Additional Information</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <FormField
+                            control={form.control}
+                            name="specificRequirements"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Specific Requirements</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Do you have any specific requirements?"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="challenges"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Challenges</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Describe any challenges you're facing"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="additionalComments"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Additional Comments</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder="Add any additional comments"
+                                            {...field}
+                                            value={field.value ?? ''}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </CardContent>
+                </Card>
+
                 {/* Terms and Conditions */}
                 <Card>
                     <CardHeader>
@@ -504,8 +848,11 @@ export const CorporateMembershipForm = () => {
                     </CardContent>
                 </Card>
 
-                <Button type="submit" className="w-full">
-                    Submit Application
+                <Button
+                    type="submit"
+                    disabled={createMembership.isPending}
+                >
+                    {createMembership.isPending ? 'Registering...' : 'Register'}
                 </Button>
             </form>
         </Form >

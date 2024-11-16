@@ -5,7 +5,7 @@ export default {
 	content: ["./src/**/*.tsx"],
 	theme: {
     	container: {
-    		center: 'true',
+    		center: true,
     		padding: '4rem',
     		screens: {
     			'2xl': '1400px'

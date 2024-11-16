@@ -11,6 +11,8 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "~
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Textarea } from "~/components/ui/textarea";
 import { Card, CardHeader, CardContent, CardTitle } from "~/components/ui/card";
+import { api } from "~/trpc/react";
+import { useToast } from "~/hooks/use-toast";
 
 const formSchema = z.object({
     fullName: z.string().min(2, "Full Name is required."),
@@ -39,12 +41,52 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export const BuyerMembershipForm = () => {
+
+    const { toast } = useToast()
+    const createMembership = api.membership.addBuyerMembership.useMutation({
+        onSuccess: () => {
+            form.reset()
+            toast({
+                title: 'Success!!!',
+                description: "Membership created successfully"
+            })
+        },
+        onError: () => {
+            toast({
+                variant: 'destructive',
+                title: 'Error!!!',
+                description: "Membership creation error"
+            })
+        }
+    })
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema)
     });
 
     const onSubmit = (data: FormValues) => {
-        console.log(data);
+
+        createMembership.mutate({
+            fullName: data.fullName,
+            email: data.email,
+            phone: data.phone ?? 'none',
+            password: data.password,
+            buyerType: data.buyerType,
+            businessName: data.businessName ?? 'none',
+            businessType: data.businessType ?? 'none',
+            taxId: data.taxId ?? 'none',
+            country: data.country ?? 'none',
+            website: data.website ?? 'none',
+            productInterest: data.productInterest ?? [],
+            orderVolume: data.orderVolume ?? 'none',
+            authentication: data.authentication ?? 'none',
+            traceability: data.traceability ?? 'none',
+            sustainability: data.sustainability ?? [''],
+            source: data.source ?? 'none',
+            newsletter: data.newsletter ?? false,
+            specialRequirements: data.specialRequirements ?? 'none',
+            terms: data.terms,
+        });
+
     };
 
     return (
@@ -55,7 +97,7 @@ export const BuyerMembershipForm = () => {
                     <CardHeader>
                         <CardTitle>Personal Information</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="grid gap-2">
                         <FormField
                             control={form.control}
                             name="fullName"
@@ -63,7 +105,7 @@ export const BuyerMembershipForm = () => {
                                 <FormItem>
                                     <FormLabel>Full Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter your full name" {...field}  value={field.value ?? ''}/>
+                                        <Input placeholder="Enter your full name" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -89,7 +131,7 @@ export const BuyerMembershipForm = () => {
                                 <FormItem>
                                     <FormLabel>Phone Number</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="+CountryCode" {...field} value={field.value ?? ''}/>
+                                        <Input placeholder="+CountryCode" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -115,7 +157,7 @@ export const BuyerMembershipForm = () => {
                     <CardHeader>
                         <CardTitle>Buyer Type</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="grid gap-2">
                         <FormField
                             control={form.control}
                             name="buyerType"
@@ -151,7 +193,7 @@ export const BuyerMembershipForm = () => {
                             <CardHeader>
                                 <CardTitle>Business/Organization Information</CardTitle>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="grid gap-2">
                                 <FormField
                                     control={form.control}
                                     name="businessName"
@@ -159,7 +201,7 @@ export const BuyerMembershipForm = () => {
                                         <FormItem>
                                             <FormLabel>Business/Organization Name</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Enter business name" {...field}  value={field.value ?? ''}/>
+                                                <Input placeholder="Enter business name" {...field} value={field.value ?? ''} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -204,7 +246,7 @@ export const BuyerMembershipForm = () => {
                                         <FormItem>
                                             <FormLabel>Tax ID / Business Registration Number</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Enter tax ID" {...field}  value={field.value ?? ''}/>
+                                                <Input placeholder="Enter tax ID" {...field} value={field.value ?? ''} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -253,7 +295,7 @@ export const BuyerMembershipForm = () => {
                             <CardHeader>
                                 <CardTitle>Product Preferences</CardTitle>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="grid gap-2">
                                 {/* Products of Interest */}
                                 <FormField
                                     control={form.control}
@@ -272,8 +314,14 @@ export const BuyerMembershipForm = () => {
                                             ].map((product) => (
                                                 <div key={product} className="flex items-center space-x-2">
                                                     <Checkbox
-                                                        onCheckedChange={field.onChange}
                                                         checked={field.value?.includes(product)}
+                                                        onCheckedChange={(checked) => {
+                                                            const updatedValue = checked
+                                                                ? [...(field.value ?? []), product]
+                                                                : field.value?.filter((value) => value !== product) ?? [];
+                                                            field.onChange(updatedValue);
+                                                        }}
+
                                                     />
                                                     <FormLabel>{product}</FormLabel>
                                                 </div>
@@ -317,7 +365,7 @@ export const BuyerMembershipForm = () => {
                             <CardHeader>
                                 <CardTitle>Verification and Authentication Preferences</CardTitle>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="grid gap-2">
                                 {/* Authentication Certificates */}
                                 <FormField
                                     control={form.control}
@@ -372,8 +420,13 @@ export const BuyerMembershipForm = () => {
                                             ].map((preference) => (
                                                 <div key={preference} className="flex items-center space-x-2">
                                                     <Checkbox
-                                                        onCheckedChange={field.onChange}
-                                                        checked={field.value?.includes(preference)}
+                                                           checked={field.value?.includes(preference)}
+                                                           onCheckedChange={(checked) => {
+                                                               const updatedValue = checked
+                                                                   ? [...(field.value ?? []), preference]
+                                                                   : field.value?.filter((value) => value !== preference) ?? [];
+                                                               field.onChange(updatedValue);
+                                                           }}
                                                     />
                                                     <FormLabel>{preference}</FormLabel>
                                                 </div>
@@ -388,7 +441,7 @@ export const BuyerMembershipForm = () => {
                             <CardHeader>
                                 <CardTitle>Terms & Conditions</CardTitle>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="grid gap-2">
                                 <FormField
                                     control={form.control}
                                     name="terms"
@@ -484,7 +537,12 @@ export const BuyerMembershipForm = () => {
                     </CardContent>
                 </Card>
 
-                <Button type="submit">Register</Button>
+                <Button
+                    type="submit"
+                    disabled={createMembership.isPending}
+                >
+                    {createMembership.isPending ? 'Registering...' : 'Register'}
+                </Button>
             </form>
         </Form>
     );
