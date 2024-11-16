@@ -123,6 +123,15 @@ export const Header = () => {
                     ]
                 },
                 {
+                    title: 'MEMBERSHIP',
+                    href: '#',
+                    submenu: [
+                        { title: 'BUYER SUPPORT MEMBERSHIP', href: '/buyer' },
+                        { title: 'CORPORATE MEMBERSHIP', href: '/corporate' },
+                        { title: 'SPONSOR MEMBERSHIP', href: '/sponsorship' },
+                    ]
+                },
+                {
                     title: 'NETWORK',
                     href: '#',
                     submenu: [
