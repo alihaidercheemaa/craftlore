@@ -4,10 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 
 
 
-
-
 export const TraderRegistryInfo = () => {
-
 
     return (
         <div className="mx-6 lg:container grid gap-32 mt-32">

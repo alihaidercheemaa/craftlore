@@ -14,6 +14,8 @@ import { CldUploadWidget, type CloudinaryUploadWidgetResults } from "next-cloudi
 import { Textarea } from "~/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
 import { Checkbox } from "~/components/ui/checkbox"
+import { api } from "~/trpc/react"
+import { useToast } from "~/hooks/use-toast"
 
 const formSchema = z.object({
 
@@ -23,7 +25,7 @@ const formSchema = z.object({
     email: z.string({ required_error: 'Field is required.' }).email("Invalid email."),
     address: z.string({ required_error: 'Field is required.' }),
     password: z.string({ required_error: 'Field is required.' }).min(8, 'Minimum 8 character length required.'),
-    registerType: z.enum(["Buyer", "Artisan", "Business", "Institution"]),
+    registerType: z.enum(["Artisan", "Business", "Institution"]),
 
     contribution: z.string()
         .min(50, "Minimum 50 words required")
@@ -56,29 +58,34 @@ const formSchema = z.object({
 
     childLaborPolicy: z.boolean({ required_error: "Child labor policy confirmation is required" }).optional(),
 
-    fairTradeCertification: z.object({ certified: z.boolean().optional() }),
+    fairTradeCertification: z.object({
+        certified: z.boolean().optional(),
+        document: z.string().optional()
+    }),
 
     giCertification: z.object({
         holds: z.boolean().optional(),
-        certificationNumber: z.string().optional()
+        certificationNumber: z.string().optional(),
+        certificationDocument: z.string().optional()
     }),
 
+    triditionalTraining: z.boolean({ required_error: "Child labor policy confirmation is required" }).optional(),
     blockchainCertification: z.object({
         verified: z.boolean().optional(),
-        provider: z.string().optional()
+        provider: z.string().optional(),
+        certificationDocument: z.string().optional()
     }),
 
     commitmentToEthics: z.boolean({ required_error: "Commitment to ethics is required" }).optional(),
 
     // * Review and Compliance
     qualityReviewConsent: z.string({ required_error: "Quality review consent is required" }).optional(),
-
     profileDisplayConsent: z.string({ required_error: "Profile display consent is required" }).optional(),
-
     complianceAcknowledgement: z.string({ required_error: "Compliance acknowledgement is required" }).optional(),
 
     // *  Artisan-specific fields
     craftSpecialty: z.string().optional(),
+    craftCatalog: z.string().optional(),
     craftSkill: z.enum(["Master", "Skilled", "Semi-Skilled", "Apprentice"]).optional(),
     craftExperience: z.number().optional(),
     craftAward: z.string().optional(),
@@ -88,9 +95,10 @@ const formSchema = z.object({
     businessName: z.string().optional(),
     businessEmail: z.string().email("Invalid email.").optional(),
     businessAddress: z.string().optional(),
-    businessType: z.enum(["Large Enterprise", "Mid-sized Business", "Small Business", "Startup"]).optional(),
+    businessLicense: z.string().optional(),
+    businessType: z.enum(["Large_Enterprice", "Mid_sized_Business", "Small_Business", "Startup"]).optional(),
     businessSold: z.string().optional(),
-    businessEmployee: z.string().optional(),
+    businessEmployee: z.number().optional(),
     businessYear: z.number().optional(),
     businessLink: z.string().optional(),
 
@@ -263,7 +271,24 @@ type FormProps = z.infer<typeof formSchema>
 
 export const RegistrationForm = () => {
 
-    const [files, setFiles] = useState<string[]>([]);
+
+    const { toast } = useToast()
+    const registerListing = api.register.registerListing.useMutation({
+        onSuccess: () => {
+            form.reset()
+            toast({
+                title: 'Success!!!',
+                description: "Membership created successfully"
+            })
+        },
+        onError: () => {
+            toast({
+                variant: 'destructive',
+                title: 'Error!!!',
+                description: "Membership creation error"
+            })
+        }
+    })
     const [visible, setVisible] = useState<boolean>(false);
     const form = useForm<FormProps>({
         resolver: zodResolver(formSchema)
@@ -271,7 +296,92 @@ export const RegistrationForm = () => {
 
     const formSubmission = (data: FormProps) => {
 
-        console.log(data)
+        const {
+            fullName,
+            phone,
+            email,
+            address,
+            password,
+            registerType,
+            ...rest
+        } = data;
+
+        const payload = {
+            user: {
+                fullName: fullName ?? "none",
+                phone: phone ?? "none",
+                email: email ?? "none",
+                address: address ?? "none",
+                password: password ?? "none",
+                registerType: registerType ?? "None",
+            },
+            listingCriteria: {
+                sourceOfMaterial: rest.materialSource ?? "none",
+                craftingProcess: rest.craftingProcess ?? "none",
+                sustainablePractices: rest.sustainablePractices?.implemented ?? false,
+                sustainabledescription: rest.sustainablePractices?.description ?? "none",
+                fairWage: rest.fairWage ?? false,
+                genderSuport: rest.genderDynamics?.supportsEquality ?? false,
+                womenPercentage: rest.genderDynamics?.femalePercentage ?? 0,
+                workplaceuphold: rest.workplaceStandards?.upholds ?? false,
+                workplaceDescription: rest.workplaceStandards?.description ?? "none",
+                childLabour: rest.childLaborPolicy ?? false,
+                fairTrade: rest.fairTradeCertification?.certified ?? false,
+                fairtradeDoc: rest.fairTradeCertification?.document
+                    ? [rest.fairTradeCertification.document]
+                    : [],
+                giHold: rest.giCertification?.holds ?? false,
+                giNumber: rest.giCertification?.certificationNumber ?? "none",
+                blockChain: rest.blockchainCertification?.verified ?? false,
+                blockChainDoc: rest.blockchainCertification?.certificationDocument
+                    ? [rest.blockchainCertification.certificationDocument]
+                    : [],
+                ethics: rest.commitmentToEthics ?? false,
+                qualityReview: rest.qualityReviewConsent === "yes",
+                profilePermission: rest.profileDisplayConsent === "yes",
+                complianceAcknowledgement: rest.complianceAcknowledgement === "yes",
+            },
+            artisan:
+                registerType === "Artisan"
+                    ? {
+                        craftSpecialty: rest.craftSpecialty ?? "none",
+                        craftSkill: rest.craftSkill ?? "None",
+                        craftExperience: rest.craftExperience ?? 0,
+                        craftAward: rest.craftAward ?? "none",
+                        market: rest.market ?? "None",
+                        documents: rest.craftCatalog ? [rest.craftCatalog] : [],
+                    }
+                    : undefined,
+            business:
+                registerType === "Business"
+                    ? {
+                        businessName: rest.businessName ?? "none",
+                        businessEmail: rest.businessEmail ?? "none",
+                        businessAddress: rest.businessAddress ?? "none",
+                        businessType: rest.businessType ?? "None",
+                        businessSold: rest.businessSold ?? "none",
+                        businessEmployee: rest.businessEmployee ?? 0,
+                        documents: rest.businessLicense ? [rest.businessLicense] : [],
+                    }
+                    : undefined,
+            institute:
+                registerType === "Institution"
+                    ? {
+                        instituteName: rest.instituteName ?? "none",
+                        instituteEmail: rest.instituteEmail ?? "none",
+                        instituteAddress: rest.instituteAddress ?? "none",
+                        instituteRep: rest.instituteRep ?? "none",
+                        repPost: rest.repPost ?? "none",
+                        instituteType: rest.instituteType ?? "None",
+                        instituteMission: rest.instituteMission ?? "none",
+                        documents: rest.instituteLink ? [rest.instituteLink] : [],
+                    }
+                    : undefined,
+        };
+
+        // Call the mutation
+        registerListing.mutate(payload);
+
     }
 
     return (
@@ -381,10 +491,6 @@ export const RegistrationForm = () => {
                                             onValueChange={field.onChange}
                                             className="flex items-center">
                                             <div className="flex items-center space-x-2">
-                                                <RadioGroupItem value="Buyer" id="Buyer" />
-                                                <Label htmlFor="Buyer">Buyer</Label>
-                                            </div>
-                                            <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="Artisan" id="Artisan" />
                                                 <Label htmlFor="Artisan">Artisan</Label>
                                             </div>
@@ -437,7 +543,7 @@ export const RegistrationForm = () => {
                                                     onValueChange={field.onChange}
                                                     className="flex items-center">
                                                     {
-                                                        ["Master", "Skilled", "Semi-Skilled", "Apprentice"]
+                                                        ["Master", "Skilled", "Semi_Skilled", "Apprentice"]
                                                             .map((skill, index) => <div
                                                                 className="flex items-center space-x-2"
                                                                 key={index}>
@@ -491,19 +597,6 @@ export const RegistrationForm = () => {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="craftSpecialty"
-                                    render={({ field }) => (
-                                        <FormItem className="col-span-2 lg:col-span-1">
-                                            <FormLabel>Craft Specialty</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Enter your specialty" {...field} value={field.value ?? ''} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
                                     name="market"
                                     render={({ field }) => (
                                         <FormItem className="col-span-3 lg:col-span-1 flex flex-col justify-center">
@@ -529,36 +622,40 @@ export const RegistrationForm = () => {
                                         </FormItem>
                                     )}
                                 />
-                                <div className="col-span-3 lg:col-span-1 grid gap-2">
-                                    <FormLabel>Craft catalog</FormLabel>
-                                    <CldUploadWidget
-                                        options={{ sources: ["local"] }}
-                                        uploadPreset="craftlore"
-                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                                            const info = result.info;
-                                            if (typeof info != "string")
-                                                setFiles((prev) => {
-                                                    const flag = prev.every(
-                                                        (file) => file != info?.secure_url,
+                                <FormField
+                                    control={form.control}
+                                    name="craftCatalog"
+                                    render={({ field }) => (
+                                        <FormItem className="grid gap-2">
+                                            <FormLabel>Craft Catalog</FormLabel>
+                                            <CldUploadWidget
+                                                options={{ sources: ["local"] }}
+                                                uploadPreset="craftlore"
+                                                onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                                    const info = result.info;
+                                                    if (typeof info !== "string") {
+                                                        const secure_url = info?.secure_url ?? 'none';
+                                                        if (secure_url) {
+                                                            field.onChange(secure_url);
+                                                        }
+                                                    }
+                                                }}
+                                            >
+                                                {({ open }) => {
+                                                    function handleOnClick() {
+                                                        open();
+                                                    }
+                                                    return (
+                                                        <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                            Upload file
+                                                        </Button>
                                                     );
-                                                    if (flag) prev.push(info?.secure_url ?? "");
-                                                    return prev;
-                                                });
-                                            // setAllow(true);
-                                        }}
-                                    >
-                                        {({ open }) => {
-                                            function handleOnClick() {
-                                                open();
-                                            }
-                                            return (
-                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
-                                                    Upload file
-                                                </Button>
-                                            );
-                                        }}
-                                    </CldUploadWidget>
-                                </div>
+                                                }}
+                                            </CldUploadWidget>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </CardContent>
                         </Card>
                     )
@@ -634,6 +731,30 @@ export const RegistrationForm = () => {
                                         </FormItem>
                                     )}
                                 />
+                                <FormField
+                                    control={form.control}
+                                    name="businessType"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Business Type</FormLabel>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select business type" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="Large_Enterprice">Large Enterprise</SelectItem>
+                                                    <SelectItem value="Mid_sized_Business">Mid-sized Business</SelectItem>
+                                                    <SelectItem value="Small_Business">Small Business</SelectItem>
+                                                    <SelectItem value="Startup">Startup</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
                                 <FormField
                                     control={form.control}
                                     name="businessLink"
@@ -719,36 +840,40 @@ export const RegistrationForm = () => {
                                         </FormItem>
                                     )}
                                 />
-                                <div className="col-span-3 lg:col-span-1 grid gap-2">
-                                    <FormLabel>Business License or Registration certificate</FormLabel>
-                                    <CldUploadWidget
-                                        options={{ sources: ["local"] }}
-                                        uploadPreset="craftlore"
-                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                                            const info = result.info;
-                                            if (typeof info != "string")
-                                                setFiles((prev) => {
-                                                    const flag = prev.every(
-                                                        (file) => file != info?.secure_url,
+                                <FormField
+                                    control={form.control}
+                                    name="businessLicense"
+                                    render={({ field }) => (
+                                        <FormItem className="grid gap-2">
+                                            <FormLabel>Business License or Registration Certificate</FormLabel>
+                                            <CldUploadWidget
+                                                options={{ sources: ["local"] }}
+                                                uploadPreset="craftlore"
+                                                onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                                    const info = result.info;
+                                                    if (typeof info !== "string") {
+                                                        const secure_url = info?.secure_url ?? 'none';
+                                                        if (secure_url) {
+                                                            field.onChange(secure_url);
+                                                        }
+                                                    }
+                                                }}
+                                            >
+                                                {({ open }) => {
+                                                    function handleOnClick() {
+                                                        open();
+                                                    }
+                                                    return (
+                                                        <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                            Upload files
+                                                        </Button>
                                                     );
-                                                    if (flag) prev.push(info?.secure_url ?? "");
-                                                    return prev;
-                                                });
-                                            // setAllow(true);
-                                        }}
-                                    >
-                                        {({ open }) => {
-                                            function handleOnClick() {
-                                                open();
-                                            }
-                                            return (
-                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
-                                                    Upload files
-                                                </Button>
-                                            );
-                                        }}
-                                    </CldUploadWidget>
-                                </div>
+                                                }}
+                                            </CldUploadWidget>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </CardContent>
                         </Card>
                     )
@@ -854,6 +979,20 @@ export const RegistrationForm = () => {
                                 />
                                 <FormField
                                     control={form.control}
+                                    name="instituteLink"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Institution Website or Profile Link</FormLabel>
+                                            <FormControl>
+                                                <Input placeholder="Enter website or profile link" {...field} value={field.value ?? ""} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+    
+                                <FormField
+                                    control={form.control}
                                     name="instituteMission"
                                     render={({ field }) => (
                                         <FormItem className="col-span-2 lg:col-span-1">
@@ -865,36 +1004,6 @@ export const RegistrationForm = () => {
                                         </FormItem>
                                     )}
                                 />
-                                <div className="col-span-3 lg:col-span-1 grid gap-2">
-                                    <FormLabel>  documents        String[]      @default([])</FormLabel>
-                                    <CldUploadWidget
-                                        options={{ sources: ["local"] }}
-                                        uploadPreset="craftlore"
-                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                                            const info = result.info;
-                                            if (typeof info != "string")
-                                                setFiles((prev) => {
-                                                    const flag = prev.every(
-                                                        (file) => file != info?.secure_url,
-                                                    );
-                                                    if (flag) prev.push(info?.secure_url ?? "");
-                                                    return prev;
-                                                });
-                                            // setAllow(true);
-                                        }}
-                                    >
-                                        {({ open }) => {
-                                            function handleOnClick() {
-                                                open();
-                                            }
-                                            return (
-                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
-                                                    Upload files
-                                                </Button>
-                                            );
-                                        }}
-                                    </CldUploadWidget>
-                                </div>
                             </CardContent>
                         </Card>
                     )
@@ -966,7 +1075,7 @@ export const RegistrationForm = () => {
                                     <div className="space-y-4">
                                         <FormField
                                             control={form.control}
-                                            name="fairWage"
+                                            name="triditionalTraining"
                                             render={({ field }) => (
                                                 <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                                                     <FormControl>
@@ -1187,36 +1296,40 @@ export const RegistrationForm = () => {
                                     />
 
                                     {form.watch('fairTradeCertification.certified') && (
-                                        <div className="grid gap-3">
-                                            <FormLabel>Fair trade certificate</FormLabel>
-                                            <CldUploadWidget
-                                                options={{ sources: ["local"] }}
-                                                uploadPreset="craftlore"
-                                                onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                                                    const info = result.info;
-                                                    if (typeof info != "string")
-                                                        setFiles((prev) => {
-                                                            const flag = prev.every(
-                                                                (file) => file != info?.secure_url,
+                                        <FormField
+                                            control={form.control}
+                                            name="fairTradeCertification.document"
+                                            render={({ field }) => (
+                                                <FormItem className="grid gap-2">
+                                                    <FormLabel>Fair trade certificate</FormLabel>
+                                                    <CldUploadWidget
+                                                        options={{ sources: ["local"] }}
+                                                        uploadPreset="craftlore"
+                                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                                            const info = result.info;
+                                                            if (typeof info !== "string") {
+                                                                const secure_url = info?.secure_url ?? 'none';
+                                                                if (secure_url) {
+                                                                    field.onChange(secure_url);
+                                                                }
+                                                            }
+                                                        }}
+                                                    >
+                                                        {({ open }) => {
+                                                            function handleOnClick() {
+                                                                open();
+                                                            }
+                                                            return (
+                                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                                    Upload files
+                                                                </Button>
                                                             );
-                                                            if (flag) prev.push(info?.secure_url ?? "");
-                                                            return prev;
-                                                        });
-                                                    // setAllow(true);
-                                                }}
-                                            >
-                                                {({ open }) => {
-                                                    function handleOnClick() {
-                                                        open();
-                                                    }
-                                                    return (
-                                                        <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
-                                                            Upload files
-                                                        </Button>
-                                                    );
-                                                }}
-                                            </CldUploadWidget>
-                                        </div>
+                                                        }}
+                                                    </CldUploadWidget>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
                                     )}
                                 </div>
 
@@ -1242,19 +1355,55 @@ export const RegistrationForm = () => {
                                     />
 
                                     {form.watch('giCertification.holds') && (
-                                        <FormField
-                                            control={form.control}
-                                            name="giCertification.certificationNumber"
-                                            render={({ field }) => (
-                                                <FormItem className="col-span-2 lg:col-span-1">
-                                                    <FormLabel>GI Certification Number </FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="Enter your GI certification number" {...field} value={field.value ?? ''} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+                                        <>
+                                            <FormField
+                                                control={form.control}
+                                                name="giCertification.certificationNumber"
+                                                render={({ field }) => (
+                                                    <FormItem className="col-span-2 lg:col-span-1">
+                                                        <FormLabel>GI Certification Number </FormLabel>
+                                                        <FormControl>
+                                                            <Input placeholder="Enter your GI certification number" {...field} value={field.value ?? ''} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="giCertification.certificationDocument"
+                                                render={({ field }) => (
+                                                    <FormItem className="grid gap-2">
+                                                        <FormLabel>GI Certification Document</FormLabel>
+                                                        <CldUploadWidget
+                                                            options={{ sources: ["local"] }}
+                                                            uploadPreset="craftlore"
+                                                            onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                                                const info = result.info;
+                                                                if (typeof info !== "string") {
+                                                                    const secure_url = info?.secure_url ?? 'none';
+                                                                    if (secure_url) {
+                                                                        field.onChange(secure_url);
+                                                                    }
+                                                                }
+                                                            }}
+                                                        >
+                                                            {({ open }) => {
+                                                                function handleOnClick() {
+                                                                    open();
+                                                                }
+                                                                return (
+                                                                    <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                                        Upload files
+                                                                    </Button>
+                                                                );
+                                                            }}
+                                                        </CldUploadWidget>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </>
                                     )}
                                 </div>
 
@@ -1280,36 +1429,40 @@ export const RegistrationForm = () => {
                                     />
 
                                     {form.watch('blockchainCertification.verified') && (
-                                        <div className="grid gap-3">
-                                            <FormLabel>Blockchain Certification Provider </FormLabel>
-                                            <CldUploadWidget
-                                                options={{ sources: ["local"] }}
-                                                uploadPreset="craftlore"
-                                                onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                                                    const info = result.info;
-                                                    if (typeof info != "string")
-                                                        setFiles((prev) => {
-                                                            const flag = prev.every(
-                                                                (file) => file != info?.secure_url,
+                                        <FormField
+                                            control={form.control}
+                                            name="blockchainCertification.certificationDocument"
+                                            render={({ field }) => (
+                                                <FormItem className="grid gap-2">
+                                                    <FormLabel>Blockchain Certification Provider </FormLabel>
+                                                    <CldUploadWidget
+                                                        options={{ sources: ["local"] }}
+                                                        uploadPreset="craftlore"
+                                                        onSuccess={(result: CloudinaryUploadWidgetResults) => {
+                                                            const info = result.info;
+                                                            if (typeof info !== "string") {
+                                                                const secure_url = info?.secure_url ?? 'none';
+                                                                if (secure_url) {
+                                                                    field.onChange(secure_url);
+                                                                }
+                                                            }
+                                                        }}
+                                                    >
+                                                        {({ open }) => {
+                                                            function handleOnClick() {
+                                                                open();
+                                                            }
+                                                            return (
+                                                                <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
+                                                                    Upload files
+                                                                </Button>
                                                             );
-                                                            if (flag) prev.push(info?.secure_url ?? "");
-                                                            return prev;
-                                                        });
-                                                    // setAllow(true);
-                                                }}
-                                            >
-                                                {({ open }) => {
-                                                    function handleOnClick() {
-                                                        open();
-                                                    }
-                                                    return (
-                                                        <Button type="button" onClick={handleOnClick} className="w-fit bg-primary text-white ">
-                                                            Upload files
-                                                        </Button>
-                                                    );
-                                                }}
-                                            </CldUploadWidget>
-                                        </div>
+                                                        }}
+                                                    </CldUploadWidget>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
                                     )}
                                 </div>
 
@@ -1430,8 +1583,8 @@ export const RegistrationForm = () => {
                     )
                 }
 
-                <Button type="submit" className="col-span-2">
-                    Submit
+                <Button type="submit" className="col-span-2" disabled={registerListing.isPending}>
+                    {registerListing.isPending ? "Submiting..." : "Submit"}
                 </Button>
             </form>
         </Form>

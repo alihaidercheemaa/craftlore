@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { TradeRegistry } from '~/components/listing/trade-registry';
+import { ArtisanInfo } from '~/components/listing/artisans/home';
 
 export const ListingCard = () => {
   return (
@@ -75,8 +76,8 @@ export const ListingCard = () => {
       </TabsContent>
       <TabsContent value="artisans" className="mt-6">
         <div className="bg-white p-6 ">
-          <h2 className="text-xl font-bold mb-4">Artisans Directory</h2>
-          {/* Add your content here */}
+          <ArtisanInfo/>
+          
         </div>
       </TabsContent>
       <TabsContent value="businesses" className="mt-6">

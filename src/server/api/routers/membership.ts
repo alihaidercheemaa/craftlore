@@ -2,7 +2,7 @@ import { TRPCClientError } from "@trpc/client";
 import { TRPCError } from "@trpc/server";
 import { hash } from "bcrypt";
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 
 export const MembershipRouter = createTRPCRouter({
@@ -86,13 +86,10 @@ export const MembershipRouter = createTRPCRouter({
     addCorporateMembership: publicProcedure
         .input(
             z.object({
-                // User Data
                 fullName: z.string(),
                 email: z.string(),
                 phone: z.string(),
                 password: z.string(),
-
-                // Corporate Membership Data
                 institutionName: z.string(),
                 institutionType: z.string(),
                 industry: z.string(),
@@ -124,7 +121,7 @@ export const MembershipRouter = createTRPCRouter({
         )
         .mutation(async ({ ctx, input }) => {
             try {
-    
+
                 const encryptedPassword = await hash(input.password, 10);
 
                 const user = await ctx.db.user.create({
@@ -167,6 +164,123 @@ export const MembershipRouter = createTRPCRouter({
                         additionalComments: input.additionalComments ?? "none",
                         terms: input.terms,
                         userId: user.userId,
+                    },
+                });
+
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
+    addSponsorMembership: publicProcedure
+        .input(
+            z.object({
+                // Sponsor Information
+                sponsorName: z.string(),
+                contactPerson: z.string(),
+                email: z.string(),
+                phone: z.string(),
+                socialLinks: z.string().optional(),
+                password: z.string(),
+
+                // Sponsor Type
+                sponsorType: z.string(),
+                industry: z.string(),
+
+                // Sponsorship Goals and Interests
+                sponsorshipGoal: z.string(),
+                objectives: z.string(),
+                focusArea: z.string(),
+
+                // Sponsorship Tier
+                tier: z.string(),
+                budgetRange: z.string().optional(),
+
+                // Sponsorship Options
+                sponsorshipChannel: z.string(),
+                eventInterest: z.enum(["Yes", "No"]),
+                productCustomization: z.string().optional(),
+
+                // CSR and Sustainability
+                csrInterest: z.enum(["Yes", "No"]),
+                pastCSREfforts: z.string().optional(),
+                sustainabilityPractices: z.string().optional(),
+
+                // Marketing and Branding Preferences
+                brandingOptions: z.array(z.string()),
+                socialHandles: z.string().optional(),
+                communicationChannel: z.string(),
+
+                // Impact and Reporting Requirements
+                impactMetrics: z.array(z.string()),
+                reportFrequency: z.string(),
+                publicUse: z.enum(["Yes", "No"]),
+
+                // Additional Information
+                specialRequirements: z.string().optional(),
+                additionalComments: z.string().optional(),
+
+                // Terms and Conditions
+                terms: z.boolean(),
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            try {
+
+                const encryptedPassword = await hash(input.password, 10);
+
+                const user = await ctx.db.user.create({
+                    data: {
+                        fullName: input.sponsorName,
+                        email: input.email,
+                        password: encryptedPassword,
+                        phone: input.phone,
+                        registerType: "CorpoMembership",
+                    },
+                });
+
+                await ctx.db.sponsorMembership.create({
+                    data: {
+                        sponsorName: input.sponsorName,
+                        contactPerson: input.contactPerson,
+                        email: input.email,
+                        phone: input.phone,
+                        socialLinks: input.socialLinks ?? 'none',
+                        sponsorType: input.sponsorType,
+                        industry: input.industry,
+                        sponsorshipGoal: input.sponsorshipGoal,
+                        objectives: input.objectives,
+                        focusArea: input.focusArea,
+                        tier: input.tier,
+                        budgetRange: input.budgetRange ?? 'none',
+                        sponsorshipChannel: input.sponsorshipChannel,
+                        eventInterest: input.eventInterest,
+                        productCustomization: input.productCustomization ?? 'none',
+                        csrInterest: input.csrInterest,
+                        pastCSREfforts: input.pastCSREfforts ?? 'none',
+                        sustainabilityPractices: input.sustainabilityPractices ?? 'none',
+                        brandingOptions: input.brandingOptions,
+                        socialHandles: input.socialHandles ?? 'none',
+                        communicationChannel: input.communicationChannel,
+                        impactMetrics: input.impactMetrics,
+                        reportFrequency: input.reportFrequency,
+                        publicUse: input.publicUse,
+                        specialRequirements: input.specialRequirements ?? 'none',
+                        additionalComments: input.additionalComments ?? 'none',
+                        terms: input.terms,
+                        userId: user.userId
                     },
                 });
 

@@ -420,13 +420,13 @@ export const BuyerMembershipForm = () => {
                                             ].map((preference) => (
                                                 <div key={preference} className="flex items-center space-x-2">
                                                     <Checkbox
-                                                           checked={field.value?.includes(preference)}
-                                                           onCheckedChange={(checked) => {
-                                                               const updatedValue = checked
-                                                                   ? [...(field.value ?? []), preference]
-                                                                   : field.value?.filter((value) => value !== preference) ?? [];
-                                                               field.onChange(updatedValue);
-                                                           }}
+                                                        checked={field.value?.includes(preference)}
+                                                        onCheckedChange={(checked) => {
+                                                            const updatedValue = checked
+                                                                ? [...(field.value ?? []), preference]
+                                                                : field.value?.filter((value) => value !== preference) ?? [];
+                                                            field.onChange(updatedValue);
+                                                        }}
                                                     />
                                                     <FormLabel>{preference}</FormLabel>
                                                 </div>
@@ -541,7 +541,7 @@ export const BuyerMembershipForm = () => {
                     type="submit"
                     disabled={createMembership.isPending}
                 >
-                    {createMembership.isPending ? 'Registering...' : 'Register'}
+                    {createMembership.isPending ? 'Submiting...' : 'Submit Application'}
                 </Button>
             </form>
         </Form>
