@@ -54,21 +54,23 @@ model Artisan {
     documents       String[]        @default([])
     userId          String
     listingCriteria String
-    criteria        LisitingCritera @relation(fields: [listingCriteria], references: [criteraId])
+    criteria        LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
     user            User            @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Business {
-    businessId       String        @id @default(uuid())
-    businessName     String        @default("none")
+    businessId       String          @id @default(uuid())
+    businessName     String          @default("none")
     businessEmail    String
-    businessAddress  String        @default("none")
-    businessType     BusinessLevel @default(None)
-    businessSold     String        @default("none")
-    businessEmployee Int           @default(0)
-    documents        String[]      @default([])
+    businessAddress  String          @default("none")
+    businessType     BusinessLevel   @default(None)
+    businessSold     String          @default("none")
+    businessEmployee Int             @default(0)
+    documents        String[]        @default([])
+    listingCriteria  String
+    criteria         LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
     userId           String
-    user             User          @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+    user             User            @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
 
     @@unique([businessEmail])
     @@index([businessEmail])
@@ -84,6 +86,8 @@ model Institute {
     instituteRep     String          @default("none")
     repDes           String          @default("none")
     documents        String[]        @default([])
+    listingCriteria  String
+    criteria         LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
     userId           String
     user             User            @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
 
@@ -225,28 +229,30 @@ model SponsorMembership {
 }
 
 model LisitingCritera {
-    criteraId                 String    @id @default(uuid())
-    sourceOfMaterial          String    @default("none")
-    craftingProcess           String    @default("none")
-    sustainablePractices      Boolean   @default(false)
-    sustainabledescription    String    @default("none")
-    fairWage                  Boolean   @default(false)
-    genderSuport              Boolean   @default(false)
-    womenPercentage           Int       @default(0)
-    workplaceuphold           Boolean   @default(false)
-    workplaceDescription      String    @default("none")
-    childLabour               Boolean   @default(false)
-    fairTrade                 Boolean   @default(false)
-    fairtradeDoc              String[]  @default([])
-    giHold                    Boolean   @default(false)
-    giNumber                  String    @default("none")
-    blockChain                Boolean   @default(false)
-    blockChainDoc             String[]  @default([])
-    ethics                    Boolean   @default(false)
-    qualityReview             Boolean   @default(false)
-    profilePermission         Boolean   @default(false)
-    complianceAcknowledgement Boolean   @default(false)
+    criteraId                 String      @id @default(uuid())
+    sourceOfMaterial          String      @default("none")
+    craftingProcess           String      @default("none")
+    sustainablePractices      Boolean     @default(false)
+    sustainabledescription    String      @default("none")
+    fairWage                  Boolean     @default(false)
+    genderSuport              Boolean     @default(false)
+    womenPercentage           Int         @default(0)
+    workplaceuphold           Boolean     @default(false)
+    workplaceDescription      String      @default("none")
+    childLabour               Boolean     @default(false)
+    fairTrade                 Boolean     @default(false)
+    fairtradeDoc              String[]    @default([])
+    giHold                    Boolean     @default(false)
+    giNumber                  String      @default("none")
+    blockChain                Boolean     @default(false)
+    blockChainDoc             String[]    @default([])
+    ethics                    Boolean     @default(false)
+    qualityReview             Boolean     @default(false)
+    profilePermission         Boolean     @default(false)
+    complianceAcknowledgement Boolean     @default(false)
     Artisan                   Artisan[]
+    Business                  Business[]
+    Institute                 Institute[]
 }
 
 enum InstitutionType {

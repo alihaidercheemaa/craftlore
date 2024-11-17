@@ -631,7 +631,7 @@ export const CorporateMembershipForm = () => {
                                             }
                                         }}
                                     >
-                                        {({ open }) =>  {
+                                        {({ open }) => {
                                             function handleOnClick() {
                                                 open();
                                             }
@@ -644,7 +644,7 @@ export const CorporateMembershipForm = () => {
                                     </CldUploadWidget>
                                 )}
                             />
-                                       <FormMessage/>
+                            <FormMessage />
                         </div>
                         <div className="grid gap-3">
                             <FormLabel>Proof of Tax ID</FormLabel>
@@ -669,7 +669,7 @@ export const CorporateMembershipForm = () => {
                                             }
                                         }}
                                     >
-                                        {({ open }) =>  {
+                                        {({ open }) => {
                                             function handleOnClick() {
                                                 open();
                                             }
@@ -682,7 +682,7 @@ export const CorporateMembershipForm = () => {
                                     </CldUploadWidget>
                                 )}
                             />
-                            <FormMessage/>
+                            <FormMessage />
                         </div>
                         <FormField
                             control={form.control}
@@ -741,6 +741,40 @@ export const CorporateMembershipForm = () => {
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="customerDemographic"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Customer Demographic</FormLabel>
+                                    <Select
+                                        onValueChange={field.onChange} defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select target demographics" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {[
+                                                "General Consumers",
+                                                "Luxury Market",
+                                                "Eco-Conscious Consumers",
+                                                "Cultural Enthusiasts",
+                                                "Corporate Clients",
+                                                "Educational/Academic Audience",
+                                            ].map((demographic) => (
+                                                <SelectItem key={demographic} value={demographic}>
+                                                    {demographic}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
                         <FormField
                             control={form.control}
                             name="brandMission"
@@ -851,8 +885,9 @@ export const CorporateMembershipForm = () => {
                 <Button
                     type="submit"
                     disabled={createMembership.isPending}
+                    className="w-full"
                 >
-                    {createMembership.isPending ? 'Registering...' : 'Register'}
+                    {createMembership.isPending ? 'Submiting...' : 'Submit Application'}
                 </Button>
             </form>
         </Form >

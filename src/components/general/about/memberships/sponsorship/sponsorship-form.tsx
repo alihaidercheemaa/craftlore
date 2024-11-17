@@ -11,14 +11,20 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "~
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Textarea } from "~/components/ui/textarea";
 import { Card, CardHeader, CardContent, CardTitle } from "~/components/ui/card";
+import { useToast } from "~/hooks/use-toast";
+import { api } from "~/trpc/react";
 
 const sponsorshipFormSchema = z.object({
+
+
+
     // Sponsor Information
     sponsorName: z.string().min(2, "Sponsor name is required."),
     contactPerson: z.string().min(2, "Contact person is required."),
     email: z.string().email("Invalid email address."),
     phone: z.string().min(10, "Phone number must be at least 10 digits."),
     socialLinks: z.string().optional(),
+    password: z.string().min(8, "Password must be at least 8 characters."),
 
     // Sponsor Type
     sponsorType: z.string().min(1, "Select the sponsor type."),
@@ -64,12 +70,80 @@ const sponsorshipFormSchema = z.object({
 type SponsorshipFormValues = z.infer<typeof sponsorshipFormSchema>;
 
 export const SponsorMemberShipForm = () => {
+
+
+    const { toast } = useToast()
+    const createMembership = api.membership.addSponsorMembership.useMutation({
+        onSuccess: () => {
+            form.reset()
+            toast({
+                title: 'Success!!!',
+                description: "Membership created successfully"
+            })
+        },
+        onError: () => {
+            toast({
+                variant: 'destructive',
+                title: 'Error!!!',
+                description: "Membership creation error"
+            })
+        }
+    })
+
     const form = useForm<SponsorshipFormValues>({
         resolver: zodResolver(sponsorshipFormSchema),
     });
 
     const onSubmit = (data: SponsorshipFormValues) => {
-        console.log("Form Data:", data);
+        createMembership.mutate({
+            // Sponsor Information
+            sponsorName: data.sponsorName,
+            contactPerson: data.contactPerson,
+            email: data.email,
+            phone: data.phone,
+            socialLinks: data.socialLinks ?? 'none',
+            password : data.password,
+
+            // Sponsor Type
+            sponsorType: data.sponsorType,
+            industry: data.industry,
+
+            // Sponsorship Goals and Interests
+            sponsorshipGoal: data.sponsorshipGoal,
+            objectives: data.objectives,
+            focusArea: data.focusArea,
+
+            // Sponsorship Tier
+            tier: data.tier,
+            budgetRange: data.budgetRange ?? 'none',
+
+            // Sponsorship Options
+            sponsorshipChannel: data.sponsorshipChannel,
+            eventInterest: data.eventInterest,
+            productCustomization: data.productCustomization ?? 'none',
+
+            // CSR and Sustainability
+            csrInterest: data.csrInterest,
+            pastCSREfforts: data.pastCSREfforts ?? 'none',
+            sustainabilityPractices: data.sustainabilityPractices ?? 'none',
+
+            // Marketing and Branding Preferences
+            brandingOptions: data.brandingOptions,
+            socialHandles: data.socialHandles ?? 'none',
+            communicationChannel: data.communicationChannel,
+
+            // Impact and Reporting Requirements
+            impactMetrics: data.impactMetrics,
+            reportFrequency: data.reportFrequency,
+            publicUse: data.publicUse,
+
+            // Additional Information
+            specialRequirements: data.specialRequirements ?? 'none',
+            additionalComments: data.additionalComments ?? 'none',
+
+            // Terms and Conditions
+            terms: data.terms,
+        });
     };
 
     return (
@@ -88,7 +162,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Organization/Individual Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter sponsor name" {...field} />
+                                        <Input placeholder="Enter sponsor name" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -101,7 +175,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Contact Person</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter contact person name" {...field} />
+                                        <Input placeholder="Enter contact person name" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -114,7 +188,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Email Address</FormLabel>
                                     <FormControl>
-                                        <Input type="email" placeholder="Enter email address" {...field} />
+                                        <Input type="email" placeholder="Enter email address" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -127,7 +201,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Phone Number</FormLabel>
                                     <FormControl>
-                                        <Input type="tel" placeholder="Enter phone number" {...field} />
+                                        <Input type="tel" placeholder="Enter phone number" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -140,7 +214,21 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Website or Social Media Links</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Enter website or social media links" {...field} />
+                                        <Textarea placeholder="Enter website or social media links" {...field} value={field.value ?? ''} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input type="password" placeholder="Enter your password" {...field} value={field.value ?? ''}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -193,7 +281,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Industry or Focus Area</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter industry" {...field} />
+                                        <Input placeholder="Enter industry" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -248,7 +336,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Sponsorship Objectives</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Describe sponsorship objectives" {...field} />
+                                        <Textarea placeholder="Describe sponsorship objectives" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -434,7 +522,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Product Customization Requirements (Optional)</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Enter any specific product customization requirements" {...field} />
+                                        <Textarea placeholder="Enter any specific product customization requirements" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -486,7 +574,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Past CSR Efforts (Optional)</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Describe your past CSR initiatives" {...field} />
+                                        <Textarea placeholder="Describe your past CSR initiatives" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -499,7 +587,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Sustainability Practices (Optional)</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Describe your sustainability practices" {...field} />
+                                        <Textarea placeholder="Describe your sustainability practices" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -568,7 +656,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Social Media Handles (Optional)</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter your social media handles" {...field} />
+                                        <Input placeholder="Enter your social media handles" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -737,7 +825,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Special Requirements (Optional)</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Enter any special requirements or considerations" {...field} />
+                                        <Textarea placeholder="Enter any special requirements or considerations" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -750,7 +838,7 @@ export const SponsorMemberShipForm = () => {
                                 <FormItem>
                                     <FormLabel>Additional Comments (Optional)</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Any additional comments or information" {...field} />
+                                        <Textarea placeholder="Any additional comments or information" {...field} value={field.value ?? ''} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -788,8 +876,12 @@ export const SponsorMemberShipForm = () => {
                     </CardContent>
                 </Card>
 
-                <Button type="submit" className="w-full">
-                    Submit Application
+                <Button
+                    type="submit"
+                    disabled={createMembership.isPending}
+                    className="w-full"
+                >
+                    {createMembership.isPending ? 'Submiting...' : 'Submit Application'}
                 </Button>
             </form>
         </Form>

@@ -58,11 +58,6 @@ export const Header = () => {
         {
             title: 'CRAFT INDUSTRY LISTING',
             href: '/listing',
-            submenu: [
-                { title: 'Service 1', href: '#service-1' },
-                { title: 'Service 2', href: '#service-2' },
-                { title: 'Service 3', href: '#service-3' },
-            ]
         },
         {
             title: 'CRAFT VULNERABILITY',
