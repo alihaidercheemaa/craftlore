@@ -18,7 +18,7 @@ export const MissionCard = ({ title, id, description,className }: MissionProps) 
         )}
             onClick={() => setMission({ id: id, title: title, description: description })}
         >
-            <p className={cn("text-2xl font-montserrat text-primary group-hover:text-white",
+            <p className={cn("lg:text-2xl font-montserrat text-primary group-hover:text-white",
                 mission.id == id && "text-white"
             )}>{title}</p>
             <p className="text-left text-sm group-hover:text-white">See more</p>

@@ -191,10 +191,19 @@ export const RegistrationRouter = createTRPCRouter({
         }),
 
     getArtisans: publicProcedure
-        .query(({ ctx }) => {
+        .query(async ({ ctx }) => {
             try {
 
-                const artisans = ctx.db.artisan.findMany()
+                const artisans: ArtisanProps[] = await ctx.db.artisan.findMany({
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            }
+                        }
+                    }
+                })
                 return artisans
             } catch (error) {
                 if (error instanceof TRPCError) {
@@ -211,5 +220,136 @@ export const RegistrationRouter = createTRPCRouter({
                     message: "Something went wrong.",
                 });
             }
-        })
+        }),
+
+    getTopArtisans: publicProcedure
+        .query(({ ctx }) => {
+            try {
+
+                const artisans = ctx.db.artisan.findMany({
+                    take: 9,
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            }
+                        }
+                    }
+                })
+                return artisans
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
+    getBusinesses: publicProcedure
+        .query(async ({ ctx }) => {
+            try {
+
+                const businesses: BusinessProps[] = await ctx.db.business.findMany({
+                })
+                return businesses
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
+    getTopBusiness: publicProcedure
+        .query(({ ctx }) => {
+            try {
+
+                const buesinesses = ctx.db.business.findMany({
+                    take: 9,
+                })
+                return buesinesses
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
+    getInstitutes: publicProcedure
+        .query(async ({ ctx }) => {
+            try {
+                const institutes: InstituteProps[] = await ctx.db.institute.findMany({
+                })
+                return institutes
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
+    getTopInstitutes: publicProcedure
+        .query(({ ctx }) => {
+            try {
+
+                const institutes = ctx.db.institute.findMany({
+                    take: 9,
+                })
+                return institutes
+            } catch (error) {
+                if (error instanceof TRPCError) {
+                    console.error(error.message);
+                    throw new TRPCError({
+                        code: "INTERNAL_SERVER_ERROR",
+                        message: error.message,
+                    });
+                }
+
+                console.error(error);
+                throw new TRPCError({
+                    code: "INTERNAL_SERVER_ERROR",
+                    message: "Something went wrong.",
+                });
+            }
+        }),
+
 });

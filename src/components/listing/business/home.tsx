@@ -1,18 +1,14 @@
-
-
-
 import { Button } from "~/components/ui/button"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "~/components/ui/select"
-import { ArtisanList } from "~/components/listing/artisans/artisan-list"
 import { api, HydrateClient } from "~/trpc/server"
-import { ArtisanTable } from "~/components/listing/artisans/artisan-table"
 import { Suspense } from "react"
+import { BusinessList } from "~/components/listing/business/business-list"
+import { BusinessTable } from "~/components/listing/business/business-table"
 
 
-export const ArtisanInfo = async () => {
+export const BusinessInfo = async () => {
 
-
-    void api.register.getArtisans.prefetch()
+    void api.register.getBusinesses.prefetch()
     return (
         <HydrateClient>
             <div className="mx-6 lg:container grid gap-32 mt-32">
@@ -48,9 +44,9 @@ export const ArtisanInfo = async () => {
                         <Button variant={'secondary'} type="button">Submit</Button>
                     </form>
                 </div>
-                <ArtisanList />
+                <BusinessList />
                 <Suspense fallback={<div>Loading......</div>}>
-                    <ArtisanTable />
+                    <BusinessTable />
                 </Suspense>
             </div>
         </HydrateClient>

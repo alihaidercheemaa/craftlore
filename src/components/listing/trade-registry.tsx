@@ -1,8 +1,8 @@
-import { TraderRegistryInfo } from "~/components/listing/trade-registry/intro"
-import { ListingBenefits } from "~/components/listing/trade-registry/listing-benifts"
-import { RegisterInfo } from "~/components/listing/trade-registry/register-info"
-import { RegistrationProcess } from "~/components/listing/trade-registry/registration-process"
-import { AnalysisInfo } from "~/components/listing/trade-registry/analysis-info"
+import { TraderRegistryInfo } from "~/components/listing/landing/intro"
+import { ListingBenefits } from "~/components/listing/landing/listing-benifts"
+import { RegisterInfo } from "~/components/listing/landing/register-info"
+import { RegistrationProcess } from "~/components/listing/landing/registration-process"
+import { AnalysisInfo } from "~/components/listing/landing/analysis-info"
 
 
 

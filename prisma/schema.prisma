@@ -52,6 +52,7 @@ model Artisan {
     craftAward      String          @default("none")
     market          MarketType      @default(None)
     documents       String[]        @default([])
+    status          String          @default("active")
     userId          String
     listingCriteria String
     criteria        LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
@@ -67,6 +68,7 @@ model Business {
     businessSold     String          @default("none")
     businessEmployee Int             @default(0)
     documents        String[]        @default([])
+    status           String          @default("active")
     listingCriteria  String
     criteria         LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
     userId           String
@@ -86,6 +88,7 @@ model Institute {
     instituteRep     String          @default("none")
     repDes           String          @default("none")
     documents        String[]        @default([])
+    status           String          @default("active")
     listingCriteria  String
     criteria         LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade, onUpdate: Cascade)
     userId           String

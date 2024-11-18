@@ -17,7 +17,7 @@ export const RegisterCard = ({ title, id, description,className }: RegisterProps
         )}
             onClick={() => setRegister({ id: id, title: title, description: description })}
         >
-            <p className={cn("text-2xl font-montserrat text-primary group-hover:text-white",
+            <p className={cn("lg:text-2xl font-montserrat text-primary group-hover:text-white",
                 register.id == id && "text-white"
             )}>{title}</p>
             <p className="text-left text-sm group-hover:text-white">See more</p>
