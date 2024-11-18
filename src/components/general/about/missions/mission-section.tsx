@@ -11,7 +11,7 @@ export const MissionSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mt-36">
                 {
                     MISSIONS.slice(0, 4).map((mission) => (
-                        <MissionCard className="col-span-4 lg:col-span-1" title={mission.title} id={mission.id} description={mission.description} key={mission.id} />
+                        <MissionCard className="col-span-2 lg:col-span-1" title={mission.title} id={mission.id} description={mission.description} key={mission.id} />
                     ))
                 }
             </div>
@@ -22,7 +22,7 @@ export const MissionSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mb-36">
                 {
                     MISSIONS.slice(4, 8).map((mission) => (
-                        <MissionCard className="col-span-4 lg:col-span-1" title={mission.title}  id={mission.id} description={mission.description} key={mission.id} />
+                        <MissionCard className="col-span-2 lg:col-span-1" title={mission.title}  id={mission.id} description={mission.description} key={mission.id} />
                     ))
                 }
             </div>

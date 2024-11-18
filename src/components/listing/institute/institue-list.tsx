@@ -1,11 +1,11 @@
 import { api } from "~/trpc/server";
 
-export const ArtisanList = async () => {
-    const artisans = await api.register.getTopArtisans();
+export const InstituteList = async () => {
+    const institutes = await api.register.getTopInstitutes();
 
     return (
         <div className="lg:container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-            {artisans.map((artisan, index) => {
+            {institutes.map((institute, index) => {
                 // Determine ranking based on index
                 let ranking, rankingColor;
                 if (index < 3) {
@@ -31,26 +31,26 @@ export const ArtisanList = async () => {
                         </div>
                         <div className="p-6">
                             <h2 className="text-xl font-bold mb-2 text-gray-800">
-                                {artisan.user.fullName}
+                                {institute.instituteName}
                             </h2>
                             <p className="text-sm text-gray-500 mb-4">
-                                Location: {artisan.user.address}
+                                Location: {institute.instituteAddress}
                             </p>
                             <p className="text-sm text-gray-700">
-                                <span className="font-semibold">Craft:</span>{" "}
-                                {artisan.craftSpecialty}
+                                <span className="font-semibold">Type:</span>{" "}
+                                {institute.instituteType}
                             </p>
                             <p className="text-sm text-gray-700">
-                                <span className="font-semibold">Skill Level:</span>{" "}
-                                {artisan.craftSkill}
+                                <span className="font-semibold">Mission:</span>{" "}
+                                {institute.instituteMission}
                             </p>
                             <p className="text-sm text-gray-700">
-                                <span className="font-semibold">Award:</span>{" "}
-                                {artisan.craftAward}
+                                <span className="font-semibold">Representative:</span>{" "}
+                                {institute.instituteRep} ({institute.repDes})
                             </p>
                             <p className="text-sm text-gray-700">
-                                <span className="font-semibold">Experience:</span>{" "}
-                                {artisan.craftExperience} years
+                                <span className="font-semibold">Email:</span>{" "}
+                                {institute.instituteEmail}
                             </p>
                         </div>
                     </div>

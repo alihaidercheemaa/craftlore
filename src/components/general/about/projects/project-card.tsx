@@ -17,7 +17,7 @@ export const ProjectCard = ({ title, id, description, className }: ProjectProps)
         )}
             onClick={() => setProject({ id: id, title: title, description: description })}
         >
-            <p className={cn("text-2xl font-montserrat text-primary group-hover:text-white",
+            <p className={cn("lg:text-2xl font-montserrat text-primary group-hover:text-white",
                 project.id == id && "text-white"
             )}>
                 {title}

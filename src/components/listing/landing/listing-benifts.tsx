@@ -1,5 +1,5 @@
 import { LISTINGBENEFITS } from "~/constants"
-import { BusinessListing } from "~/components/listing/trade-registry/business-listing"
+import { BusinessListing } from "~/components/listing/landing/business-listing"
 
 
 

@@ -11,7 +11,7 @@ export const ProjectSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mt-36">
                 {
                     PROJECTS.slice(0, 4).map((project) => (
-                        <ProjectCard className="col-span-4 lg:col-span-1" title={project.title} id={project.id} description={project.description} key={project.id} />
+                        <ProjectCard className="col-span-2 lg:col-span-1" title={project.title} id={project.id} description={project.description} key={project.id} />
                     ))
                 }
             </div>
@@ -22,7 +22,7 @@ export const ProjectSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mb-36">
                 {
                     PROJECTS.slice(4, 8).map((project) => (
-                        <ProjectCard className="col-span-4 lg:col-span-1" title={project.title}  id={project.id} description={project.description} key={project.id} />
+                        <ProjectCard className="col-span-2 lg:col-span-1" title={project.title}  id={project.id} description={project.description} key={project.id} />
                     ))
                 }
             </div>

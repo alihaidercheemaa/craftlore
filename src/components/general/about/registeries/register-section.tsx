@@ -12,7 +12,7 @@ export const RegisterSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mt-36">
                 {
                     REGISTRIES.slice(0, 4).map((register) => (
-                        <RegisterCard className="col-span-4 lg:col-span-1" title={register.title} id={register.id} description={register.description} key={register.id} />
+                        <RegisterCard className="col-span-2 lg:col-span-1" title={register.title} id={register.id} description={register.description} key={register.id} />
                     ))
                 }
             </div>
@@ -23,7 +23,7 @@ export const RegisterSection = () => {
             <div className="lg:container grid grid-cols-4 gap-7 relative -mb-36">
                 {
                     REGISTRIES.slice(4, 8).map((register) => (
-                        <RegisterCard className="col-span-4 lg:col-span-1" title={register.title}  id={register.id} description={register.description} key={register.id} />
+                        <RegisterCard className="col-span-2 lg:col-span-1" title={register.title}  id={register.id} description={register.description} key={register.id} />
                     ))
                 }
             </div>

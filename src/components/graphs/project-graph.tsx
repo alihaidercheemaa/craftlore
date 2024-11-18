@@ -18,7 +18,7 @@ ChartJS.register(
 export const ProjectGraph = () => {
 
     const [thickness, setThickness] = useState<number>(40);
-    
+
     useEffect(() => {
         // Adjust font size based on screen width
         const handleResize = () => {
@@ -68,7 +68,7 @@ export const ProjectGraph = () => {
             title: {
                 display: true,
                 text: 'CraftLore Projects & Business Tools Cost Overview',
-                                    color: '#000'
+                color: '#000'
             },
         },
         scales: {
@@ -82,7 +82,7 @@ export const ProjectGraph = () => {
                 title: {
                     display: true,
                     text: 'Project Cost ($)',
-                                        color: '#000'
+                    color: '#000'
                 },
             },
         },
@@ -92,7 +92,7 @@ export const ProjectGraph = () => {
         <section className="col-span-12 bg-[#e5edf7]  gap-4 mt-12 pt-60 pb-32">
             <div className="mx-6 lg:container">
                 <div className="lg:container grid  gap-7 ">
-                <h2 className='text-2xl lg:text-4xl font-montserrat text-secondary text-center'>Craftlore Projects Overview</h2>
+                    <h2 className='text-2xl lg:text-4xl font-montserrat text-secondary text-center'>Craftlore Projects Overview</h2>
                     <h2 className='text-2xl lg:text-4xl font-montserrat text-secondary text-center'>CraftLore Business Tools and Project Costs</h2>
                     <div className='lg:container w-full'>
                         <Bar data={data} options={options} />
