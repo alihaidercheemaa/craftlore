@@ -97,7 +97,7 @@ export const InstituteTable = () => {
 
     return (
         <div className="lg:container">
-            <ScrollArea>
+            <ScrollArea className="w-[320px] lg:w-full">
                 <div className="flex items-center gap-4 py-4 px-2">
                     {/* Search by Name */}
                     <Input

@@ -83,14 +83,14 @@ export const ArtisanTable = () => {
 
     return (
         <div className="lg:container">
-            <ScrollArea>
-                <div className="flex items-center gap-4 py-4 px-2">
+            <ScrollArea className="w-[320px] lg:w-full overflow-x-auto">
+                <div className="flex flex-wrap items-center gap-4 py-4 px-2">
                     {/* Search by Name */}
                     <Input
                         placeholder="Search by name"
                         value={nameFilter}
                         onChange={(e) => setNameFilter(e.target.value)}
-                        className="w-1/3"
+                        className="w-full sm:w-1/3"
                     />
 
                     {/* Filter Options */}
@@ -116,9 +116,9 @@ export const ArtisanTable = () => {
                     </Button>
                 </div>
 
-                <div className="rounded-md border">
+                <div className="rounded-md border overflow-x-auto">
                     <Table>
-                        <TableHeader>
+                        <TableHeader className="sticky top-0 bg-white z-10">
                             {table.getHeaderGroups().map((headerGroup) => (
                                 <TableRow key={headerGroup.id}>
                                     {headerGroup.headers.map((header) => (
@@ -176,8 +176,9 @@ export const ArtisanTable = () => {
                         Next
                     </Button>
                 </div>
-                <ScrollBar orientation="horizontal" />
+                <ScrollBar orientation="horizontal" className="mt-2" />
             </ScrollArea>
         </div>
+
     );
 };

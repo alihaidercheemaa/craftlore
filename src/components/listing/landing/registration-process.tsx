@@ -5,17 +5,16 @@ import { Button } from "~/components/ui/button"
 
 export const RegistrationProcess = () => {
 
-
     return (
         <div>
             <div className="bg-[#e5edf7] h-80" />
             <div className="mx-6 lg:container">
-                <div className="container">
-                    <div className="container bg-primary text-white text-center py-12 font-opensans  font-bold rounded-t-xl relative -mt-[192px] border-b-8 border-secondary space-y-6">
-                        <h4 className="text-xl lg:text-4xl">
+                <div className="lg:container">
+                    <div className="lg:container bg-primary text-white text-center py-12 font-opensans  font-bold rounded-t-xl relative -mt-[192px] border-b-8 border-secondary space-y-6">
+                        <h4 className="text-base lg:text-4xl">
                             CraftLore Trade Registry Registration Process
                         </h4>
-                        <p>A unified platform fostering trust, growth & sustainability in Kashmiri handicrafts.</p>
+                        <p className="text-sm lg:text-base">A unified platform fostering trust, growth & sustainability in Kashmiri handicrafts.</p>
                     </div>
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 py-20">
                         {/* Left Column */}

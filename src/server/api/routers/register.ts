@@ -32,6 +32,7 @@ export const RegistrationRouter = createTRPCRouter({
                     fairtradeDoc: z.array(z.string()).optional(),
                     giHold: z.boolean().optional(),
                     giNumber: z.string().optional(),
+                    giDoc: z.string().optional(),
                     blockChain: z.boolean().optional(),
                     blockChainDoc: z.array(z.string()).optional(),
                     ethics: z.boolean().optional(),
@@ -39,13 +40,13 @@ export const RegistrationRouter = createTRPCRouter({
                     profilePermission: z.boolean().optional(),
                     complianceAcknowledgement: z.boolean().optional(),
                 }),
+                market: z.string().optional(),
                 artisan: z
                     .object({
                         craftSpecialty: z.string().optional(),
                         craftSkill: z.string().optional(),
                         craftExperience: z.number().optional(),
                         craftAward: z.string().optional(),
-                        market: z.string().optional(),
                         documents: z.array(z.string()).optional(),
                     })
                     .optional(),
@@ -90,6 +91,81 @@ export const RegistrationRouter = createTRPCRouter({
                     },
                 });
 
+                let Rank = "None";
+
+                // Check the conditions and count checks
+                let checks = 0;
+                let documentation = 0;
+
+                if (listingCriteria.giHold) checks++;
+                if (listingCriteria.blockChain) checks++;
+                if (listingCriteria.sustainablePractices) checks++;
+                if (listingCriteria.fairWage) checks++;
+                if (listingCriteria.childLabour) checks++;
+                if (listingCriteria.ethics) checks++;
+                if (listingCriteria.workplaceuphold) checks++;
+                if (listingCriteria.fairTrade) checks++;
+
+                // Check for documentation
+                if (listingCriteria.giDoc) documentation++;
+                if (listingCriteria.blockChainDoc) documentation++;
+                if (listingCriteria.sustainabledescription !== 'none') documentation++;
+                if (listingCriteria.workplaceDescription !== 'none') documentation++;
+
+                // Apply base ranking logic
+                if (checks >= 8 && documentation >= 4) {
+                    Rank = "Gold";
+                } else if (checks >= 5) {
+                    Rank = "Silver";
+                } else {
+                    Rank = "Bronze";
+                }
+
+                // Apply additional logic based on registerType
+                if (user.registerType === 'Artisan') {
+                    // Check craftSkill
+                    if (artisan?.craftSkill === "Expert") {
+                        // Keep or upgrade to Gold
+                        if (Rank === "Silver" || Rank === "Bronze") {
+                            Rank = "Gold";
+                        }
+                    } else if (artisan?.craftSkill === "Advanced") {
+                        // Adjust rank to Silver if Bronze
+                        if (Rank === "Bronze") {
+                            Rank = "Silver";
+                        }
+                    } else if (artisan?.craftSkill === "Beginner") {
+                        // Downgrade to Bronze if higher rank
+                        if (Rank === "Gold" || Rank === "Silver") {
+                            Rank = "Bronze";
+                        }
+                    }
+
+                    // Check market reach
+                    if (input.market === "International") {
+                        Rank = "Gold"; // Upgrade to Gold
+                    } else if (input.market === "National") {
+                        if (Rank === "Bronze") {
+                            Rank = "Silver"; // Ensure minimum Silver
+                        }
+                    }
+                } else if (user.registerType === 'Business') {
+                    // Check market reach for Business
+                    if (input.market === "International") {
+                        Rank = "Gold"; // Upgrade to Gold
+                    } else if (input.market === "National") {
+                        if (Rank === "Bronze") {
+                            Rank = "Silver"; // Ensure minimum Silver
+                        }
+                    }
+                } else if (user.registerType === 'Institution') {
+                    // Institution ranking is purely based on the base checks
+                    // No additional factors are applied
+                    Rank = Rank; // Keep the base rank
+                }
+
+
+
                 // Create Listing Criteria
                 const newCriteria = await ctx.db.lisitingCritera.create({
                     data: {
@@ -107,12 +183,14 @@ export const RegistrationRouter = createTRPCRouter({
                         fairtradeDoc: listingCriteria.fairtradeDoc ?? [],
                         giHold: listingCriteria.giHold ?? false,
                         giNumber: listingCriteria.giNumber ?? "none",
+                        giDoc: listingCriteria.giDoc ?? 'none',
                         blockChain: listingCriteria.blockChain ?? false,
                         blockChainDoc: listingCriteria.blockChainDoc ?? [],
                         ethics: listingCriteria.ethics ?? false,
                         qualityReview: listingCriteria.qualityReview ?? false,
                         profilePermission: listingCriteria.profilePermission ?? false,
                         complianceAcknowledgement: listingCriteria.complianceAcknowledgement ?? false,
+                        rank: Rank as Ranks
                     },
                 });
 
@@ -127,8 +205,8 @@ export const RegistrationRouter = createTRPCRouter({
                                 : SkillLevel.None,
                             craftExperience: artisan.craftExperience ?? 0,
                             craftAward: artisan.craftAward ?? "none",
-                            market: (Object.values(MarketType) as string[]).includes(artisan.market ?? "")
-                                ? (artisan.market as MarketType)
+                            market: (Object.values(MarketType) as string[]).includes(input.market ?? "")
+                                ? (input.market as MarketType)
                                 : MarketType.None,
                             documents: artisan.documents ?? [],
                             listingCriteria: newCriteria.criteraId,
@@ -223,21 +301,85 @@ export const RegistrationRouter = createTRPCRouter({
         }),
 
     getTopArtisans: publicProcedure
-        .query(({ ctx }) => {
+        .query(async ({ ctx }) => {
             try {
 
-                const artisans = ctx.db.artisan.findMany({
-                    take: 9,
+                const goldArtisans = ctx.db.artisan.findMany({
+                    take: 3, // Limit to 3 Gold artisans
+                    where: {
+                        criteria: {
+                            rank: 'Gold',
+                        },
+                    },
                     include: {
                         user: {
                             select: {
                                 fullName: true,
                                 address: true,
-                            }
-                        }
-                    }
-                })
-                return artisans
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const silverArtisans = ctx.db.artisan.findMany({
+                    take: 3, // Limit to 3 Silver artisans
+                    where: {
+                        criteria: {
+                            rank: 'Silver',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const bronzeArtisans = ctx.db.artisan.findMany({
+                    take: 3, // Limit to 3 Bronze artisans
+                    where: {
+                        criteria: {
+                            rank: 'Bronze',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                // Combine results
+                const artisans = await Promise.all([goldArtisans, silverArtisans, bronzeArtisans]);
+                const combinedArtisans = {
+                    gold: artisans[0],
+                    silver: artisans[1],
+                    bronze: artisans[2],
+                }
+
+                return combinedArtisans;
+
             } catch (error) {
                 if (error instanceof TRPCError) {
                     console.error(error.message);
@@ -280,13 +422,84 @@ export const RegistrationRouter = createTRPCRouter({
         }),
 
     getTopBusiness: publicProcedure
-        .query(({ ctx }) => {
+        .query(async ({ ctx }) => {
             try {
 
-                const buesinesses = ctx.db.business.findMany({
-                    take: 9,
-                })
-                return buesinesses
+                const gold = ctx.db.business.findMany({
+                    take: 3, // Limit to 3 Gold artisans
+                    where: {
+                        criteria: {
+                            rank: 'Gold',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const silver = ctx.db.business.findMany({
+                    take: 3, // Limit to 3 Silver artisans
+                    where: {
+                        criteria: {
+                            rank: 'Silver',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const bronze = ctx.db.business.findMany({
+                    take: 3, // Limit to 3 Bronze artisans
+                    where: {
+                        criteria: {
+                            rank: 'Bronze',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                // Combine results
+                const businesses = await Promise.all([gold, silver, bronze]);
+                const combinesBusinesses = {
+                    gold: businesses[0],
+                    silver: businesses[1],
+                    bronze: businesses[2],
+                }
+
+                return combinesBusinesses;
             } catch (error) {
                 if (error instanceof TRPCError) {
                     console.error(error.message);
@@ -328,13 +541,85 @@ export const RegistrationRouter = createTRPCRouter({
         }),
 
     getTopInstitutes: publicProcedure
-        .query(({ ctx }) => {
+        .query(async ({ ctx }) => {
             try {
 
-                const institutes = ctx.db.institute.findMany({
-                    take: 9,
-                })
-                return institutes
+              
+                const gold = ctx.db.institute.findMany({
+                    take: 3, // Limit to 3 Gold artisans
+                    where: {
+                        criteria: {
+                            rank: 'Gold',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const silver = ctx.db.institute.findMany({
+                    take: 3, // Limit to 3 Silver artisans
+                    where: {
+                        criteria: {
+                            rank: 'Silver',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                const bronze = ctx.db.institute.findMany({
+                    take: 3, // Limit to 3 Bronze artisans
+                    where: {
+                        criteria: {
+                            rank: 'Bronze',
+                        },
+                    },
+                    include: {
+                        user: {
+                            select: {
+                                fullName: true,
+                                address: true,
+                            },
+                        },
+                        criteria: {
+                            select: {
+                                rank: true,
+                            },
+                        },
+                    },
+                });
+
+                // Combine results
+                const institutes = await Promise.all([gold, silver, bronze]);
+                const combinedInstitutes = {
+                    gold: institutes[0],
+                    silver: institutes[1],
+                    bronze: institutes[2],
+                }
+
+                return combinedInstitutes;
             } catch (error) {
                 if (error instanceof TRPCError) {
                     console.error(error.message);

@@ -58,7 +58,7 @@ export const WelcomeCards = () => {
                     Eliminating Middleman, Empowering Artisans/ Buyers
                 </h6>
                 <br />
-                <p className="font-opnsans text-justify text-base group-hover:text-black lg:text-2xl">
+                <p className="font-opnsans text-justify text-base group-hover:text-white lg:text-2xl">
                     CraftLore is a cutting-edge, <b>Non-Commercial</b> digital platform
                     engineered for the in-depth analysis of Kashmir&apos;s<b> 700+</b>{" "}
                     year craft heritage. By seamlessly blending historical, artistic, and
@@ -67,7 +67,7 @@ export const WelcomeCards = () => {
                     <br />
                     <br />
                 </p>
-                <ul className="list-inside list-disc space-y-4 text-base group-hover:text-black lg:text-2xl pb-2">
+                <ul className="list-inside list-disc space-y-4 text-base group-hover:text-white lg:text-2xl pb-2">
                     <li className="text-justify">
                         CraftLore uses advanced <b>Geo-Certification protocols</b> to ensure
                         precise geospatial verification of craft origins, delivering

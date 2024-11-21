@@ -9,7 +9,7 @@ import { AnalysisInfo } from "~/components/listing/landing/analysis-info"
 export const TradeRegistry = () => {
 
     return (
-        <div className="grid gap-32">
+        <div className="grid lg:gap-32 gap-16">
             <TraderRegistryInfo />
             <ListingBenefits />
             <RegisterInfo />

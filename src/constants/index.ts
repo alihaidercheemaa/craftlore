@@ -1040,3 +1040,1810 @@ export const BUSINESSLISTINGS = [
         ]
     }
 ];
+
+export const CRAFTCATEGORIES = [
+    {
+        name: "Weaving Craft",
+        craftTypes: [
+            {
+                name: "Pashmina Weaving",
+                productionMethods: [
+                    {
+                        value: "harvesting",
+                        label: "Harvesting (Spring Molting)",
+                        cost: 70
+                    },
+                    {
+                        value: "spinning",
+                        label: "Spinning (Hand-Spun)",
+                        cost: 80
+                    },
+                    {
+                        value: "weaving",
+                        label: "Weaving (Handwoven, Twill, Double Ply)",
+                        cost: 120
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Natural)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        region: "Ladakh/Kashmir",
+                        quality: "Premium",
+                        baseCost: 150
+                    },
+                    weight: "200g",
+                    dimensions: "70x200 cm",
+                    embroidery: {
+                        type: "Hand",
+                        complexity: "Dense",
+                        placement: "Single-Side",
+                        cost: 250
+                    },
+                    certifications: ["GI", "Sustainability"],
+                    packaging: "Eco-Friendly",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 70
+                    }
+                }
+            },
+            {
+                name: "Kani Weaving",
+                productionMethods: [
+                    {
+                        value: "harvesting",
+                        label: "Harvesting (Spring Molting)",
+                        cost: 70
+                    },
+                    {
+                        value: "spinning",
+                        label: "Spinning (Hand-Spun)",
+                        cost: 80
+                    },
+                    {
+                        value: "weaving",
+                        label: "Weaving (Handwoven, Moderately Intricate)",
+                        cost: 1200
+                    },
+                    {
+                        value: "weavingTime",
+                        label: "Weaving Time (6 months)",
+                        cost: 500
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Natural)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        region: "Ladakh/Kashmir",
+                        quality: "Premium",
+                        baseCost: 200
+                    },
+                    weight: "300g",
+                    dimensions: "70x200 cm",
+                    embroidery: {
+                        type: "None",
+                        cost: 0
+                    },
+                    certifications: ["GI", "Authenticity Certificate"],
+                    packaging: "Eco-Friendly",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 100
+                    }
+                }
+            },
+            {
+                name: "Carpet Weaving",
+                productionMethods: [
+                    {
+                        value: "knotting",
+                        label: "Knotting (500-800 KPSI, Persian Knot)",
+                        cost: 1200
+                    },
+                    {
+                        value: "weavingTime",
+                        label: "Weaving Time (6 months)",
+                        cost: 500
+                    },
+                    {
+                        value: "harvesting",
+                        label: "Harvesting (Spring Molting)",
+                        cost: 70
+                    },
+                    {
+                        value: "spinning",
+                        label: "Spinning (Hand-Spun)",
+                        cost: 80
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Natural)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        region: "Ladakh/Kashmir",
+                        pileFiber: "100% Silk",
+                        baseCost: 200
+                    },
+                    weight: "10 kg",
+                    dimensions: "6x9 ft",
+                    fringe: {
+                        type: "Hand-Tied",
+                        cost: 100
+                    },
+                    certifications: ["GI", "Authenticity Certificate"],
+                    packaging: "Eco-Friendly",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 300
+                    }
+                }
+            },
+            {
+                name: "Silk Weaving",
+                productionMethods: [
+                    {
+                        value: "weaving",
+                        label: "Weaving (Handwoven, Brocade Weave)",
+                        cost: 700
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Natural)",
+                        cost: 100
+                    },
+                    {
+                        value: "productionTime",
+                        label: "Production Time (4-8 months)",
+                        cost: 1000
+                    }
+                ],
+                details: {
+                    material: {
+                        silkType: "Mulberry Silk",
+                        quality: "Premium",
+                        baseCost: 300
+                    },
+                    weight: "300g",
+                    dimensions: "6-9 yards",
+                    embroidery: {
+                        type: "Zari",
+                        complexity: "Complex",
+                        placement: "Double-Side",
+                        cost: 500
+                    },
+                    certifications: ["GI", "Authenticity Certificate"],
+                    packaging: "Eco-Friendly",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 100
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Embroidery Crafts",
+        craftTypes: [
+            {
+                name: "Fine Work",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Custom Designs)",
+                        cost: 100
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Hand-Stitched)",
+                        cost: 150
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Edge Binding)",
+                        cost: 50
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Thread Dyeing)",
+                        cost: 80
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Cotton",
+                        quality: "High",
+                        baseCost: 100
+                    },
+                    weight: "100g",
+                    dimensions: "50x100 cm",
+                    embellishments: {
+                        type: "Beads and Sequins",
+                        cost: 200
+                    },
+                    certifications: ["Quality Assurance"],
+                    packaging: "Luxury Packaging",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 30
+                    }
+                }
+            },
+            {
+                name: "Medium & Decorative",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Pre-Designed Patterns)",
+                        cost: 80
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Machine-Assisted)",
+                        cost: 120
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Framing)",
+                        cost: 60
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Fabric Dyeing)",
+                        cost: 70
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Silk",
+                        quality: "Medium",
+                        baseCost: 150
+                    },
+                    weight: "150g",
+                    dimensions: "60x120 cm",
+                    embellishments: {
+                        type: "Ribbons and Appliqués",
+                        cost: 150
+                    },
+                    certifications: ["Eco-Friendly"],
+                    packaging: "Standard Packaging",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 50
+                    }
+                }
+            },
+            {
+                name: "Raised & Hooked",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (3D Patterns)",
+                        cost: 120
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Raised Techniques)",
+                        cost: 180
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Padded Backing)",
+                        cost: 70
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Color Fast)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Linen",
+                        quality: "Premium",
+                        baseCost: 200
+                    },
+                    weight: "200g",
+                    dimensions: "70x140 cm",
+                    embellishments: {
+                        type: "3D Elements",
+                        cost: 250
+                    },
+                    certifications: ["Handcrafted"],
+                    packaging: "Protective Packaging",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 40
+                    }
+                }
+            },
+            {
+                name: "Borders & Large Patterns",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Intricate Borders)",
+                        cost: 110
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Detailed Work)",
+                        cost: 160
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Lamination)",
+                        cost: 55
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Gradient Colors)",
+                        cost: 85
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Canvas",
+                        quality: "Durable",
+                        baseCost: 130
+                    },
+                    weight: "180g",
+                    dimensions: "80x160 cm",
+                    embellishments: {
+                        type: "Gold Threads",
+                        cost: 220
+                    },
+                    certifications: ["Artisan Certified"],
+                    packaging: "Secure Packaging",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 60
+                    }
+                }
+            },
+            {
+                name: "Metallic",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Metallic Patterns)",
+                        cost: 130
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Metal Threads)",
+                        cost: 200
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sealing)",
+                        cost: 65
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Metallic Finishes)",
+                        cost: 95
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Synthetic Fibers",
+                        quality: "High Shine",
+                        baseCost: 180
+                    },
+                    weight: "120g",
+                    dimensions: "55x110 cm",
+                    embellishments: {
+                        type: "Metallic Threads",
+                        cost: 300
+                    },
+                    certifications: ["Premium Quality"],
+                    packaging: "Gift Packaging",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 70
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Wood Crafts",
+        craftTypes: [
+            {
+                name: "Wood Carving",
+                productionMethods: [
+                    {
+                        value: "selection",
+                        label: "Wood Selection (Premium Hardwood)",
+                        cost: 150
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Custom Designs)",
+                        cost: 100
+                    },
+                    {
+                        value: "carving",
+                        label: "Carving (Hand-Carved)",
+                        cost: 200
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sanding & Polishing)",
+                        cost: 80
+                    },
+                    {
+                        value: "sealing",
+                        label: "Sealing (Natural Varnish)",
+                        cost: 60
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Teak",
+                        quality: "Premium",
+                        baseCost: 300
+                    },
+                    weight: "2 kg",
+                    dimensions: "30x20x15 cm",
+                    embellishments: {
+                        type: "Inlay Work",
+                        cost: 120
+                    },
+                    certifications: ["Sustainable Timber"],
+                    packaging: "Secure Wooden Crate",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 50
+                    }
+                }
+            },
+            {
+                name: "Interlocking Ceiling",
+                productionMethods: [
+                    {
+                        value: "materialPrep",
+                        label: "Material Preparation (Cutting & Shaping)",
+                        cost: 130
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Pattern Layout)",
+                        cost: 90
+                    },
+                    {
+                        value: "assembly",
+                        label: "Assembly (Interlocking Mechanism)",
+                        cost: 180
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Painting & Sealing)",
+                        cost: 100
+                    },
+                    {
+                        value: "installation",
+                        label: "Installation (On-Site)",
+                        cost: 200
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Pine",
+                        quality: "High",
+                        baseCost: 250
+                    },
+                    weight: "5 kg",
+                    dimensions: "10x10 ft",
+                    embellishments: {
+                        type: "Laser Engraved Patterns",
+                        cost: 150
+                    },
+                    certifications: ["Fire Retardant"],
+                    packaging: "Reinforced Carton",
+                    shipping: {
+                        method: "Freight",
+                        location: "International",
+                        cost: 300
+                    }
+                }
+            },
+            {
+                name: "Lattice Work",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Geometric Patterns)",
+                        cost: 110
+                    },
+                    {
+                        value: "cutting",
+                        label: "Cutting (Laser-Cut)",
+                        cost: 140
+                    },
+                    {
+                        value: "assembling",
+                        label: "Assembling (Frame Construction)",
+                        cost: 160
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Painting)",
+                        cost: 90
+                    },
+                    {
+                        value: "sealing",
+                        label: "Sealing (Protective Coating)",
+                        cost: 70
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Oak",
+                        quality: "Durable",
+                        baseCost: 280
+                    },
+                    weight: "3 kg",
+                    dimensions: "40x40 cm",
+                    embellishments: {
+                        type: "Metal Accents",
+                        cost: 100
+                    },
+                    certifications: ["Eco-Friendly"],
+                    packaging: "Bubble Wrapped",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 40
+                    }
+                }
+            },
+            {
+                name: "Wicker Work",
+                productionMethods: [
+                    {
+                        value: "materialPrep",
+                        label: "Material Preparation (Bending & Shaping)",
+                        cost: 120
+                    },
+                    {
+                        value: "weaving",
+                        label: "Weaving (Hand-Woven)",
+                        cost: 180
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Pattern Integration)",
+                        cost: 100
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sealing & Coloring)",
+                        cost: 80
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Durability Testing)",
+                        cost: 60
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Bamboo",
+                        quality: "Sustainable",
+                        baseCost: 200
+                    },
+                    weight: "1.5 kg",
+                    dimensions: "25x25 cm",
+                    embellishments: {
+                        type: "Natural Dye",
+                        cost: 90
+                    },
+                    certifications: ["Bamboo Certified"],
+                    packaging: "Eco-Friendly Packaging",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 35
+                    }
+                }
+            },
+            {
+                name: "Woodenware",
+                productionMethods: [
+                    {
+                        value: "materialSelection",
+                        label: "Material Selection (Food-Grade Wood)",
+                        cost: 140
+                    },
+                    {
+                        value: "cutting",
+                        label: "Cutting (Precision Cutting)",
+                        cost: 130
+                    },
+                    {
+                        value: "shaping",
+                        label: "Shaping (Lathe Turning)",
+                        cost: 170
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sanding & Polishing)",
+                        cost: 90
+                    },
+                    {
+                        value: "sealing",
+                        label: "Sealing (Food-Safe Finish)",
+                        cost: 80
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Maple",
+                        quality: "Food-Grade",
+                        baseCost: 220
+                    },
+                    weight: "500g",
+                    dimensions: "15x10 cm",
+                    embellishments: {
+                        type: "Engraved Logos",
+                        cost: 110
+                    },
+                    certifications: ["FDA Approved"],
+                    packaging: "Protective Inserts",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 70
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Decor Craft",
+        craftTypes: [
+            {
+                name: "Engraved Metallic",
+                productionMethods: [
+                    {
+                        value: "materialSelection",
+                        label: "Material Selection (Premium Metals)",
+                        cost: 200
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Custom Engravings)",
+                        cost: 150
+                    },
+                    {
+                        value: "engraving",
+                        label: "Engraving (Laser Engraved)",
+                        cost: 250
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Polishing & Coating)",
+                        cost: 100
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Durability Testing)",
+                        cost: 80
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Brass",
+                        quality: "High",
+                        baseCost: 350
+                    },
+                    weight: "500g",
+                    dimensions: "30x20 cm",
+                    embellishments: {
+                        type: "Gold Plating",
+                        cost: 180
+                    },
+                    certifications: ["ISO Certified"],
+                    packaging: "Luxury Box",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 120
+                    }
+                }
+            },
+            {
+                name: "Tapestry & Chainstitch",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Intricate Patterns)",
+                        cost: 120
+                    },
+                    {
+                        value: "threadSelection",
+                        label: "Thread Selection (High-Quality Threads)",
+                        cost: 100
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Hand-Stitched)",
+                        cost: 200
+                    },
+                    {
+                        value: "embellishing",
+                        label: "Embellishing (Beads & Sequins)",
+                        cost: 150
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Framing)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Cotton Canvas",
+                        quality: "Premium",
+                        baseCost: 300
+                    },
+                    weight: "1 kg",
+                    dimensions: "60x90 cm",
+                    embellishments: {
+                        type: "Beads and Sequins",
+                        cost: 200
+                    },
+                    certifications: ["Handcrafted"],
+                    packaging: "Protective Wrapping",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 60
+                    }
+                }
+            },
+            {
+                name: "Namda",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Traditional Patterns)",
+                        cost: 130
+                    },
+                    {
+                        value: "materialPreparation",
+                        label: "Material Preparation (Fabric Cutting)",
+                        cost: 110
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Hand-Stitched)",
+                        cost: 220
+                    },
+                    {
+                        value: "embellishing",
+                        label: "Embellishing (Mirror Work)",
+                        cost: 160
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Edge Binding)",
+                        cost: 100
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Silk Fabric",
+                        quality: "Deluxe",
+                        baseCost: 400
+                    },
+                    weight: "800g",
+                    dimensions: "50x70 cm",
+                    embellishments: {
+                        type: "Mirror Work",
+                        cost: 220
+                    },
+                    certifications: ["Cultural Heritage"],
+                    packaging: "Artistic Packaging",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 150
+                    }
+                }
+            },
+            {
+                name: "Crewel",
+                productionMethods: [
+                    {
+                        value: "designing",
+                        label: "Designing (Floral Patterns)",
+                        cost: 140
+                    },
+                    {
+                        value: "threadSelection",
+                        label: "Thread Selection (Wool Threads)",
+                        cost: 120
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Hand-Crewelled)",
+                        cost: 250
+                    },
+                    {
+                        value: "embellishing",
+                        label: "Embellishing (Beading)",
+                        cost: 180
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Mounting on Canvas)",
+                        cost: 110
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Wool",
+                        quality: "Fine",
+                        baseCost: 380
+                    },
+                    weight: "900g",
+                    dimensions: "55x75 cm",
+                    embellishments: {
+                        type: "Beading",
+                        cost: 240
+                    },
+                    certifications: ["Artisan Certified"],
+                    packaging: "Secure Packaging",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 70
+                    }
+                }
+            },
+            {
+                name: "Silverware",
+                productionMethods: [
+                    {
+                        value: "materialSelection",
+                        label: "Material Selection (Sterling Silver)",
+                        cost: 250
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Ornate Designs)",
+                        cost: 180
+                    },
+                    {
+                        value: "crafting",
+                        label: "Crafting (Handcrafted)",
+                        cost: 300
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Polishing & Engraving)",
+                        cost: 150
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Purity Testing)",
+                        cost: 100
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Sterling Silver",
+                        quality: "Premium",
+                        baseCost: 500
+                    },
+                    weight: "300g",
+                    dimensions: "20x15 cm",
+                    embellishments: {
+                        type: "Engraved Patterns",
+                        cost: 200
+                    },
+                    certifications: ["Hallmark Certified"],
+                    packaging: "Luxury Jewelry Box",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 200
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Recycled Craft",
+        craftTypes: [
+            {
+                name: "Papier Mâché",
+                productionMethods: [
+                    {
+                        value: "paperSelection",
+                        label: "Paper Selection (Recycled Paper)",
+                        cost: 50
+                    },
+                    {
+                        value: "soaking",
+                        label: "Soaking (Water Soak)",
+                        cost: 30
+                    },
+                    {
+                        value: "pulpPreparation",
+                        label: "Pulp Preparation (Blending & Mixing)",
+                        cost: 40
+                    },
+                    {
+                        value: "molding",
+                        label: "Molding (Hand-Molded)",
+                        cost: 80
+                    },
+                    {
+                        value: "drying",
+                        label: "Drying (Air Drying)",
+                        cost: 20
+                    },
+                    {
+                        value: "painting",
+                        label: "Painting (Eco-Friendly Paints)",
+                        cost: 60
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Varnishing)",
+                        cost: 30
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Recycled Paper",
+                        quality: "Eco-Friendly",
+                        baseCost: 100
+                    },
+                    weight: "500g",
+                    dimensions: "40x40 cm",
+                    embellishments: {
+                        type: "Natural Dyes",
+                        cost: 50
+                    },
+                    certifications: ["Eco-Certified"],
+                    packaging: "Biodegradable Packaging",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 25
+                    }
+                }
+            },
+            {
+                name: "Gabba Craft",
+                productionMethods: [
+                    {
+                        value: "materialCollection",
+                        label: "Material Collection (Recycled Materials)",
+                        cost: 60
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Creative Layouts)",
+                        cost: 90
+                    },
+                    {
+                        value: "assembly",
+                        label: "Assembly (Hand-Assembled)",
+                        cost: 120
+                    },
+                    {
+                        value: "decorating",
+                        label: "Decorating (Natural Embellishments)",
+                        cost: 70
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Protective Coating)",
+                        cost: 40
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Durability Testing)",
+                        cost: 50
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Mixed Recycled Materials",
+                        quality: "Sustainable",
+                        baseCost: 150
+                    },
+                    weight: "1 kg",
+                    dimensions: "60x60 cm",
+                    embellishments: {
+                        type: "Natural Fibers",
+                        cost: 80
+                    },
+                    certifications: ["Sustainability Certified"],
+                    packaging: "Recycled Cardboard",
+                    shipping: {
+                        method: "Freight",
+                        location: "International",
+                        cost: 100
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Sport Crafts",
+        craftTypes: [
+            {
+                name: "Cricket Bat Making",
+                productionMethods: [
+                    {
+                        value: "woodSelection",
+                        label: "Wood Selection (English Willow)",
+                        cost: 250
+                    },
+                    {
+                        value: "seasoning",
+                        label: "Seasoning (Air Drying)",
+                        cost: 100
+                    },
+                    {
+                        value: "shaping",
+                        label: "Shaping (Hand-Shaped)",
+                        cost: 200
+                    },
+                    {
+                        value: "pressing",
+                        label: "Pressing (Steam Press)",
+                        cost: 150
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sanding & Varnishing)",
+                        cost: 120
+                    },
+                    {
+                        value: "branding",
+                        label: "Branding (Engraving Logo)",
+                        cost: 80
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Balance & Sweet Spot)",
+                        cost: 70
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "English Willow",
+                        quality: "Premium",
+                        baseCost: 400
+                    },
+                    weight: "900g",
+                    dimensions: "38 inches",
+                    embellishments: {
+                        type: "Engraved Logo",
+                        cost: 100
+                    },
+                    certifications: ["BCCI Approved"],
+                    packaging: "Protective Wooden Crate",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 150
+                    }
+                }
+            },
+            {
+                name: "Chess Board Making",
+                productionMethods: [
+                    {
+                        value: "woodSelection",
+                        label: "Wood Selection (Rosewood & Maple)",
+                        cost: 180
+                    },
+                    {
+                        value: "designing",
+                        label: "Designing (Custom Patterns)",
+                        cost: 120
+                    },
+                    {
+                        value: "cutting",
+                        label: "Cutting (Precision Cutting)",
+                        cost: 100
+                    },
+                    {
+                        value: "assembling",
+                        label: "Assembling (Glueing & Clamping)",
+                        cost: 150
+                    },
+                    {
+                        value: "engraving",
+                        label: "Engraving (Laser Engraved Squares)",
+                        cost: 130
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Sanding & Staining)",
+                        cost: 110
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Flatness & Finish)",
+                        cost: 60
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Rosewood & Maple",
+                        quality: "High",
+                        baseCost: 300
+                    },
+                    weight: "2.5 kg",
+                    dimensions: "40x40 cm",
+                    embellishments: {
+                        type: "Inlaid Borders",
+                        cost: 150
+                    },
+                    certifications: ["Tournament Approved"],
+                    packaging: "Luxury Box with Cushioning",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 50
+                    }
+                }
+            }
+        ]
+    },
+    {
+        name: "Hide Crafts",
+        craftTypes: [
+            {
+                name: "Leather",
+                productionMethods: [
+                    {
+                        value: "hideSelection",
+                        label: "Hide Selection (Premium Tanned Leather)",
+                        cost: 300
+                    },
+                    {
+                        value: "cleaning",
+                        label: "Cleaning (Hand Cleaning)",
+                        cost: 100
+                    },
+                    {
+                        value: "tanning",
+                        label: "Tanning (Vegetable Tanning)",
+                        cost: 200
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Eco-Friendly Dyes)",
+                        cost: 150
+                    },
+                    {
+                        value: "cutting",
+                        label: "Cutting (Precision Cutting)",
+                        cost: 120
+                    },
+                    {
+                        value: "stitching",
+                        label: "Stitching (Hand-Stitched)",
+                        cost: 180
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Edge Finishing & Buffing)",
+                        cost: 130
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Durability & Flexibility)",
+                        cost: 90
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Vegetable-Tanned Leather",
+                        quality: "Premium",
+                        baseCost: 500
+                    },
+                    weight: "1.2 kg",
+                    dimensions: "50x30 cm",
+                    embellishments: {
+                        type: "Embossed Patterns",
+                        cost: 200
+                    },
+                    certifications: ["ISO 9001", "Eco-Friendly Certified"],
+                    packaging: "Protective Leather Pouches",
+                    shipping: {
+                        method: "Express",
+                        location: "International",
+                        cost: 180
+                    }
+                }
+            },
+            {
+                name: "Fur & Astrakhan",
+                productionMethods: [
+                    {
+                        value: "furSelection",
+                        label: "Fur Selection (Ethically Sourced Astrakhan Fur)",
+                        cost: 400
+                    },
+                    {
+                        value: "cleaning",
+                        label: "Cleaning (Professional Fur Cleaning)",
+                        cost: 150
+                    },
+                    {
+                        value: "trimming",
+                        label: "Trimming (Edge Trimming & Shaping)",
+                        cost: 130
+                    },
+                    {
+                        value: "dyeing",
+                        label: "Dyeing (Natural Dyes)",
+                        cost: 160
+                    },
+                    {
+                        value: "sewing",
+                        label: "Sewing (Hand-Sewn Attachments)",
+                        cost: 200
+                    },
+                    {
+                        value: "embellishing",
+                        label: "Embellishing (Beading & Sequins)",
+                        cost: 180
+                    },
+                    {
+                        value: "finishing",
+                        label: "Finishing (Brushing & Softening)",
+                        cost: 120
+                    },
+                    {
+                        value: "qualityCheck",
+                        label: "Quality Check (Fur Density & Softness)",
+                        cost: 100
+                    }
+                ],
+                details: {
+                    material: {
+                        type: "Astrakhan Fur",
+                        quality: "Deluxe",
+                        baseCost: 600
+                    },
+                    weight: "2 kg",
+                    dimensions: "60x40 cm",
+                    embellishments: {
+                        type: "Beaded Accents",
+                        cost: 250
+                    },
+                    certifications: ["CITES Certified", "Ethically Sourced"],
+                    packaging: "Luxury Velvet Boxes",
+                    shipping: {
+                        method: "Standard",
+                        location: "Domestic",
+                        cost: 80
+                    }
+                }
+            }
+        ]
+    },
+
+
+]
+
+export const COSTESTIMATOR = {
+    "Weaving Craft": {
+        "Pashmina Weaving": {
+            "Material": {
+                "GeographicalIndication": {
+                    "Region": "Ladakh/Kashmir",
+                    "Quality": "Premium",
+                    "BaseCost": 150
+                },
+                "Fiber": {
+                    "Diameter": {
+                        "Range": "12-13 Microns",
+                        "CostImpact": 100
+                    },
+                    "Length": {
+                        "Type": "Long",
+                        "CostImpact": 50
+                    }
+                },
+                "PurityAndBlend": {
+                    "Purity": "100% Pashmina",
+                    "Blend": {
+                        "Type": null,
+                        "Ratio": null,
+                        "CostImpact": 0
+                    }
+                }
+            },
+            "Production": {
+                "Harvesting": {
+                    "Seasonality": "Spring Molting",
+                    "CostImpact": 70
+                },
+                "Spinning": {
+                    "Method": "Hand-Spun",
+                    "CostImpact": 80
+                },
+                "Weaving": {
+                    "Method": "Handwoven",
+                    "Type": "Twill",
+                    "Ply": "Double",
+                    "CostImpact": 120
+                },
+                "Dyeing": {
+                    "Method": "Natural",
+                    "Custom": true,
+                    "CostImpact": 90
+                }
+            },
+            "ProductDetails": {
+                "Weight": {
+                    "Value": "200g",
+                    "CostImpact": 50
+                },
+                "Size": {
+                    "Dimensions": "70x200 cm",
+                    "CostImpact": 100
+                }
+            },
+            "Embellishments": {
+                "Embroidery": {
+                    "Type": "Hand",
+                    "Complexity": "Dense",
+                    "Placement": "Single-Side",
+                    "CraftsmanshipLevel": "Master Artisan",
+                    "CostImpact": 250
+                }
+            },
+            "ProductionTime": {
+                "HoursEngaged": 200,
+                "CostImpact": 300
+            },
+            "Certifications": {
+                "GI": true,
+                "Sustainability": true,
+                "Blockchain": false,
+                "CostImpact": 150
+            },
+            "Packaging": {
+                "Type": "Eco-Friendly",
+                "Custom": false,
+                "CostImpact": 30
+            },
+            "Pricing": {
+                "Wholesale": {
+                    "Markup": 0.5,
+                    "CalculatedPrice": 1000
+                },
+                "Retail": {
+                    "Markup": 2.0,
+                    "CalculatedPrice": 2000
+                }
+            },
+            "Shipping": {
+                "Location": "International",
+                "Method": "Express",
+                "LogisticsEfficiency": "Bulk",
+                "CostImpact": 70
+            }
+        },
+        "Kani Weaving": {
+            "Material": {
+                "GeographicalIndication": {
+                    "Region": "Ladakh/Kashmir",
+                    "Quality": "Premium",
+                    "BaseCost": 200
+                },
+                "Fiber": {
+                    "Diameter": {
+                        "Range": "12-13 Microns",
+                        "CostImpact": 150
+                    },
+                    "Length": {
+                        "Type": "Long",
+                        "CostImpact": 70
+                    }
+                },
+                "PurityAndBlend": {
+                    "Purity": "100% Pashmina",
+                    "Blend": {
+                        "Type": null,
+                        "Ratio": null,
+                        "CostImpact": 0
+                    },
+                    "BaseCost": 200
+                }
+            },
+            "Production": {
+                "Weaving": {
+                    "Method": "Handwoven",
+                    "PatternComplexity": "Moderately Intricate",
+                    "BaseCost": 1200
+                },
+                "WeavingTime": {
+                    "Duration": "6 months",
+                    "HoursEngaged": 200,
+                    "CostImpact": 500
+                },
+                "Harvesting": {
+                    "Seasonality": "Spring Molting",
+                    "CostImpact": 70
+                },
+                "Spinning": {
+                    "Method": "Hand-Spun",
+                    "CostImpact": 80
+                },
+                "Dyeing": {
+                    "Method": "Natural",
+                    "Custom": true,
+                    "CostImpact": 90
+                }
+            },
+            "ProductDetails": {
+                "Weight": {
+                    "Value": "300g",
+                    "CostImpact": 200
+                },
+                "Size": {
+                    "Dimensions": "70x200 cm",
+                    "CostImpact": 300
+                }
+            },
+            "Embellishments": {
+                "Embroidery": {
+                    "Type": "None",
+                    "Complexity": null,
+                    "Placement": null,
+                    "CraftsmanshipLevel": null,
+                    "CostImpact": 0
+                }
+            },
+            "Certifications": {
+                "GeographicalIndication": true,
+                "AuthenticityCertificate": true,
+                "BlockchainTraceability": false,
+                "CostImpact": 150
+            },
+            "Packaging": {
+                "Type": "Eco-Friendly",
+                "Custom": false,
+                "CostImpact": 50
+            },
+            "Pricing": {
+                "Wholesale": {
+                    "Markup": 0.5,
+                    "CalculatedPrice": 1700
+                },
+                "Retail": {
+                    "Markup": 2.0,
+                    "CalculatedPrice": 3400
+                }
+            },
+            "Shipping": {
+                "Location": "International",
+                "Method": "Express",
+                "LogisticsEfficiency": "Single",
+                "CostImpact": 100
+            }
+        },
+        "Carpet Weaving": {
+            "Material": {
+                "GeographicalIndication": {
+                    "Region": "Ladakh/Kashmir",
+                    "Quality": "Premium",
+                    "BaseCost": 200
+                },
+                "PileFiber": {
+                    "Type": "100% Silk",
+                    "CostImpact": 500
+                },
+                "FiberDiameter": {
+                    "Range": "18-22 Microns",
+                    "CostImpact": 150
+                },
+                "FiberLength": {
+                    "Type": "Long",
+                    "CostImpact": 100
+                },
+                "FoundationMaterial": {
+                    "Type": "Silk",
+                    "CostImpact": 200
+                }
+            },
+            "KnottingTechnique": {
+                "KnotsPerSquareInch": {
+                    "Range": "500-800 KPSI",
+                    "CostImpact": 1200
+                },
+                "KnotType": {
+                    "Method": "Persian Knot",
+                    "CostImpact": 150
+                }
+            },
+            "DesignAndPattern": {
+                "Complexity": {
+                    "Level": "Moderately Intricate",
+                    "CostImpact": 800
+                },
+                "ColorPalette": {
+                    "Colors": 6,
+                    "CostImpact": 150
+                }
+            },
+            "DimensionsAndWeight": {
+                "Size": {
+                    "Dimensions": "6x9 ft",
+                    "CostImpact": 1200
+                },
+                "Weight": {
+                    "Value": "10 kg",
+                    "CostImpact": 300
+                }
+            },
+            "Embellishments": {
+                "Fringe": {
+                    "Type": "Hand-Tied",
+                    "CostImpact": 100
+                },
+                "Carving": {
+                    "Type": "None",
+                    "CostImpact": 0
+                }
+            },
+            "ProductionTime": {
+                "Duration": "6 months",
+                "HoursEngaged": 600,
+                "CostImpact": 1500
+            },
+            "Certifications": {
+                "GeographicalIndication": true,
+                "AuthenticityCertificate": true,
+                "SustainabilityCertificate": false,
+                "CostImpact": 200
+            },
+            "Packaging": {
+                "Type": "Eco-Friendly",
+                "Custom": false,
+                "CostImpact": 70
+            },
+            "Pricing": {
+                "Wholesale": {
+                    "Markup": 0.5,
+                    "CalculatedPrice": 4570
+                },
+                "Retail": {
+                    "Markup": 2.0,
+                    "CalculatedPrice": 9140
+                }
+            },
+            "Shipping": {
+                "Location": "International",
+                "Method": "Express",
+                "LogisticsEfficiency": "Single",
+                "CostImpact": 300
+            }
+        },
+        "Silk Weaving": {
+            "Material": {
+                "SilkType": {
+                    "Type": "Mulberry Silk",
+                    "Quality": "Premium",
+                    "BaseCost": 300
+                },
+                "ThreadQuality": {
+                    "DenierCount": "20-22",
+                    "CostImpact": 150
+                },
+                "FiberLength": {
+                    "Type": "Continuous Filament",
+                    "CostImpact": 100
+                },
+                "Blend": {
+                    "Purity": "100% Pure Silk",
+                    "BlendType": null,
+                    "CostImpact": 0
+                }
+            },
+            "Production": {
+                "Weaving": {
+                    "Method": "Handwoven",
+                    "Pattern": "Brocade Weave",
+                    "BaseCost": 700
+                },
+                "Dyeing": {
+                    "Method": "Natural",
+                    "Custom": false,
+                    "CostImpact": 100
+                },
+                "ProductionTime": {
+                    "Complexity": "Intricate",
+                    "Duration": "4-8 months",
+                    "CostImpact": 1000
+                }
+            },
+            "ProductDetails": {
+                "Weight": {
+                    "Value": "300g",
+                    "CostImpact": 200
+                },
+                "Size": {
+                    "Type": "Saree",
+                    "Dimensions": "6-9 yards",
+                    "CostImpact": 500
+                }
+            },
+            "Embellishments": {
+                "Embroidery": {
+                    "Type": "Zari",
+                    "Complexity": "Complex",
+                    "Placement": "Double-Side",
+                    "CraftsmanshipLevel": "Master Artisan",
+                    "CostImpact": 500
+                }
+            },
+            "Certifications": {
+                "GeographicalIndication": true,
+                "AuthenticityCertificate": true,
+                "SustainabilityCertification": false,
+                "CostImpact": 150
+            },
+            "Packaging": {
+                "Type": "Eco-Friendly",
+                "Custom": false,
+                "CostImpact": 70
+            },
+            "Pricing": {
+                "Wholesale": {
+                    "Markup": 0.5,
+                    "CalculatedPrice": 1620
+                },
+                "Retail": {
+                    "Markup": 2.0,
+                    "CalculatedPrice": 3240
+                }
+            },
+            "Shipping": {
+                "Location": "International",
+                "Method": "Express",
+                "LogisticsEfficiency": "Single",
+                "CostImpact": 100
+            }
+        }
+    }
+}
+
+// src/constants.ts
+
+export const CARBONCRAFTCATEGORIES = [
+    {
+      name: 'weaving',
+      displayName: 'Weaving Crafts',
+      craftTypes: [
+        'Pashmina Weaving',
+        'Kani Weaving',
+        'Carpet Weaving',
+        'Silk Weaving',
+        'Tweed Weaving',
+      ],
+    },
+    {
+      name: 'embroidery',
+      displayName: 'Embroidery Crafts',
+      craftTypes: [
+        'Fine Work',
+        'Medium & Decorative',
+        'Raised & Hooked',
+        'Borders & Large Patterns',
+        'Metallic',
+      ],
+    },
+    {
+      name: 'wood',
+      displayName: 'Wood Crafts',
+      craftTypes: [
+        'Wood Carving',
+        'Interlocking Ceiling',
+        'Lattice Work',
+        'Wicker Work',
+        'Woodenware',
+      ],
+    },
+    {
+      name: 'decor',
+      displayName: 'Decor Crafts',
+      craftTypes: [
+        'Engraved Metallic',
+        'Tapestry & Chainstitch',
+        'Namda',
+        'Crewel',
+        'Silverware',
+      ],
+    },
+    {
+      name: 'recycled',
+      displayName: 'Recycled Crafts',
+      craftTypes: ['Papier Mâché', 'Gabba Craft'],
+    },
+    {
+      name: 'sports',
+      displayName: 'Sports Crafts',
+      craftTypes: ['Cricket Bat Making', 'Chess Board Making'],
+    },
+    {
+      name: 'hide',
+      displayName: 'Hide Crafts',
+      craftTypes: ['Leather', 'Fur & Astrakhan'],
+    },
+    {
+      name: 'culinary',
+      displayName: 'Culinary Crafts',
+      craftTypes: ['Wazwan', 'Kahwa & Pink Tea'],
+    },
+  ];
+  
+  export const DKC_WAREHOUSE_CITIES = [
+    'New York',
+    'Los Angeles',
+    'Chicago',
+    'Houston',
+    'Phoenix',
+    'Philadelphia',
+    'San Antonio',
+    'San Diego',
+    'Dallas',
+    'San Francisco',
+  ];
+  
+  export const TRANSPORT_METHODS = ['Air', 'Ship', 'Rail', 'Road'];
+  
+  export const TRANSPORT_EFFICIENCIES = [
+    'Efficient (Bulk)',
+    'Less Efficient (Single)',
+  ];
+  
+  export const MATERIAL_UNITS = ['Kilograms', 'Grams', 'Pounds'];
+  
+  export const PURCHASE_LOCATIONS = [
+    'Directly from Kashmir',
+    'Purchased from DKC USA Warehouse',
+  ];
+  
+  export const PRODUCTION_METHODS = [
+    'Handmade',
+    'Machine-made',
+    'Hybrid',
+  ];
+  
