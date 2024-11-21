@@ -8,7 +8,7 @@ datasource db {
 }
 
 model AppliedJob {
-    jobId       String @id @default(uuid())
+    jobId       String @id @default(cuid())
     fullName    String @default("none")
     email       String @default("none")
     job         String @default("none")
@@ -18,14 +18,14 @@ model AppliedJob {
 }
 
 model Employ {
-    employId     String @id @default(uuid())
+    employId     String @id @default(cuid())
     fullName     String @default("none")
     skills       String @default("none")
     contribution String @default("none")
 }
 
 model User {
-    userId            String              @id @default(uuid())
+    userId            String              @id @default(cuid())
     fullName          String              @default("none")
     phone             String              @default("none")
     email             String
@@ -45,7 +45,7 @@ model User {
 }
 
 model Artisan {
-    artisanId       String          @id @default(uuid())
+    artisanId       String          @id @default(cuid())
     craftSpecialty  String          @default("none")
     craftSkill      SkillLevel      @default(None)
     craftExperience Int             @default(0)
@@ -60,7 +60,7 @@ model Artisan {
 }
 
 model Business {
-    businessId       String          @id @default(uuid())
+    businessId       String          @id @default(cuid())
     businessName     String          @default("none")
     businessEmail    String
     businessAddress  String          @default("none")
@@ -79,7 +79,7 @@ model Business {
 }
 
 model Institute {
-    instituteId      String          @id @default(uuid())
+    instituteId      String          @id @default(cuid())
     instituteName    String          @default("none")
     instituteEmail   String
     instituteType    InstitutionType @default(None)
@@ -99,7 +99,7 @@ model Institute {
 }
 
 model BuyerMembership {
-    buyerMemberId       String   @id @default(uuid())
+    buyerMemberId       String   @id @default(cuid())
     buyerType           String   @default("none")
     businessName        String   @default("none")
     businessType        String   @default("none")
@@ -122,7 +122,7 @@ model BuyerMembership {
 }
 
 model CorpoMembership {
-    corpoMemberId String @id @default(uuid())
+    corpoMemberId String @id @default(cuid())
 
     // Institution Information
     institutionName String @default("none")
@@ -175,7 +175,7 @@ model CorpoMembership {
 }
 
 model SponsorMembership {
-    sponsorshipId String @id @default(uuid())
+    sponsorshipId String @id @default(cuid())
 
     // Sponsor Information
     sponsorName   String @default("none")
@@ -232,7 +232,7 @@ model SponsorMembership {
 }
 
 model LisitingCritera {
-    criteraId                 String      @id @default(uuid())
+    criteraId                 String      @id @default(cuid())
     sourceOfMaterial          String      @default("none")
     craftingProcess           String      @default("none")
     sustainablePractices      Boolean     @default(false)
@@ -247,15 +247,24 @@ model LisitingCritera {
     fairtradeDoc              String[]    @default([])
     giHold                    Boolean     @default(false)
     giNumber                  String      @default("none")
+    giDoc                     String      @default("none")
     blockChain                Boolean     @default(false)
     blockChainDoc             String[]    @default([])
     ethics                    Boolean     @default(false)
     qualityReview             Boolean     @default(false)
     profilePermission         Boolean     @default(false)
     complianceAcknowledgement Boolean     @default(false)
+    rank                      Ranks       @default(None)
     Artisan                   Artisan[]
     Business                  Business[]
     Institute                 Institute[]
+}
+
+enum Ranks {
+    None
+    Gold
+    Silver
+    Bronze
 }
 
 enum InstitutionType {
@@ -276,10 +285,9 @@ enum BusinessLevel {
 
 enum SkillLevel {
     None
-    Master
-    Skilled
-    Semi_Skilled
-    Apprentice
+    Expert
+    Advanced
+    Beginner
 }
 
 enum RegisterType {

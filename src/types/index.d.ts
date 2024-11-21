@@ -1,11 +1,11 @@
 // Enums
 type InstitutionType = "None" | "Governance" | "NGO" | "Training_Body" | "Educational_Body";
 type BusinessLevel = "None" | "Large_Enterprice" | "Mid_sized_Business" | "Small_Business" | "Startup";
-type SkillLevel = "None" | "Master" | "Skilled" | "Semi_Skilled" | "Apprentice";
+type SkillLevel = "None" | "Expert" | "Advanced" | "Beginner"
 type RegisterType = "None" | "Artisan" | "Business" | "Institution" | "BuyerMembership" | "CorpoMembership" | "SponsorMembership";
 type MarketType = "None" | "Local" | "National" | "International";
 type Status = "Pending" | "Actice";
-
+type Ranks = "None" | "Gold" | "Silver" | "Bronze"
 // Models
 type AppliedJob = {
     jobId: string;

@@ -97,7 +97,7 @@ export const MilestoneNumberGraph = () => {
     };
 
     return (
-        <div className="h-[360px] w-[300px] lg:w-[600px]">
+        <div className="h-[360px]">
             <Bar data={data} options={options} />
         </div>
 

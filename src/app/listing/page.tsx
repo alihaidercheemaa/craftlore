@@ -30,8 +30,8 @@ export default function ListingPage() {
                     hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
         >
           <p className="text-sm whitespace-pre-line font-opensans">
-            Listing,
             Ranking,
+            Listing,
             Blacklisted
           </p>
           <h3 className="text-xl font-bold font-montserrat">ARTISANS</h3>
@@ -46,8 +46,8 @@ export default function ListingPage() {
                     hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
         >
           <p className="text-sm whitespace-pre-line font-opensans">
-            Listing,
             Ranking,
+            Listing,
             Blacklisted
           </p>
           <h3 className="text-xl font-bold font-montserrat">BUSINESSES</h3>
@@ -62,8 +62,8 @@ export default function ListingPage() {
                     hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
         >
           <p className="text-sm whitespace-pre-line font-opensans">
-            Listing,
             Ranking,
+            Listing,
             Blacklisted
           </p>
           <h3 className="text-xl font-bold font-monstreat">INSTITUTIONS</h3>

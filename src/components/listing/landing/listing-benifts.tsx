@@ -16,7 +16,7 @@ export const ListingBenefits = () => {
                         {
                             LISTINGBENEFITS.map((listing, index) => (
                                 <div
-                                    className="col-sapn-2 lg:col-span-1 grid gap-8 rounded-lg shadow-md bg-white group hover:bg-primary p-6"
+                                    className="col-span-2 lg:col-span-1 grid gap-8 rounded-lg shadow-md bg-white group hover:bg-primary p-6"
                                     key={index}
                                 >
                                     <h3 className="text-xl font-montserrat group-hover:text-white">{listing.title}</h3>

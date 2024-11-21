@@ -86,9 +86,10 @@ const formSchema = z.object({
     // *  Artisan-specific fields
     craftSpecialty: z.string().optional(),
     craftCatalog: z.string().optional(),
-    craftSkill: z.enum(["Master", "Skilled", "Semi-Skilled", "Apprentice"]).optional(),
+    craftSkill: z.enum(["Expert", "Advanced", "Beginner"]).optional(),
     craftExperience: z.number().optional(),
     craftAward: z.string().optional(),
+
     market: z.enum(["Local", "National", "International"]).optional(),
 
     // * Business-specific fields
@@ -332,6 +333,7 @@ export const RegistrationForm = () => {
                     : [],
                 giHold: rest.giCertification?.holds ?? false,
                 giNumber: rest.giCertification?.certificationNumber ?? "none",
+                giDoc: rest.giCertification?.certificationDocument ?? "none",
                 blockChain: rest.blockchainCertification?.verified ?? false,
                 blockChainDoc: rest.blockchainCertification?.certificationDocument
                     ? [rest.blockchainCertification.certificationDocument]
@@ -341,6 +343,7 @@ export const RegistrationForm = () => {
                 profilePermission: rest.profileDisplayConsent === "yes",
                 complianceAcknowledgement: rest.complianceAcknowledgement === "yes",
             },
+            market: rest.market ?? "None",
             artisan:
                 registerType === "Artisan"
                     ? {
@@ -348,7 +351,6 @@ export const RegistrationForm = () => {
                         craftSkill: rest.craftSkill ?? "None",
                         craftExperience: rest.craftExperience ?? 0,
                         craftAward: rest.craftAward ?? "none",
-                        market: rest.market ?? "None",
                         documents: rest.craftCatalog ? [rest.craftCatalog] : [],
                     }
                     : undefined,
@@ -543,7 +545,7 @@ export const RegistrationForm = () => {
                                                     onValueChange={field.onChange}
                                                     className="flex items-center">
                                                     {
-                                                        ["Master", "Skilled", "Semi_Skilled", "Apprentice"]
+                                                        ["Expert", "Advanced", "Beginner"]
                                                             .map((skill, index) => <div
                                                                 className="flex items-center space-x-2"
                                                                 key={index}>

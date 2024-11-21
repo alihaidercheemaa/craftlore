@@ -40,19 +40,24 @@ export const Header = () => {
         {
             title: 'Home',
             href: '/',
-            submenu: [
-                { title: 'Homepage 1', href: '#homepage-1' },
-                { title: 'Homepage 2', href: '#homepage-2' },
-                { title: 'Homepage 3', href: '#homepage-3' },
-            ]
         },
         {
             title: 'Craft Repository Registry',
-            href: '#about',
+            href: '#',
             submenu: [
-                { title: 'Our Story', href: '#our-story' },
-                { title: 'Our Team', href: '#our-team' },
-                { title: 'Our Mission', href: '#our-mission' },
+                { title: 'CRAFT PROFILE', href: '#' },
+                {
+                    title: 'GEOGRAPHICAL INDICATION',
+                    href: '#',
+                    submenu: [
+                        { title: 'ABOUT GI & IT PROCESS', href: '#' },
+                        { title: 'CONSUMER REPORTING', href: '#' },
+                        { title: 'GI LISTING', href: '#' },
+                    ]
+                },
+                { title: 'BLOCK CHAIN TRACEABILITY', href: '#' },
+                { title: 'CARBON FOOTPRINT', href: '/craft-registry/carbon-footprint' },
+                { title: 'CRAFT PRICE ESITMATOR', href: '/craft-registry/cost-estimation' },
             ]
         },
         {
