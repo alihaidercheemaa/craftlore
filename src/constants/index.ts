@@ -2745,76 +2745,180 @@ export const COSTESTIMATOR = {
     }
 }
 
-// src/constants.ts
 
 export const CARBONCRAFTCATEGORIES = [
     {
-      name: 'weaving',
-      displayName: 'Weaving Crafts',
-      craftTypes: [
-        'Pashmina Weaving',
-        'Kani Weaving',
-        'Carpet Weaving',
-        'Silk Weaving',
-        'Tweed Weaving',
-      ],
+        name: 'weaving',
+        displayName: 'Weaving Crafts',
+        craftTypes: [
+            'Pashmina Weaving',
+            'Kani Weaving',
+            'Carpet Weaving',
+            'Silk Weaving',
+            'Tweed Weaving',
+        ],
     },
     {
-      name: 'embroidery',
-      displayName: 'Embroidery Crafts',
-      craftTypes: [
-        'Fine Work',
-        'Medium & Decorative',
-        'Raised & Hooked',
-        'Borders & Large Patterns',
-        'Metallic',
-      ],
+        name: 'embroidery',
+        displayName: 'Embroidery Crafts',
+        craftTypes: [
+            'Fine Work',
+            'Medium & Decorative',
+            'Raised & Hooked',
+            'Borders & Large Patterns',
+            'Metallic',
+        ],
     },
     {
-      name: 'wood',
-      displayName: 'Wood Crafts',
-      craftTypes: [
-        'Wood Carving',
-        'Interlocking Ceiling',
-        'Lattice Work',
-        'Wicker Work',
-        'Woodenware',
-      ],
+        name: 'wood',
+        displayName: 'Wood Crafts',
+        craftTypes: [
+            'Wood Carving',
+            'Interlocking Ceiling',
+            'Lattice Work',
+            'Wicker Work',
+            'Woodenware',
+        ],
     },
     {
-      name: 'decor',
-      displayName: 'Decor Crafts',
-      craftTypes: [
-        'Engraved Metallic',
-        'Tapestry & Chainstitch',
-        'Namda',
-        'Crewel',
-        'Silverware',
-      ],
+        name: 'decor',
+        displayName: 'Decor Crafts',
+        craftTypes: [
+            'Engraved Metallic',
+            'Tapestry & Chainstitch',
+            'Namda',
+            'Crewel',
+            'Silverware',
+        ],
     },
     {
-      name: 'recycled',
-      displayName: 'Recycled Crafts',
-      craftTypes: ['Papier Mâché', 'Gabba Craft'],
+        name: 'recycled',
+        displayName: 'Recycled Crafts',
+        craftTypes: ['Papier Mâché', 'Gabba Craft'],
     },
     {
-      name: 'sports',
-      displayName: 'Sports Crafts',
-      craftTypes: ['Cricket Bat Making', 'Chess Board Making'],
+        name: 'sports',
+        displayName: 'Sports Crafts',
+        craftTypes: ['Cricket Bat Making', 'Chess Board Making'],
     },
     {
-      name: 'hide',
-      displayName: 'Hide Crafts',
-      craftTypes: ['Leather', 'Fur & Astrakhan'],
+        name: 'hide',
+        displayName: 'Hide Crafts',
+        craftTypes: ['Leather', 'Fur & Astrakhan'],
     },
     {
-      name: 'culinary',
-      displayName: 'Culinary Crafts',
-      craftTypes: ['Wazwan', 'Kahwa & Pink Tea'],
+        name: 'culinary',
+        displayName: 'Culinary Crafts',
+        craftTypes: ['Wazwan', 'Kahwa & Pink Tea'],
     },
-  ];
-  
-  export const DKC_WAREHOUSE_CITIES = [
+];
+
+export const PASHMINAWAEVING = {
+    RawMaterialCosts: [
+        { value: "GI-certified Kashmir pashmina wool", name: "GI-certified Kashmir pashmina wool", cost: 300 },
+        { value: "Non-Kashmiri, Non-GI-certified wool", name: "Non-Kashmiri, Non-GI-certified wool", cost: 120 },
+        { value: "Blockchain Traceability wool", name: "Blockchain Traceability wool", cost: 200 },
+    ],
+    FiberDiameter: [
+        { value: "Ultra-fine (<14 microns; premium quality)", name: "Ultra-fine (<14 microns; premium quality)", cost: 140 },
+        { value: "Fine (14-16 microns; high quality)", name: "Fine (14-16 microns; high quality)", cost: 130 },
+        { value: "Medium (16-18 microns; standard quality)", name: "Medium (16-18 microns; standard quality)", cost: 120 },
+        { value: "Coarse (>18 microns; lower quality)", name: "Coarse (>18 microns; lower quality)", cost: 10 },
+    ],
+    WeavingTechnique: [
+        { value: "Hand weaving (manual process)", name: "Hand weaving (manual process)", cost: 150 },
+        { value: "Handloom", name: "Handloom", cost: 40 },
+        { value: "Power loom", name: "Power loom", cost: 30 },
+    ],
+    WeavingType: [
+        { value: "Plain weave", name: "Plain weave", cost: 120 },
+        { value: "Twill weave", name: "Twill weave", cost: 125 },
+        { value: "Diamond weave", name: "Diamond weave", cost: 130 },
+        { value: "Jacquard weave", name: "Jacquard weave", cost: 135 },
+    ],
+    DyeingProcess: [
+        { value: "Natural Dyeing (vegetable/mineral-based)", name: "Natural Dyeing (vegetable/mineral-based)", cost: 100 },
+        { value: "Synthetic Dyeing (acid/dye-based)", name: "Synthetic Dyeing (acid/dye-based)", cost: 30 },
+    ],
+    ApplicationTechniques: [
+        { value: "Hand-dyeing (manual and labor-intensive)", name: "Hand-dyeing (manual and labor-intensive)", cost: 150 },
+        { value: "Machine-dyeing (bulk production)", name: "Machine-dyeing (bulk production)", cost: 30 },
+        { value: "Tie-and-dye or Batik (artistic value)", name: "Tie-and-dye or Batik (artistic value)", cost: 40 },
+    ],
+    ColorFixation: [
+        { value: "Heat treatment", name: "Heat treatment", cost: 10 },
+        { value: "Mordanting (e.g., alum, tannins)", name: "Mordanting (e.g., alum, tannins)", cost: 20 },
+        { value: "Washing and neutralizing", name: "Washing and neutralizing", cost: 15 },
+    ],
+    ProductionProcess: [
+        { value: "Raw Wool Procurement (high-quality wool)", name: "Raw Wool Procurement (high-quality wool)", cost: 30 },
+        { value: "Raw Wool Procurement (standard wool)", name: "Raw Wool Procurement (standard wool)", cost: 50 },
+        { value: "Hand Spinning (using Charkha, manual process)", name: "Hand Spinning (using Charkha, manual process)", cost: 40 },
+        { value: "Machine Spinning (faster but less authentic)", name: "Machine Spinning (faster but less authentic)", cost: 20 },
+        { value: "Yarn Preparation (twisting, alignment, pre-treatment)", name: "Yarn Preparation (twisting, alignment, pre-treatment)", cost: 60 },
+        { value: "Weaving Process (Handloom, traditional technique)", name: "Weaving Process (Handloom, traditional technique)", cost: 80 },
+        { value: "Weaving Process (Power loom, machine-based)", name: "Weaving Process (Power loom, machine-based)", cost: 50 },
+        { value: "Sozni Embroidery (intricate, handmade needlework)", name: "Sozni Embroidery (intricate, handmade needlework)", cost: 120 },
+        { value: "Tilla Work (gold/silver thread decoration)", name: "Tilla Work (gold/silver thread decoration)", cost: 100 },
+        { value: "Block Printing (simple patterns)", name: "Block Printing (simple patterns)", cost: 80 },
+        { value: "Washing & Softening (basic softening techniques)", name: "Washing & Softening (basic softening techniques)", cost: 30 },
+        { value: "Advanced Finishing (softening, trimming, edge finishing)", name: "Advanced Finishing (softening, trimming, edge finishing)", cost: 50 },
+    ],
+    ProductSize: [
+        { value: "Standard shawl size (80 x 200 cm)", name: "Standard shawl size (80 x 200 cm)", cost: 130 },
+        { value: "Stole size (50 x 180 cm)", name: "Stole size (50 x 180 cm)", cost: 120 },
+        { value: "Scarf size (30 x 150 cm)", name: "Scarf size (30 x 150 cm)", cost: 100 },
+    ],
+    ProductWeight: [
+        { value: "Lightweight (<100 grams)", name: "Lightweight (<100 grams)", cost: 10 },
+        { value: "Medium weight (100-200 grams)", name: "Medium weight (100-200 grams)", cost: 20 },
+        { value: "Heavyweight (>200 grams)", name: "Heavyweight (>200 grams)", cost: 30 },
+    ],
+    CraftsmanshipSkill: [
+        { value: "Beginner", name: "Beginner", cost: 50 },
+        { value: "Intermediate", name: "Intermediate", cost: 130 },
+        { value: "Expert", name: "Expert", cost: 250 },
+    ],
+    ArtisanExperience: [
+        { value: "Less than 5 years", name: "Less than 5 years", cost: 120 },
+        { value: "5-10 years", name: "5-10 years", cost: 130 },
+        { value: "10+ years", name: "10+ years", cost: 150 },
+    ],
+    ProductionTime: [
+        { value: "15-20 days (basic designs)", name: "15-20 days (basic designs)", cost: 150 },
+        { value: "21-30 days (moderate designs)", name: "21-30 days (moderate designs)", cost: 180 },
+        { value: "31-45 days (intricate patterns)", name: "31-45 days (intricate patterns)", cost: 320 },
+    ],
+    EmbellishedPashmina: [
+        { value: "Border: Along the edges", name: "Border: Along the edges", cost: 120 },
+        { value: "Full: Complete coverage of the fabric", name: "Full: Complete coverage of the fabric", cost: 150 },
+        { value: "Scattered: Delicate, random placement", name: "Scattered: Delicate, random placement", cost: 130 },
+        { value: "Dense: Packed, textured pattern", name: "Dense: Packed, textured pattern", cost: 140 },
+        { value: "All-over: Full coverage with repeating motifs", name: "All-over: Full coverage with repeating motifs", cost: 160 },
+        { value: "Floral: Inspired by nature, flowers", name: "Floral: Inspired by nature, flowers", cost: 180 },
+        { value: "Geometric: Symmetric, structured patterns", name: "Geometric: Symmetric, structured patterns", cost: 140 },
+        { value: "Combination: A mix of floral and geometric", name: "Combination: A mix of floral and geometric", cost: 160 },
+    ],
+    Packaging: [
+        { value: "Basic packaging", name: "Basic packaging", cost: 10 },
+        { value: "Eco-friendly packaging", name: "Eco-friendly packaging", cost: 15 },
+        { value: "Papermachie boxes", name: "Papermachie boxes", cost: 220 },
+    ],
+    Shipping: [
+        { value: "Local transport (1-3 days)", name: "Local transport (1-3 days)", cost: 10 },
+        { value: "Domestic shipping (5-7 days)", name: "Domestic shipping (5-7 days)", cost: 20 },
+        { value: "International shipping (10-15 days)", name: "International shipping (10-15 days)", cost: 40 },
+    ],
+    Certifications: [
+        { value: "GI Certification", name: "GI Certification", cost: 150 },
+        { value: "Blockchain Traceability Certification", name: "Blockchain Traceability Certification", cost: 150 },
+        { value: "Fair Trade Compliance Certification", name: "Fair Trade Compliance Certification", cost: 100 },
+        { value: "Child Labor-Free Certification", name: "Child Labor-Free Certification", cost: 50 },
+    ],
+};
+
+
+export const DKC_WAREHOUSE_CITIES = [
     'New York',
     'Los Angeles',
     'Chicago',
@@ -2825,25 +2929,24 @@ export const CARBONCRAFTCATEGORIES = [
     'San Diego',
     'Dallas',
     'San Francisco',
-  ];
-  
-  export const TRANSPORT_METHODS = ['Air', 'Ship', 'Rail', 'Road'];
-  
-  export const TRANSPORT_EFFICIENCIES = [
+];
+
+export const TRANSPORT_METHODS = ['Air', 'Ship', 'Rail', 'Road'];
+
+export const TRANSPORT_EFFICIENCIES = [
     'Efficient (Bulk)',
     'Less Efficient (Single)',
-  ];
-  
-  export const MATERIAL_UNITS = ['Kilograms', 'Grams', 'Pounds'];
-  
-  export const PURCHASE_LOCATIONS = [
+];
+
+export const MATERIAL_UNITS = ['Kilograms', 'Grams', 'Pounds'];
+
+export const PURCHASE_LOCATIONS = [
     'Directly from Kashmir',
     'Purchased from DKC USA Warehouse',
-  ];
-  
-  export const PRODUCTION_METHODS = [
+];
+
+export const PRODUCTION_METHODS = [
     'Handmade',
     'Machine-made',
     'Hybrid',
-  ];
-  
+];

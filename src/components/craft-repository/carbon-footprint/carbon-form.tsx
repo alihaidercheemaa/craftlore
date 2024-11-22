@@ -1,5 +1,3 @@
-// src/components/EstimationForm.tsx
-
 'use client';
 
 import React, { useState } from 'react';
@@ -8,45 +6,28 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '~/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/components/ui/form';
-import { Input } from '~/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
-import { CARBONCRAFTCATEGORIES, DKC_WAREHOUSE_CITIES, TRANSPORT_EFFICIENCIES, TRANSPORT_METHODS, MATERIAL_UNITS, PURCHASE_LOCATIONS, PRODUCTION_METHODS } from '~/constants';
+import { carbonfootprint } from '~/constants/carbon';
 
-// Define the form schema using Zod for validation
 const formSchema = z.object({
-    craftCategory: z.string({ required_error: 'Field is required.' }),
-    craftType: z.string().nonempty('Craft Type is required.'),
-    productionMethod: z.enum(['Handmade', 'Machine-made', 'Hybrid'], {
-        errorMap: () => ({ message: 'Production Method is required.' }),
-    }),
-    materialUnit: z.enum(['Kilograms', 'Grams', 'Pounds'], {
-        errorMap: () => ({ message: 'Material Unit is required.' }),
-    }),
-    materialWeight: z
-        .number({
-            required_error: 'Material Weight is required.',
-            invalid_type_error: 'Material Weight must be a number.',
-        })
-        .positive('Material Weight must be positive.'),
-    purchaseLocation: z
-        .string()
-        .nonempty('Purchase Location is required.'),
-    transportDistance: z
-        .number({
-            required_error: 'Transportation Distance is required.',
-            invalid_type_error: 'Transportation Distance must be a number.',
-        })
-        .nonnegative('Transportation Distance cannot be negative.'),
-    warehouseCity: z.string().optional(),
-    transportMethod: z.enum(['Air', 'Ship', 'Rail', 'Road'], {
-        errorMap: () => ({ message: 'Transport Method is required.' }),
-    }),
-    transportEfficiency: z.enum(['Efficient (Bulk)', 'Less Efficient (Single)'], {
-        errorMap: () => ({ message: 'Transportation Efficiency is required.' }),
-    }),
-});
+    category: z.string({required_error:'Field is required'}),
+    subcategory: z.string({required_error:'Field is required'}),
+    rawMaterial: z.string().optional(),
+    processing: z.string().optional(),
+    production: z.string().optional(),
+    package: z.string({required_error:'Field is required'}),
+    transport: z.string({required_error:'Field is required'}),
+    crafting: z.string().optional(),
+    installation: z.string().optional(),
+    finishing: z.string().optional(),
+    cooking: z.string().optional(),
+    preperation: z.string().optional(),
+    painting: z.string().optional(),
+    embriodery: z.string().optional(),
+}).superRefine()
 
 type FormData = z.infer<typeof formSchema>;
+
 type CarbonCalcultaion = {
     footprintDirect: number
     footprintDKC: number
@@ -62,6 +43,18 @@ export const CarbonForm: React.FC = () => {
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema)
     });
+
+    const selectedSubcategory = carbonfootprint
+        .find(category => form.watch('category') === category.category)
+        ?.subcategory
+        ?.find(sub => form.watch('subcategory') === sub.name);
+
+    const dropdownOptions = selectedSubcategory?.Crafting
+        ? { name: "crafting", label: "Crafting", options: selectedSubcategory.Crafting }
+        : selectedSubcategory?.ProductionMethod
+            ? { name: "production", label: "Production", options: selectedSubcategory.ProductionMethod }
+            : null;
+
 
     const calculateEnergyConsumption = (craftType: string, productionMethod: string): number => {
         let energyConsumption = 0;
@@ -235,7 +228,7 @@ export const CarbonForm: React.FC = () => {
                 >
                     <FormField
                         control={form.control}
-                        name="craftCategory"
+                        name="category"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Craft Category</FormLabel>
@@ -248,12 +241,12 @@ export const CarbonForm: React.FC = () => {
                                             <SelectValue placeholder="Select Craft Category" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {CARBONCRAFTCATEGORIES.map((category) => (
+                                            {carbonfootprint.map((category) => (
                                                 <SelectItem
-                                                    key={category.name}
-                                                    value={category.name}
+                                                    key={category.category}
+                                                    value={category.category}
                                                 >
-                                                    {category.displayName}
+                                                    {category.category}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
@@ -265,7 +258,7 @@ export const CarbonForm: React.FC = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="craftType"
+                        name="subcategory"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Craft Type</FormLabel>
@@ -279,8 +272,8 @@ export const CarbonForm: React.FC = () => {
                                         </SelectTrigger>
                                         <SelectContent>
                                             {
-                                                CARBONCRAFTCATEGORIES.find(category => form.watch('craftCategory') == category.name)?.craftTypes.map((categoryType, index) => (
-                                                    <SelectItem value={categoryType} key={index}>{categoryType}</SelectItem>
+                                                carbonfootprint.find(category => form.watch('category') == category.category)?.subcategory.map((sub, index) => (
+                                                    <SelectItem value={sub.name} key={index}>{sub.name}</SelectItem>
                                                 ))
                                             }
                                         </SelectContent>
@@ -290,27 +283,29 @@ export const CarbonForm: React.FC = () => {
                             </FormItem>
                         )}
                     />
-
                     <FormField
                         control={form.control}
-                        name="productionMethod"
+                        name="rawMaterial"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Production Method</FormLabel>
+                                <FormLabel>Raw material</FormLabel>
                                 <FormControl>
                                     <Select
                                         onValueChange={field.onChange}
                                         value={field.value}
                                     >
                                         <SelectTrigger className="bg-white text-gray-950">
-                                            <SelectValue placeholder="Select Production Method" />
+                                            <SelectValue placeholder="Select raw material" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {PRODUCTION_METHODS.map((method) => (
-                                                <SelectItem key={method} value={method}>
-                                                    {method}
-                                                </SelectItem>
-                                            ))}
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.RawMaterial
+                                                    .map((raw, index) => (
+                                                        <SelectItem value={raw.name} key={index}>{raw.name}</SelectItem>
+                                                    ))
+                                            }
                                         </SelectContent>
                                     </Select>
                                 </FormControl>
@@ -320,24 +315,27 @@ export const CarbonForm: React.FC = () => {
                     />
                     <FormField
                         control={form.control}
-                        name="materialUnit"
+                        name="processing"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Material Unit</FormLabel>
+                                <FormLabel>Processing</FormLabel>
                                 <FormControl>
                                     <Select
                                         onValueChange={field.onChange}
                                         value={field.value}
                                     >
                                         <SelectTrigger className="bg-white text-gray-950">
-                                            <SelectValue placeholder="Select Material Unit" />
+                                            <SelectValue placeholder="Select process" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {MATERIAL_UNITS.map((unit) => (
-                                                <SelectItem key={unit} value={unit}>
-                                                    {unit}
-                                                </SelectItem>
-                                            ))}
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.Processing
+                                                    ?.map((process, index) => (
+                                                        <SelectItem value={process.name} key={index}>{process.name}</SelectItem>
+                                                    ))
+                                            }
                                         </SelectContent>
                                     </Select>
                                 </FormControl>
@@ -345,119 +343,25 @@ export const CarbonForm: React.FC = () => {
                             </FormItem>
                         )}
                     />
-
-
-                    <FormField
-                        control={form.control}
-                        name="materialWeight"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Material Weight</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="number"
-                                        placeholder="Enter material weight"
-                                        className='text-gray-950'
-                                        {...field}
-                                        onChange={(e) => {
-                                            const value = e.target.value;
-                                            if (
-                                                value === '' ||
-                                                (/^\d+(\.\d+)?$/.test(value) && parseFloat(value) > 0)
-                                            ) {
-                                                field.onChange(
-                                                    value === '' ? undefined : parseFloat(value)
-                                                );
-                                            }
-                                        }}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="purchaseLocation"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Purchase Location</FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={(value) => {
-                                            field.onChange(value)
-                                            if (value == 'Directly from Kashmir')
-                                                form.setValue('transportDistance', 7200)
-                                        }}
-                                        value={field.value}
-                                    >
-                                        <SelectTrigger className="bg-white text-gray-950">
-                                            <SelectValue placeholder="Select Purchase Location" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            {PURCHASE_LOCATIONS.map((location) => (
-                                                <SelectItem key={location} value={location}>
-                                                    {location}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    <FormField
-                        control={form.control}
-                        name="transportDistance"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Transportation Distance (Kms/Miles)</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="number"
-                                        placeholder="Enter transportation distance"
-                                        className='text-gray-950'
-                                        {...field}
-                                        disabled={form.watch('purchaseLocation') === 'Directly from Kashmir'}
-                                        onChange={(e) => {
-                                            const value = e.target.value;
-                                            if (
-                                                value === '' ||
-                                                (/^\d+(\.\d+)?$/.test(value) && parseFloat(value) >= 0)
-                                            ) {
-                                                field.onChange(
-                                                    value === '' ? undefined : parseFloat(value)
-                                                );
-                                            }
-                                        }}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-
-                    {form.watch('purchaseLocation') == 'Purchased from DKC USA Warehouse' && (
+                    {dropdownOptions && (
                         <FormField
                             control={form.control}
-                            name="warehouseCity"
+                            name={dropdownOptions.name as "crafting" | "production"}
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>DKC Warehouse City</FormLabel>
+                                    <FormLabel>{dropdownOptions.label}</FormLabel>
                                     <FormControl>
                                         <Select
                                             onValueChange={field.onChange}
                                             value={field.value}
                                         >
                                             <SelectTrigger className="bg-white text-gray-950">
-                                                <SelectValue placeholder="Select Warehouse City" />
+                                                <SelectValue placeholder={`Select ${dropdownOptions.label.toLowerCase()}`} />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                {DKC_WAREHOUSE_CITIES.map((city) => (
-                                                    <SelectItem key={city} value={city}>
-                                                        {city}
+                                                {dropdownOptions.options.map((option, index) => (
+                                                    <SelectItem value={option.name} key={index}>
+                                                        {option.name}
                                                     </SelectItem>
                                                 ))}
                                             </SelectContent>
@@ -468,28 +372,97 @@ export const CarbonForm: React.FC = () => {
                             )}
                         />
                     )}
-
-
+                    {
+                        form.watch('subcategory') == 'Khatamband' ||
+                        form.watch('subcategory') == 'Pinjrakari'
+                        && <FormField
+                            control={form.control}
+                            name={"installation"}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Installation</FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                        >
+                                            <SelectTrigger className="bg-white text-gray-950">
+                                                <SelectValue placeholder={`Select installation`} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {
+                                                    carbonfootprint
+                                                        .find(category => form.watch('category') == category.category)?.subcategory
+                                                        .find(sub => form.watch('subcategory') == sub.name)?.Installation
+                                                        ?.map((install, index) => (
+                                                            <SelectItem value={install.name} key={index}>{install.name}</SelectItem>
+                                                        ))
+                                                }
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    }
+                    {
+                        form.watch('subcategory') == 'Engraved Metalware' ||
+                        form.watch('category') == 'Sport Crafts'
+                        && <FormField
+                            control={form.control}
+                            name={"finishing"}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Finishing</FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                        >
+                                            <SelectTrigger className="bg-white text-gray-950">
+                                                <SelectValue placeholder={`Select finishing`} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {
+                                                    carbonfootprint
+                                                        .find(category => form.watch('category') == category.category)?.subcategory
+                                                        .find(sub => form.watch('subcategory') == sub.name)?.Finishing
+                                                        ?.map((finishing, index) => (
+                                                            <SelectItem value={finishing.name} key={index}>{finishing.name}</SelectItem>
+                                                        ))
+                                                }
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    }
                     <FormField
                         control={form.control}
-                        name="transportMethod"
+                        name={"cooking"}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Transport Method</FormLabel>
+                                <FormLabel>Cooking</FormLabel>
                                 <FormControl>
                                     <Select
                                         onValueChange={field.onChange}
                                         value={field.value}
                                     >
                                         <SelectTrigger className="bg-white text-gray-950">
-                                            <SelectValue placeholder="Select Transport Method" />
+                                            <SelectValue placeholder={`Select cooking`} />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {TRANSPORT_METHODS.map((method) => (
-                                                <SelectItem key={method} value={method}>
-                                                    {method}
-                                                </SelectItem>
-                                            ))}
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.CookingProcess
+                                                    ?.map((cooking, index) => (
+                                                        <SelectItem value={cooking.name} key={index}>{cooking.name}</SelectItem>
+                                                    ))
+                                            }
                                         </SelectContent>
                                     </Select>
                                 </FormControl>
@@ -497,27 +470,29 @@ export const CarbonForm: React.FC = () => {
                             </FormItem>
                         )}
                     />
-
                     <FormField
                         control={form.control}
-                        name="transportEfficiency"
+                        name={"preperation"}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Transportation Efficiency</FormLabel>
+                                <FormLabel>Preperation</FormLabel>
                                 <FormControl>
                                     <Select
                                         onValueChange={field.onChange}
                                         value={field.value}
                                     >
                                         <SelectTrigger className="bg-white text-gray-950">
-                                            <SelectValue placeholder="Select Efficiency" />
+                                            <SelectValue placeholder={`Select preperation`} />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {TRANSPORT_EFFICIENCIES.map((efficiency) => (
-                                                <SelectItem key={efficiency} value={efficiency}>
-                                                    {efficiency}
-                                                </SelectItem>
-                                            ))}
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.Preparation
+                                                    ?.map((prepare, index) => (
+                                                        <SelectItem value={prepare.name} key={index}>{prepare.name}</SelectItem>
+                                                    ))
+                                            }
                                         </SelectContent>
                                     </Select>
                                 </FormControl>
@@ -525,7 +500,126 @@ export const CarbonForm: React.FC = () => {
                             </FormItem>
                         )}
                     />
-
+                    <FormField
+                        control={form.control}
+                        name={"painting"}
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Painting</FormLabel>
+                                <FormControl>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                    >
+                                        <SelectTrigger className="bg-white text-gray-950">
+                                            <SelectValue placeholder={`Select painring`} />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.PaintingAndLacquering
+                                                    ?.map((prepare, index) => (
+                                                        <SelectItem value={prepare.name} key={index}>{prepare.name}</SelectItem>
+                                                    ))
+                                            }
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name={"embriodery"}
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Embriodery</FormLabel>
+                                <FormControl>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                    >
+                                        <SelectTrigger className="bg-white text-gray-950">
+                                            <SelectValue placeholder={`Select embriodery`} />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.Embroidery
+                                                    ?.map((prepare, index) => (
+                                                        <SelectItem value={prepare.name} key={index}>{prepare.name}</SelectItem>
+                                                    ))
+                                            }
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="package"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Packaging</FormLabel>
+                                <FormControl>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                    >
+                                        <SelectTrigger className="bg-white text-gray-950">
+                                            <SelectValue placeholder="Select  packaging" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.Packaging
+                                                    .map((pac, index) => (
+                                                        <SelectItem value={pac.name} key={index}>{pac.name}</SelectItem>
+                                                    ))
+                                            }
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="transport"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Transportation</FormLabel>
+                                <FormControl>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                    >
+                                        <SelectTrigger className="bg-white text-gray-950">
+                                            <SelectValue placeholder="Select  transportation" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {
+                                                carbonfootprint
+                                                    .find(category => form.watch('category') == category.category)?.subcategory
+                                                    .find(sub => form.watch('subcategory') == sub.name)?.Transportation
+                                                    .map((trans, index) => (
+                                                        <SelectItem value={trans.name} key={index}>{trans.name}</SelectItem>
+                                                    ))
+                                            }
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     <Button
                         type="submit"
                         variant={'secondary'}
@@ -536,7 +630,7 @@ export const CarbonForm: React.FC = () => {
                 </form>
             </Form>
 
-            {calculations.footprintDKC!=0 && (
+            {calculations.footprintDKC != 0 && (
                 <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
                     <h3 className="text-3xl font-montserrat mb-2">
                         Carbon Footprint Results
@@ -545,15 +639,15 @@ export const CarbonForm: React.FC = () => {
                         <p className='font-opensans'>
                             Estimated Carbon Footprint:<br />
                             Product Shipped from Kashmir:<br />
-                            {calculations.footprintDirect.toFixed(2)} kg CO2<br />
+                            <span className="text-secondary">{calculations.footprintDirect.toFixed(2)}</span> kg CO2<br />
                         </p>
                         <p className='font-opensans'>
                             Estimated Carbon Footprint:<br />
                             Product Shipped From DKC USA Warehouse:<br />
-                            {calculations.footprintDKC.toFixed(2)} kg CO2<br />
+                            <span className="text-secondary">{calculations.footprintDKC.toFixed(2)}</span> kg CO2<br />
                         </p>
                         <strong className='text-secondary'>Thank you for choosing a more eco-friendly option!</strong>
-                        <p>   By purchasing from the DKC USA Warehouse in {calculations.warehouse}, you&apos;ve helped reduce the carbon footprint of your purchase by {(calculations.footprintDirect - calculations.footprintDKC).toFixed(2)} kg CO2. Your choice contributes to a more sustainable and environmentally responsible future.</p>
+                        <p>   By purchasing from the DKC USA Warehouse in {calculations.warehouse}, you&apos;ve helped reduce the carbon footprint of your purchase by <span className='text-secondary'>{(calculations.footprintDirect - calculations.footprintDKC).toFixed(2)}</span> kg CO2. Your choice contributes to a more sustainable and environmentally responsible future.</p>
                     </div>
                 </div >
             )}
