@@ -255,3 +255,27 @@ type LisitingCritera = {
     Business: Business[];
     Institute: Institute[];
 };
+
+type ValueProps = {
+    value:string
+    name:string
+}
+type SubCategoryProps = {
+    name: string
+    RawMaterial:ValueProps[]
+    Processing?: {name:string,values:ValueProps[]}[]
+    ProductionMethod?: {name:string,values:ValueProps[]}[]
+    Packaging : {name:string,values:ValueProps[]}[]
+    Transportation: {name:string,values:ValueProps[]}[]
+    Crafting? : {name:string,values:ValueProps[]}[]
+    Installation? : {name:string,values:ValueProps[]}[]
+    Finishing? : {name:string,values:ValueProps[]}[]
+    Preparation?:{name:string,values:ValueProps[]}[]
+    CookingProcess?:{name:string,values:ValueProps[]}[]
+    PaintingAndLacquering?:{name:string,values:ValueProps[]}[]
+    Embroidery?:{name:string,values:ValueProps[]}[]
+}
+type CarbonProps = {
+    category: string
+    subcategory: SubCategoryProps[]
+}
