@@ -308,7 +308,9 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Gold,
+                            AND: [
+                                { rank: Ranks.Gold }
+                            ]
                         },
                     },
                     include: {
@@ -330,7 +332,9 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Silver,
+                            AND: [
+                                { rank: Ranks.Silver }
+                            ]
                         },
                     },
                     include: {
@@ -349,10 +353,12 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronzeArtisans = ctx.db.artisan.findMany({
-                    take: 3, 
+                    take: 3,
                     where: {
                         criteria: {
-                            rank: Ranks.Bronze,
+                            AND: [
+                                { rank: Ranks.Bronze }
+                            ]
                         },
                     },
                     include: {
@@ -429,7 +435,9 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Gold,
+                            AND: [
+                                { rank: Ranks.Gold }
+                            ]
                         },
                     },
                     include: {
@@ -451,7 +459,9 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Silver,
+                            AND: [
+                                { rank: Ranks.Silver }
+                            ]
                         },
                     },
                     include: {
@@ -470,10 +480,12 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronze = ctx.db.business.findMany({
-                    take: 3, 
+                    take: 3,
                     where: {
                         criteria: {
-                            rank: Ranks.Bronze,
+                            AND: [
+                                { rank: Ranks.Bronze }
+                            ]
                         },
                     },
                     include: {
@@ -544,12 +556,14 @@ export const RegistrationRouter = createTRPCRouter({
         .query(async ({ ctx }) => {
             try {
 
-              
+
                 const gold = ctx.db.institute.findMany({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Gold,
+                            AND: [
+                                { rank: Ranks.Gold }
+                            ]
                         },
                     },
                     include: {
@@ -571,7 +585,10 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: Ranks.Silver,
+                            AND: [
+                                { rank: Ranks.Silver }
+                            ]
+
                         },
                     },
                     include: {
@@ -590,10 +607,12 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronze = ctx.db.institute.findMany({
-                    take: 3, 
+                    take: 3,
                     where: {
                         criteria: {
-                            rank: Ranks.Bronze,
+                            AND: [
+                                { rank: Ranks.Bronze }
+                            ]
                         },
                     },
                     include: {
