@@ -146,7 +146,7 @@ export const SERVICES = [
     },
     {
         icon: '/icons/money.png',
-        title: "CRAFT-PRICE VALUATION",
+        title: "PRICE VALUATION",
         description: "Self-Priced Kashmir Crafts Valuation"
     }
 ];

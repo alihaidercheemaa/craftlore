@@ -26,7 +26,7 @@ export const BusinessList = async () => {
                             <div
                                 className={`absolute top-0 right-0 px-3 py-1 text-sm font-semibold rounded-bl-lg ${rankingColor}`}
                             >
-                                {business.criteria.rank}
+                                Gold
                             </div>
                             <div className="p-6">
                                 <h2 className="text-xl font-bold mb-2 text-gray-800">
@@ -67,7 +67,7 @@ export const BusinessList = async () => {
                             <div
                                 className={`absolute top-0 right-0 px-3 py-1 text-sm font-semibold rounded-bl-lg ${rankingColor}`}
                             >
-                                {business.criteria.rank}
+                                Silver
                             </div>
                             <div className="p-6">
                                 <h2 className="text-xl font-bold mb-2 text-gray-800">
@@ -108,7 +108,7 @@ export const BusinessList = async () => {
                             <div
                                 className={`absolute top-0 right-0 px-3 py-1 text-sm font-semibold rounded-bl-lg ${rankingColor}`}
                             >
-                                {business.criteria.rank}
+                                Bronze
                             </div>
                             <div className="p-6">
                                 <h2 className="text-xl font-bold mb-2 text-gray-800">

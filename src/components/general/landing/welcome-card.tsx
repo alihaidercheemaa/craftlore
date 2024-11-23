@@ -50,11 +50,11 @@ export const WelcomeCards = () => {
                     <br />
                 </p>
             </div>
-            <div className="group col-span-2 rounded-lg bg-primary text-white shadow-lg  px-6  lg:container hover:bg-secondary lg:col-span-1">
-                <h2 className="pt-8 text-center font-montserrat text-xl font-extrabold text-secondary group-hover:text-primary lg:text-4xl">
+            <div className="group col-span-2 rounded-lg bg-primary text-white shadow-lg px-6 lg:container  lg:col-span-1">
+                <h2 className="pt-8 text-center font-montserrat text-xl font-extrabold text-secondary  lg:text-4xl">
                     Welcome to CraftLore
                 </h2>
-                <h6 className="pb-[17px] text-center font-montserrat text-sm font-extrabold group-hover:text-primary lg:text-base">
+                <h6 className="pb-[17px] text-center font-montserrat text-sm font-extrabold  lg:text-base">
                     Eliminating Middleman, Empowering Artisans/ Buyers
                 </h6>
                 <br />
