@@ -14,7 +14,7 @@ export const ContactDetail = () => {
                     <div className="grid grid-cols-2 gap-8">
                         <div className="col-span-2 lg:col-span-1 grid gap-2">
                             <h2 className="font-montserrat text-3xl">Our Office</h2>
-                            <p className="font-montserrat">Artisan Lane , 2 Dar Ul Zamrood,  Gousia Ext Zakiura</p>
+                            <p className="font-montserrat">Artisan Lane , 2 Dar Ul Zamrood,  Gousia Ext Zakura</p>
                             <p className="font-montserrat">Srinagar Kashmir India 190006</p>
                         </div>
                         <div className="col-span-2 lg:col-span-1 grid gap-2 lg:justify-end">
