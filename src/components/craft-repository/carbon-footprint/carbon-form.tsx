@@ -8,6 +8,8 @@ import { Button } from '~/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { carbonfootprint } from '~/constants/carbon';
+import { api } from '~/trpc/react';
+import { toast } from '~/hooks/use-toast';
 
 const formSchema = z.object({
     category: z.string({ required_error: 'Field is required' }),
@@ -22,10 +24,10 @@ const formSchema = z.object({
     installation: z.string().optional(),
     finishing: z.string().optional(),
     cooking: z.string().optional(),
-    preperation: z.string().optional(),
+    preparation: z.string().optional(),
 
     painting: z.string().optional(),
-    embriodery: z.string().optional(),
+    embroidery: z.string().optional(),
 }).superRefine((data, ctx) => {
     if (data.category !== "Culinary weaving") {
         if (!data.processing) {
@@ -85,11 +87,11 @@ const formSchema = z.object({
     }
 
     if (data.category == 'Culinary weaving') {
-        if (!data.preperation) {
+        if (!data.preparation) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
                 message: "Field is required",
-                path: ["preperation"]
+                path: ["preparation"]
             });
         }
     }
@@ -103,11 +105,11 @@ const formSchema = z.object({
         }
     }
     if (data.subcategory == 'Gabba') {
-        if (!data.embriodery) {
+        if (!data.embroidery) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
                 message: "Field is required",
-                path: ["embriodery"]
+                path: ["embroidery"]
             });
         }
     }
@@ -125,15 +127,42 @@ type CarbonCalcultaion = {
 
 export const CarbonForm: React.FC = () => {
 
-    const [calculations, setCalculations] = useState<CarbonCalcultaion>({ footprintDirect: 0, footprintDKC: 0, kashmirCost: 0, usaCost: 0, warehouse: '' })
+    const [calculations, setCalculations] = useState<{ lower: number, upper: number }>({ lower: 0, upper: 0 })
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema)
     });
-
+    const estimateCarbon = api.cost.carbonFootPrint.useMutation({
+        onSuccess: (data) => {
+            setCalculations((prev)=>({...prev,lower:data.totalLower,upper:data.totalUpper}))
+        },
+        onError: (error) => {
+            toast({
+                variant:'destructive',
+                title:'Opps!',
+                description:error.message
+            })
+        }
+    })
 
     const onSubmit = (data: FormData) => {
-        console.log(data)
+
+        estimateCarbon.mutate({
+            category: data.category,
+            subcategory: data.subcategory,
+            rawMaterial: data.rawMaterial,
+            package: data.package,
+            transport: data.transport,
+            processing: data.processing,
+            production: data.production,
+            crafting: data.crafting,
+            installation: data.installation,
+            finishing: data.finishing,
+            cooking: data.cooking,
+            preparation: data.preparation,
+            painting: data.painting,
+            embroidery: data.embroidery,
+        })
     }
 
 
@@ -426,7 +455,7 @@ export const CarbonForm: React.FC = () => {
                     {form.watch('category') === 'Culinary weaving' && (
                         <FormField
                             control={form.control}
-                            name="preperation" // Consider renaming to "preparation" for consistency
+                            name="preparation" // Consider renaming to "preparation" for consistency
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Preparation<span className="text-red-500">*</span></FormLabel>
@@ -488,7 +517,7 @@ export const CarbonForm: React.FC = () => {
                     {form.watch('subcategory') === 'Gabba' && (
                         <FormField
                             control={form.control}
-                            name="embriodery" // Consider renaming to "embroidery" for consistency
+                            name="embroidery" // Consider renaming to "embroidery" for consistency
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Embroidery<span className="text-red-500">*</span></FormLabel>
@@ -574,14 +603,19 @@ export const CarbonForm: React.FC = () => {
                     />
 
                     {/* Submit Button */}
-                    <Button type="submit" variant="secondary" className="mt-4 w-full">
-                        Calculate Carbon Footprint
+                    <Button
+                        type="submit"
+                        variant="secondary"
+                        className="mt-4 w-full"
+                        disabled={estimateCarbon.isPending}
+                    >
+                        {estimateCarbon.isPending ? "Calculating" : "Calculate Carbon Footprint"}
                     </Button>
                 </form>
             </Form>
 
 
-            {calculations.footprintDKC != 0 && (
+            {calculations.lower != 0 && (
                 <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
                     <h3 className="text-3xl font-montserrat mb-2">
                         Carbon Footprint Results
@@ -589,16 +623,8 @@ export const CarbonForm: React.FC = () => {
                     <div className='grid gap-4'>
                         <p className='font-opensans'>
                             Estimated Carbon Footprint:<br />
-                            Product Shipped from Kashmir:<br />
-                            <span className="text-secondary">{calculations.footprintDirect.toFixed(2)}</span> kg CO2<br />
+                            <span className="text-secondary">{calculations.lower.toFixed(2)}-{calculations.upper.toFixed(2)}</span> kg CO2<br />
                         </p>
-                        <p className='font-opensans'>
-                            Estimated Carbon Footprint:<br />
-                            Product Shipped From DKC USA Warehouse:<br />
-                            <span className="text-secondary">{calculations.footprintDKC.toFixed(2)}</span> kg CO2<br />
-                        </p>
-                        <strong className='text-secondary'>Thank you for choosing a more eco-friendly option!</strong>
-                        <p>   By purchasing from the DKC USA Warehouse in {calculations.warehouse}, you&apos;ve helped reduce the carbon footprint of your purchase by <span className='text-secondary'>{(calculations.footprintDirect - calculations.footprintDKC).toFixed(2)}</span> kg CO2. Your choice contributes to a more sustainable and environmentally responsible future.</p>
                     </div>
                 </div >
             )}
