@@ -320,11 +320,6 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
                     },
                 });
 
@@ -344,11 +339,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -368,11 +359,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -447,11 +434,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -471,11 +454,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -495,11 +474,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -573,11 +548,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -598,11 +569,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 
@@ -622,11 +589,7 @@ export const RegistrationRouter = createTRPCRouter({
                                 address: true,
                             },
                         },
-                        criteria: {
-                            select: {
-                                rank: true,
-                            },
-                        },
+                    
                     },
                 });
 

@@ -26,7 +26,7 @@ export const ContactDetail = () => {
                         <div className="col-span-2 flex flex-col lg:flex-row gap-8 text-secondary">
                             <div className="flex gap-2 items-center">
                                 <FaEnvelope />
-                                <Link className="text-gray-900 hover:text-secondary" href="mailto:info.consultax@gmail.com">info.consultax@gmail.com</Link>
+                                <Link className="text-gray-900 hover:text-secondary" href="mailto:info@craftlore.org">info@craftlore.org</Link>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <FaPhone />
