@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { z } from "zod";
-import { BusinessLevel, InstitutionType, MarketType, SkillLevel } from "@prisma/client";
+import { BusinessLevel, InstitutionType, MarketType, Ranks, SkillLevel } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 
 
@@ -308,7 +308,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: 'Gold',
+                            rank: Ranks.Gold,
                         },
                     },
                     include: {
@@ -330,7 +330,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: 'Silver',
+                            rank: Ranks.Silver,
                         },
                     },
                     include: {
@@ -349,10 +349,10 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronzeArtisans = ctx.db.artisan.findMany({
-                    take: 3, // Limit to 3 Bronze artisans
+                    take: 3, 
                     where: {
                         criteria: {
-                            rank: 'Bronze',
+                            rank: Ranks.Bronze,
                         },
                     },
                     include: {
@@ -429,7 +429,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: 'Gold',
+                            rank: Ranks.Gold,
                         },
                     },
                     include: {
@@ -451,7 +451,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: 'Silver',
+                            rank: Ranks.Silver,
                         },
                     },
                     include: {
@@ -470,10 +470,10 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronze = ctx.db.business.findMany({
-                    take: 3, // Limit to 3 Bronze artisans
+                    take: 3, 
                     where: {
                         criteria: {
-                            rank: 'Bronze',
+                            rank: Ranks.Bronze,
                         },
                     },
                     include: {
@@ -549,7 +549,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Gold artisans
                     where: {
                         criteria: {
-                            rank: 'Gold',
+                            rank: Ranks.Gold,
                         },
                     },
                     include: {
@@ -571,7 +571,7 @@ export const RegistrationRouter = createTRPCRouter({
                     take: 3, // Limit to 3 Silver artisans
                     where: {
                         criteria: {
-                            rank: 'Silver',
+                            rank: Ranks.Silver,
                         },
                     },
                     include: {
@@ -590,10 +590,10 @@ export const RegistrationRouter = createTRPCRouter({
                 });
 
                 const bronze = ctx.db.institute.findMany({
-                    take: 3, // Limit to 3 Bronze artisans
+                    take: 3, 
                     where: {
                         criteria: {
-                            rank: 'Bronze',
+                            rank: Ranks.Bronze,
                         },
                     },
                     include: {
