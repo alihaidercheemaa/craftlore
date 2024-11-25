@@ -189,29 +189,29 @@ model SponsorMembership {
 }
 
 model LisitingCritera {
-  criteraId                 String      @id @default(cuid())
-  sourceOfMaterial          String      @default("none")
-  craftingProcess           String      @default("none")
-  sustainablePractices      Boolean     @default(false)
-  sustainabledescription    String      @default("none")
-  fairWage                  Boolean     @default(false)
-  genderSuport              Boolean     @default(false)
-  womenPercentage           Int         @default(0)
-  workplaceuphold           Boolean     @default(false)
-  workplaceDescription      String      @default("none")
-  childLabour               Boolean     @default(false)
-  fairTrade                 Boolean     @default(false)
-  fairtradeDoc              String[]    @default([])
-  giHold                    Boolean     @default(false)
-  giNumber                  String      @default("none")
-  giDoc                     String      @default("none")
-  blockChain                Boolean     @default(false)
-  blockChainDoc             String[]    @default([])
-  ethics                    Boolean     @default(false)
-  qualityReview             Boolean     @default(false)
-  profilePermission         Boolean     @default(false)
-  complianceAcknowledgement Boolean     @default(false)
-  rank                      String      @default("none")
+  criteraId                 String       @id @default(cuid())
+  sourceOfMaterial          String       @default("none")
+  craftingProcess           String       @default("none")
+  sustainablePractices      Boolean      @default(false)
+  sustainabledescription    String       @default("none")
+  fairWage                  Boolean      @default(false)
+  genderSuport              Boolean      @default(false)
+  womenPercentage           Int          @default(0)
+  workplaceuphold           Boolean      @default(false)
+  workplaceDescription      String       @default("none")
+  childLabour               Boolean      @default(false)
+  fairTrade                 Boolean      @default(false)
+  fairtradeDoc              String[]     @default([])
+  giHold                    Boolean      @default(false)
+  giNumber                  String       @default("none")
+  giDoc                     String       @default("none")
+  blockChain                Boolean      @default(false)
+  blockChainDoc             String[]     @default([])
+  ethics                    Boolean      @default(false)
+  qualityReview             Boolean      @default(false)
+  profilePermission         Boolean      @default(false)
+  complianceAcknowledgement Boolean      @default(false)
+  listingRank               ListingRanks @default(None)
   Artisan                   Artisan[]
   Business                  Business[]
   Institute                 Institute[]
@@ -276,4 +276,11 @@ enum Status {
 enum Role {
   ADMIN
   SUPERADMIN
+}
+
+enum ListingRanks {
+  None
+  Gold
+  Silver
+  Bronze
 }
