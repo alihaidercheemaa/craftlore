@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { z } from "zod";
-import { BusinessLevel, InstitutionType, MarketType, SkillLevel } from "@prisma/client";
+import { BusinessLevel, InstitutionType, MarketType, ListingRanks, SkillLevel } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 
 
@@ -130,12 +130,12 @@ export const RegistrationRouter = createTRPCRouter({
                             Rank = "Gold";
                         }
                     } else if (artisan?.craftSkill === "Advanced") {
-                        // Adjust rank to Silver if Bronze
+                        // Adjust listingRank to Silver if Bronze
                         if (Rank === "Bronze") {
                             Rank = "Silver";
                         }
                     } else if (artisan?.craftSkill === "Beginner") {
-                        // Downgrade to Bronze if higher rank
+                        // Downgrade to Bronze if higher listingRank
                         if (Rank === "Gold" || Rank === "Silver") {
                             Rank = "Bronze";
                         }
@@ -161,7 +161,7 @@ export const RegistrationRouter = createTRPCRouter({
                 } else if (user.registerType === 'Institution') {
                     // Institution ranking is purely based on the base checks
                     // No additional factors are applied
-                    Rank = Rank; // Keep the base rank
+                    Rank = Rank; // Keep the base listingRank
                 }
 
 
@@ -190,7 +190,7 @@ export const RegistrationRouter = createTRPCRouter({
                         qualityReview: listingCriteria.qualityReview ?? false,
                         profilePermission: listingCriteria.profilePermission ?? false,
                         complianceAcknowledgement: listingCriteria.complianceAcknowledgement ?? false,
-                        rank: Rank as Ranks
+                        listingRank: Rank as ListingRanks
                     },
                 });
 
@@ -306,7 +306,7 @@ export const RegistrationRouter = createTRPCRouter({
                 const [goldArtisans, silverArtisans, bronzeArtisans] = await Promise.all([
                     ctx.db.artisan.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Gold" } },
+                        where: { criteria: { listingRank: ListingRanks.Gold } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -315,7 +315,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.artisan.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Silver" } },
+                        where: { criteria: { listingRank: ListingRanks.Silver } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -324,7 +324,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.artisan.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Bronze" } },
+                        where: { criteria: { listingRank: ListingRanks.Bronze } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -387,7 +387,7 @@ export const RegistrationRouter = createTRPCRouter({
                 const [goldBusiness, silverBusiness, bronzeBusiness] = await Promise.all([
                     ctx.db.business.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Gold" } },
+                        where: { criteria: { listingRank: ListingRanks.Gold } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -396,7 +396,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.business.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Silver" } },
+                        where: { criteria: { listingRank: ListingRanks.Silver } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -405,7 +405,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.business.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Bronze" } },
+                        where: { criteria: { listingRank: ListingRanks.Bronze } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -467,7 +467,7 @@ export const RegistrationRouter = createTRPCRouter({
                 const [gold, silver, bronze] = await Promise.all([
                     ctx.db.institute.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Gold" } },
+                        where: { criteria: { listingRank: ListingRanks.Gold } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -476,7 +476,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.institute.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Silver" } },
+                        where: { criteria: { listingRank: ListingRanks.Silver } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
@@ -485,7 +485,7 @@ export const RegistrationRouter = createTRPCRouter({
                     }),
                     ctx.db.institute.findMany({
                         take: 3,
-                        where: { criteria: { rank: "Bronze" } },
+                        where: { criteria: { listingRank: ListingRanks.Bronze } },
                         include: {
                             user: {
                                 select: { fullName: true, address: true },
