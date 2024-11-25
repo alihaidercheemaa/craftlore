@@ -211,7 +211,7 @@ model LisitingCritera {
   qualityReview             Boolean     @default(false)
   profilePermission         Boolean     @default(false)
   complianceAcknowledgement Boolean     @default(false)
-  rank                      Ranks       @default(None)
+  rank                      String      @default("none")
   Artisan                   Artisan[]
   Business                  Business[]
   Institute                 Institute[]
@@ -226,13 +226,6 @@ model Account {
   udpatedAt DateTime
 
   @@index([email])
-}
-
-enum Ranks {
-  None
-  Gold
-  Silver
-  Bronze
 }
 
 enum InstitutionType {
