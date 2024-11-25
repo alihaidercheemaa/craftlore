@@ -303,75 +303,41 @@ export const RegistrationRouter = createTRPCRouter({
     getTopArtisans: publicProcedure
         .query(async ({ ctx }) => {
             try {
-
-                const goldArtisans = ctx.db.artisan.findMany({
-                    take: 3, // Limit to 3 Gold artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Gold }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                const [goldArtisans, silverArtisans, bronzeArtisans] = await Promise.all([
+                    ctx.db.artisan.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Gold } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    },
-                });
-
-                const silverArtisans = ctx.db.artisan.findMany({
-                    take: 3, // Limit to 3 Silver artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Silver }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.artisan.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Silver } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
-
-                const bronzeArtisans = ctx.db.artisan.findMany({
-                    take: 3,
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Bronze }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.artisan.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Bronze } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
+                    }),
+                ]);
 
-                // Combine results
-                const artisans = await Promise.all([goldArtisans, silverArtisans, bronzeArtisans]);
-                const combinedArtisans = {
-                    gold: artisans[0],
-                    silver: artisans[1],
-                    bronze: artisans[2],
-                }
-
-                return combinedArtisans;
+                return {
+                    gold: goldArtisans,
+                    silver: silverArtisans,
+                    bronze: bronzeArtisans,
+                };
 
             } catch (error) {
                 if (error instanceof TRPCError) {
@@ -418,75 +384,42 @@ export const RegistrationRouter = createTRPCRouter({
         .query(async ({ ctx }) => {
             try {
 
-                const gold = ctx.db.business.findMany({
-                    take: 3, // Limit to 3 Gold artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Gold }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                const [goldBusiness, silverBusiness, bronzeBusiness] = await Promise.all([
+                    ctx.db.business.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Gold } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
-
-                const silver = ctx.db.business.findMany({
-                    take: 3, // Limit to 3 Silver artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Silver }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.business.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Silver } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
-
-                const bronze = ctx.db.business.findMany({
-                    take: 3,
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Bronze }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.business.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Bronze } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
+                    }),
+                ]);
 
-                // Combine results
-                const businesses = await Promise.all([gold, silver, bronze]);
-                const combinesBusinesses = {
-                    gold: businesses[0],
-                    silver: businesses[1],
-                    bronze: businesses[2],
-                }
+                return {
+                    gold: goldBusiness,
+                    silver: silverBusiness,
+                    bronze: bronzeBusiness,
+                };
 
-                return combinesBusinesses;
             } catch (error) {
                 if (error instanceof TRPCError) {
                     console.error(error.message);
@@ -531,77 +464,41 @@ export const RegistrationRouter = createTRPCRouter({
         .query(async ({ ctx }) => {
             try {
 
-
-                const gold = ctx.db.institute.findMany({
-                    take: 3, // Limit to 3 Gold artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Gold }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                const [gold, silver, bronze] = await Promise.all([
+                    ctx.db.institute.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Gold } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
-
-                const silver = ctx.db.institute.findMany({
-                    take: 3, // Limit to 3 Silver artisans
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Silver }
-                            ]
-
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.institute.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Silver } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
-
-                const bronze = ctx.db.institute.findMany({
-                    take: 3,
-                    where: {
-                        criteria: {
-                            AND: [
-                                { rank: Ranks.Bronze }
-                            ]
-                        },
-                    },
-                    include: {
-                        user: {
-                            select: {
-                                fullName: true,
-                                address: true,
+                    }),
+                    ctx.db.institute.findMany({
+                        take: 3,
+                        where: { criteria: { rank: Ranks.Bronze } },
+                        include: {
+                            user: {
+                                select: { fullName: true, address: true },
                             },
                         },
-                    
-                    },
-                });
+                    }),
+                ]);
 
-                // Combine results
-                const institutes = await Promise.all([gold, silver, bronze]);
-                const combinedInstitutes = {
-                    gold: institutes[0],
-                    silver: institutes[1],
-                    bronze: institutes[2],
-                }
-
-                return combinedInstitutes;
+                return {
+                    gold: gold,
+                    silver: silver,
+                    bronze: bronze,
+                };
             } catch (error) {
                 if (error instanceof TRPCError) {
                     console.error(error.message);
