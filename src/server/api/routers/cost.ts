@@ -1,9 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { TRPCError } from "@trpc/server";
-import { carbonfootprint } from "~/constants/carbon";
-
-
 
 export const CostEstimation = createTRPCRouter({
 
@@ -24,77 +21,47 @@ export const CostEstimation = createTRPCRouter({
             painting: z.string().optional(),
             embroidery: z.string().optional(),
         }))
-        .mutation(async ({ input }) => {
+        .mutation(async ({ ctx, input }) => {
             try {
-                const findSubcategory = (subcategoryName: string): SubCategoryProps | undefined => {
-                    for (const category of carbonfootprint) {
-                        const subcategory = category.subcategory.find((sub) => sub.name === subcategoryName);
-                        if (subcategory) return subcategory;
+                const sections = await ctx.db.section.findMany({
+                    where: { subcategoryId: input.subcategory },
+                    select: {
+                        sectionId: true
                     }
-                    return undefined;
-                };
+                })
+
+                const carbonValues = await ctx.db.value.findMany({
+                    where: {
+                        materialId: input.rawMaterial,
+                        sectionId: { in: sections.map((section) => section.sectionId) },
+                        name: {
+                            in: [input.package ?? 'none',
+                            input.transport ?? 'none',
+                            input.processing ?? 'none',
+                            input.production ?? 'none',
+                            input.crafting ?? 'none',
+                            input.installation ?? 'none',
+                            input.finishing ?? 'none',
+                            input.cooking ?? 'none',
+                            input.preparation ?? 'none',
+                            input.painting ?? 'none',
+                            input.embroidery ?? 'none']
+                        }
+                    },
+                    select : {
+                        value:true
+                    }
+                })
 
                 let totalLower = 0;
                 let totalUpper = 0;
 
-                const extractValues = (value: string) => {
-                    const numStr = value.split(" ")
-                    if (numStr[0]) {
-                        const [lower, upper] = numStr[0].split('-')
-                        totalLower += parseFloat(lower ?? '0.0')
-                        totalUpper += parseFloat(upper ?? '0.0')
-                    }
+                for (const carbon of carbonValues) {
+                     const [lower,upper] = carbon.value.split('-')
+                     totalLower += parseFloat(lower ?? '0.0')
+                     totalUpper += parseFloat(upper ?? '0.0')
                 }
-                const subcategory = findSubcategory(input.subcategory);
-
-                if (subcategory) {
-                    // * calculate for raw material
-                    subcategory?.RawMaterial.forEach((raw) => {
-                        if (raw.name == input.rawMaterial) {
-                            extractValues(raw.value)
-                            return
-                        }
-                    })
-
-                    const processField = (
-                        categoryField: { name: string; values: ValueProps[] }[] | undefined,
-                        inputField: string | undefined
-                    ) => {
-                        if (categoryField && inputField) {
-                            categoryField.forEach((item) => {
-                                if (item.name == inputField) {
-                                    item.values.forEach((value) => {
-                                        if (value.name === input.rawMaterial) {
-                                            extractValues(value.value);
-                                            return;
-                                        }
-                                    });
-                                }
-
-                            });
-                        }
-                    };
-
-
-                    processField(subcategory.Packaging, input.package);
-                    processField(subcategory.Transportation, input.transport);
-                    processField(subcategory.Processing, input.processing);
-                    processField(subcategory.ProductionMethod, input.production);
-                    processField(subcategory.Crafting, input.crafting);
-                    processField(subcategory.Installation, input.installation);
-                    processField(subcategory.Finishing, input.finishing);
-                    processField(subcategory.CookingProcess, input.cooking);
-                    processField(subcategory.Preparation, input.preparation);
-                    processField(subcategory.PaintingAndLacquering, input.painting);
-                    processField(subcategory.Embroidery, input.embroidery);
-
-                    return { totalLower, totalUpper }
-                }
-                console.error(`Sub category not found: ${input.subcategory}`)
-                throw new TRPCError({
-                    code: 'NOT_FOUND',
-                    message: 'Sub category not found.'
-                })
+                return { totalLower, totalUpper }
 
             } catch (error) {
 

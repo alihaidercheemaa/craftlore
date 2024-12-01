@@ -4,6 +4,7 @@ import { EmployRouter } from "~/server/api/routers/employ";
 import { MembershipRouter } from "~/server/api/routers/membership";
 import { RegistrationRouter } from "~/server/api/routers/register";
 import { CostEstimation } from "~/server/api/routers/cost";
+import { CarbonRouter } from "~/server/api/routers/carbon";
 
 
 export const appRouter = createTRPCRouter({
@@ -11,7 +12,8 @@ export const appRouter = createTRPCRouter({
   employ:EmployRouter,
   membership:MembershipRouter,
   register:RegistrationRouter,
-  cost:CostEstimation
+  cost:CostEstimation,
+  carbon:CarbonRouter,
 });
 
 
