@@ -228,6 +228,47 @@ model Account {
   @@index([email])
 }
 
+model Category {
+  categoryId   String        @id @default(cuid())
+  categoryName String        @unique
+  SubCategory  SubCategory[]
+}
+
+model Material {
+  materialId    String      @id @default(cuid())
+  materialName  String      @default("none")
+  subcategoryId String
+  SubCategory   SubCategory @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
+  Value         Value[]
+}
+
+model Section {
+  sectionId     String      @id @default(cuid())
+  sectionType   SectionType @default(None)
+  subcategoryId String
+  SubCategory   SubCategory @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
+  Value         Value[]
+}
+
+model SubCategory {
+  subcategoryId   String     @id @default(cuid())
+  subcategoryName String     @default("none")
+  categoryId      String
+  Material        Material[]
+  Section         Section[]
+  Category        Category   @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
+}
+
+model Value {
+  valueId    String   @id @default(cuid())
+  value      String   @default("0-0")
+  sectionId  String
+  materialId String
+  name       String   @default("none")
+  Material   Material @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
+  Section    Section  @relation(fields: [sectionId], references: [sectionId], onDelete: Cascade)
+}
+
 enum InstitutionType {
   None
   Governance
@@ -283,4 +324,20 @@ enum ListingRanks {
   Gold
   Silver
   Bronze
+}
+
+enum SectionType {
+  None
+  RawMaterial
+  Processing
+  ProductionMethod
+  Packaging
+  Transportation
+  Crafting
+  Installation
+  Finishing
+  Preparation
+  CookingProcess
+  PaintingAndLacquering
+  Embroidery
 }

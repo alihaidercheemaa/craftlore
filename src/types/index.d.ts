@@ -279,3 +279,49 @@ type CarbonProps = {
     category: string
     subcategory: SubCategoryProps[]
 }
+
+
+type CategoryProps = {
+    categoryId: string
+    categoryName: string
+}
+
+type SubCategoryProps = {
+    subcategoryId: string
+    subcategoryName: string
+    categoryId: string
+}
+
+type SectionProps = {
+    sectionId: string
+    sectionType: SectionTypeProps
+    subcategoryId: string
+}
+
+type MaterialProps = {
+    materialId :string
+    materialName:string
+    subcategoryId:string
+}
+type ValueProps = {
+    valueId: string
+    value: string
+    valueName:string
+    sectionId: string
+    materialId:string
+}
+
+type SectionTypeProps =
+    "None" |
+    "RawMaterial" |
+    "Processing" |
+    "ProductionMethod" |
+    "Packaging" |
+    "Transportation" |
+    "Crafting" |
+    "Installation" |
+    "Finishing" |
+    "Preparation" |
+    "CookingProcess" |
+    "PaintingAndLacquering" |
+    "Embroidery"
