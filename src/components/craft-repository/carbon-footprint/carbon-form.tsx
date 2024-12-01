@@ -145,7 +145,7 @@ export const CarbonForm: React.FC = () => {
     upper: number;
   }>({ lower: 0, upper: 0 });
 
-  const [categories] = api.carbon.getCategories.useSuspenseQuery();
+  const categories = api.carbon.getCategories.useQuery();
   const subcategories = api.carbon.getSubCategories.useQuery(
     { categoryId: form.watch("category") },
     { enabled: !!form.watch("category") },
@@ -163,7 +163,7 @@ export const CarbonForm: React.FC = () => {
 
   const filteredCategory = useMemo(() => {
     const category =
-      categories.find(
+      categories.data?.find(
         (category) => category.categoryId === form.watch("category"),
       )?.categoryName ?? "";
       superData.category = category
@@ -199,7 +199,6 @@ export const CarbonForm: React.FC = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
     estimateCarbon.mutate({
       category: data.category,
       subcategory: data.subcategory,
@@ -240,7 +239,7 @@ export const CarbonForm: React.FC = () => {
                       <SelectValue placeholder="Select Craft Category" />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map((category) => (
+                      {categories.data?.map((category) => (
                         <SelectItem
                           key={category.categoryId}
                           value={category.categoryId}
