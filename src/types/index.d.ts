@@ -257,23 +257,23 @@ type LisitingCritera = {
 };
 
 type ValueProps = {
-    value:string
-    name:string
+    value: string
+    name: string
 }
 type SubCategoryProps = {
     name: string
-    RawMaterial:ValueProps[]
-    Processing?: {name:string,values:ValueProps[]}[]
-    ProductionMethod?: {name:string,values:ValueProps[]}[]
-    Packaging : {name:string,values:ValueProps[]}[]
-    Transportation: {name:string,values:ValueProps[]}[]
-    Crafting? : {name:string,values:ValueProps[]}[]
-    Installation? : {name:string,values:ValueProps[]}[]
-    Finishing? : {name:string,values:ValueProps[]}[]
-    Preparation?:{name:string,values:ValueProps[]}[]
-    CookingProcess?:{name:string,values:ValueProps[]}[]
-    PaintingAndLacquering?:{name:string,values:ValueProps[]}[]
-    Embroidery?:{name:string,values:ValueProps[]}[]
+    RawMaterial: ValueProps[]
+    Processing?: { name: string, values: ValueProps[] }[]
+    ProductionMethod?: { name: string, values: ValueProps[] }[]
+    Packaging: { name: string, values: ValueProps[] }[]
+    Transportation: { name: string, values: ValueProps[] }[]
+    Crafting?: { name: string, values: ValueProps[] }[]
+    Installation?: { name: string, values: ValueProps[] }[]
+    Finishing?: { name: string, values: ValueProps[] }[]
+    Preparation?: { name: string, values: ValueProps[] }[]
+    CookingProcess?: { name: string, values: ValueProps[] }[]
+    PaintingAndLacquering?: { name: string, values: ValueProps[] }[]
+    Embroidery?: { name: string, values: ValueProps[] }[]
 }
 type CarbonProps = {
     category: string
@@ -299,16 +299,16 @@ type SectionProps = {
 }
 
 type MaterialProps = {
-    materialId :string
-    materialName:string
-    subcategoryId:string
+    materialId: string
+    materialName: string
+    subcategoryId: string
 }
 type ValueProps = {
     valueId: string
     value: string
-    valueName:string
+    valueName: string
     sectionId: string
-    materialId:string
+    materialId: string
 }
 
 type SectionTypeProps =
@@ -316,6 +316,42 @@ type SectionTypeProps =
     "RawMaterial" |
     "Processing" |
     "ProductionMethod" |
+    "Packaging" |
+    "Transportation" |
+    "Crafting" |
+    "Installation" |
+    "Finishing" |
+    "Preparation" |
+    "CookingProcess" |
+    "PaintingAndLacquering" |
+    "Embroidery"
+
+type PriceSectionTypeProps =
+    "None" |
+    "MaterialType" |
+    "Quality" |
+    "ProductionProcess" |
+    "ProductCertifications" |
+    "PlyType" |
+    "TypeOfWeaving" |
+    "DesignPatternTypes" |
+    "DyeTypes" |
+    "FinishingTechniques" |
+    "ProductLineSize" |
+    "ColorShades" |
+    "Embellishments" |
+    "Certifications" |
+    "MaterialGrading" |
+    "ProductTypesSizes" |
+    "KnotPerInch" |
+    "Dimensions" |
+    "CarvingTechniques" |
+    "ScaleOfCarving" |
+    "FinishOptions" |
+    "PatternTypes" |
+    "FabricAndMaterial" |
+    "RawMaterial" |
+    "Processing" |
     "Packaging" |
     "Transportation" |
     "Crafting" |

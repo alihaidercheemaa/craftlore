@@ -3,12 +3,12 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-export const CarbonRouter = createTRPCRouter({
+export const PriceRouter = createTRPCRouter({
 
     getCategories: publicProcedure
         .query(async ({ ctx }) => {
             try {
-                const data: CategoryProps[] = await ctx.db.category.findMany()
+                const data = await ctx.db.priceCategory.findMany()
                 return data
             } catch (error) {
                 if (error instanceof TRPCClientError) {
@@ -30,8 +30,8 @@ export const CarbonRouter = createTRPCRouter({
         .input(z.object({ categoryId: z.string() }))
         .query(async ({ ctx, input }) => {
             try {
-                const data = await ctx.db.subCategory.findMany({
-                    where: { categoryId: input.categoryId }
+                const data = await ctx.db.priceSubCategory.findMany({
+                    where: { pricecategoryId: input.categoryId }
                 })
                 return data
             } catch (error) {
@@ -54,8 +54,8 @@ export const CarbonRouter = createTRPCRouter({
         .input(z.object({ subcategoryId: z.string() }))
         .query(async ({ ctx, input }) => {
             try {
-                const data = await ctx.db.material.findMany({
-                    where: { subcategoryId: input.subcategoryId }
+                const data = await ctx.db.priceMaterial.findMany({
+                    where: { pricesubcategoryId: input.subcategoryId }
                 })
                 return data
             } catch (error) {
@@ -102,10 +102,10 @@ export const CarbonRouter = createTRPCRouter({
         .input(z.object({ subCategoryId: z.string() }))
         .query(async ({ input, ctx }) => {
             try {
-                const sections = await ctx.db.carbonSection.findMany({
-                    where: { subcategoryId: input.subCategoryId },
+                const sections = await ctx.db.priceSection.findMany({
+                    where: { priceSubCategoryId: input.subCategoryId },
                     include: {
-                        CarbonValue: {
+                        PriceValue: {
                             select: {
                                 name: true,
                             }
@@ -114,10 +114,10 @@ export const CarbonRouter = createTRPCRouter({
                 });
                 const uniqueNamesBySection = sections.map((section) => {
                     const uniqueNames = [
-                        ...new Set(section.CarbonValue.map((value) => value.name))
+                        ...new Set(section.PriceValue.map((value) => value.name))
                     ]; // Use Set to ensure uniqueness
                     return {
-                        sectionType: section.sectionType, // Include section type for context
+                        priceSectionType: section.priceSectionType, // Include section type for context
                         uniqueNames,
                     };
                 });
