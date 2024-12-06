@@ -23,17 +23,17 @@ export const CostEstimation = createTRPCRouter({
         }))
         .mutation(async ({ ctx, input }) => {
             try {
-                const sections = await ctx.db.section.findMany({
+                const sections = await ctx.db.carbonSection.findMany({
                     where: { subcategoryId: input.subcategory },
                     select: {
-                        sectionId: true
+                        carbonsectionId: true
                     }
                 })
 
-                const carbonValues = await ctx.db.value.findMany({
+                const carbonValues = await ctx.db.carbonValue.findMany({
                     where: {
                         materialId: input.rawMaterial,
-                        sectionId: { in: sections.map((section) => section.sectionId) },
+                        carbonsectionId: { in: sections.map((section) => section.carbonsectionId) },
                         name: {
                             in: [input.package ?? 'none',
                             input.transport ?? 'none',

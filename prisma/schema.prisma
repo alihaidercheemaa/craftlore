@@ -235,38 +235,79 @@ model Category {
 }
 
 model Material {
-  materialId    String      @id @default(cuid())
-  materialName  String      @default("none")
+  materialId    String        @id @default(cuid())
+  materialName  String        @default("none")
   subcategoryId String
-  SubCategory   SubCategory @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
-  Value         Value[]
-}
-
-model Section {
-  sectionId     String      @id @default(cuid())
-  sectionType   SectionType @default(None)
-  subcategoryId String
-  SubCategory   SubCategory @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
-  Value         Value[]
+  CarbonValue   CarbonValue[]
+  SubCategory   SubCategory   @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
 }
 
 model SubCategory {
-  subcategoryId   String     @id @default(cuid())
-  subcategoryName String     @default("none")
+  subcategoryId   String          @id @default(cuid())
+  subcategoryName String          @default("none")
   categoryId      String
+  CarbonSection   CarbonSection[]
   Material        Material[]
-  Section         Section[]
-  Category        Category   @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
+  Category        Category        @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
 }
 
-model Value {
-  valueId    String   @id @default(cuid())
-  value      String   @default("0-0")
-  sectionId  String
-  materialId String
-  name       String   @default("none")
-  Material   Material @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
-  Section    Section  @relation(fields: [sectionId], references: [sectionId], onDelete: Cascade)
+model CarbonSection {
+  carbonsectionId String        @id @default(cuid())
+  sectionType     SectionType   @default(None)
+  subcategoryId   String
+  SubCategory     SubCategory   @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
+  CarbonValue     CarbonValue[]
+}
+
+model CarbonValue {
+  valueId         String        @id @default(cuid())
+  name            String        @default("none")
+  value           String        @default("0-0")
+  materialId      String
+  carbonsectionId String
+  CarbonSection   CarbonSection @relation(fields: [carbonsectionId], references: [carbonsectionId], onDelete: Cascade)
+  Material        Material      @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
+}
+
+model PriceCategory {
+  categoryId       String             @id @default(cuid())
+  categoryName     String             @unique
+  PriceSubCategory PriceSubCategory[]
+}
+
+model PriceMaterial {
+  materialId         String           @id @default(cuid())
+  materialName       String           @default("none")
+  pricesubcategoryId String
+  PriceSubCategory   PriceSubCategory @relation(fields: [pricesubcategoryId], references: [subcategoryId], onDelete: Cascade)
+  PriceValue         PriceValue[]
+}
+
+model PriceSection {
+  priceSectionId     String           @id @default(cuid())
+  priceSectionType   PriceSectionType @default(None)
+  priceSubCategoryId String
+  PriceSubCategory   PriceSubCategory @relation(fields: [priceSubCategoryId], references: [subcategoryId], onDelete: Cascade)
+  PriceValue         PriceValue[]
+}
+
+model PriceSubCategory {
+  subcategoryId   String          @id @default(cuid())
+  subcategoryName String          @default("none")
+  pricecategoryId String
+  PriceMaterial   PriceMaterial[]
+  PriceSection    PriceSection[]
+  PriceCategory   PriceCategory   @relation(fields: [pricecategoryId], references: [categoryId], onDelete: Cascade)
+}
+
+model PriceValue {
+  valueId        String        @id @default(cuid())
+  name           String        @default("none")
+  value          String        @default("0-0")
+  priceSectionId String
+  materialId     String
+  PriceMaterial  PriceMaterial @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
+  PriceSection   PriceSection  @relation(fields: [priceSectionId], references: [priceSectionId], onDelete: Cascade)
 }
 
 enum InstitutionType {
@@ -328,9 +369,48 @@ enum ListingRanks {
 
 enum SectionType {
   None
+  Quality
+  ProductLine
   RawMaterial
   Processing
   ProductionMethod
+  Packaging
+  Transportation
+  Crafting
+  Installation
+  Finishing
+  Preparation
+  CookingProcess
+  PaintingAndLacquering
+  Embroidery
+}
+
+enum PriceSectionType {
+  None
+  MaterialType
+  Quality
+  ProductionProcess
+  ProductCertifications
+  PlyType
+  TypeOfWeaving
+  DesignPatternTypes
+  DyeTypes
+  FinishingTechniques
+  ProductLineSize
+  ColorShades
+  Embellishments
+  Certifications
+  MaterialGrading
+  ProductTypesSizes
+  KnotPerInch
+  Dimensions
+  CarvingTechniques
+  ScaleOfCarving
+  FinishOptions
+  PatternTypes
+  FabricAndMaterial
+  RawMaterial
+  Processing
   Packaging
   Transportation
   Crafting
