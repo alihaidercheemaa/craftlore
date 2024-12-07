@@ -9,7 +9,7 @@ export const CostEstimation = createTRPCRouter({
             category: z.string(),
             subcategory: z.string(),
             rawMaterial: z.string(),
-            package: z.string(),
+            packaging: z.string(),
             transport: z.string(),
             processing: z.string().optional(),
             production: z.string().optional(),
@@ -20,11 +20,35 @@ export const CostEstimation = createTRPCRouter({
             preparation: z.string().optional(),
             painting: z.string().optional(),
             embroidery: z.string().optional(),
+            quality: z.string().optional(),
+            productionProcess: z.string().optional(),
+            productCertifications: z.string().optional(),
+            plyType: z.string().optional(),
+            typeOfWeaving: z.string().optional(),
+            designPatternTypes: z.string().optional(),
+            dyeTypes: z.string().optional(),
+            finishingTechniques: z.string().optional(),
+            productLineSize: z.string().optional(),
+            colorShades: z.string().optional(),
+            embellishments: z.string().optional(),
+            certifications: z.string().optional(),
+            materialGrading: z.string().optional(),
+            productTypesSizes: z.string().optional(),
+            knotPerInch: z.string().optional(),
+            dimensions: z.string().optional(),
+            carvingTechniques: z.string().optional(),
+            scaleOfCarving: z.string().optional(),
+            finishOptions: z.string().optional(),
+            patternTypes: z.string().optional(),
+            fabricAndMaterial: z.string().optional(),
+            cookingProcess: z.string().optional(),
+            paintingAndLacquering: z.string().optional(),
+            productionMethod: z.string().optional(),
         }))
         .mutation(async ({ ctx, input }) => {
             try {
                 const sections = await ctx.db.carbonSection.findMany({
-                    where: { subcategoryId: input.subcategory },
+                    where: { subCategoryId: input.subcategory },
                     select: {
                         carbonsectionId: true
                     }
@@ -35,21 +59,45 @@ export const CostEstimation = createTRPCRouter({
                         materialId: input.rawMaterial,
                         carbonsectionId: { in: sections.map((section) => section.carbonsectionId) },
                         name: {
-                            in: [input.package ?? 'none',
-                            input.transport ?? 'none',
-                            input.processing ?? 'none',
-                            input.production ?? 'none',
-                            input.crafting ?? 'none',
-                            input.installation ?? 'none',
-                            input.finishing ?? 'none',
-                            input.cooking ?? 'none',
-                            input.preparation ?? 'none',
-                            input.painting ?? 'none',
-                            input.embroidery ?? 'none']
+                            in: [ input.packaging ?? 'none',
+                                input.transport ?? 'none',
+                                input.processing ?? 'none',
+                                input.production ?? 'none',
+                                input.crafting ?? 'none',
+                                input.installation ?? 'none',
+                                input.finishing ?? 'none',
+                                input.cooking ?? 'none',
+                                input.preparation ?? 'none',
+                                input.painting ?? 'none',
+                                input.embroidery ?? 'none',
+                                input.quality ?? 'none',
+                                input.productionProcess ?? 'none',
+                                input.productCertifications ?? 'none',
+                                input.plyType ?? 'none',
+                                input.typeOfWeaving ?? 'none',
+                                input.designPatternTypes ?? 'none',
+                                input.dyeTypes ?? 'none',
+                                input.finishingTechniques ?? 'none',
+                                input.productLineSize ?? 'none',
+                                input.colorShades ?? 'none',
+                                input.embellishments ?? 'none',
+                                input.certifications ?? 'none',
+                                input.materialGrading ?? 'none',
+                                input.productTypesSizes ?? 'none',
+                                input.knotPerInch ?? 'none',
+                                input.dimensions ?? 'none',
+                                input.carvingTechniques ?? 'none',
+                                input.scaleOfCarving ?? 'none',
+                                input.finishOptions ?? 'none',
+                                input.patternTypes ?? 'none',
+                                input.fabricAndMaterial ?? 'none',
+                                input.cookingProcess ?? 'none',
+                                input.paintingAndLacquering ?? 'none',
+                                input.productionMethod ?? 'none']
                         }
                     },
-                    select : {
-                        value:true
+                    select: {
+                        value: true
                     }
                 })
 
@@ -57,9 +105,9 @@ export const CostEstimation = createTRPCRouter({
                 let totalUpper = 0;
 
                 for (const carbon of carbonValues) {
-                     const [lower,upper] = carbon.value.split('-')
-                     totalLower += parseFloat(lower ?? '0.0')
-                     totalUpper += parseFloat(upper ?? '0.0')
+                    const [lower, upper] = carbon.value.split('-')
+                    totalLower += parseFloat(lower ?? '0.0')
+                    totalUpper += parseFloat(upper ?? '0.0')
                 }
                 return { totalLower, totalUpper }
 
@@ -71,5 +119,122 @@ export const CostEstimation = createTRPCRouter({
                     message: 'Something went wrong'
                 })
             }
-        })
+        }),
+
+
+    costEstimation: publicProcedure
+        .input(z.object({
+            category: z.string(),
+            subcategory: z.string(),
+            rawMaterial: z.string(),
+            packaging: z.string(),
+            transport: z.string(),
+            processing: z.string().optional(),
+            production: z.string().optional(),
+            crafting: z.string().optional(),
+            installation: z.string().optional(),
+            finishing: z.string().optional(),
+            cooking: z.string().optional(),
+            preparation: z.string().optional(),
+            painting: z.string().optional(),
+            embroidery: z.string().optional(),
+            quality: z.string().optional(),
+            productionProcess: z.string().optional(),
+            productCertifications: z.string().optional(),
+            plyType: z.string().optional(),
+            typeOfWeaving: z.string().optional(),
+            designPatternTypes: z.string().optional(),
+            dyeTypes: z.string().optional(),
+            finishingTechniques: z.string().optional(),
+            productLineSize: z.string().optional(),
+            colorShades: z.string().optional(),
+            embellishments: z.string().optional(),
+            certifications: z.string().optional(),
+            materialGrading: z.string().optional(),
+            productTypesSizes: z.string().optional(),
+            knotPerInch: z.string().optional(),
+            dimensions: z.string().optional(),
+            carvingTechniques: z.string().optional(),
+            scaleOfCarving: z.string().optional(),
+            finishOptions: z.string().optional(),
+            patternTypes: z.string().optional(),
+            fabricAndMaterial: z.string().optional(),
+            cookingProcess: z.string().optional(),
+            paintingAndLacquering: z.string().optional(),
+            productionMethod: z.string().optional(),
+        }))
+        .mutation(async ({ ctx, input }) => {
+            try {
+                const sections = await ctx.db.priceSection.findMany({
+                    where: { subCategoryId: input.subcategory },
+                    select: {
+                        priceSectionId: true
+                    }
+                })
+
+                const priceValues = await ctx.db.priceValue.findMany({
+                    where: {
+                        materialId: input.rawMaterial,
+                        priceSectionId: { in: sections.map((section) => section.priceSectionId) },
+                        name: {
+                            in: [ input.packaging ?? 'none',
+                                input.transport ?? 'none',
+                                input.processing ?? 'none',
+                                input.production ?? 'none',
+                                input.crafting ?? 'none',
+                                input.installation ?? 'none',
+                                input.finishing ?? 'none',
+                                input.cooking ?? 'none',
+                                input.preparation ?? 'none',
+                                input.painting ?? 'none',
+                                input.embroidery ?? 'none',
+                                input.quality ?? 'none',
+                                input.productionProcess ?? 'none',
+                                input.productCertifications ?? 'none',
+                                input.plyType ?? 'none',
+                                input.typeOfWeaving ?? 'none',
+                                input.designPatternTypes ?? 'none',
+                                input.dyeTypes ?? 'none',
+                                input.finishingTechniques ?? 'none',
+                                input.productLineSize ?? 'none',
+                                input.colorShades ?? 'none',
+                                input.embellishments ?? 'none',
+                                input.certifications ?? 'none',
+                                input.materialGrading ?? 'none',
+                                input.productTypesSizes ?? 'none',
+                                input.knotPerInch ?? 'none',
+                                input.dimensions ?? 'none',
+                                input.carvingTechniques ?? 'none',
+                                input.scaleOfCarving ?? 'none',
+                                input.finishOptions ?? 'none',
+                                input.patternTypes ?? 'none',
+                                input.fabricAndMaterial ?? 'none',
+                                input.cookingProcess ?? 'none',
+                                input.paintingAndLacquering ?? 'none',
+                                input.productionMethod ?? 'none']
+                        }
+                    },
+                    select: {
+                        value: true
+                    }
+                })
+
+                let totalPrice = 0;
+
+                for (const price of priceValues) {
+
+                    totalPrice += price.value ?? 0
+                }
+                return { totalPrice }
+
+            } catch (error) {
+
+                console.error(error)
+                throw new TRPCError({
+                    code: 'INTERNAL_SERVER_ERROR',
+                    message: 'Something went wrong'
+                })
+            }
+        }),
+
 })

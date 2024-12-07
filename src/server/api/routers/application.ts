@@ -1,7 +1,7 @@
 import { TRPCClientError } from "@trpc/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import {createTRPCRouter,protectedProcedure,publicProcedure} from "~/server/api/trpc";
+import {createTRPCRouter,publicProcedure} from "~/server/api/trpc";
 
 export const ApplicationRouter = createTRPCRouter({
 

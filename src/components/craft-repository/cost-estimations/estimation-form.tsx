@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -73,17 +73,175 @@ const formSchema = z
     carvingDetails: z.string().optional(), // Specific to Room Dividers, Ceiling Treatment
   })
   .superRefine((data, ctx) => {
-
-    // if (data.subcategory === "Pashmina") {
-    //   if (!data.pashminaRaw) {
-    //     ctx.addIssue({
-    //       code: z.ZodIssueCode.custom,
-    //       message: "Pashmina Raw Material is required for Pashmina.",
-    //       path: ["pashminaRaw"],
-    //     });
-    //   }
-     
-    // }
+    if (
+      superData.subcategory.toLowerCase().includes("pashmina") ||
+      superData.subcategory.toLowerCase().includes("cashmere") ||
+      superData.subcategory.toLowerCase().includes("silk")
+    ) {
+      // Ensure weaving type is provided
+      if (!data.weavingType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Weaving type is required for this subcategory.",
+          path: ["weavingType"],
+        });
+      }
+  
+      // Ensure ply type is provided
+      if (!data.plyType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Ply type is required for this subcategory.",
+          path: ["plyType"],
+        });
+      }
+  
+      // Ensure dyeing type is provided
+      if (!data.dyeingType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Dyeing type is required for this subcategory.",
+          path: ["dyeingType"],
+        });
+      }
+  
+      // Ensure product line is provided
+      if (!data.productLine) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Product line & Size is required for this subcategory.",
+          path: ["productLine"],
+        });
+      }
+    }
+  
+    // Specific validations for Kani
+    if (superData.subcategory.toLowerCase().includes("kani")) {
+      // Ensure design is provided
+      if (!data.design) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Design is required for this subcategory.",
+          path: ["design"],
+        });
+      }
+  
+      // Ensure dyeing type is provided
+      if (!data.dyeingType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Dyeing type is required for this subcategory.",
+          path: ["dyeingType"],
+        });
+      }
+  
+      // Ensure product line is provided
+      if (!data.productLine) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Product line & Size is required for this subcategory.",
+          path: ["productLine"],
+        });
+      }
+    }
+  
+    // Specific validations for Kurtas, Jackets, and Bags
+    if (
+      superData.subcategory.toLowerCase().includes("kurtas") ||
+      superData.subcategory.toLowerCase().includes("jackets") ||
+      superData.subcategory.toLowerCase().includes("bags")
+    ) {
+      // Ensure embroidery is provided
+      if (!data.embroidery) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Embroidery is required for this subcategory.",
+          path: ["embroidery"],
+        });
+      }
+    }
+  
+    // Specific validations for Kurtas, Jackets, and Papier
+    if (
+      superData.subcategory.toLowerCase().includes("kurtas") ||
+      superData.subcategory.toLowerCase().includes("jackets") ||
+      superData.subcategory.toLowerCase().includes("papier")
+    ) {
+      // Ensure size is provided
+      if (!data.size) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Size is required for this subcategory.",
+          path: ["size"],
+        });
+      }
+    }
+  
+    // Specific validations for Jewelry
+    if (superData.subcategory.toLowerCase().includes("jewelry")) {
+      // Ensure jewelry type is provided
+      if (!data.jewelryType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Jewelry type is required for this subcategory.",
+          path: ["jewelryType"],
+        });
+      }
+  
+      // Ensure finishing is provided
+      if (!data.finishing) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Finishing is required for this subcategory.",
+          path: ["finishing"],
+        });
+      }
+    }
+  
+    // Specific validations for Walnut Wood
+    if (superData.subcategory.toLowerCase().includes("walnut wood")) {
+      // Ensure carving techniques are provided
+      if (!data.carvingTechniques) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Carving techniques are required for this subcategory.",
+          path: ["carvingTechniques"],
+        });
+      }
+  
+      // Ensure scale of carving is provided
+      if (!data.scaleOfCarving) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Scale of carving is required for this subcategory.",
+          path: ["scaleOfCarving"],
+        });
+      }
+  
+      // Ensure material grading is provided
+      if (!data.materialGrading) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Material grading is required for this subcategory.",
+          path: ["materialGrading"],
+        });
+      }
+    }
+  
+    // Specific validations for Room and Ceiling
+    if (
+      superData.subcategory.toLowerCase().includes("room") ||
+      superData.subcategory.toLowerCase().includes("ceiling")
+    ) {
+      // Ensure carving details are provided
+      if (!data.carvingDetails) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Carving details are required for this subcategory.",
+          path: ["carvingDetails"],
+        });
+      }
+    }
   });
 
 export const EstimationForm = () => {
@@ -91,12 +249,12 @@ export const EstimationForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const categories = api.price.getCategories.useQuery();
-  const subcategories = api.price.getSubCategories.useQuery(
+  const categories = api.category.getCategories.useQuery();
+  const subcategories = api.category.getSubCategories.useQuery(
     { categoryId: form.watch("category") },
     { enabled: !!form.watch("category") },
   );
-  const materials = api.price.getMaterialBySubCategory.useQuery(
+  const materials = api.category.getMaterialBySubCategory.useQuery(
     { subcategoryId: form.watch("subcategory") },
     { enabled: !!form.watch("subcategory") },
   );

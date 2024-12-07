@@ -145,13 +145,13 @@ export const CarbonForm: React.FC = () => {
     upper: number;
   }>({ lower: 0, upper: 0 });
 
-  const categories = api.carbon.getCategories.useQuery();
-  const subcategories = api.carbon.getSubCategories.useQuery(
+  const categories = api.category.getCategories.useQuery();
+  const subcategories = api.category.getSubCategories.useQuery(
     { categoryId: form.watch("category") },
     { enabled: !!form.watch("category") },
   );
 
-  const materials = api.carbon.getMaterialBySubCategory.useQuery(
+  const materials = api.category.getMaterialBySubCategory.useQuery(
     { subcategoryId: form.watch("subcategory") },
     { enabled: !!form.watch("subcategory") },
   );
