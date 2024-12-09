@@ -203,7 +203,7 @@ export const CarbonForm: React.FC = () => {
       category: data.category,
       subcategory: data.subcategory,
       rawMaterial: data.rawMaterial,
-      package: data.package,
+      packaging: data.package,
       transport: data.transport,
       processing: data.processing,
       production: data.production,

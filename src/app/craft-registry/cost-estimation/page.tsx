@@ -1,95 +1,56 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
-import { CostEstimationHome } from '~/components/craft-repository/cost-estimations/home';
-
-
-
+import { CostEstimationHome } from "~/components/craft-repository/cost-estimations/home";
 
 export default function CostestimatorPage() {
+  return (
+    <>
+      <div className="mx-6 flex gap-10 lg:container">
+        <div className="grid h-[183px] w-72 place-content-center border-4 border-white bg-secondary p-10 text-center text-white">
+          <h1 className="whitespace-pre-line font-montserrat text-xl font-bold">
+            Craftlore Price Registry
+          </h1>
+        </div>
+        <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Value, Ensure, Empower
+          </p>
+          <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
+            Fair Pricing
+          </p>
 
-    return (
-        <>
-            <Tabs defaultValue="registry" className="w-full ">
-                <TabsList className="mx-6 lg:container grid grid-cols-4 gap-4 bg-transparent h-auto">
-                    <TabsTrigger
-                        value="registry"
-                        className="col-span-4 lg:col-span-1 flex flex-col items-center text-center gap-2 text-gray-900 bg-white p-6 h-[150px] rounded-md border-none shadow-md 
-                    hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                        <h3 className="text-xl font-bold font-montserrat whitespace-pre-line">
-                            Craftlore Price Registry
-                        </h3>
-                    </TabsTrigger>
-                    <TabsTrigger
-                        value="artisans"
-                        className="col-span-4 lg:col-span-1 flex flex-col items-center text-center gap-2 text-gray-900 bg-white p-6 h-[150px] rounded-md shadow-md 
-                    hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Ranking,
-                            Listing,
-                            Blacklisted
-                        </p>
-                        <h3 className="text-xl font-bold font-montserrat">ARTISANS</h3>
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Fairness &
-                            Recognition
-                        </p>
-                    </TabsTrigger>
-                    <TabsTrigger
-                        value="businesses"
-                        className="col-span-4 lg:col-span-1 flex flex-col items-center text-center gap-2 text-gray-900 bg-white p-6 h-[150px] rounded-md shadow-md 
-                    hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Ranking,
-                            Listing,
-                            Blacklisted
-                        </p>
-                        <h3 className="text-xl font-bold font-montserrat">BUSINESSES</h3>
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Standards &
-                            Trust
-                        </p>
-                    </TabsTrigger>
-                    <TabsTrigger
-                        value="institutions"
-                        className="col-span-4 lg:col-span-1 flex flex-col items-center text-center gap-2 text-gray-900 bg-white p-6 h-[150px] rounded-md shadow-md 
-                    hover:bg-gray-50 data-[state=active]:bg-secondary data-[state=active]:text-white"
-                    >
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Ranking,
-                            Listing,
-                            Blacklisted
-                        </p>
-                        <h3 className="text-xl font-bold font-monstreat">INSTITUTIONS</h3>
-                        <p className="text-sm whitespace-pre-line font-opensans">
-                            Transparency &
-                            Governance
-                        </p>
-                    </TabsTrigger>
-                </TabsList>
-                <TabsContent value="registry" className="mt-6 mx-6 lg:container  grid gap-32">
-                    <div className='lg:container'>
-                        <CostEstimationHome />
-                    </div>
-                </TabsContent>
-                <TabsContent value="artisans" className="mt-6">
-                    <div className="bg-white p-6 ">
-
-                    </div>
-                </TabsContent>
-                <TabsContent value="businesses" className="mt-6">
-                    <div className="bg-white p-6 ">
-
-                    </div>
-                </TabsContent>
-                <TabsContent value="institutions" className="mt-6">
-                    <div className="bg-white p-6 ">
-
-                    </div>
-                </TabsContent>
-            </Tabs>
-        </>
-
-    );
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Transparent pricing.
+          </p>
+        </div>
+        <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Verify, Protect, Trust
+          </p>
+          <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
+            Authenticity
+          </p>
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Genuine crafts.
+          </p>
+        </div>
+        <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Connect, Expand, Grow
+          </p>
+          <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
+            Market Access
+          </p>
+          <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
+            Global reach.
+          </p>
+        </div>
+      </div>
+      <div
+        className="mx-6 mt-6 grid gap-32 lg:container"
+      >
+        <div className="lg:container">
+          <CostEstimationHome />
+        </div>
+      </div>
+    </>
+  );
 }
