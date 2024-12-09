@@ -240,6 +240,7 @@ model Material {
   subcategoryId String
   CarbonValue   CarbonValue[]
   SubCategory   SubCategory   @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
+  PriceValue    PriceValue[]
 }
 
 model SubCategory {
@@ -248,14 +249,15 @@ model SubCategory {
   categoryId      String
   CarbonSection   CarbonSection[]
   Material        Material[]
+  PriceSection    PriceSection[]
   Category        Category        @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
 }
 
 model CarbonSection {
   carbonsectionId String        @id @default(cuid())
   sectionType     SectionType   @default(None)
-  subcategoryId   String
-  SubCategory     SubCategory   @relation(fields: [subcategoryId], references: [subcategoryId], onDelete: Cascade)
+  subCategoryId   String
+  SubCategory     SubCategory   @relation(fields: [subCategoryId], references: [subcategoryId], onDelete: Cascade)
   CarbonValue     CarbonValue[]
 }
 
@@ -269,45 +271,22 @@ model CarbonValue {
   Material        Material      @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
 }
 
-model PriceCategory {
-  categoryId       String             @id @default(cuid())
-  categoryName     String             @unique
-  PriceSubCategory PriceSubCategory[]
-}
-
-model PriceMaterial {
-  materialId         String           @id @default(cuid())
-  materialName       String           @default("none")
-  pricesubcategoryId String
-  PriceSubCategory   PriceSubCategory @relation(fields: [pricesubcategoryId], references: [subcategoryId], onDelete: Cascade)
-  PriceValue         PriceValue[]
-}
-
 model PriceSection {
-  priceSectionId     String           @id @default(cuid())
-  priceSectionType   PriceSectionType @default(None)
-  priceSubCategoryId String
-  PriceSubCategory   PriceSubCategory @relation(fields: [priceSubCategoryId], references: [subcategoryId], onDelete: Cascade)
-  PriceValue         PriceValue[]
-}
-
-model PriceSubCategory {
-  subcategoryId   String          @id @default(cuid())
-  subcategoryName String          @default("none")
-  pricecategoryId String
-  PriceMaterial   PriceMaterial[]
-  PriceSection    PriceSection[]
-  PriceCategory   PriceCategory   @relation(fields: [pricecategoryId], references: [categoryId], onDelete: Cascade)
+  priceSectionId String       @id @default(cuid())
+  sectionType    SectionType  @default(None)
+  subCategoryId  String
+  SubCategory    SubCategory  @relation(fields: [subCategoryId], references: [subcategoryId], onDelete: Cascade)
+  PriceValue     PriceValue[]
 }
 
 model PriceValue {
-  valueId        String        @id @default(cuid())
-  name           String        @default("none")
-  value          String        @default("0-0")
+  valueId        String       @id @default(cuid())
+  name           String       @default("none")
   priceSectionId String
   materialId     String
-  PriceMaterial  PriceMaterial @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
-  PriceSection   PriceSection  @relation(fields: [priceSectionId], references: [priceSectionId], onDelete: Cascade)
+  value          Int          @default(0)
+  PriceMaterial  Material     @relation(fields: [materialId], references: [materialId], onDelete: Cascade)
+  PriceSection   PriceSection @relation(fields: [priceSectionId], references: [priceSectionId], onDelete: Cascade)
 }
 
 enum InstitutionType {
@@ -383,12 +362,7 @@ enum SectionType {
   CookingProcess
   PaintingAndLacquering
   Embroidery
-}
-
-enum PriceSectionType {
-  None
   MaterialType
-  Quality
   ProductionProcess
   ProductCertifications
   PlyType
@@ -409,15 +383,4 @@ enum PriceSectionType {
   FinishOptions
   PatternTypes
   FabricAndMaterial
-  RawMaterial
-  Processing
-  Packaging
-  Transportation
-  Crafting
-  Installation
-  Finishing
-  Preparation
-  CookingProcess
-  PaintingAndLacquering
-  Embroidery
 }

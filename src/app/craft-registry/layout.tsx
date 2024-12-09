@@ -12,9 +12,7 @@ export default function RootLayout({
     return (
         <>
             <div className="col-span-12 bg-[#e5edf7] h-96" />
-            <div className="col-span-12 relative -mt-16">
-                {children}
-            </div>
+            {children}
         </>
     );
 }

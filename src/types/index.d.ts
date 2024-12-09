@@ -313,21 +313,6 @@ type ValueProps = {
 
 type SectionTypeProps =
     "None" |
-    "RawMaterial" |
-    "Processing" |
-    "ProductionMethod" |
-    "Packaging" |
-    "Transportation" |
-    "Crafting" |
-    "Installation" |
-    "Finishing" |
-    "Preparation" |
-    "CookingProcess" |
-    "PaintingAndLacquering" |
-    "Embroidery"
-
-type PriceSectionTypeProps =
-    "None" |
     "MaterialType" |
     "Quality" |
     "ProductionProcess" |
@@ -360,4 +345,5 @@ type PriceSectionTypeProps =
     "Preparation" |
     "CookingProcess" |
     "PaintingAndLacquering" |
-    "Embroidery"
+    "Embroidery" | 
+    "ProductionMethod" 

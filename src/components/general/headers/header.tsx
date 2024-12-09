@@ -50,8 +50,8 @@ export const Header = () => {
                     title: 'GEOGRAPHICAL INDICATION',
                     href: '#',
                     submenu: [
-                        { title: 'ABOUT GI & IT PROCESS', href: '#' },
-                        { title: 'CONSUMER REPORTING', href: '#' },
+                        { title: 'ABOUT GI & IT PROCESS', href: '/craft-registry/process' },
+                        { title: 'CONSUMER REPORTING', href: '/craft-registry/reporting' },
                         { title: 'GI LISTING', href: '#' },
                     ]
                 },
