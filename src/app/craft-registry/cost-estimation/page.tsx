@@ -6,47 +6,44 @@ export default function CostestimatorPage() {
       <div className="mx-6 flex gap-10 lg:container">
         <div className="grid h-[183px] w-72 place-content-center border-4 border-white bg-secondary p-10 text-center text-white">
           <h1 className="whitespace-pre-line font-montserrat text-xl font-bold">
-            Craftlore Price Registry
+            Block Chain Traceability Registry
           </h1>
         </div>
         <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Value, Ensure, Empower
+            Track, Trace, Trust
           </p>
           <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
-            Fair Pricing
+            Transparency
           </p>
-
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Transparent pricing.
+            Proven Origins.
           </p>
         </div>
         <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Verify, Protect, Trust
+            Verify, Authenticate, Assure
           </p>
           <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
-            Authenticity
+            Security
           </p>
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Genuine crafts.
+            Immutable Records
           </p>
         </div>
         <div className="grid h-[183px] w-72 place-content-center gap-4 bg-white p-10 text-center text-gray-900">
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Connect, Expand, Grow
+            Protect, Preserve, Guarantee
           </p>
           <p className="whitespace-pre-line font-montserrat text-2xl font-bold">
-            Market Access
+            Craft Integrity
           </p>
           <p className="whitespace-pre-line font-opensans text-sm font-bold text-gray-500">
-            Global reach.
+            Certified Excellence.
           </p>
         </div>
       </div>
-      <div
-        className="mx-6 mt-6 grid gap-32 lg:container"
-      >
+      <div className="mx-6 mt-6 grid gap-32 lg:container">
         <div className="lg:container">
           <CostEstimationHome />
         </div>
