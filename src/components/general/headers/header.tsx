@@ -52,10 +52,10 @@ export const Header = () => {
                     submenu: [
                         { title: 'ABOUT GI & IT PROCESS', href: '/craft-registry/process' },
                         { title: 'CONSUMER REPORTING', href: '/craft-registry/reporting' },
-                        { title: 'GI LISTING', href: '#' },
+                        { title: 'GI LISTING', href: '/craft-registry/listing' },
                     ]
                 },
-                { title: 'BLOCK CHAIN TRACEABILITY', href: '#' },
+                { title: 'BLOCK CHAIN TRACEABILITY', href: '/craft-registry/blockchain' },
                 { title: 'CARBON FOOTPRINT', href: '/craft-registry/carbon-footprint' },
                 { title: 'CRAFT PRICE ESITMATOR', href: '/craft-registry/cost-estimation' },
             ]

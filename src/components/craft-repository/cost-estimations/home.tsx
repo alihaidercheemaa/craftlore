@@ -6,7 +6,6 @@ import { EstimationForm } from "~/components/craft-repository/cost-estimations/e
 
 export const CostEstimationHome = () => {
 
-
     return (
         <div className="grid grid-cols-2 gap-4 my-20">
             <div className="col-span-2 lg:col-span-1 grid gap-6 p-4">
