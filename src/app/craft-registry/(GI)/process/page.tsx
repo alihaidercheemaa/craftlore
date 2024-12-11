@@ -1,4 +1,12 @@
+import { type Metadata } from "next";
 import { GIPROCESS } from "~/constants";
+
+
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | GI Process',
+};
+
 
 export default function GIProcessPage() {
   return (

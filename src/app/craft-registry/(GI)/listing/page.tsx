@@ -1,4 +1,10 @@
+import { type Metadata } from "next";
 import { GIListing } from "~/components/craft-repository/gi/listing";
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | GI Listing',
+};
+
 
 export default function GIListingPage() {
   return (

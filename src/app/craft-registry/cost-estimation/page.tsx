@@ -1,4 +1,12 @@
 import { CostEstimationHome } from "~/components/craft-repository/cost-estimations/home";
+import { type Metadata } from "next";
+
+
+
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | Cost estimation',
+};
 
 export default function CostestimatorPage() {
   return (

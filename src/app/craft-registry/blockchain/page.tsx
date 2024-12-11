@@ -1,4 +1,10 @@
 import { BlockchainHome } from "~/components/craft-repository/blockchain/home";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | Blockchain',
+};
+
 
 export default function BlockChainPage() {
   return (
