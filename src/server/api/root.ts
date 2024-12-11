@@ -7,6 +7,7 @@ import { CostEstimation } from "~/server/api/routers/cost";
 import { CarbonRouter } from "~/server/api/routers/carbon";
 import { PriceRouter } from "~/server/api/routers/price";
 import { CategoryRouter } from "~/server/api/routers/category";
+import { GIRouter } from "~/server/api/routers/gi";
 
 
 export const appRouter = createTRPCRouter({
@@ -17,7 +18,8 @@ export const appRouter = createTRPCRouter({
   cost:CostEstimation,
   carbon:CarbonRouter,
   price:PriceRouter,
-  category:CategoryRouter
+  category:CategoryRouter,
+  gi : GIRouter
 });
 
 

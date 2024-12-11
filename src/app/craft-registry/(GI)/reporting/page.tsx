@@ -1,6 +1,13 @@
 import Image from "next/image";
 import { ReportingForm } from "~/components/craft-repository/gi/reporting";
 import { FakeReportingForm } from "~/components/craft-repository/gi/fake";
+import { type Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | GI Reporting',
+};
+
 
 export default function GIReportingPage() {
   return (

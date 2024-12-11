@@ -289,6 +289,13 @@ model PriceValue {
   PriceSection   PriceSection @relation(fields: [priceSectionId], references: [priceSectionId], onDelete: Cascade)
 }
 
+model GIReport {
+  fullName    String @id @default(cuid())
+  email       String @default("none")
+  report      String @default("none")
+  productCode String @default("none")
+}
+
 enum InstitutionType {
   None
   Governance

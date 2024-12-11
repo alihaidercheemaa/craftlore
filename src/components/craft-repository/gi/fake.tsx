@@ -14,6 +14,8 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { api } from "~/trpc/react";
+import { useToast } from "~/hooks/use-toast";
 
 const formSchema = z.object({
   fullName: z.string({ required_error: "Field is required" }),
@@ -21,18 +23,44 @@ const formSchema = z.object({
     .string({ required_error: "Field is required" })
     .email({ message: "format not supported." }),
   report: z.string({ required_error: "Field is required" }),
-  id: z.string({ required_error: "Field is required" }),
+  productCode: z
+  .string({ required_error: "Field is required" })
+  .max(8, { message: "Product code cannot exceed 8 characters." }),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export const FakeReportingForm = () => {
+  const { toast } = useToast();
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
+  const submitReport = api.gi.createGIReport.useMutation({
+    onSuccess: () => {
+      form.reset();
+      toast({
+        variant: "default",
+        title: "Success!",
+        description: "Report submitted",
+      });
+    },
+    onError: (error) => {
+      toast({
+        variant: "destructive",
+        title: "Opps!",
+        description: error.message,
+      });
+    },
+  });
+
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    submitReport.mutate({
+      fullName: data.fullName,
+      email: data.email,
+      report: data.report,
+      productCode: data.productCode,
+    });
   };
 
   return (
@@ -104,7 +132,7 @@ export const FakeReportingForm = () => {
 
         <FormField
           control={form.control}
-          name="id"
+          name="productCode"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
@@ -122,9 +150,13 @@ export const FakeReportingForm = () => {
             </FormItem>
           )}
         />
-        {/* Submit Button */}
-        <Button type="submit" variant="secondary" className="mt-4 w-fit">
-          Submit report
+        <Button
+          type="submit"
+          variant="secondary"
+          className="mt-4 w-fit"
+          disabled={submitReport.isPending}
+        >
+          {submitReport.isPending ? "Submitting" : " Submit report"}
         </Button>
       </form>
     </Form>

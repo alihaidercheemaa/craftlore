@@ -1,4 +1,11 @@
 import { CarbonEstimationHome } from "~/components/craft-repository/carbon-footprint/home";
+import { type Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'CRAFTLORE | Carbon footprint',
+};
+
 
 export default function CarbonPrintPage() {
   return (

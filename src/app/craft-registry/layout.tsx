@@ -3,7 +3,6 @@ import { type Metadata } from "next";
 
 export const metadata: Metadata = {
     title: 'CRAFTLORE | Registry',
-    description: 'Tecch - Technology & IT Solutions Next js Template',
 };
 
 export default function RootLayout({
