@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -21,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import { toast } from "~/hooks/use-toast";
 import { api } from "~/trpc/react";
 
 const superData = { category: "", subcategory: "" };
@@ -86,7 +87,7 @@ const formSchema = z
           path: ["weavingType"],
         });
       }
-  
+
       // Ensure ply type is provided
       if (!data.plyType) {
         ctx.addIssue({
@@ -95,7 +96,7 @@ const formSchema = z
           path: ["plyType"],
         });
       }
-  
+
       // Ensure dyeing type is provided
       if (!data.dyeingType) {
         ctx.addIssue({
@@ -104,7 +105,7 @@ const formSchema = z
           path: ["dyeingType"],
         });
       }
-  
+
       // Ensure product line is provided
       if (!data.productLine) {
         ctx.addIssue({
@@ -114,7 +115,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Kani
     if (superData.subcategory.toLowerCase().includes("kani")) {
       // Ensure design is provided
@@ -125,7 +126,7 @@ const formSchema = z
           path: ["design"],
         });
       }
-  
+
       // Ensure dyeing type is provided
       if (!data.dyeingType) {
         ctx.addIssue({
@@ -134,7 +135,7 @@ const formSchema = z
           path: ["dyeingType"],
         });
       }
-  
+
       // Ensure product line is provided
       if (!data.productLine) {
         ctx.addIssue({
@@ -144,7 +145,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Kurtas, Jackets, and Bags
     if (
       superData.subcategory.toLowerCase().includes("kurtas") ||
@@ -160,7 +161,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Kurtas, Jackets, and Papier
     if (
       superData.subcategory.toLowerCase().includes("kurtas") ||
@@ -176,7 +177,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Jewelry
     if (superData.subcategory.toLowerCase().includes("jewelry")) {
       // Ensure jewelry type is provided
@@ -187,7 +188,7 @@ const formSchema = z
           path: ["jewelryType"],
         });
       }
-  
+
       // Ensure finishing is provided
       if (!data.finishing) {
         ctx.addIssue({
@@ -197,7 +198,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Walnut Wood
     if (superData.subcategory.toLowerCase().includes("walnut wood")) {
       // Ensure carving techniques are provided
@@ -208,7 +209,7 @@ const formSchema = z
           path: ["carvingTechniques"],
         });
       }
-  
+
       // Ensure scale of carving is provided
       if (!data.scaleOfCarving) {
         ctx.addIssue({
@@ -217,7 +218,7 @@ const formSchema = z
           path: ["scaleOfCarving"],
         });
       }
-  
+
       // Ensure material grading is provided
       if (!data.materialGrading) {
         ctx.addIssue({
@@ -227,7 +228,7 @@ const formSchema = z
         });
       }
     }
-  
+
     // Specific validations for Room and Ceiling
     if (
       superData.subcategory.toLowerCase().includes("room") ||
@@ -245,6 +246,7 @@ const formSchema = z
   });
 
 export const EstimationForm = () => {
+  const [cost, setCost] = useState<number>(0);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -263,6 +265,18 @@ export const EstimationForm = () => {
     { enabled: !!form.watch("subcategory") },
   );
 
+  const estimateCost = api.cost.costEstimation.useMutation({
+    onSuccess: (data) => {
+      setCost(() => data.totalPrice);
+    },
+    onError: (error) => {
+      toast({
+        variant: "destructive",
+        title: "Opps!",
+        description: error.message,
+      });
+    },
+  });
 
   const filteredSubCategory = useMemo(() => {
     const sub =
@@ -275,329 +289,87 @@ export const EstimationForm = () => {
   }, [categories, form.watch("subcategory")]);
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+    estimateCost.mutate({
+      transport: data.shippingMethod,
+      category: data.category,
+      subcategory: data.subcategory,
+      rawMaterial: data.rawMaterial,
+      quality: data.quality,
+      productionMethod: data.productionMethod,
+      colorShades: data.colorShade,
+      embellishments: data.embellishment,
+      weightType: data.weightType,
+      weight: data.weight,
+      purchaseLocation: data.purchaseLocation,
+      shippingDistance: data.shippingDistance,
+      warehouse: data.warehouse,
+      shippingMethod: data.shippingMethod,
+      efficiency: data.efficiency,
+      weavingType: data.weavingType,
+      dyeingType: data.dyeingType,
+      productLine: data.productLine,
+      plyType: data.plyType,
+      certificate: data.certificate,
+      design: data.design,
+      embroidery: data.embroidery,
+      size: data.size,
+      finishing: data.finishing,
+      jewelryType: data.jewelryType,
+      productType: data.productType,
+      knotPerInch: data.knotPerInch,
+      carvingTechniques: data.carvingTechniques,
+      scaleOfCarving: data.scaleOfCarving,
+      materialGrading: data.materialGrading,
+      certifications: data.certifications,
+      productTypesAndSizes: data.productTypesAndSizes,
+      carvingDetails: data.carvingDetails,
+    });
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="grid gap-4 text-white [&_label]:text-xl"
-      >
-        <FormField
-          control={form.control}
-          name="category"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Craft category</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value ?? ""}
-              >
-                <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a craft category" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {categories.data?.map((category) => (
-                    <SelectItem
-                      key={category.categoryId}
-                      value={category.categoryId}
-                    >
-                      {category.categoryName}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="subcategory"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Craft Type<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select Craft Type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {subcategories.data?.map((sub, index) => (
-                      <SelectItem value={sub.subcategoryId} key={index}>
-                        {sub.subcategoryName}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="rawMaterial"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Material Type<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select Raw Material" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {materials.data?.map((raw, index) => (
-                      <SelectItem value={raw.materialId} key={index}>
-                        {raw.materialName}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="quality"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Quality<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select Quality" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sections.data
-                      ?.find((section) => section.priceSectionType == "Quality")
-                      ?.uniqueNames?.map((quality, index) => (
-                        <SelectItem value={quality} key={index}>
-                          {quality}
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="productionMethod"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Production<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select Production" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sections.data
-                      ?.find(
-                        (section) =>
-                          section.priceSectionType == "ProductionProcess",
-                      )
-                      ?.uniqueNames?.map((quality, index) => (
-                        <SelectItem value={quality} key={index}>
-                          {quality}
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* weavingType & plytype */}
-        {(filteredSubCategory.toLowerCase().includes("pashmina") ||
-          filteredSubCategory.toLowerCase().includes("cashmere") ||
-          filteredSubCategory.toLowerCase().includes("silk")) && (
-          <>
-            <FormField
-              control={form.control}
-              name="weavingType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Type of Weaving<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select weaving type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) =>
-                              section.priceSectionType == "TypeOfWeaving",
-                          )
-                          ?.uniqueNames?.map((quality, index) => (
-                            <SelectItem value={quality} key={index}>
-                              {quality}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="plyType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Type of Ply<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select ply" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) => section.priceSectionType == "PlyType",
-                          )
-                          ?.uniqueNames?.map((quality, index) => (
-                            <SelectItem value={quality} key={index}>
-                              {quality}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-
-        {/* product line (size) and dyeing  */}
-        {(filteredSubCategory.toLowerCase().includes("pashmina") ||
-          filteredSubCategory.toLowerCase().includes("cashmere") ||
-          filteredSubCategory.toLowerCase().includes("silk") ||
-          filteredSubCategory.toLowerCase().includes("kani")) && (
-          <>
-            <FormField
-              control={form.control}
-              name="dyeingType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Type of Dyeing<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select dyeing type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) => section.priceSectionType == "DyeTypes",
-                          )
-                          ?.uniqueNames?.map((quality, index) => (
-                            <SelectItem value={quality} key={index}>
-                              {quality}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="productLine"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Product line & Size<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select product line" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) =>
-                              section.priceSectionType == "ProductLineSize",
-                          )
-                          ?.uniqueNames?.map((quality, index) => (
-                            <SelectItem value={quality} key={index}>
-                              {quality}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-
-        {/* certificate */}
-        {!filteredSubCategory.includes("jackets") && (
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="grid gap-4 text-white [&_label]:text-xl"
+        >
           <FormField
             control={form.control}
-            name="certificate"
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Craft category</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value ?? ""}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a craft category" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {categories.data?.map((category) => (
+                      <SelectItem
+                        key={category.categoryId}
+                        value={category.categoryId}
+                      >
+                        {category.categoryName}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="subcategory"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Certificate<span className="text-red-500">*</span>
+                  Craft Type<span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Select
@@ -605,13 +377,70 @@ export const EstimationForm = () => {
                     value={field.value ?? ""}
                   >
                     <SelectTrigger className="bg-white text-gray-950">
-                      <SelectValue placeholder="Select certificate" />
+                      <SelectValue placeholder="Select Craft Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {subcategories.data?.map((sub, index) => (
+                        <SelectItem value={sub.subcategoryId} key={index}>
+                          {sub.subcategoryName}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="rawMaterial"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Material Type<span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value ?? ""}
+                  >
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select Raw Material" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {materials.data?.map((raw, index) => (
+                        <SelectItem value={raw.materialId} key={index}>
+                          {raw.materialName}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="quality"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Quality<span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value ?? ""}
+                  >
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select Quality" />
                     </SelectTrigger>
                     <SelectContent>
                       {sections.data
                         ?.find(
-                          (section) =>
-                            section.priceSectionType == "ProductCertifications",
+                          (section) => section.priceSectionType == "Quality",
                         )
                         ?.uniqueNames?.map((quality, index) => (
                           <SelectItem value={quality} key={index}>
@@ -625,17 +454,13 @@ export const EstimationForm = () => {
               </FormItem>
             )}
           />
-        )}
-
-        {/* design */}
-        {filteredSubCategory.toLowerCase().includes("kani") && (
           <FormField
             control={form.control}
-            name="design"
+            name="productionMethod"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Design<span className="text-red-500">*</span>
+                  Production<span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Select
@@ -643,17 +468,17 @@ export const EstimationForm = () => {
                     value={field.value ?? ""}
                   >
                     <SelectTrigger className="bg-white text-gray-950">
-                      <SelectValue placeholder="Select a design" />
+                      <SelectValue placeholder="Select Production" />
                     </SelectTrigger>
                     <SelectContent>
                       {sections.data
                         ?.find(
                           (section) =>
-                            section.priceSectionType == "DesignPatternTypes",
+                            section.priceSectionType == "ProductionProcess",
                         )
-                        ?.uniqueNames?.map((design, index) => (
-                          <SelectItem value={design} key={index}>
-                            {design}
+                        ?.uniqueNames?.map((quality, index) => (
+                          <SelectItem value={quality} key={index}>
+                            {quality}
                           </SelectItem>
                         ))}
                     </SelectContent>
@@ -663,95 +488,169 @@ export const EstimationForm = () => {
               </FormItem>
             )}
           />
-        )}
 
-        {/* Embroidery */}
-        {(filteredSubCategory.toLowerCase().includes("kurtas") ||
-          filteredSubCategory.toLowerCase().includes("jackets") ||
-          filteredSubCategory.toLowerCase().includes("bags")) && (
-          <FormField
-            control={form.control}
-            name="embroidery"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Embriodery<span className="text-red-500">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    value={field.value ?? ""}
-                  >
-                    <SelectTrigger className="bg-white text-gray-950">
-                      <SelectValue placeholder="Select a embroidery" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {sections.data
-                        ?.find(
-                          (section) => section.priceSectionType == "Embroidery",
-                        )
-                        ?.uniqueNames?.map((embroidery, index) => (
-                          <SelectItem value={embroidery} key={index}>
-                            {embroidery}
-                          </SelectItem>
-                        ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        )}
+          {/* weavingType & plytype */}
+          {(filteredSubCategory.toLowerCase().includes("pashmina") ||
+            filteredSubCategory.toLowerCase().includes("cashmere") ||
+            filteredSubCategory.toLowerCase().includes("silk")) && (
+            <>
+              <FormField
+                control={form.control}
+                name="weavingType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Type of Weaving<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select weaving type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "TypeOfWeaving",
+                            )
+                            ?.uniqueNames?.map((quality, index) => (
+                              <SelectItem value={quality} key={index}>
+                                {quality}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="plyType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Type of Ply<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select ply" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "PlyType",
+                            )
+                            ?.uniqueNames?.map((quality, index) => (
+                              <SelectItem value={quality} key={index}>
+                                {quality}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
 
-        {/* Size pending */}
-        {(filteredSubCategory.toLowerCase().includes("kurtas") ||
-          filteredSubCategory.toLowerCase().includes("jackets") ||
-          filteredSubCategory.toLowerCase().includes("papier")) && (
-          <FormField
-            control={form.control}
-            name="size"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Size<span className="text-red-500">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    value={field.value ?? ""}
-                  >
-                    <SelectTrigger className="bg-white text-gray-950">
-                      <SelectValue placeholder="Select a size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {sections.data
-                        ?.find(
-                          (section) => section.priceSectionType == "Embroidery",
-                        )
-                        ?.uniqueNames?.map((embroidery, index) => (
-                          <SelectItem value={embroidery} key={index}>
-                            {embroidery}
-                          </SelectItem>
-                        ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        )}
-        {/* finishing and jewelryType(pending) */}
-        {filteredSubCategory.toLowerCase().includes("jewelry") && (
-          <>
+          {/* product line (size) and dyeing  */}
+          {(filteredSubCategory.toLowerCase().includes("pashmina") ||
+            filteredSubCategory.toLowerCase().includes("cashmere") ||
+            filteredSubCategory.toLowerCase().includes("silk") ||
+            filteredSubCategory.toLowerCase().includes("kani")) && (
+            <>
+              <FormField
+                control={form.control}
+                name="dyeingType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Type of Dyeing<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select dyeing type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "DyeTypes",
+                            )
+                            ?.uniqueNames?.map((quality, index) => (
+                              <SelectItem value={quality} key={index}>
+                                {quality}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="productLine"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Product line & Size<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select product line" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "ProductLineSize",
+                            )
+                            ?.uniqueNames?.map((quality, index) => (
+                              <SelectItem value={quality} key={index}>
+                                {quality}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
+
+          {/* certificate */}
+          {!filteredSubCategory.includes("jackets") && (
             <FormField
               control={form.control}
-              name="jewelryType"
+              name="certificate"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Jewelry Type<span className="text-red-500">*</span>
+                    Certificate<span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Select
@@ -759,7 +658,86 @@ export const EstimationForm = () => {
                       value={field.value ?? ""}
                     >
                       <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select a jewelery type" />
+                        <SelectValue placeholder="Select certificate" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {sections.data
+                          ?.find(
+                            (section) =>
+                              section.priceSectionType ==
+                              "ProductCertifications",
+                          )
+                          ?.uniqueNames?.map((quality, index) => (
+                            <SelectItem value={quality} key={index}>
+                              {quality}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          {/* design */}
+          {filteredSubCategory.toLowerCase().includes("kani") && (
+            <FormField
+              control={form.control}
+              name="design"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Design<span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? ""}
+                    >
+                      <SelectTrigger className="bg-white text-gray-950">
+                        <SelectValue placeholder="Select a design" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {sections.data
+                          ?.find(
+                            (section) =>
+                              section.priceSectionType == "DesignPatternTypes",
+                          )
+                          ?.uniqueNames?.map((design, index) => (
+                            <SelectItem value={design} key={index}>
+                              {design}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          {/* Embroidery */}
+          {(filteredSubCategory.toLowerCase().includes("kurtas") ||
+            filteredSubCategory.toLowerCase().includes("jackets") ||
+            filteredSubCategory.toLowerCase().includes("bags")) && (
+            <FormField
+              control={form.control}
+              name="embroidery"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Embriodery<span className="text-red-500">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? ""}
+                    >
+                      <SelectTrigger className="bg-white text-gray-950">
+                        <SelectValue placeholder="Select a embroidery" />
                       </SelectTrigger>
                       <SelectContent>
                         {sections.data
@@ -779,13 +757,19 @@ export const EstimationForm = () => {
                 </FormItem>
               )}
             />
+          )}
+
+          {/* Size pending */}
+          {(filteredSubCategory.toLowerCase().includes("kurtas") ||
+            filteredSubCategory.toLowerCase().includes("jackets") ||
+            filteredSubCategory.toLowerCase().includes("papier")) && (
             <FormField
               control={form.control}
-              name="finishing"
+              name="size"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Finishing<span className="text-red-500">*</span>
+                    Size<span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Select
@@ -793,17 +777,17 @@ export const EstimationForm = () => {
                       value={field.value ?? ""}
                     >
                       <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select a finishing" />
+                        <SelectValue placeholder="Select a size" />
                       </SelectTrigger>
                       <SelectContent>
                         {sections.data
                           ?.find(
                             (section) =>
-                              section.priceSectionType == "Finishing",
+                              section.priceSectionType == "Embroidery",
                           )
-                          ?.uniqueNames?.map((finishing, index) => (
-                            <SelectItem value={finishing} key={index}>
-                              {finishing}
+                          ?.uniqueNames?.map((embroidery, index) => (
+                            <SelectItem value={embroidery} key={index}>
+                              {embroidery}
                             </SelectItem>
                           ))}
                       </SelectContent>
@@ -813,19 +797,198 @@ export const EstimationForm = () => {
                 </FormItem>
               )}
             />
-          </>
-        )}
+          )}
+          {/* finishing and jewelryType(pending) */}
+          {filteredSubCategory.toLowerCase().includes("jewelry") && (
+            <>
+              <FormField
+                control={form.control}
+                name="jewelryType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Jewelry Type<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select a jewelery type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "Embroidery",
+                            )
+                            ?.uniqueNames?.map((embroidery, index) => (
+                              <SelectItem value={embroidery} key={index}>
+                                {embroidery}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="finishing"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Finishing<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select a finishing" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "Finishing",
+                            )
+                            ?.uniqueNames?.map((finishing, index) => (
+                              <SelectItem value={finishing} key={index}>
+                                {finishing}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
 
-        {/* scaleOfCarving, materialGrading & carvingTechniques */}
-        {filteredSubCategory.toLowerCase().includes("walnut wood") && (
-          <>
+          {/* scaleOfCarving, materialGrading & carvingTechniques */}
+          {filteredSubCategory.toLowerCase().includes("walnut wood") && (
+            <>
+              <FormField
+                control={form.control}
+                name="carvingTechniques"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Craving Techniques<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select a craving technique" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "CarvingTechniques",
+                            )
+                            ?.uniqueNames?.map((craving, index) => (
+                              <SelectItem value={craving} key={index}>
+                                {craving}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="scaleOfCarving"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Scale of craving<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select a craving scale" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "ScaleOfCarving",
+                            )
+                            ?.uniqueNames?.map((scale, index) => (
+                              <SelectItem value={scale} key={index}>
+                                {scale}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="materialGrading"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      Material Grading<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value ?? ""}
+                      >
+                        <SelectTrigger className="bg-white text-gray-950">
+                          <SelectValue placeholder="Select a material grading" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sections.data
+                            ?.find(
+                              (section) =>
+                                section.priceSectionType == "MaterialGrading",
+                            )
+                            ?.uniqueNames?.map((grading, index) => (
+                              <SelectItem value={grading} key={index}>
+                                {grading}
+                              </SelectItem>
+                            ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
+          {/* craving detail */}
+          {(filteredSubCategory.toLowerCase().includes("room") ||
+            filteredSubCategory.toLowerCase().includes("ceiling")) && (
             <FormField
               control={form.control}
-              name="carvingTechniques"
+              name="materialGrading"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Craving Techniques<span className="text-red-500">*</span>
+                    Craving Details<span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Select
@@ -833,7 +996,7 @@ export const EstimationForm = () => {
                       value={field.value ?? ""}
                     >
                       <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select a craving technique" />
+                        <SelectValue placeholder="Select a craving detail" />
                       </SelectTrigger>
                       <SelectContent>
                         {sections.data
@@ -841,9 +1004,9 @@ export const EstimationForm = () => {
                             (section) =>
                               section.priceSectionType == "CarvingTechniques",
                           )
-                          ?.uniqueNames?.map((craving, index) => (
-                            <SelectItem value={craving} key={index}>
-                              {craving}
+                          ?.uniqueNames?.map((details, index) => (
+                            <SelectItem value={details} key={index}>
+                              {details}
                             </SelectItem>
                           ))}
                       </SelectContent>
@@ -853,86 +1016,15 @@ export const EstimationForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="scaleOfCarving"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Scale of craving<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select a craving scale" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) =>
-                              section.priceSectionType == "ScaleOfCarving",
-                          )
-                          ?.uniqueNames?.map((scale, index) => (
-                            <SelectItem value={scale} key={index}>
-                              {scale}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="materialGrading"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    Material Grading<span className="text-red-500">*</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
-                    >
-                      <SelectTrigger className="bg-white text-gray-950">
-                        <SelectValue placeholder="Select a material grading" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {sections.data
-                          ?.find(
-                            (section) =>
-                              section.priceSectionType == "MaterialGrading",
-                          )
-                          ?.uniqueNames?.map((grading, index) => (
-                            <SelectItem value={grading} key={index}>
-                              {grading}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* craving detail */}
-        {(filteredSubCategory.toLowerCase().includes("room") ||
-          filteredSubCategory.toLowerCase().includes("ceiling")) && (
+          )}
+
           <FormField
             control={form.control}
-            name="materialGrading"
+            name="colorShade"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Craving Details<span className="text-red-500">*</span>
+                  Color shade<span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Select
@@ -940,17 +1032,17 @@ export const EstimationForm = () => {
                     value={field.value ?? ""}
                   >
                     <SelectTrigger className="bg-white text-gray-950">
-                      <SelectValue placeholder="Select a craving detail" />
+                      <SelectValue placeholder="Select color shade" />
                     </SelectTrigger>
                     <SelectContent>
                       {sections.data
                         ?.find(
                           (section) =>
-                            section.priceSectionType == "CarvingTechniques",
+                            section.priceSectionType == "ColorShades",
                         )
-                        ?.uniqueNames?.map((details, index) => (
-                          <SelectItem value={details} key={index}>
-                            {details}
+                        ?.uniqueNames?.map((quality, index) => (
+                          <SelectItem value={quality} key={index}>
+                            {quality}
                           </SelectItem>
                         ))}
                     </SelectContent>
@@ -960,112 +1052,142 @@ export const EstimationForm = () => {
               </FormItem>
             )}
           />
-        )}
-
-        <FormField
-          control={form.control}
-          name="colorShade"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Color shade<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select color shade" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sections.data
-                      ?.find(
-                        (section) => section.priceSectionType == "ColorShades",
-                      )
-                      ?.uniqueNames?.map((quality, index) => (
-                        <SelectItem value={quality} key={index}>
-                          {quality}
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="embellishment"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Embellishment<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value ?? ""}
-                >
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select embellishment" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sections.data
-                      ?.find(
-                        (section) =>
-                          section.priceSectionType == "Embellishments",
-                      )
-                      ?.uniqueNames?.map((quality, index) => (
-                        <SelectItem value={quality} key={index}>
-                          {quality}
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="weightType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Material weight type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <FormField
+            control={form.control}
+            name="embellishment"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  Embellishment<span className="text-red-500">*</span>
+                </FormLabel>
                 <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a production method" />
-                  </SelectTrigger>
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value ?? ""}
+                  >
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select embellishment" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {sections.data
+                        ?.find(
+                          (section) =>
+                            section.priceSectionType == "Embellishments",
+                        )
+                        ?.uniqueNames?.map((quality, index) => (
+                          <SelectItem value={quality} key={index}>
+                            {quality}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="kilo">Kilograms</SelectItem>
-                  <SelectItem value="gram">Grams</SelectItem>
-                  <SelectItem value="pound">Pounds</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="weight"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Material weight</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value + ""}
-              >
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="weightType"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Material weight type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a production method" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="kilo">Kilograms</SelectItem>
+                    <SelectItem value="gram">Grams</SelectItem>
+                    <SelectItem value="pound">Pounds</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="weight"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Material weight</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value + ""}
+                >
+                  <FormControl>
+                    <Input
+                      className="text-gray-950"
+                      placeholder="Enter the total weight"
+                      {...field}
+                      value={field.value ?? ""}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (
+                          value === "" ||
+                          (/^\d+$/.test(value) && parseInt(value) > 0)
+                        ) {
+                          field.onChange(
+                            value === "" ? undefined : parseInt(value),
+                          );
+                        }
+                      }}
+                    />
+                  </FormControl>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="purchaseLocation"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Purchase location</FormLabel>
+                <Select
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    if (value == "kashmir")
+                      form.setValue("shippingDistance", 7200);
+                  }}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a purchase location" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="kashmir">
+                      Directly from kashmir
+                    </SelectItem>
+                    <SelectItem value="usa">
+                      Purchased from DKC USA Warehouse
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="shippingDistance"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Shipping distance (miles)</FormLabel>
                 <FormControl>
                   <Input
                     className="text-gray-950"
-                    placeholder="Enter the total weight"
+                    placeholder="Enter the total shipping distance"
                     {...field}
                     value={field.value ?? ""}
                     onChange={(e) => {
@@ -1081,150 +1203,118 @@ export const EstimationForm = () => {
                     }}
                   />
                 </FormControl>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="purchaseLocation"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Purchase location</FormLabel>
-              <Select
-                onValueChange={(value) => {
-                  field.onChange(value);
-                  if (value == "kashmir")
-                    form.setValue("shippingDistance", 7200);
-                }}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a purchase location" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="kashmir">Directly from kashmir</SelectItem>
-                  <SelectItem value="usa">
-                    Purchased from DKC USA Warehouse
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="shippingDistance"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Shipping distance (miles)</FormLabel>
-              <FormControl>
-                <Input
-                  className="text-gray-950"
-                  placeholder="Enter the total shipping distance"
-                  {...field}
-                  value={field.value ?? ""}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (
-                      value === "" ||
-                      (/^\d+$/.test(value) && parseInt(value) > 0)
-                    ) {
-                      field.onChange(
-                        value === "" ? undefined : parseInt(value),
-                      );
-                    }
-                  }}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="warehouse"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>DKC warehouse city</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a warehouse location" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="new york">New York</SelectItem>
-                  <SelectItem value="los angeles">Los Angeles</SelectItem>
-                  <SelectItem value="chicago">Chicago</SelectItem>
-                  <SelectItem value="houston">Houston</SelectItem>
-                  <SelectItem value="phoenix">Phoenix</SelectItem>
-                  <SelectItem value="philadelphia">Philadelphia</SelectItem>
-                  <SelectItem value="san antonio">San Antonio</SelectItem>
-                  <SelectItem value="san diego">San Diego</SelectItem>
-                  <SelectItem value="dallas">Dallas</SelectItem>
-                  <SelectItem value="san francisco">San Francisco</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="shippingMethod"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Shipping method</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a shipping method" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="air">Air</SelectItem>
-                  <SelectItem value="ship">Ship</SelectItem>
-                  <SelectItem value="rail">Rail</SelectItem>
-                  <SelectItem value="road">Road</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="efficiency"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Logistic Efficiency</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="bg-white text-gray-950">
-                    <SelectValue placeholder="Select a logistic efficiency" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="bulk">Efficient (Bulk)</SelectItem>
-                  <SelectItem value="single">
-                    Less Efficient (Single)
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="warehouse"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>DKC warehouse city</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a warehouse location" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="new york">New York</SelectItem>
+                    <SelectItem value="los angeles">Los Angeles</SelectItem>
+                    <SelectItem value="chicago">Chicago</SelectItem>
+                    <SelectItem value="houston">Houston</SelectItem>
+                    <SelectItem value="phoenix">Phoenix</SelectItem>
+                    <SelectItem value="philadelphia">Philadelphia</SelectItem>
+                    <SelectItem value="san antonio">San Antonio</SelectItem>
+                    <SelectItem value="san diego">San Diego</SelectItem>
+                    <SelectItem value="dallas">Dallas</SelectItem>
+                    <SelectItem value="san francisco">San Francisco</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="shippingMethod"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Shipping method</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a shipping method" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="air">Air</SelectItem>
+                    <SelectItem value="ship">Ship</SelectItem>
+                    <SelectItem value="rail">Rail</SelectItem>
+                    <SelectItem value="road">Road</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="efficiency"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Logistic Efficiency</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="bg-white text-gray-950">
+                      <SelectValue placeholder="Select a logistic efficiency" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="bulk">Efficient (Bulk)</SelectItem>
+                    <SelectItem value="single">
+                      Less Efficient (Single)
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <Button type="submit" variant={"secondary"}>
-          Calculate
-        </Button>
-      </form>
-    </Form>
+          <Button
+            type="submit"
+            variant={"secondary"}
+            disabled={estimateCost.isPending}
+          >
+            {estimateCost.isPending ? "Calculating" : "Calculate"}
+          </Button>
+        </form>
+      </Form>
+      {cost != 0 && (
+        <div className="mt-6 rounded border border-gray-200 bg-gray-50 p-4">
+          <h3 className="mb-2 font-montserrat text-3xl">
+            Cost Estimation Result
+          </h3>
+          <div className="grid gap-4">
+            <p className="font-opensans">
+              Estimated Cost:
+              <br />
+              <span className="text-secondary">{cost.toFixed(2)}</span>
+            </p>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
