@@ -45,7 +45,7 @@ export const Header = () => {
             title: 'Craft Repository Registry',
             href: '#',
             submenu: [
-                { title: 'CRAFT PROFILE', href: '#' },
+                { title: 'CRAFT PROFILE', href: '/craft-registry/profiling' },
                 {
                     title: 'GEOGRAPHICAL INDICATION',
                     href: '#',
@@ -150,7 +150,7 @@ export const Header = () => {
         <ul className={`absolute ${isNested ? 'left-full top-0' : 'left-1/2 -translate-x-1/2 top-full'} bg-white border-t-2 border-secondary min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300`}>
             {items.map((item, index) => (
                 <li key={index} className="border-b relative group/nested">
-                    <Link href={item.href} className="text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full flex justify-between items-center">
+                    <Link href={item.href} className="text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-base w-full h-full flex justify-between items-center">
                         {item.title}
                         {item.submenu && <FaChevronRight size={10} />}
                     </Link>
@@ -158,7 +158,7 @@ export const Header = () => {
                         <ul className="absolute left-full top-0 bg-white border-t-2 border-secondary min-w-[200px] opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300">
                             {item.submenu.map((subItem, subIndex) => (
                                 <li key={subIndex} className="border-b">
-                                    <Link href={subItem.href} className="block text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-sm w-full h-full">
+                                    <Link href={subItem.href} className="block text-primary hover:text-white hover:bg-secondary/80 px-4 py-2 text-base w-full h-full">
                                         {subItem.title}
                                     </Link>
                                 </li>
@@ -210,7 +210,7 @@ export const Header = () => {
                             <li key={index} className="relative group">
                                 <Link
                                     href={item.href}
-                                    className="text-white hover:text-secondary py-2 px-3 flex items-center text-sm gap-1"
+                                    className="text-white hover:text-secondary py-2 px-3 flex items-center text-base gap-1"
                                 >
                                     {item.title}
                                     {item.submenu && (
