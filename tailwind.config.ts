@@ -7,11 +7,15 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '4rem',
+			padding: '1rem', 
 			screens: {
-				'2xl': '1400px'
-			}
-		},
+			  sm: '540px',
+			  md: '720px',
+			  lg: '960px',
+			  xl: '1140px',
+			  '2xl': '1320px',
+			},
+		  },
 		extend: {
 			fontFamily: {
 				montserrat: ["var(--font-montserrat)"],
@@ -101,11 +105,11 @@ export default {
 				'slide-in-top': {
 					'0%': { opacity: '0', transform: 'translateY(-100%)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' },
-				  },
-				  'fade-in': {
+				},
+				'fade-in': {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
-				  },
+				},
 			}
 		}
 	},

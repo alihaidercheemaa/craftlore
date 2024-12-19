@@ -2,7 +2,7 @@ import Image from "next/image";
 import { TypedComponent } from "~/components/animations/typo";
 import { TYPETEXT } from "~/constants";
 
-export const WelcomeCards = () => {
+export const WelcomeCard = () => {
     return (
         <section className="col-span-12 mx-6 my-32 grid grid-cols-2 gap-4 lg:container ">
             <div className="col-span-2 flex flex-col items-center lg:container lg:col-span-1">
@@ -23,11 +23,11 @@ export const WelcomeCards = () => {
                 <p className="text-justify font-opensans text-sm lg:text-xl">
                     We are the driving force behind CraftLore, bringing together the
                     expertise of a diverse group of professionals—
-                    <b>
+                    <strong>
                         Ethnographers, Material Scientists, Craft Educators, Cultural
                         Theorists, Art Historians, Designers, Sociologists,
                         Environmentalists, and Technologists
-                    </b>
+                    </strong>
                     . United in our mission, we are committed to preserving and advancing
                     the timeless heritage of Kashmiri crafts for future generations.
                     <br />
@@ -43,14 +43,14 @@ export const WelcomeCards = () => {
                     <b>Empower Your Choices</b>, at no cost, with<b> Craft Guru</b>. We
                     connect you with the finest Kashmiri artisans, ensuring each craft is
                     verified, sustainable, and transparent. Whether you&apos;re seeking
-                    <b> Authenticity Guidance</b>, access to the<b> Craft Registry</b>, or{" "}
-                    <b>Value Estimation</b>, we ensure your decisions are intentional and
+                    <strong> Authenticity Guidance</strong>, access to the<b> Craft Registry</b>, or{" "}
+                    <strong>Value Estimation</strong>, we ensure your decisions are intentional and
                     well-informed.
                     <br />
                     <br />
                 </p>
             </div>
-            <div className="group col-span-2 rounded-lg bg-primary text-white shadow-lg px-6 lg:container  lg:col-span-1">
+            <div className="group col-span-2 rounded-lg bg-primary text-white shadow-lg px-2 lg:container  lg:col-span-1">
                 <h2 className="pt-8 text-center font-montserrat text-xl font-extrabold text-secondary  lg:text-4xl">
                     Welcome to CraftLore
                 </h2>
@@ -67,7 +67,7 @@ export const WelcomeCards = () => {
                     <br />
                     <br />
                 </p>
-                <ul className="list-inside list-disc space-y-4 text-base group-hover:text-white lg:text-2xl pb-2">
+                <ul className="list-inside list-disc space-y-4 text-base group-hover:text-white lg:text-2xl pb-6 [&_li]:px-4">
                     <li className="text-justify">
                         CraftLore uses advanced <b>Geo-Certification protocols</b> to ensure
                         precise geospatial verification of craft origins, delivering

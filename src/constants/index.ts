@@ -126,26 +126,31 @@ export const BANNERS = [
 export const SERVICES = [
     {
         icon: '/icons/profile.png',
+        href: '/',
         title: "CRAFT PROFILE",
         description: "History, Art, Science of Crafts"
     },
     {
         icon: '/icons/location.png',
+        href: '/craft-registry/listing',
         title: "GEOGRAPHICAL INDICATION",
         description: "Geo-Certified Kashmir Craft Origins"
     },
     {
         icon: '/icons/blockchain.png',
+        href: '/craft-registry/blockchain',
         title: "BLOCK-CHAIN TRACEABILITY",
         description: "Verified Journey, Counterfeit Protection"
     },
     {
         icon: '/icons/carbon.png',
+        href: '/craft-registry/carbon-footprint',
         title: "CARBON FOOTPRINT",
         description: "Eco-Friendly Crafts, Carbon Tracked"
     },
     {
         icon: '/icons/money.png',
+        href: '/craft-registry/cost-estimation',
         title: "PRICE VALUATION",
         description: "Self-Priced Kashmir Crafts Valuation"
     }
@@ -281,7 +286,6 @@ export const REGISTRIES = [
     { id: 7, title: 'Craft Business Listing Registry', description: "The Kashmir Craft Business Listing Registry is a comprehensive directory that includes detailed listings of artisans, businesses, and institutions involved in the Kashmiri handicraft sector. This registry provides a platform for artisans to showcase their craft expertise and connect with potential buyers, collaborators, and investors. It also includes businesses that specialize in the distribution, marketing, and sale of authentic Kashmiri crafts, ensuring transparency and accountability in the market. Moreover, institutions such as cooperatives, training centers, and craft organizations are listed to facilitate networking and partnership opportunities. The Business Listing Registry empowers the Kashmiri handicraft sector by fostering collaboration, expanding market access, and strengthening the overall industry network." },
     { id: 8, title: 'Kashmir Craft Vulnerability Registry', description: "The Kashmir Craft Vulnerability Registry is a critical tool designed to identify, track, and mitigate the risks and challenges faced by the Kashmiri handicraft sector. This registry records vulnerabilities related to economic pressures, environmental challenges, cultural erosion, and shifts in consumer demand that may threaten the survival of traditional crafts. By mapping these vulnerabilities, this registry provides valuable insights for artisans, policymakers, and stakeholders to develop resilience strategies. The registry also highlights specific crafts or regions within Kashmir that are most at risk, offering targeted support to safeguard these vulnerable sectors. Through early warning systems, market trend analysis, and risk assessments, the Kashmir Craft Vulnerability Registry plays a pivotal role in protecting and revitalizing the heritage of Kashmiri handicrafts." },
 ]
-
 
 export const ARCHITECTURE = [
     {
@@ -1269,4 +1273,142 @@ export const GILISTING = [
             'Woven by traditional Kashmiri artisans.'
         ]
     }
+]
+
+export const COSTFEATURES = [
+    { title: 'Real-Time Market Analysis & Historical Data Integration', des: 'Our system leverages real-time market data streams to dynamically adjust prices, reflecting the latest trends and demand. This ensures a fair valuation for all stakeholders, helping artisans and buyers navigate fluctuating market conditions with confidence. By tracking global and local market trends, the system provides accurate, up-to-date pricing information. Additionally, it incorporates machine learning algorithms to analyze historical pricing data, offering forecasts and insights into future craft valuations. This helps predict potential price changes based on market cycles, material availability, and consumer preferences.' },
+    { title: 'Material Quality Grading & Craft Techniques Evaluation', des: 'Material quality plays a significant role in determining craft value. Our system utilizes advanced verification processes to assess the quality of raw materials like Pashmina wool, silk, or wood. Only high-grade materials contribute to higher valuations, ensuring authenticity and durability are key factors in the final price. Furthermore, the system evaluates traditional Kashmiri crafting techniques, scoring them based on factors like labor intensity, skill required, and time invested. Techniques such as hand-weaving, hand-carving, and intricate embroidery are carefully considered to ensure their value is accurately reflected in the price.' },
+    { title: 'Craftsmanship Level & Carbon Footprint Value', des: 'Craftsmanship quality is crucial in determining a product’s value. Using sophisticated image recognition technology, the system evaluates the precision, symmetry, detailing, and finishing of each piece. Products are then categorized into levels of craftsmanship—apprentice, skilled artisan, master artisan, or heritage level—directly impacting their valuation. Additionally, the system takes into account the carbon footprint of each craft. Crafts with lower environmental impacts are given higher sustainability scores, making them more appealing to eco-conscious buyers. This feature also incentivizes artisans to adopt more sustainable production practices, benefiting both the environment and their market value.' },
+    { title: 'Certifications & Blockchain Integration', des: 'Certifications play a crucial role in adding credibility and authenticity to crafts. Our system integrates and verifies certifications like Geographical Indication (GI) tags, Fair Trade labels, and Artisan Guild memberships. These certifications contribute to the valuation by demonstrating the ethical production and authenticity of the crafts. Moreover, blockchain integration ensures that all certification data is securely stored and verifiable. Blockchain technology guarantees the authenticity of the crafts by providing a transparent, tamper-proof record of each product’s origin, materials, and certifications. This builds trust with buyers, ensuring confidence in the products they purchase.' },
+]
+
+export const COSTBENEFITS = [
+    {
+        title: 'For Buyers',
+        sub: [
+            { title: 'Price Authenticity', des: 'Buyers can trust that they are paying fair prices for genuine, handcrafted products.' },
+            { title: 'Informed Purchases', des: 'Transparent pricing helps buyers avoid counterfeits and middleman markups.' },
+            { title: 'Trust and Security', des: 'Bockchain verification ensures authentic purchases, cutting out counterfeit products.' },
+            { title: 'Cultural Preservation', des: 'Supporting direct-from-artisan purchases helps preserve traditional Kashmiri craftsmanship.' },
+        ]
+    },
+    {
+        title: 'For Artisans', sub: [
+            { title: 'Fair Compensation', des: 'Direct pricing ensures artisans are compensated fairly, eliminating middleman exploitation.' },
+            { title: 'Market Access', des: 'Expands opportunities, allowing artisans to connect directly with global buyers.' },
+            { title: 'Recognition', des: ' Establishes credibility for artisans, distinguishing their authentic products from counterfeits.' },
+            { title: 'Empowerment', des: 'Enables artisans to compete globally, showcasing their work without intermediary involvement.' },
+        ]
+    },
+    {
+        title: 'For the Industry', sub: [
+            { title: 'Standardized Pricing', des: 'Establishes fair, consistent pricing, cutting out middlemen to ensure transparency.' },
+            { title: 'Market Insights', des: 'Offers valuable data to predict industry trends and distinguish genuine products from counterfeits.' },
+            { title: 'Transparency', des: 'Builds trust by providing verified pricing details, reducing reliance on intermediaries.' },
+            { title: 'Global Competitiveness', des: 'Aligns businesses with international market standards, improving credibility and market reach.' },
+        ]
+    },
+    {
+        title: 'For Institutions', sub: [
+            { title: 'Governance Support', des: 'Regulates fair practices, cutting out middlemen and counterfeiting in the handicraft sector.' },
+            { title: 'Educational Impact', des: 'Provides artisans with tools to understand pricing and avoid counterfeit competition.' },
+            { title: 'Cultural Stewardship', des: 'Plays a role in preserving cultural heritage by distinguishing authentic crafts.' },
+            { title: 'Collaboration Opportunities', des: 'Fosters partnerships that eliminate middlemen and promote authentic artisan goods.' },
+        ]
+    },
+]
+
+export const CARBONFEATURES = [
+    { title: 'Real-Time Carbon Calculation & Material Impact Analysis', des: 'Our system allows artisans and businesses to instantly calculate their product’s carbon footprint by entering details like materials, production methods, and shipping. This real-time calculation gives users an immediate understanding of their environmental impact, helping them adjust practices as needed. The system also provides a detailed breakdown of how different materials, such as Pashmina wool, silk, or wood, contribute to the overall carbon footprint. This material-specific impact analysis helps users make informed choices about sourcing and production, promoting more sustainable craftsmanship and business practices across the board.' },
+    { title: 'Production & Transportation Impact Evaluation', des: 'The system evaluates various production methods, such as handmade or machine-made, to show how each affects carbon emissions. Handmade processes typically have a lower carbon footprint, while machine-made methods may increase energy use and emissions. In addition, our system tracks the impact of transportation and packaging on the product’s overall carbon footprint, giving users a clear view of how shipping distances, transportation modes, and packaging materials contribute to their environmental impact. This holistic evaluation helps users identify areas for improvement in reducing carbon emissions throughout the entire production and delivery process.' },
+    { title: 'Comparative Reporting & Blockchain Integration', des: 'Users can compare products, materials, and processes within the system to identify more sustainable options. The comparative reporting feature allows businesses to analyze which crafts or production methods have the lowest carbon footprint and to consider alternative solutions. Additionally, the blockchain integration ensures that all carbon footprint data is securely stored in an immutable and transparent system. This technology fosters trust and authenticity, enabling both artisans and buyers to rely on accurate environmental data. Blockchain’s verifiable records also enhance credibility in the marketplace, building confidence for sustainable commerce.' },
+    { title: 'Actionable Recommendations & Buyer Interface', des: 'Our system goes beyond just calculating carbon footprints by offering practical recommendations for reducing emissions. These tips empower artisans and businesses to adopt more sustainable practices, such as switching to eco-friendly materials, optimizing transportation, or using energy-efficient production methods. Additionally, the buyer-friendly interface allows consumers to view the carbon footprint of products before making purchasing decisions. This transparency encourages eco-conscious buying, helping customers align their values with their choices. The system fosters greater awareness of sustainability and promotes a more responsible marketplace for artisans and their consumers.' },
+]
+
+
+export const CARBONBENEFITS = [
+    {
+        title: 'For the Environment',
+        sub: [
+            { 
+                title: 'Reduced Carbon Emissions', 
+                des: 'The system helps minimize greenhouse gas emissions by promoting eco-friendly processes.' 
+            },
+            { 
+                title: 'Conservation of Resources', 
+                des: 'Encourages the use of sustainable materials and methods, conserving valuable natural resources.' 
+            },
+            { 
+                title: 'Biodiversity Protection', 
+                des: 'Promotes practices that limit environmental degradation, helping protect ecosystems and wildlife.' 
+            },
+            { 
+                title: 'Sustainable Growth', 
+                des: 'Fosters a balance between production and environmental stewardship, securing a healthier planet for the future.' 
+            },
+        ]
+    },
+    {
+        title: 'For the Buyer',
+        sub: [
+            { 
+                title: 'Transparency', 
+                des: 'Buyers are empowered to make informed purchasing decisions based on environmental impact data.' 
+            },
+            { 
+                title: 'Eco-Conscious Choices', 
+                des: 'The system promotes choices that support sustainability and reduce individual carbon footprints.' 
+            },
+            { 
+                title: 'Trust and Authenticity', 
+                des: 'Blockchain-backed data ensures product authenticity and accurate environmental claims.' 
+            },
+            { 
+                title: 'Long-Term Impact', 
+                des: 'Supporting eco-friendly craftsmanship promotes conservation and fosters ethical trade practices.' 
+            },
+        ]
+    },
+    {
+        title: 'For the Industry',
+        sub: [
+            { 
+                title: 'Enhanced Brand Reputation', 
+                des: 'Demonstrating sustainable practices strengthens brand identity and promotes eco-friendly values.' 
+            },
+            { 
+                title: 'Compliance with Global Standards', 
+                des: 'Helps businesses align with international carbon neutrality regulations and market expectations.' 
+            },
+            { 
+                title: 'Cost Savings', 
+                des: 'Identifying carbon-heavy processes allows businesses to switch to more efficient, cost-saving alternatives.' 
+            },
+            { 
+                title: 'Market Expansion', 
+                des: 'Access to eco-conscious consumers who prioritize low-carbon and sustainably made products.' 
+            },
+        ]
+    },
+    {
+        title: 'For the Artisan',
+        sub: [
+            { 
+                title: 'Informed Decision-Making', 
+                des: 'Artisans can better understand which parts of their process contribute the most to carbon emissions.' 
+            },
+            { 
+                title: 'Eco-Friendly Craftsmanship', 
+                des: 'Encourages the adoption of sustainable methods, preserving cultural heritage while minimizing harm.' 
+            },
+            { 
+                title: 'Increased Market Value', 
+                des: 'Eco-conscious products fetch higher prices and appeal to environmentally aware buyers.' 
+            },
+            { 
+                title: 'Empowerment', 
+                des: 'Artisans gain tools and knowledge to compete globally, using sustainability as a competitive edge.' 
+            },
+        ]
+    },
 ]

@@ -6,7 +6,7 @@ import { InfoCard } from "~/components/general/landing/info-card";
 import { RegisterCard } from "~/components/general/landing/register-card";
 import { ServiceCard } from "~/components/general/landing/service-card";
 import { SupportNetwork } from "~/components/general/landing/support-network";
-import { WelcomeCards } from "~/components/general/landing/welcome-card";
+import { WelcomeCard } from "~/components/general/landing/welcome-card";
 
 export default async function Home() {
 
@@ -14,7 +14,7 @@ export default async function Home() {
     <>
       <Banner />
       <ServiceCard />
-      <WelcomeCards />
+      <WelcomeCard />
       <RegisterCard />
       <GraphCard />
       <InfoCard />
