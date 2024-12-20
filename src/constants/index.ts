@@ -238,13 +238,6 @@ export const NETWORK = [
     { title: 'Marketing Support', description: 'Kasmir ArtStay India', link: 'Kashmirstay.com', redirect: '#' },
 ]
 
-export const COUNTER = [
-    { name: 'Artisans', value: 2000 },
-    { name: 'Craft Associations', value: 18 },
-    { name: 'Craft Insitutions', value: 5 },
-    { name: 'Donor', value: 4 }
-]
-
 
 export const MISSIONS = [
     { id: 1, title: 'Biggest Craft Repository of Kashmir', description: 'Our mission is to establish CraftLore as the largest and most comprehensive repository of Kashmiri crafts, preserving and promoting the rich artisanal heritage, craftsmanship methodologies, and artisan profiles of the region. Through a centralized data ecosystem, we aim to deliver deep-dive intelligence on Kashmiri crafts, offering stakeholders unparalleled insights into the cultural and economic significance of each craft. We aim to be the single source of truth for artisans, consumers, and researchers, providing scalable, data-driven insights into craft authenticity, innovation pathways, and market dynamics. Our mission is to reinforce Kashmir’s position as a global leader in artisanal excellence and ensure the continued growth and sustainability of its craft industry.' },
@@ -1412,3 +1405,110 @@ export const CARBONBENEFITS = [
         ]
     },
 ]
+
+export const BLOCKCHAINFEATURES = [
+    {
+      title: "Real-Time Craft Origin Verification",
+      des: "Our system provides instant verification of a craft's origin by capturing and storing key data points from raw material sourcing to final delivery. With blockchain technology, artisans and businesses can verify each step of their product’s journey, ensuring the authenticity and integrity of the craft. The system also allows for the inclusion of artisan details, materials used, and production methods, creating a comprehensive, transparent record that boosts buyer confidence. Real-time verification helps artisans stand out in global markets by ensuring their products are authentic and traceable from start to finish."
+    },
+    {
+      title: "Immutable Records",
+      des: "Blockchain ensures that all records related to the production and distribution of Kashmiri crafts are immutable, preventing tampering or alteration. From the sourcing of raw materials like Pashmina wool or silk to the final packaging and delivery, every stage is securely logged on the blockchain. The system tracks the entire supply chain, providing stakeholders with a comprehensive view of each product's journey. By having a transparent and unchangeable record of production, businesses and artisans can protect their crafts from counterfeiting, creating a verifiable link between the product and its origin."
+    },
+    {
+      title: "Comparative Reporting & Fraud Prevention",
+      des: "The system includes a comparative reporting feature, allowing users to compare product journeys and traceability across different crafts and vendors. This tool empowers businesses and buyers to verify which products follow authentic processes and meet the highest standards of origin verification. Additionally, the blockchain integration helps prevent fraud by creating an unchangeable record of the product's lifecycle. This data fosters trust among buyers, who can be confident that the craft they are purchasing is not a counterfeit. Fraud prevention strengthens the industry, protecting both artisans and consumers from counterfeit goods."
+    },
+    {
+      title: "Buyer Interface & Craft Authentication",
+      des: "CraftLore’s blockchain system offers a user-friendly interface that allows buyers to verify the authenticity of Kashmiri crafts in real time. Through simple scans using RFID or NFC technology, buyers can access detailed information about the product’s origin, artisan, materials, and journey. This transparency ensures that every craft purchased meets the highest standards of authenticity. The system also promotes buyer confidence by making craft authentication accessible, enabling eco-conscious and ethical purchases. With enhanced transparency, the marketplace becomes more trustworthy and supportive of genuine craftsmanship."
+    }
+  ];
+  
+  export const BLOCKCHAINBENEFITS = [
+    {
+      title: "For the Industry",
+      sub: [
+        {
+          title: "Enhanced Security",
+          des: "Blockchain ensures that all product data is immutable and tamper-proof, creating a secure record of origin and production."
+        },
+        {
+          title: "Brand Trust",
+          des: "Demonstrating traceability and authenticity bolsters brand reputation in the marketplace."
+        },
+        {
+          title: "Global Compliance",
+          des: "Aligns with international standards for transparency, authenticity, and anti-counterfeiting practices, opening doors to new markets."
+        },
+        {
+          title: "Fraud Reduction",
+          des: "Prevents counterfeiting by securely tracking every product’s lifecycle from creation to sale."
+        }
+      ]
+    },
+    {
+      title: "For the Buyer",
+      sub: [
+        {
+          title: "Transparency",
+          des: "Buyers can easily verify the authenticity and origin of the craft they are purchasing, building trust in the product and the artisan."
+        },
+        {
+          title: "Confidence in Authenticity",
+          des: "Blockchain-backed verification ensures that buyers are purchasing genuine Kashmiri crafts, not counterfeit imitations."
+        },
+        {
+          title: "Ethical Choices",
+          des: "The ability to verify a product’s journey promotes ethical buying and supports authentic craftsmanship."
+        },
+        {
+          title: "Cultural Connection",
+          des: "Buyers can engage with the story behind the craft, connecting more deeply with the heritage and artisanship."
+        }
+      ]
+    },
+    {
+      title: "For the Artisan",
+      sub: [
+        {
+          title: "Protection of Craft",
+          des: "Blockchain technology ensures that artisans' crafts are securely recorded and traceable, preventing imitation and counterfeiting."
+        },
+        {
+          title: "Global Reach",
+          des: "Verified authenticity allows artisans to reach global buyers who prioritize traceable, genuine craftsmanship."
+        },
+        {
+          title: "Increased Value",
+          des: "Authentic, traceable products attract higher prices in the market, boosting the artisan’s earning potential."
+        },
+        {
+          title: "Empowerment through Technology",
+          des: "Artisans gain access to cutting-edge tools that enhance their credibility and competitiveness in the global marketplace."
+        }
+      ]
+    },
+    {
+      title: "For the Craft Heritage",
+      sub: [
+        {
+          title: "Preserving Cultural Heritage",
+          des: "By securing the authenticity of Kashmiri crafts, the system protects centuries-old traditions from dilution by counterfeits."
+        },
+        {
+          title: "Trustworthy Legacy",
+          des: "Blockchain ensures the accurate representation of Kashmiri craft origin, allowing future generations to honor and continue the legacy."
+        },
+        {
+          title: "Global Recognition",
+          des: "Traceability boosts the international reputation of Kashmiri crafts, cementing their place as cultural treasures in the global market."
+        },
+        {
+          title: "Sustainable Craft Practices",
+          des: "Ensures that the integrity of craft processes is maintained, promoting responsible production and heritage preservation."
+        }
+      ]
+    }
+  ];
+  

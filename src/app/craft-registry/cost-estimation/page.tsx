@@ -2,10 +2,20 @@ import { CostEstimationHome } from "~/components/craft-repository/cost-estimatio
 import { type Metadata } from "next";
 import { CostFeatures } from "~/components/craft-repository/cost-estimations/features";
 import { CostApiGuide } from "~/components/craft-repository/cost-estimations/api-guide";
+import { Counter } from "~/components/animations/counter";
+import { BottomBanner } from "~/components/general/bottom-banner";
 
 export const metadata: Metadata = {
   title: "CRAFTLORE | Cost estimation",
 };
+
+
+const counter = [
+  { name: 'Verified artisans', value: 25000 },
+  { name: 'Green Networks', value: 20 },
+  { name: 'Eco Institutions', value: 8 },
+  { name: 'Great Businesses', value: 120 }
+]
 
 export default function CostestimatorPage() {
   return (
@@ -60,6 +70,18 @@ export default function CostestimatorPage() {
       </div>
       <div className="mx-6 lg:container">
         <CostApiGuide />
+      </div>
+      <div className="bg-[#e5edf7]">
+        <div className="mx-6 lg:container space-y-[6rem] pt-[5rem]">
+          <h2 className="font-montserrat text-xl text-center text-secondary">
+            Defend Fair Trade, Empower Artisans: Join the Movement for Transparent Pricing in Kashmiri Crafts
+          </h2>
+          <h2 className="font-montserrat text-3xl text-center text-primary">
+          Join our mission to establish fair, transparent pricing for Kashmiri artisans and their unique crafts.
+          </h2>
+          <Counter counterValues={counter} />
+          <BottomBanner/>
+        </div>
       </div>
     </section>
   );

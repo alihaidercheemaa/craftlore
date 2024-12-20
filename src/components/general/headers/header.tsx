@@ -142,14 +142,14 @@ export const Header = () => {
         { title: "CRAFTLORE REGISTRY", href: "/about/registry" },
         { title: "REGISTRY ARCHITECTURE", href: "/about/architecture" },
         {
-            title: "LISTING",
-            href: "#",
-            submenu: [
-              { title: "ARTISANS", href: "/listing/registration" },
-              { title: "BUSINESSES", href: "/listing/registration" },
-              { title: "INSTITUTES", href: "/listing/registration" },
-            ],
-          },
+          title: "LISTING",
+          href: "#",
+          submenu: [
+            { title: "ARTISANS", href: "/listing/registration" },
+            { title: "BUSINESSES", href: "/listing/registration" },
+            { title: "INSTITUTES", href: "/listing/registration" },
+          ],
+        },
         {
           title: "CRAFT ALLIANCE",
           href: "#",
@@ -218,7 +218,6 @@ export const Header = () => {
         isScrolled && "bg-primary text-white",
       )}
     >
-      {/* Top bar */}
       <div className="hidden justify-between gap-6 py-2 lg:flex">
         <div className="flex flex-col gap-6 lg:flex-row">
           <p className="flex items-center gap-2">
@@ -261,14 +260,20 @@ export const Header = () => {
       </div>
 
       <div className="flex w-full items-center justify-between px-6 py-4">
-        <Image
-          src="/logo/logo.png"
-          alt="logo for craftlore"
-          width={100}
-          height={100}
-        />
+        <div
+          className={cn(
+            "relative h-[100px] w-[100px]",
+            !isScrolled && "h-[200px] w-[200px]",
+          )}
+        >
+          <Image
+            src="/logo/logo.png"
+            alt="logo for craftlore"
+            fill
+            sizes="100px"
+          />
+        </div>
 
-        {/* larger screens */}
         <nav className="hidden lg:flex">
           <ul className="flex gap-6">
             {menuItems.map((item, index) => (
@@ -297,7 +302,12 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <Button variant={isScrolled ? 'outline':'default'} className={cn("text-white",isScrolled && "text-primary")}>Login</Button>
+        <Button
+          variant={isScrolled ? "outline" : "default"}
+          className={cn("text-white", isScrolled && "text-primary")}
+        >
+          Login
+        </Button>
 
         <Sheet>
           <SheetTrigger className="text-white lg:hidden">

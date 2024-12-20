@@ -1,6 +1,5 @@
-import { FaUserPlus } from "react-icons/fa6"
-import { Button } from "~/components/ui/button"
 import { CounterInfo } from "~/components/general/counter-info"
+import { BottomBanner } from "~/components/general/bottom-banner"
 
 
 export const FounderCard = () => {
@@ -36,13 +35,7 @@ export const FounderCard = () => {
                         </div>
                     </div>
                     <CounterInfo className="col-span-2" />
-                    <div className="col-span-2 flex flex-col lg:flex-row gap-6 lg:gap-16 justify-center items-center bg-primary text-white text-center py-12 font-opensans rounded-t-xl border-b-8 border-secondary mt-36">
-                        <FaUserPlus className="text-3xl lg:text-5xl font-bold " />
-                        <p className="text-xl">Stay Connected to Craftlore-Kashmir Craft Repository</p>
-                        <Button variant={'secondary'}>
-                            SUBSCRIBE TODAY
-                        </Button>
-                    </div>
+                   <BottomBanner className="col-span-2"/>
                 </div>
             </div>
         </section>
