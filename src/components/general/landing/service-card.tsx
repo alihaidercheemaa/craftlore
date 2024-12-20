@@ -1,15 +1,17 @@
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { SERVICES } from '~/constants';
 
 
 export const ServiceCard = () => {
   return (
-    <div className="col-span-12 relative -mt-16"> 
+    <div className="col-span-12 relative -mt-24"> 
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 hover:cursor-pointer">
           {SERVICES.map((service, index) => (
-            <div
+            <Link
+              href={service.href}
               className="group flex flex-col gap-2 bg-white transition-all duration-300 hover:shadow-2xl p-2 hover:bg-secondary rounded-lg border"
               key={index}
             >
@@ -31,7 +33,7 @@ export const ServiceCard = () => {
                   <p className='text-center '>{service.description.split(' ').slice(3).join(' ')}</p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
