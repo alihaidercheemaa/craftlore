@@ -8,6 +8,7 @@ import { CarbonRouter } from "~/server/api/routers/carbon";
 import { PriceRouter } from "~/server/api/routers/price";
 import { CategoryRouter } from "~/server/api/routers/category";
 import { GIRouter } from "~/server/api/routers/gi";
+import { CraftRouter } from "~/server/api/routers/profiling";
 
 
 export const appRouter = createTRPCRouter({
@@ -19,7 +20,8 @@ export const appRouter = createTRPCRouter({
   carbon:CarbonRouter,
   price:PriceRouter,
   category:CategoryRouter,
-  gi : GIRouter
+  gi : GIRouter,
+  craft:CraftRouter
 });
 
 

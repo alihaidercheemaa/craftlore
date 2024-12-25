@@ -111,7 +111,7 @@ export const Banner = () => {
 
     return (
         <section
-            className="col-span-12 relative h-[calc(100dvh-3.5rem)] bg-primary text-white overflow-hidden"
+            className="col-span-12 relative h-[calc(100dvh)] bg-primary text-white overflow-hidden"
         >
             <div className="container grid items-center h-full">
                 <AnimatePresence>
@@ -129,7 +129,7 @@ export const Banner = () => {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="lg:container grid gap-2"
+                            className="lg:container mx-6 grid gap-2"
                         >
                             {/* Title */}
                             <motion.p

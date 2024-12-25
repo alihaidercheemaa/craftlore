@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function GIReportingPage() {
   return (
-    <div className="relative col-span-12 -mt-16">
+    <section className="relative col-span-12 -mt-16">
       <div className="mx-6 flex gap-10 lg:container">
         <div className="grid h-[183px] w-72 place-content-center border-4 border-white bg-secondary p-10 text-center text-white">
           <h1 className="whitespace-pre-line font-montserrat text-xl font-bold">
@@ -117,6 +117,6 @@ export default function GIReportingPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

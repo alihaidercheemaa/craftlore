@@ -28,9 +28,9 @@ export const CostEstimationHome = () => {
             </div>
             <div className="col-span-2 lg:col-span-1 flex flex-col gap-6 p-6 bg-primary rounded-lg shadow-lg">
                 <h2 className="text-secondary text-center text-[40px] leading-[48px] font-montserrat p-6">
-                    Handicraft Price Valuation System
+                    Kashmir Handicraft Price Valuation System
                 </h2>
-                <p className="font-montserrat text-xl text-white">Get real-time transparent pricing solutions</p>
+                <p className="font-montserrat text-xl text-white text-center">Get real-time transparent pricing solutions</p>
                 <EstimationForm />
             </div>
         </div>

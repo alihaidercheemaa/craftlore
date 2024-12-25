@@ -29,7 +29,7 @@ export const CarbonEstimationHome = () => {
                 <h2 className="text-secondary text-center text-[40px] leading-[48px] font-montserrat p-6">
                     Kashmir&apos;s Craft Sustainability Tracker
                 </h2>
-                <p className="font-montserrat text-xl text-white">Estimate the Carbon Footprint of Your Product</p>
+                <p className="font-montserrat text-xl text-white text-center">Estimate the Carbon Footprint of Your Product</p>
                 <CarbonForm />
             </div>
         </div>

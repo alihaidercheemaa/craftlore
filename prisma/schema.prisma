@@ -248,6 +248,7 @@ model SubCategory {
   subcategoryName String          @default("none")
   categoryId      String
   CarbonSection   CarbonSection[]
+  CraftSection    CraftSection[]
   Material        Material[]
   PriceSection    PriceSection[]
   Category        Category        @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
@@ -295,6 +296,29 @@ model GIReport {
   email       String @default("none")
   report      String @default("none")
   productCode String @default("none")
+}
+
+model CraftContent {
+  craftsubsectionId String          @id @default(cuid())
+  content           String          @default("none")
+  subsectionId      String
+  CraftSubSection   CraftSubSection @relation(fields: [subsectionId], references: [craftsubsectionId], onDelete: Cascade)
+}
+
+model CraftSection {
+  craftsectionId  String            @id @default(cuid())
+  sectionName     String            @default("none")
+  subCategoryId   String
+  SubCategory     SubCategory       @relation(fields: [subCategoryId], references: [subcategoryId], onDelete: Cascade)
+  CraftSubSection CraftSubSection[]
+}
+
+model CraftSubSection {
+  craftsubsectionId String         @id @default(cuid())
+  sectionName       String         @default("none")
+  sectionId         String
+  CraftContent      CraftContent[]
+  CraftSection      CraftSection   @relation(fields: [sectionId], references: [craftsectionId], onDelete: Cascade)
 }
 
 enum InstitutionType {
