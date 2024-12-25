@@ -39,7 +39,7 @@ export const BlockchainHome = () => {
         <h2 className="p-6 text-center font-montserrat text-[40px] leading-[48px] text-secondary">
           Kashmir&apos;s Craft Sustainability Tracker
         </h2>
-        <p className="font-montserrat text-xl text-white">
+        <p className="font-montserrat text-xl text-white text-center">
           Estimate the Carbon Footprint of Your Product
         </p>
         <BlockchainForm />

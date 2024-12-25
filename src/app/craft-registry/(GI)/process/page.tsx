@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function GIProcessPage() {
   return (
-    <div className="col-span-12 grid gap-4">
+    <section className="col-span-12 grid gap-4">
       <div className="mx-6 my-10 grid gap-10 lg:container">
-        <div className="grid gap-10 lg:container">
+        <div className="grid gap-10">
           <h1 className="font-montserrat text-[40px] leading-[48px] text-primary">
             GEOGRAPHICAL INDICATION PROCESS
           </h1>
@@ -67,6 +67,6 @@ export default function GIProcessPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

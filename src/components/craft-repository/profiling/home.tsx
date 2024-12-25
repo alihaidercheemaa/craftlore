@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CarbonForm } from "~/components/craft-repository/carbon-footprint/carbon-form";
+import { CraftAccordin } from "~/components/craft-repository/profiling/carft-accordin";
 
 export const ProfileHome = () => {
   return (
@@ -39,27 +39,33 @@ export const ProfileHome = () => {
           </p>
           <h3>Why Craft Profiling Matters</h3>
           <p>
-            <strong>Preserves Cultural Heritage</strong>: Protects and maintains the authenticity of Kashmiri crafts.
+            <strong>Preserves Cultural Heritage</strong>: Protects and maintains
+            the authenticity of Kashmiri crafts.
           </p>
           <p>
-            <strong>Empowers Artisans & Researchers</strong>: Provides authoritative, data-rich references for innovation and scholarship.
+            <strong>Empowers Artisans & Researchers</strong>: Provides
+            authoritative, data-rich references for innovation and scholarship.
           </p>
           <p>
-            <strong>Enhances Transparency & Accuracy</strong>: Standardized metadata and version control ensure reliable, up-to-date information.
+            <strong>Enhances Transparency & Accuracy</strong>: Standardized
+            metadata and version control ensure reliable, up-to-date
+            information.
           </p>
           <p>
-            <strong>Strengthens Global Engagement</strong>: Multilingual support and inter-repository connections widen outreach, attracting new buyers and craft lovers worldwide.
+            <strong>Strengthens Global Engagement</strong>: Multilingual support
+            and inter-repository connections widen outreach, attracting new
+            buyers and craft lovers worldwide.
           </p>
         </div>
       </div>
       <div className="col-span-2 flex h-fit flex-col gap-6 rounded-lg bg-primary p-6 shadow-lg lg:col-span-1">
         <h2 className="p-6 text-center font-montserrat text-[40px] leading-[48px] text-secondary">
-          Kashmir&apos;s Craft Sustainability Tracker
+          Kashmir Craft Profiling Registry
         </h2>
-        <p className="font-montserrat text-xl text-white">
-          Estimate the Carbon Footprint of Your Product
+        <p className="font-montserrat text-xl text-white text-center">
+        Craft Authenticity, Preserved for Generations
         </p>
-        <CarbonForm />
+        <CraftAccordin />
       </div>
     </div>
   );

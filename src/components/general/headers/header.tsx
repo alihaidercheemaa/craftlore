@@ -8,8 +8,6 @@ import {
   FaChevronRight,
   FaFacebook,
   FaLinkedin,
-  FaLocationDot,
-  FaPhone,
   FaSignal,
   FaTwitter,
 } from "react-icons/fa6";
@@ -29,17 +27,15 @@ import {
 } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
 
-interface MenuItem {
+type MenuItem = {
   title: string;
   href: string;
   submenu?: MenuItem[];
-}
+};
 
-// Define the props interface for the SubMenu component
-interface SubMenuProps {
+type SubMenuProps = {
   items: MenuItem[];
-  isNested?: boolean;
-}
+};
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +62,10 @@ export const Header = () => {
       title: "Craft Repository Registry",
       href: "#",
       submenu: [
-        { title: "CRAFT PROFILE", href: "/craft-registry/profiling" },
+        {
+          title: "KASHMIR CRAFT PROFILE",
+          href: "/craft-registry/profiling",
+        },
         {
           title: "GEOGRAPHICAL INDICATION",
           href: "#",
@@ -80,16 +79,19 @@ export const Header = () => {
           title: "BLOCK CHAIN TRACEABILITY",
           href: "/craft-registry/blockchain",
         },
-        { title: "CARBON FOOTPRINT", href: "/craft-registry/carbon-footprint" },
+        {
+          title: "CRAFT CARBON FOOTPRINT",
+          href: "/craft-registry/carbon-footprint",
+        },
         {
           title: "CRAFT PRICE ESITMATOR",
           href: "/craft-registry/cost-estimation",
         },
+        {
+          title: "CRAFT TRADE REGISTRY",
+          href: "/craft-registry/listing",
+        },
       ],
-    },
-    {
-      title: "CRAFT INDUSTRY LISTING",
-      href: "/listing",
     },
     {
       title: "CRAFT VULNERABILITY",
@@ -179,10 +181,8 @@ export const Header = () => {
     },
   ];
 
-  const SubMenu = ({ items, isNested = false }: SubMenuProps) => (
-    <ul
-      className={`absolute ${isNested ? "left-full top-0" : "left-1/2 top-full -translate-x-1/2"} invisible min-w-[200px] border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100`}
-    >
+  const SubMenu = ({ items }: SubMenuProps) => (
+    <ul className="invisible absolute left-1/2 top-full min-w-[200px] -translate-x-1/2 border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
       {items.map((item, index) => (
         <li key={index} className="group/nested relative border-b">
           <Link
@@ -214,155 +214,153 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 z-20 col-span-12 flex w-full flex-col items-center bg-white text-primary transition-colors duration-300",
+        "fixed top-0 z-20 col-span-12 flex w-full flex-col bg-white text-primary transition-colors duration-300",
         isScrolled && "bg-primary text-white",
       )}
     >
-      <div className="hidden justify-between gap-6 py-2 lg:flex">
-        <div className="flex flex-col gap-6 lg:flex-row">
-          <p className="flex items-center gap-2">
-            <FaLocationDot className="text-secondary" />
-            <span className="text-wrap text-xs">
-              ARTISAN LANE 2 DAR UL ZAMROOD GOUSIA COLONY EXT ZAKURA SRG INDIA
-            </span>
+      <div className="ml-auto hidden lg:flex  justify-between gap-6 rounded-bl-lg bg-primary p-6 py-2 text-white ">
+        <div className="flex flex-col items-center gap-1 font-opensans md:flex-row md:gap-12">
+          <p className="text-lg font-bold md:text-2xl">
+            <strong className="text-secondary">Craftlore</strong> - Kashmir
+            Craft Repository System
           </p>
-          <p className="flex items-center gap-2">
-            <FaPhone className="text-secondary" />
-            <span>(+917) 814 - 3527</span>
+          <div className="hidden h-7 w-1 bg-secondary md:block" />
+          <p className="text-xlmd:text-2xl">
+            Initiative of Hamadan Craft Revival Foundation
           </p>
         </div>
-        <div className="flex gap-6">
-          <Link
-            className="flex items-center gap-2 hover:text-secondary"
-            href="#"
-          >
-            <FaTwitter />
-          </Link>
-          <Link
-            className="flex items-center gap-2 hover:text-secondary"
-            href="#"
-          >
-            <FaFacebook />
-          </Link>
-          <Link
-            className="flex items-center gap-2 hover:text-secondary"
-            href="#"
-          >
-            <FaLinkedin />
-          </Link>
-          <Link
-            className="flex items-center gap-2 hover:text-secondary"
-            href="#"
-          >
-            <FaSignal />
-          </Link>
+        <div className="flex gap-4">
+          <Button variant="secondary" className="text- text-white" asChild>
+            <Link href="#">Register / Login</Link>
+          </Button>
+          <div className="flex gap-6">
+            <Link
+              className="flex items-center gap-2 hover:text-secondary"
+              href="#"
+            >
+              <FaTwitter />
+            </Link>
+            <Link
+              className="flex items-center gap-2 hover:text-secondary"
+              href="#"
+            >
+              <FaFacebook />
+            </Link>
+            <Link
+              className="flex items-center gap-2 hover:text-secondary"
+              href="#"
+            >
+              <FaLinkedin />
+            </Link>
+            <Link
+              className="flex items-center gap-2 hover:text-secondary"
+              href="#"
+            >
+              <FaSignal />
+            </Link>
+          </div>
         </div>
       </div>
-
-      <div className="flex w-full items-center justify-between px-6 py-4">
+      <div className="flex w-full p-4">
         <div
           className={cn(
-            "relative h-[100px] w-[100px]",
-            !isScrolled && "h-[200px] w-[200px]",
+            "relative h-[100px] w-[100px] ml-6 md:ml-0",
+            !isScrolled && "lg:h-[150px] lg:w-[150px]",
           )}
         >
           <Image
             src="/logo/logo.png"
             alt="logo for craftlore"
             fill
-            sizes="100px"
+            sizes="100vw"
           />
         </div>
-
-        <nav className="hidden lg:flex">
-          <ul className="flex gap-6">
-            {menuItems.map((item, index) => (
-              <li key={index} className="group relative">
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-1 px-3 py-2 text-base hover:text-secondary"
-                >
-                  {item.title}
-                  {item.submenu && (
-                    <span className="inline-flex items-center">
-                      <FaChevronDown
-                        className="transition-transform duration-200 group-hover:hidden"
-                        size={10}
-                      />
-                      <FaChevronUp
-                        className="hidden transition-transform duration-200 group-hover:block"
-                        size={10}
-                      />
-                    </span>
-                  )}
-                </Link>
-                {item.submenu && <SubMenu items={item.submenu} />}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <Button
-          variant={isScrolled ? "outline" : "default"}
-          className={cn("text-white", isScrolled && "text-primary")}
-        >
-          Login
-        </Button>
-
-        <Sheet>
-          <SheetTrigger className="text-white lg:hidden">
-            <FaBars />
-          </SheetTrigger>
-          <SheetContent className="bg-white">
-            <SheetHeader>
-              <SheetTitle>Craftlore </SheetTitle>
-              <ul className="grid gap-6">
-                {menuItems.map((item, index) => (
-                  <li key={index} className="relative">
-                    <Collapsible>
-                      <CollapsibleTrigger asChild>
-                        <Link
-                          href={item.href}
-                          className="flex items-center gap-1 px-3 py-2 text-sm text-gray-900 hover:text-secondary"
-                        >
-                          {item.title}
-                          {item.submenu && (
-                            <span className="ml-2 inline-flex items-center">
-                              <FaChevronDown
-                                className="group-hover:hidden"
-                                size={10}
-                              />
-                              <FaChevronUp
-                                className="hidden group-hover:block"
-                                size={10}
-                              />
-                            </span>
-                          )}
-                        </Link>
-                      </CollapsibleTrigger>
-                      {item.submenu && (
-                        <CollapsibleContent className="flex-start flex">
-                          <ul className="pl-4">
-                            {item.submenu.map((subItem, subIndex) => (
-                              <li key={subIndex} className="py-2">
-                                <Link
-                                  href={subItem.href}
-                                  className="block text-sm text-gray-700 hover:text-secondary"
-                                >
-                                  {subItem.title}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </CollapsibleContent>
-                      )}
-                    </Collapsible>
-                  </li>
-                ))}
-              </ul>
-            </SheetHeader>
-          </SheetContent>
-        </Sheet>
+        <div className="flex items-center mx-auto  px-6 py-4">
+          <nav className="hidden lg:flex">
+            <ul className="flex gap-6 font-bold">
+              {menuItems.map((item, index) => (
+                <li key={index} className="group relative">
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-1 px-3 py-2 text-base hover:text-secondary"
+                  >
+                    {item.title}
+                    {item.submenu && (
+                      <span className="inline-flex items-center">
+                        <FaChevronDown
+                          className="transition-transform duration-200 group-hover:hidden"
+                          size={10}
+                        />
+                        <FaChevronUp
+                          className="hidden transition-transform duration-200 group-hover:block"
+                          size={10}
+                        />
+                      </span>
+                    )}
+                  </Link>
+                  {item.submenu && <SubMenu items={item.submenu} />}
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <Sheet>
+            <SheetTrigger  className={cn(
+            "text-white lg:hidden ",
+            !isScrolled && "text-primary",
+          )}>
+              <FaBars size={32} />
+            </SheetTrigger>
+            <SheetContent className="bg-white">
+              <SheetHeader>
+                <SheetTitle>Craftlore </SheetTitle>
+                <ul className="grid gap-6">
+                  {menuItems.map((item, index) => (
+                    <li key={index} className="relative">
+                      <Collapsible>
+                        <CollapsibleTrigger asChild>
+                          <Link
+                            href={item.href}
+                            className="flex items-center gap-1 px-3 py-2 text-sm text-gray-900 hover:text-secondary"
+                          >
+                            {item.title}
+                            {item.submenu && (
+                              <span className="ml-2 inline-flex items-center">
+                                <FaChevronDown
+                                  className="group-hover:hidden"
+                                  size={10}
+                                />
+                                <FaChevronUp
+                                  className="hidden group-hover:block"
+                                  size={10}
+                                />
+                              </span>
+                            )}
+                          </Link>
+                        </CollapsibleTrigger>
+                        {item.submenu && (
+                          <CollapsibleContent className="flex-start flex">
+                            <ul className="pl-4">
+                              {item.submenu.map((subItem, subIndex) => (
+                                <li key={subIndex} className="py-2">
+                                  <Link
+                                    href={subItem.href}
+                                    className="block text-sm text-gray-700 hover:text-secondary"
+                                  >
+                                    {subItem.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </CollapsibleContent>
+                        )}
+                      </Collapsible>
+                    </li>
+                  ))}
+                </ul>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
