@@ -1,6 +1,6 @@
 'use client'
 import { PROJECTS } from "~/constants"
-import { useProject } from "~/hooks/user-project"
+import { useProject } from "~/hooks/use-project"
 import { ProjectCard } from "~/components/general/about/projects/project-card"
 
 

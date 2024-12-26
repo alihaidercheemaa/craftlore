@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   title: "CRAFTLORE | Cost estimation",
 };
 
-
 const counter = [
   { name: 'Verified artisans', value: 25000 },
   { name: 'Green Networks', value: 20 },

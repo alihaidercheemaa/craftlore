@@ -214,7 +214,7 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 z-20 col-span-12 flex w-full flex-col bg-white text-primary transition-colors duration-300",
+        "sticky top-0 z-20 col-span-12 flex w-full flex-col bg-white text-primary transition-colors duration-300",
         isScrolled && "bg-primary text-white",
       )}
     >
