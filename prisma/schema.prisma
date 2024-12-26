@@ -298,13 +298,6 @@ model GIReport {
   productCode String @default("none")
 }
 
-model CraftContent {
-  craftsubsectionId String          @id @default(cuid())
-  content           String          @default("none")
-  subsectionId      String
-  CraftSubSection   CraftSubSection @relation(fields: [subsectionId], references: [craftsubsectionId], onDelete: Cascade)
-}
-
 model CraftSection {
   craftsectionId  String            @id @default(cuid())
   sectionName     String            @default("none")
@@ -319,6 +312,13 @@ model CraftSubSection {
   sectionId         String
   CraftContent      CraftContent[]
   CraftSection      CraftSection   @relation(fields: [sectionId], references: [craftsectionId], onDelete: Cascade)
+}
+
+model CraftContent {
+  craftsubsectionId String          @id @default(cuid())
+  content           String          @default("none")
+  subsectionId      String
+  CraftSubSection   CraftSubSection @relation(fields: [subsectionId], references: [craftsubsectionId], onDelete: Cascade)
 }
 
 enum InstitutionType {

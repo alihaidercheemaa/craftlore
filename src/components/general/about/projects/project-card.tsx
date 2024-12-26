@@ -1,4 +1,4 @@
-import { useProject } from "~/hooks/user-project"
+import { useProject } from "~/hooks/use-project"
 import { cn } from "~/lib/utils"
 
 type ProjectProps = {
