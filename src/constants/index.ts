@@ -1323,84 +1323,84 @@ export const CARBONBENEFITS = [
     {
         title: 'For the Environment',
         sub: [
-            { 
-                title: 'Reduced Carbon Emissions', 
-                des: 'The system helps minimize greenhouse gas emissions by promoting eco-friendly processes.' 
+            {
+                title: 'Reduced Carbon Emissions',
+                des: 'The system helps minimize greenhouse gas emissions by promoting eco-friendly processes.'
             },
-            { 
-                title: 'Conservation of Resources', 
-                des: 'Encourages the use of sustainable materials and methods, conserving valuable natural resources.' 
+            {
+                title: 'Conservation of Resources',
+                des: 'Encourages the use of sustainable materials and methods, conserving valuable natural resources.'
             },
-            { 
-                title: 'Biodiversity Protection', 
-                des: 'Promotes practices that limit environmental degradation, helping protect ecosystems and wildlife.' 
+            {
+                title: 'Biodiversity Protection',
+                des: 'Promotes practices that limit environmental degradation, helping protect ecosystems and wildlife.'
             },
-            { 
-                title: 'Sustainable Growth', 
-                des: 'Fosters a balance between production and environmental stewardship, securing a healthier planet for the future.' 
+            {
+                title: 'Sustainable Growth',
+                des: 'Fosters a balance between production and environmental stewardship, securing a healthier planet for the future.'
             },
         ]
     },
     {
         title: 'For the Buyer',
         sub: [
-            { 
-                title: 'Transparency', 
-                des: 'Buyers are empowered to make informed purchasing decisions based on environmental impact data.' 
+            {
+                title: 'Transparency',
+                des: 'Buyers are empowered to make informed purchasing decisions based on environmental impact data.'
             },
-            { 
-                title: 'Eco-Conscious Choices', 
-                des: 'The system promotes choices that support sustainability and reduce individual carbon footprints.' 
+            {
+                title: 'Eco-Conscious Choices',
+                des: 'The system promotes choices that support sustainability and reduce individual carbon footprints.'
             },
-            { 
-                title: 'Trust and Authenticity', 
-                des: 'Blockchain-backed data ensures product authenticity and accurate environmental claims.' 
+            {
+                title: 'Trust and Authenticity',
+                des: 'Blockchain-backed data ensures product authenticity and accurate environmental claims.'
             },
-            { 
-                title: 'Long-Term Impact', 
-                des: 'Supporting eco-friendly craftsmanship promotes conservation and fosters ethical trade practices.' 
+            {
+                title: 'Long-Term Impact',
+                des: 'Supporting eco-friendly craftsmanship promotes conservation and fosters ethical trade practices.'
             },
         ]
     },
     {
         title: 'For the Industry',
         sub: [
-            { 
-                title: 'Enhanced Brand Reputation', 
-                des: 'Demonstrating sustainable practices strengthens brand identity and promotes eco-friendly values.' 
+            {
+                title: 'Enhanced Brand Reputation',
+                des: 'Demonstrating sustainable practices strengthens brand identity and promotes eco-friendly values.'
             },
-            { 
-                title: 'Compliance with Global Standards', 
-                des: 'Helps businesses align with international carbon neutrality regulations and market expectations.' 
+            {
+                title: 'Compliance with Global Standards',
+                des: 'Helps businesses align with international carbon neutrality regulations and market expectations.'
             },
-            { 
-                title: 'Cost Savings', 
-                des: 'Identifying carbon-heavy processes allows businesses to switch to more efficient, cost-saving alternatives.' 
+            {
+                title: 'Cost Savings',
+                des: 'Identifying carbon-heavy processes allows businesses to switch to more efficient, cost-saving alternatives.'
             },
-            { 
-                title: 'Market Expansion', 
-                des: 'Access to eco-conscious consumers who prioritize low-carbon and sustainably made products.' 
+            {
+                title: 'Market Expansion',
+                des: 'Access to eco-conscious consumers who prioritize low-carbon and sustainably made products.'
             },
         ]
     },
     {
         title: 'For the Artisan',
         sub: [
-            { 
-                title: 'Informed Decision-Making', 
-                des: 'Artisans can better understand which parts of their process contribute the most to carbon emissions.' 
+            {
+                title: 'Informed Decision-Making',
+                des: 'Artisans can better understand which parts of their process contribute the most to carbon emissions.'
             },
-            { 
-                title: 'Eco-Friendly Craftsmanship', 
-                des: 'Encourages the adoption of sustainable methods, preserving cultural heritage while minimizing harm.' 
+            {
+                title: 'Eco-Friendly Craftsmanship',
+                des: 'Encourages the adoption of sustainable methods, preserving cultural heritage while minimizing harm.'
             },
-            { 
-                title: 'Increased Market Value', 
-                des: 'Eco-conscious products fetch higher prices and appeal to environmentally aware buyers.' 
+            {
+                title: 'Increased Market Value',
+                des: 'Eco-conscious products fetch higher prices and appeal to environmentally aware buyers.'
             },
-            { 
-                title: 'Empowerment', 
-                des: 'Artisans gain tools and knowledge to compete globally, using sustainability as a competitive edge.' 
+            {
+                title: 'Empowerment',
+                des: 'Artisans gain tools and knowledge to compete globally, using sustainability as a competitive edge.'
             },
         ]
     },
@@ -1408,107 +1408,1025 @@ export const CARBONBENEFITS = [
 
 export const BLOCKCHAINFEATURES = [
     {
-      title: "Real-Time Craft Origin Verification",
-      des: "Our system provides instant verification of a craft's origin by capturing and storing key data points from raw material sourcing to final delivery. With blockchain technology, artisans and businesses can verify each step of their product’s journey, ensuring the authenticity and integrity of the craft. The system also allows for the inclusion of artisan details, materials used, and production methods, creating a comprehensive, transparent record that boosts buyer confidence. Real-time verification helps artisans stand out in global markets by ensuring their products are authentic and traceable from start to finish."
+        title: "Real-Time Craft Origin Verification",
+        des: "Our system provides instant verification of a craft's origin by capturing and storing key data points from raw material sourcing to final delivery. With blockchain technology, artisans and businesses can verify each step of their product’s journey, ensuring the authenticity and integrity of the craft. The system also allows for the inclusion of artisan details, materials used, and production methods, creating a comprehensive, transparent record that boosts buyer confidence. Real-time verification helps artisans stand out in global markets by ensuring their products are authentic and traceable from start to finish."
     },
     {
-      title: "Immutable Records",
-      des: "Blockchain ensures that all records related to the production and distribution of Kashmiri crafts are immutable, preventing tampering or alteration. From the sourcing of raw materials like Pashmina wool or silk to the final packaging and delivery, every stage is securely logged on the blockchain. The system tracks the entire supply chain, providing stakeholders with a comprehensive view of each product's journey. By having a transparent and unchangeable record of production, businesses and artisans can protect their crafts from counterfeiting, creating a verifiable link between the product and its origin."
+        title: "Immutable Records",
+        des: "Blockchain ensures that all records related to the production and distribution of Kashmiri crafts are immutable, preventing tampering or alteration. From the sourcing of raw materials like Pashmina wool or silk to the final packaging and delivery, every stage is securely logged on the blockchain. The system tracks the entire supply chain, providing stakeholders with a comprehensive view of each product's journey. By having a transparent and unchangeable record of production, businesses and artisans can protect their crafts from counterfeiting, creating a verifiable link between the product and its origin."
     },
     {
-      title: "Comparative Reporting & Fraud Prevention",
-      des: "The system includes a comparative reporting feature, allowing users to compare product journeys and traceability across different crafts and vendors. This tool empowers businesses and buyers to verify which products follow authentic processes and meet the highest standards of origin verification. Additionally, the blockchain integration helps prevent fraud by creating an unchangeable record of the product's lifecycle. This data fosters trust among buyers, who can be confident that the craft they are purchasing is not a counterfeit. Fraud prevention strengthens the industry, protecting both artisans and consumers from counterfeit goods."
+        title: "Comparative Reporting & Fraud Prevention",
+        des: "The system includes a comparative reporting feature, allowing users to compare product journeys and traceability across different crafts and vendors. This tool empowers businesses and buyers to verify which products follow authentic processes and meet the highest standards of origin verification. Additionally, the blockchain integration helps prevent fraud by creating an unchangeable record of the product's lifecycle. This data fosters trust among buyers, who can be confident that the craft they are purchasing is not a counterfeit. Fraud prevention strengthens the industry, protecting both artisans and consumers from counterfeit goods."
     },
     {
-      title: "Buyer Interface & Craft Authentication",
-      des: "CraftLore’s blockchain system offers a user-friendly interface that allows buyers to verify the authenticity of Kashmiri crafts in real time. Through simple scans using RFID or NFC technology, buyers can access detailed information about the product’s origin, artisan, materials, and journey. This transparency ensures that every craft purchased meets the highest standards of authenticity. The system also promotes buyer confidence by making craft authentication accessible, enabling eco-conscious and ethical purchases. With enhanced transparency, the marketplace becomes more trustworthy and supportive of genuine craftsmanship."
+        title: "Buyer Interface & Craft Authentication",
+        des: "CraftLore’s blockchain system offers a user-friendly interface that allows buyers to verify the authenticity of Kashmiri crafts in real time. Through simple scans using RFID or NFC technology, buyers can access detailed information about the product’s origin, artisan, materials, and journey. This transparency ensures that every craft purchased meets the highest standards of authenticity. The system also promotes buyer confidence by making craft authentication accessible, enabling eco-conscious and ethical purchases. With enhanced transparency, the marketplace becomes more trustworthy and supportive of genuine craftsmanship."
     }
+];
+
+export const BLOCKCHAINBENEFITS = [
+    {
+        title: "For the Industry",
+        sub: [
+            {
+                title: "Enhanced Security",
+                des: "Blockchain ensures that all product data is immutable and tamper-proof, creating a secure record of origin and production."
+            },
+            {
+                title: "Brand Trust",
+                des: "Demonstrating traceability and authenticity bolsters brand reputation in the marketplace."
+            },
+            {
+                title: "Global Compliance",
+                des: "Aligns with international standards for transparency, authenticity, and anti-counterfeiting practices, opening doors to new markets."
+            },
+            {
+                title: "Fraud Reduction",
+                des: "Prevents counterfeiting by securely tracking every product’s lifecycle from creation to sale."
+            }
+        ]
+    },
+    {
+        title: "For the Buyer",
+        sub: [
+            {
+                title: "Transparency",
+                des: "Buyers can easily verify the authenticity and origin of the craft they are purchasing, building trust in the product and the artisan."
+            },
+            {
+                title: "Confidence in Authenticity",
+                des: "Blockchain-backed verification ensures that buyers are purchasing genuine Kashmiri crafts, not counterfeit imitations."
+            },
+            {
+                title: "Ethical Choices",
+                des: "The ability to verify a product’s journey promotes ethical buying and supports authentic craftsmanship."
+            },
+            {
+                title: "Cultural Connection",
+                des: "Buyers can engage with the story behind the craft, connecting more deeply with the heritage and artisanship."
+            }
+        ]
+    },
+    {
+        title: "For the Artisan",
+        sub: [
+            {
+                title: "Protection of Craft",
+                des: "Blockchain technology ensures that artisans' crafts are securely recorded and traceable, preventing imitation and counterfeiting."
+            },
+            {
+                title: "Global Reach",
+                des: "Verified authenticity allows artisans to reach global buyers who prioritize traceable, genuine craftsmanship."
+            },
+            {
+                title: "Increased Value",
+                des: "Authentic, traceable products attract higher prices in the market, boosting the artisan’s earning potential."
+            },
+            {
+                title: "Empowerment through Technology",
+                des: "Artisans gain access to cutting-edge tools that enhance their credibility and competitiveness in the global marketplace."
+            }
+        ]
+    },
+    {
+        title: "For the Craft Heritage",
+        sub: [
+            {
+                title: "Preserving Cultural Heritage",
+                des: "By securing the authenticity of Kashmiri crafts, the system protects centuries-old traditions from dilution by counterfeits."
+            },
+            {
+                title: "Trustworthy Legacy",
+                des: "Blockchain ensures the accurate representation of Kashmiri craft origin, allowing future generations to honor and continue the legacy."
+            },
+            {
+                title: "Global Recognition",
+                des: "Traceability boosts the international reputation of Kashmiri crafts, cementing their place as cultural treasures in the global market."
+            },
+            {
+                title: "Sustainable Craft Practices",
+                des: "Ensures that the integrity of craft processes is maintained, promoting responsible production and heritage preservation."
+            }
+        ]
+    }
+];
+
+
+export const PROFILEFEATURES = [
+    {
+        title: "Comprehensive Craft Documentation",
+        des: "The registry captures the origin and evolution of Kashmiri crafts, tracing their roots in migration, trade, and cultural fusion. It emphasizes the material science behind iconic crafts, like the delicate Pashmina and intricate walnut wood carvings. Detailed production insights reveal the end-to-end journey of these crafts, from raw material sourcing to the finishing touches. Through patterns and design variations, the registry celebrates the innovation within traditional methods, highlighting their adaptability. Resource management practices are documented to showcase the sustainability embedded in craft-making. This documentation ensures that every thread of Kashmiri heritage is preserved, offering global audiences a lens to appreciate the unparalleled artistry. By archiving centuries-old techniques, the registry ensures Kashmiri craftsmanship continues to thrive as a testament to resilience and ingenuity."
+    },
+    {
+        title: "Cultural Significance and Narrative Preservation",
+        des: "Kashmiri crafts hold profound cultural significance, serving as a bridge between past and present. The registry deciphers the symbolism in patterns, showcasing how Sufi philosophy and Kashmiri identity are interwoven in craft designs. By exploring chromatic artistry, it preserves the unique palettes and dyeing techniques that define these works. The registry safeguards traditional weaving insights, ensuring artisans’ techniques and stories are passed to future generations. These artifacts transcend aesthetics, becoming a testament to Kashmiri perseverance and pride. By curating narratives, the registry ensures the crafts remain vibrant cultural ambassadors, celebrating their role as living history. Through the preservation of stories, symbols, and skills, Kashmiri artisans are empowered to maintain their heritage while inspiring global admiration for their work."
+    },
+    {
+        title: "Production Processes and Technical Excellence",
+        des: "The registry offers unparalleled insight into traditional techniques like hand-spinning, dyeing, and weaving, detailing processes used for generations. It highlights the technical weaving insights behind styles like kani and twill, showcasing their precision. Production timelines are documented to underline the dedication required to craft exquisite items, from Pashmina shawls to papier-mâché treasures. By combining traditional expertise with resource management, the registry ensures efficient use of raw materials and labor. It also emphasizes the artistry in design variations, highlighting regional adaptations that reflect the diversity of Kashmiri craftsmanship. These detailed records preserve the techniques, ensuring they remain relevant and resilient in modern markets. By capturing the technical excellence behind every handcrafted piece, the registry safeguards the integrity of Kashmiri artistry."
+    },
+    {
+        title: "Eco Innovations and Sustainability",
+        des: "Sustainability lies at the heart of Kashmiri crafts, and the registry champions eco innovations that minimize environmental impact. By integrating sustainable materials and practices, it ensures the industry’s longevity while promoting ethical production. From natural dyes in chromatic artistry to waste reduction in resource management, these practices are documented to inspire global standards. The registry aligns with environmental movements, showcasing how crafts blend tradition with modern ecological awareness. This focus on sustainability extends to repair and maintenance guidance, encouraging buyers to care for their items and extend product lifespan. By fostering a culture of sustainability, the registry empowers artisans to innovate responsibly. These efforts not only protect the environment but also enhance the global reputation of Kashmiri crafts as eco-conscious, premium products."
+    },
+    {
+        title: "Craft Vulnerability and Modern Challenges",
+        des: "Kashmiri artisans face significant craft vulnerabilities, from counterfeit products undermining their work to the endangered status of certain skills. The registry combats these threats with solutions like certification standards, ensuring GI tags and authenticity marks safeguard artisan integrity. Competitive analysis reveals the global positioning of Kashmiri crafts, emphasizing their authenticity and cultural richness. Modern adaptations integrate adaptability, blending traditional craftsmanship with contemporary trends to appeal to global buyers. By addressing these vulnerabilities, the registry builds a resilient ecosystem that values heritage while thriving in modern markets. The preservation of endangered techniques and ethical practices ensures that Kashmiri crafts remain uncompromised, offering artisans a secure and prosperous future amidst evolving challenges."
+    },
+    {
+        title: "Empowering Artisans and Advancing the Industry",
+        des: "Artisans are at the core of the registry’s mission, which ensures fair wages, recognition, and opportunities for global market expansion. By documenting buyer line insights, the registry links artisans to demand patterns, enabling targeted growth. Customization options empower artisans to innovate, offering tailored designs that cater to individual preferences. The blending of traditional techniques with digital tools ensures artisans are equipped to compete globally. Production insights reveal how ethical practices and efficient workflows contribute to an empowered artisan community. This approach transforms the craft ecosystem into a sustainable, inclusive, and competitive industry. By redefining empowerment, the registry fosters a movement where Kashmiri artisans become global leaders, preserving heritage while embracing prosperity."
+    },
+    {
+        title: "Socio-Economic Impact and Gender Equity",
+        des: "The registry champions equitable progress by monitoring socio-economic dynamics within the craft sector. It tracks production timelines, ensuring transparency in supply and demand, while analyzing buyer line demographics for better market alignment. By promoting gender equity, it uplifts women artisans and supports policies that ensure fair treatment and wage equality. The registry’s commitment to resource management optimizes workforce potential, creating opportunities across the craft ecosystem. Therapeutic benefits of handmade crafts, from Pashmina warmth to meditative papier-mâché, underscore the value of fair artisan practices. This focus on equity and inclusion transforms Kashmiri crafts into an economic powerhouse, where every artisan’s contribution is valued. By driving systemic change, the registry ensures the industry thrives in harmony with social and economic justice."
+    },
+    {
+        title: "Education, Training, and Legacy Building",
+        des: "Education is pivotal in ensuring the longevity of Kashmiri crafts. The registry provides training in traditional techniques, emphasizing skills like hand-weaving and natural dyeing. Digital literacy programs introduce artisans to e-commerce, while repair and maintenance guidance helps them educate buyers about product care. By aligning education with certification standards, artisans gain credibility and access to broader markets. The registry fosters intergenerational knowledge transfer, ensuring youth are equipped to carry forward this legacy. Through a blend of tradition and innovation, artisans learn to adapt their craft to modern tastes, embracing adaptability while maintaining authenticity. This comprehensive approach builds a future where Kashmiri craftsmanship thrives, evolving seamlessly in global markets while retaining its soul."
+    },
+    {
+        title: "Global Trade and Consumption Dynamics",
+        des: "Kashmiri crafts have evolved into sought-after treasures in global markets, driven by their unmatched authenticity and cultural depth. The registry highlights trade patterns, aligning buyer line insights with export opportunities to optimize consumption worldwide. It emphasizes certification standards, ensuring buyers can trust the authenticity and ethical sourcing of their purchases. By integrating adaptability, Kashmiri crafts cater to modern fashion trends while preserving heritage. Competitive analysis underscores their edge over similar luxury goods, showcasing their superior quality and cultural significance. The registry bridges artisans with international markets, facilitating trade relationships that drive economic growth. This global outreach transforms Kashmiri crafts into a symbol of refined taste and cultural richness, enhancing their footprint across continents while championing sustainability and fair trade practices."
+    },
+    {
+        title: "Buyer Interests and Preferences",
+        des: "Understanding buyer behavior is key to sustaining the demand for Kashmiri crafts. The registry provides in-depth buyer line insights, capturing demographic trends and evolving preferences. Buyers value the therapeutic benefits of products like Pashmina shawls, which offer unmatched softness and warmth. Customization options, such as personalized designs and monograms, enhance appeal, offering unique ownership experiences. The registry highlights how chromatic artistry and design variations cater to diverse tastes, ensuring relevance across cultural and geographic boundaries. Buyers increasingly prioritize sustainability, and eco innovations like natural dyes and ethical production practices align with these values. By connecting artisans to these preferences, the registry fosters relationships built on trust, transparency, and shared values. This buyer-centric approach ensures long-term loyalty and drives global appreciation for Kashmiri craftsmanship."
+    }
+];
+
+
+export const PROFILEBENEFITS = [
+    {
+        title: "For the Artisans",
+        des : "The registry empowers artisans by providing global recognition, distinguishing their authentic creations from counterfeits through certification standards. It ensures equitable compensation by connecting them to fair trade opportunities and international markets. Artisans gain access to buyer line insights, fostering targeted market growth and enabling a direct link with global consumers. Through knowledge transfer programs, traditional techniques are preserved and passed on to future generations, ensuring their craft legacy endures. This initiative fosters economic empowerment and promotes artisan dignity, blending heritage with opportunity.",
+    },
+    {
+        title: "For the Buyers",
+        des:"The registry empowers artisans by providing global recognition, distinguishing their authentic creations from counterfeits through certification standards. It ensures equitable compensation by connecting them to fair trade opportunities and international markets. Artisans gain access to buyer line insights, fostering targeted market growth and enabling a direct link with global consumers. Through knowledge transfer programs, traditional techniques are preserved and passed on to future generations, ensuring their craft legacy endures. This initiative fosters economic empowerment and promotes artisan dignity, blending heritage with opportunity."
+    },
+    {
+        title: "For the Institutions",
+       des:"Institutions gain a platform for cultural preservation and stewardship, safeguarding the identity of Kashmiri crafts. The registry provides data-driven insights on production trends, resource management, and socio-economic impact, enabling informed governance and policymaking. Collaborative opportunities encourage partnerships that uphold certification standards, sustainability, and fair trade practices. By aligning institutional efforts with artisan needs, the registry creates a cohesive framework for supporting the craft ecosystem while promoting innovation and equity."
+    },
+    {
+        title: "For the Industry",
+        des:"Institutions gain a platform for cultural preservation and stewardship, safeguarding the identity of Kashmiri crafts. The registry provides data-driven insights on production trends, resource management, and socio-economic impact, enabling informed governance and policymaking. Collaborative opportunities encourage partnerships that uphold certification standards, sustainability, and fair trade practices. By aligning institutional efforts with artisan needs, the registry creates a cohesive framework for supporting the craft ecosystem while promoting innovation and equity."
+    }
+];
+
+
+/**
+ * 1) KASHMIR CRAFT PROFILING REGISTRY PAGE
+ */
+export const PROFILEBANNER = [
+    {
+      title: "Kashmir Craft Profiling Registry Page",
+      subtitle: "Global Craft Connection – Bridging Kashmir’s artistry with worldwide markets.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Cultural Storytelling Platform",
+      subtitle: "Narrating the legacy of Kashmiri crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Legacy for Generations",
+      subtitle: "Ensuring crafts flourish and inspire future creators.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "700-Year-Old Craft Profiling",
+      subtitle: "Honoring Kashmir’s timeless artistry with global innovation.",
+      buttonText: "Learn More",
+    },
   ];
   
-  export const BLOCKCHAINBENEFITS = [
+  /**
+   * 2) KASHMIR CRAFT GEOGRAPHICAL INDICATION (GI) REGISTRY
+   */
+  export const GIBANNER = [
     {
-      title: "For the Industry",
-      sub: [
-        {
-          title: "Enhanced Security",
-          des: "Blockchain ensures that all product data is immutable and tamper-proof, creating a secure record of origin and production."
-        },
-        {
-          title: "Brand Trust",
-          des: "Demonstrating traceability and authenticity bolsters brand reputation in the marketplace."
-        },
-        {
-          title: "Global Compliance",
-          des: "Aligns with international standards for transparency, authenticity, and anti-counterfeiting practices, opening doors to new markets."
-        },
-        {
-          title: "Fraud Reduction",
-          des: "Prevents counterfeiting by securely tracking every product’s lifecycle from creation to sale."
-        }
-      ]
+      title: "Kashmir Craft Geographical Indication (GI) Registry",
+      subtitle: "Counterfeit Prevention – Guarding artisans' work against imitation globally.",
+      buttonText: "Learn More",
     },
     {
-      title: "For the Buyer",
-      sub: [
-        {
-          title: "Transparency",
-          des: "Buyers can easily verify the authenticity and origin of the craft they are purchasing, building trust in the product and the artisan."
-        },
-        {
-          title: "Confidence in Authenticity",
-          des: "Blockchain-backed verification ensures that buyers are purchasing genuine Kashmiri crafts, not counterfeit imitations."
-        },
-        {
-          title: "Ethical Choices",
-          des: "The ability to verify a product’s journey promotes ethical buying and supports authentic craftsmanship."
-        },
-        {
-          title: "Cultural Connection",
-          des: "Buyers can engage with the story behind the craft, connecting more deeply with the heritage and artisanship."
-        }
-      ]
+      title: "Trust Reinforced",
+      subtitle: "Building consumer confidence with certified Kashmiri products.",
+      buttonText: "Learn More",
     },
     {
-      title: "For the Artisan",
-      sub: [
-        {
-          title: "Protection of Craft",
-          des: "Blockchain technology ensures that artisans' crafts are securely recorded and traceable, preventing imitation and counterfeiting."
-        },
-        {
-          title: "Global Reach",
-          des: "Verified authenticity allows artisans to reach global buyers who prioritize traceable, genuine craftsmanship."
-        },
-        {
-          title: "Increased Value",
-          des: "Authentic, traceable products attract higher prices in the market, boosting the artisan’s earning potential."
-        },
-        {
-          title: "Empowerment through Technology",
-          des: "Artisans gain access to cutting-edge tools that enhance their credibility and competitiveness in the global marketplace."
-        }
-      ]
+      title: "Heritage Protected",
+      subtitle: "Preserving Kashmir's legacy through certified authenticity.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 3) KASHMIR CRAFT BLOCKCHAIN TRACEABILITY REGISTRY
+   */
+  export const BLOCKBANNER = [
+    {
+      title: "Kashmir Craft Blockchain Traceability Registry",
+      subtitle: "Traceability Simplified – Track origins and craftsmanship with precision transparency.",
+      buttonText: "Learn More",
     },
     {
-      title: "For the Craft Heritage",
-      sub: [
-        {
-          title: "Preserving Cultural Heritage",
-          des: "By securing the authenticity of Kashmiri crafts, the system protects centuries-old traditions from dilution by counterfeits."
-        },
-        {
-          title: "Trustworthy Legacy",
-          des: "Blockchain ensures the accurate representation of Kashmiri craft origin, allowing future generations to honor and continue the legacy."
-        },
-        {
-          title: "Global Recognition",
-          des: "Traceability boosts the international reputation of Kashmiri crafts, cementing their place as cultural treasures in the global market."
-        },
-        {
-          title: "Sustainable Craft Practices",
-          des: "Ensures that the integrity of craft processes is maintained, promoting responsible production and heritage preservation."
-        }
-      ]
-    }
+      title: "Proof of Origin",
+      subtitle: "Blockchain ensures true Kashmiri craftsmanship provenance.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Secure Heritage",
+      subtitle: "Blockchain safeguards Kashmir’s iconic craft traditions.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 4) KASHMIR CRAFT CARBON FOOTPRINTING REGISTRY
+   */
+  export const CARBONBANNER = [
+    {
+      title: "Kashmir Craft Carbon Footprinting Registry",
+      subtitle: "Eco Craft Registry – Measuring sustainability for greener craft futures.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Emissions Map",
+      subtitle: "Visualizing impact, driving greener craft methods.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Carbon Insights",
+      subtitle: "Analyzing footprints to shape sustainable craft futures.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 5) KASHMIR CRAFT PRICE VALUATION OR CALCULATOR REGISTRY
+   */
+  export const PRICEBANNER = [
+    {
+      title: "Kashmir Craft Price Valuation or Calculator Registry",
+      subtitle: "Heritage Evaluated – Capturing cultural essence in precise craft pricing.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Transparent Craft Pricing",
+      subtitle: "Bridging trust with blockchain-backed valuation systems.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Dynamic Data Insights",
+      subtitle: "Real-time valuation powered by craft market analytics.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 6) KASHMIR CRAFT BUSINESS LISTING REGISTRY
+   */
+  export const BUSINESSBANNER = [
+    {
+      title: "Kashmir Craft Business Listing Registry",
+      subtitle: "Global Market Access – Connecting crafts to buyers worldwide with trust.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Elite Artisan Network",
+      subtitle: "Showcasing top-tier artisans business legacy.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Fair Trade Champions",
+      subtitle: "Advancing equity and ethics in artisan commerce.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Integrity First Network",
+      subtitle: "Highlighting top offenders to protect Kashmiri crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Blacklist Transparency Initiative",
+      subtitle: "Driving accountability.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Ethics Monitor",
+      subtitle: "Ensuring fair trade practices in Kashmiri craftsmanship.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 7) CRAFT VULNERABILITY – INTELLECTUAL PROPERTY
+   */
+  export const IPBANNER = [
+    {
+      title: "Craft Vulnerability – Intellectual Property",
+      subtitle: "Artisan Rights Defense – Empowering creators against IP infringement globally.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Intellectual Trust Vault",
+      subtitle: "Ensuring originality in every handcrafted piece.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Authenticity First Network",
+      subtitle: "Guarding unique craft techniques from global exploitation.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 8) CRAFT VULNERABILITY – COUNTERFEITS
+   */
+  export const CFBANNER = [
+    {
+      title: "Craft Vulnerability – Counterfeits",
+      subtitle: "Craft Integrity Watch – Safeguarding original crafts from imitation threats.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Authenticity Assurance Network",
+      subtitle: "Fighting counterfeits to preserve Kashmiri heritage.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Heritage Protection Drive",
+      subtitle: "Defending authentic Kashmiri crafts from replicas.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Imitation Eradication Program",
+      subtitle: "Preserving craft integrity through stringent checks.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 9) EMPOWERED HANDS / RESOURCE EQUITY / SELF-RELIANT ARTISANS
+   *    (Sometimes these are grouped under "Craft Vulnerability" as well,
+   *     but here we place them in a separate array for clarity.)
+   */
+  export const EPBANNER = [
+    {
+      title: "Empowered Hands Network",
+      subtitle: "Strengthening artisan autonomy in craft production.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Resource Equity Program",
+      subtitle: "Ensuring fair access to materials and opportunities.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Self-Reliant Artisans",
+      subtitle: "Fostering independence for Kashmir’s craft communities.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 10) CRAFT VULNERABILITY – TECHNOLOGICAL GAPS
+   */
+  export const GAPBANNER = [
+    {
+      title: "Craft Vulnerability – Technological Gaps",
+      subtitle: "Bridge the Gap – Empowering crafts with essential technological advancements.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Future-Ready Crafts",
+      subtitle: "Closing gaps with cutting-edge technological solution.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "CraftTech Connect",
+      subtitle: "Merging craftsmanship and technology for global reach.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Innovation Inclusion Network",
+      subtitle: "Eliminating barriers to technology for artisans.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 11) CRAFT VULNERABILITY – GENERATIONAL SHIFT
+   */
+  export const GSBANNER = [
+    {
+      title: "Craft Vulnerability – Generational Shift",
+      subtitle: "Youth Craft Revival – Inspiring younger generations to embrace craftsmanship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Next-Gen Artisans",
+      subtitle: "Revitalizing crafts for modern aspirations and markets.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Lineage Keeper",
+      subtitle: "Protecting Kashmir’s legacy in a changing world.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 12) CRAFT SOCIO-ECONOMICS – ECONOMICS
+   */
+  export const ECBANNNER = [
+    {
+      title: "Craft Socio-Economics – Economics",
+      subtitle: "Craft Value Chain – Building wealth by strengthening artisan ecosystems.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Fair Trade Futures",
+      subtitle: "Ensuring equitable earnings for Kashmiri artisans.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Finance Network",
+      subtitle: "Supporting artisans with accessible funding and resources.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Economic Resilience Hub",
+      subtitle: "Building strong foundations for craft sector stability.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 13) CRAFT SOCIO-ECONOMICS – EMPLOYMENT
+   */
+  export const EMPBANNER = [
+    {
+      title: "Craft Socio-Economics – Employment",
+      subtitle:
+        "Craft Opportunity Network – Bridging unemployment gaps through craft sector innovation.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Workforce Future",
+      subtitle: "Empowering the next generation of artisan professionals.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Employment Integrity Alliance",
+      subtitle: "Driving secure and ethical job practices for artisans.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 14) CRAFT SOCIO-ECONOMICS – GENDER DYNAMICS
+   */
+  export const GENDERBANNER = [
+    {
+      title: "Craft Socio-Economics – Gender Dynamics",
+      subtitle: "Crafting Gender Equity – Bridging gender gaps for artisan empowerment.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Women-Led Craft Futures",
+      subtitle: "Building sustainable livelihoods through women artisans.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Crafted by Her",
+      subtitle: "Showcasing the strength of women artisans in Kashmir.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Heritage Beyond Gender",
+      subtitle: "Embracing inclusivity in Kashmiri craft ecosystems.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 15) CRAFTLORE – MISSION
+   */
+  export const MISSIONBANNER = [
+    {
+      title: "CraftLore – Mission",
+      subtitle: "Biggest Craft Repository – Creating the world’s largest open craft repository.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Transforming Colonial Narrative",
+      subtitle: "Reclaiming craft heritage through decolonized storytelling.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Universal Craft Pricing",
+      subtitle: "Establishing fair, global pricing for artisan crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Education and Awareness",
+      subtitle: "Empowering markets with craft knowledge and integrity.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Blockchain Authentication",
+      subtitle: "Ensuring trust through digital craft authenticity solutions.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Big Data Craft Platform",
+      subtitle: "Revolutionizing the craft industry with data-driven insights.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sustainable Craft Leadership",
+      subtitle: "Leading the way in eco-friendly and ethical practices.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Advanced Counterfeit Detection",
+      subtitle: "Eliminating fraud to safeguard artisan craftsmanship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Integrity Advocacy",
+      subtitle: "Protecting craft heritage with authenticity and fairness.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Empowering Artisans Globally",
+      subtitle: "Fostering global recognition and growth for craftspeople.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 16) CRAFTLORE’S PROJECTS
+   */
+  export const PROJECTBANNER = [
+    {
+      title: "CraftLore’s Projects",
+      subtitle:
+        "Blockchain-Backed Craft Registry – Securely authenticates and verifies Kashmiri crafts with blockchain.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Geographical Indication (GI) Portal",
+      subtitle: "Protects craft origins through GI certification and traceability.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Carbon Footprint Calculator",
+      subtitle: "Promotes eco-friendly practices by measuring craft sustainability.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Big Data-Driven Craft Analytics",
+      subtitle: "Enhances craft strategies through advanced data insights.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Supply Chain Tracking System",
+      subtitle: "Ensures transparency and efficiency in craft supply networks.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Leadership & Education Platform",
+      subtitle: "Empowers artisans with training, mentorship, and growth opportunities.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Counterfeit Detection System",
+      subtitle: "Combats counterfeit products to protect artisan livelihoods.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Universal Dynamic Price Model",
+      subtitle: "Establishes fair, data-driven pricing for crafts globally.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 17) CRAFTLORE REGISTRIES
+   */
+  export const REGISTERBANNER = [
+    {
+      title: "CraftLore Registries",
+      subtitle:
+        "Craft Profile Repository Registry – Comprehensive documentation of Kashmiri crafts for global access.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Geographical Indication Registry",
+      subtitle: "Safeguarding craft authenticity with GI certification and traceability.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Blockchain Traceability Registry",
+      subtitle: "Ensuring transparency and origin verification for crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Carbon Footprint Registry",
+      subtitle: "Promoting sustainability by measuring the environmental impact of crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Price Estimator Registry",
+      subtitle: "Establishing fair, data-driven pricing models for artisans.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Socio-Economic Registry",
+      subtitle: "Documenting socio-economic data to empower artisans and their communities.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Business Listing Registry",
+      subtitle: "A curated registry to highlight ethical craft businesses.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Kashmir Craft Vulnerability Registry",
+      subtitle: "Addressing challenges like counterfeiting, dependency, and technological gaps.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 18) CRAFTLORE ARCHITECTURE
+   */
+ export const ARCHBANNER = [
+    {
+      title: "CraftLore Architecture",
+      subtitle: "Secure Digital Infrastructure – Reliable, scalable, and secure backbone for operations.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Authenticity Registry Systems",
+      subtitle: "Cataloging and verifying craft origins with precision.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Empowering Educational Platforms",
+      subtitle: "Equipping artisans with skills for global markets.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Seamless Marketplace Integration",
+      subtitle: "Connecting crafts with broader e-commerce platforms globally.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sustainable Craft Framework",
+      subtitle: "Promoting eco-friendly practices for a greener future.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Insightful Monitoring Tools",
+      subtitle: "Tracking trends to drive informed craft decisions.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 19) CRAFTLORE LISTINGS
+   */
+  export const LISTINGBANNER = [
+    {
+      title: "CraftLore Listings",
+      subtitle: "Artisan Excellence Registry – Showcasing skilled artisans preserving cultural craft heritage.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Trusted Business Listings",
+      subtitle: "Featuring ethical businesses supporting authentic craftsmanship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Verified Craft Businesses",
+      subtitle: "Highlighting enterprises committed to fair trade practices.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Ethical Business Directory",
+      subtitle: "Promoting trusted businesses supporting artisan welfare globally.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Innovation Institutions",
+      subtitle: "Showcasing institutions advancing craft research and technologies.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 20) CRAFTLORE ALLIANCE AND SPONSORS
+   */
+  export const SPOBANNER = [
+    {
+      title: "CraftLore Alliance and Sponsors",
+      subtitle:
+        "Global Kashmir Craft Alliance – Uniting stakeholders for sustainable craft innovation worldwide.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Heritage Protection Sponsors",
+      subtitle: "Supporting initiatives to preserve cultural and craft heritage.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sustainability Leadership Network",
+      subtitle: "Driving eco-friendly practices in the global craft industry.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Cultural Legacy Sponsors",
+      subtitle: "Funding programs to keep traditional crafts alive globally.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Global Sponsorship Framework",
+      subtitle: "Building lasting partnerships to promote craft sustainability.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 21) CRAFTLORE MEMBERSHIP
+   */
+  export const MEMBERBANNER = [
+    {
+      title: "CraftLore Membership",
+      subtitle:
+        "Buyer Support Membership – Connecting buyers with authentic crafts and trusted artisans.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Corporate Membership",
+      subtitle: "Empowering businesses to support sustainable craft ecosystems.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sponsor Membership",
+      subtitle: "Collaborating with sponsors to preserve cultural heritage globally.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Artisan Network Membership",
+      subtitle: "Providing artisans with tools and global market access.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Institutional Membership",
+      subtitle: "Partnering with institutions to innovate and promote crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Eco-Craft Membership",
+      subtitle: "Supporting members committed to sustainable craft practices.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 22) CRAFTLORE NETWORK
+   */
+  export const NETWORKBANNER = [
+    {
+      title: "CraftLore Network",
+      subtitle:
+        "International Network – Connecting global communities to Kashmiri crafts and artisans.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "India Network",
+      subtitle: "Strengthening local collaborations to promote craft heritage.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Global Artisan Network",
+      subtitle: "Building bridges for cross-border artisan partnerships.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Cultural Exchange Hub",
+      subtitle: "Sharing craft stories across international markets.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Regional Excellence Network",
+      subtitle: "Highlighting India's diverse craftsmanship on a global scale.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Global Trade Partnerships",
+      subtitle: "Expanding the reach of Kashmiri crafts through international allies.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Local-Global Craft Connect",
+      subtitle: "Merging Indian traditions with international craft ecosystems.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sustainable Craft Network",
+      subtitle: "Advocating for eco-friendly practices across local and global networks.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 23) CRAFTLORE CAREERS AND APPRENTICESHIPS
+   */
+  export const CAREERBANNER = [
+    {
+      title: "CraftLore Careers and Apprenticeships",
+      subtitle: "Career Growth Platform – Building impactful careers in the global craft sector.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Artisan Apprentice Program",
+      subtitle: "Nurturing new talent with hands-on craft training.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Craft Leadership Careers",
+      subtitle: "Empowering professionals to drive innovation in crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Future Artisan Network",
+      subtitle: "Developing tomorrow’s master artisans through mentorship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Skill Development Hub",
+      subtitle: "Offering apprenticeships focused on heritage and technology.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Global Apprentice Exchange",
+      subtitle: "Connecting aspiring artisans to international opportunities.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Creative Craft Careers",
+      subtitle: "Inspiring professionals to blend tradition with innovation.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sustainability-Focused Apprenticeships",
+      subtitle: "Training in eco-friendly practices for modern craft markets.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "CraftLore Career Pathways",
+      subtitle: "Pioneering professional opportunities in heritage preservation.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 24) CRAFTLORE TEAM
+   */
+  export const TEAMBANNER = [
+    {
+      title: "CraftLore Team",
+      subtitle: "Visionary Leadership Team – Driving innovation to preserve and promote global crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Cultural Heritage Experts",
+      subtitle: "Guardians of tradition and authenticity in craftsmanship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Blockchain Specialists",
+      subtitle: "Securing craft authenticity with cutting-edge technology.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Market Strategy Experts",
+      subtitle: "Expanding artisan reach through global marketing efforts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Artisan Empowerment Coordinators",
+      subtitle: "Supporting communities with fair trade and skill development.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Educational Program Leaders",
+      subtitle: "Designing impactful training for artisans and stakeholders.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Data and Analytics Team",
+      subtitle: "Transforming insights into actionable strategies for crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Creative Design Innovators",
+      subtitle: "Merging tradition with modern aesthetics in craft products.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Community Engagement Specialists",
+      subtitle: "Bridging artisans and consumers through storytelling and outreach.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Ethnographers",
+      subtitle: "Exploring cultural narratives to preserve traditional craftsmanship.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sociologists",
+      subtitle: "Understanding the social dynamics of artisan communities.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Environmentalist",
+      subtitle: "Advocating eco-friendly practices for a sustainable craft industry.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Economist & Business Analyst",
+      subtitle: "Driving economic strategies to sustain artisan livelihoods.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Technologist & Digital Artist",
+      subtitle: "Infusing crafts with digital tools for global reach and appeal.",
+      buttonText: "Learn More",
+    },
+  ];
+  
+  /**
+   * 25) CRAFTLORE CONTACT US
+   */
+ export const CONTACTBANNER = [
+    {
+      title: "Craftlore Contact Us",
+      subtitle: "General Queries Assistance – Reach out for any questions or additional support.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Partnerships and Collaboration",
+      subtitle: "Collaborate with us to empower global crafts.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Artisan Support Center",
+      subtitle: "Assisting artisans with opportunities, resources, and guidance.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Business Networking Opportunities",
+      subtitle: "Building impactful connections for sustainable craft growth.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Sponsorship Inquiry Hub",
+      subtitle: "Support craft projects by becoming a valued sponsor.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Educational Program Access",
+      subtitle: "Join workshops, webinars, and artisan skill development.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Media and Press",
+      subtitle: "Share stories and updates about CraftLore’s impact.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Feedback and Suggestions",
+      subtitle: "Your ideas help improve and shape our journey.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Social Media Connections",
+      subtitle: "Stay updated with CraftLore’s latest news worldwide.",
+      buttonText: "Learn More",
+    },
+    {
+      title: "Visit Our Headquarters",
+      subtitle: "Connect with us directly at CraftLore’s office.",
+      buttonText: "Learn More",
+    },
   ];
   

@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
 import { api } from "~/trpc/server";
 
 type ComponentsProps = {
@@ -7,28 +6,26 @@ type ComponentsProps = {
 
 export const SectionData = async ({ sectionId }: ComponentsProps) => {
   const data = await api.craft.getDataBySectionId({ sectionId });
-  console.log(data);
   return (
-    <>
+    <div className="grid grid-cols-2 gap-2">
       {data.map((subsection) => (
-        <Card key={subsection.craftsubsectionId}>
-          <CardHeader>
-            <CardTitle className="font-montserrat text-xl">
-              {subsection.sectionName}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {subsection.CraftContent.map((content) => (
-              <div
-                key={content.craftsubsectionId}
-                className="prose prose-slate max-w-none rounded-lg bg-slate-50 p-4"
-              >
-                {content.content}
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+        <article
+          key={subsection.craftsubsectionId}
+          className="space-y-6 rounded-lg bg-white p-8 shadow-lg duration-300 hover:bg-primary hover:text-white"
+        >
+          <p className="font-montserrat text-xl">{subsection.sectionName}</p>
+          {subsection.CraftContent.map((content) => (
+            <menu
+              key={content.craftsubsectionId}
+              className="list-inside list-disc space-y-2 rounded-lg p-4 font-opensans"
+            >
+              {content.content.split("~").map((data, index) => (
+                <li key={index}>{data}</li>
+              ))}
+            </menu>
+          ))}
+        </article>
       ))}
-    </>
+    </div>
   );
 };

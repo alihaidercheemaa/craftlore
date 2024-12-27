@@ -1,10 +1,12 @@
 import { SponsorList } from "~/components/general/about/sponsors/sponsor-list";
+import { Banner } from "~/components/general/landing/banner";
+import { SPOBANNER } from "~/constants";
 
 export default async function AboutNetworkPage() {
 
   return (
     <>
-      <div className="col-span-12 bg-[#e5edf7] h-60" />
+      <Banner banner={SPOBANNER}/>
       <SponsorList />
     </>
   );

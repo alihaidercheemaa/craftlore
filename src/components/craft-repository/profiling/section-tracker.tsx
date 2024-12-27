@@ -26,6 +26,8 @@ export const SectionTracking = ({ subcategoryId, className }: ComponentProps) =>
     if (open.length == 0) {
       router.replace(`${pathname}?sectionId=${sections[0]?.craftsectionId ?? ""}`);
       setOpen([...open, sections[0]?.craftsectionId ?? ""]);
+    }else {
+      router.replace(`${pathname}?sectionId=${sections[0]?.craftsectionId ?? ""}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sections]);

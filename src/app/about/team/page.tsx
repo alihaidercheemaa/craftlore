@@ -1,10 +1,12 @@
 import { TeamList } from "~/components/general/about/teams/team-list";
+import { Banner } from "~/components/general/landing/banner";
+import { TEAMBANNER } from "~/constants";
 
 export default async function AboutTeamPage() {
 
   return (
     <>
-      <div className="col-span-12 bg-[#e5edf7] h-60" />
+      <Banner banner={TEAMBANNER}/>
       <TeamList />
     </>
   );

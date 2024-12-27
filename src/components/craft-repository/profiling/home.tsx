@@ -6,7 +6,7 @@ export const ProfileHome = () => {
     <div className="my-20 grid grid-cols-2 gap-4">
       <div className="col-span-2 grid gap-6 p-4 lg:col-span-1">
         <div className="relative h-[20rem] w-[20rem] lg:h-[25rem] lg:w-[25rem]">
-          <Image src="/images/carbon.png" alt="co2 image" fill />
+          <Image src="/images/craft.png" alt="co2 image" fill />
         </div>
         <div className="space-y-6 [&_h3]:font-montserrat [&_h3]:text-3xl [&_h3]:text-gray-950 [&_p]:font-opensans [&_p]:text-xl">
           <h2 className="font-montserrat text-4xl text-primary">

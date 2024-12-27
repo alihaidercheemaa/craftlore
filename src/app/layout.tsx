@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
   icons: {
     icon: [
-      { url: "/favicon.ico" },                          
+      { url: "/favicon.ico" },
       { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    shortcut: [ { url: "/favicon.ico" } ],
-    apple: [ { url: "/apple-touch-icon.png", sizes: "180x180" } ],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",
 };

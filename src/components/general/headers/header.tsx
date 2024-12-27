@@ -55,11 +55,11 @@ export const Header = () => {
 
   const menuItems = [
     {
-      title: "Home",
+      title: "HOME",
       href: "/",
     },
     {
-      title: "Craft Repository Registry",
+      title: "CRAFT REPOSITORY REGISTRY",
       href: "#",
       submenu: [
         {
@@ -89,9 +89,13 @@ export const Header = () => {
         },
         {
           title: "CRAFT TRADE REGISTRY",
-          href: "/craft-registry/listing",
+          href: "/listing",
         },
       ],
+    },
+    {
+      title: "CRAFT TRADE REGISTRY",
+      href: "/listing",
     },
     {
       title: "CRAFT VULNERABILITY",
