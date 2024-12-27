@@ -1,13 +1,10 @@
 import { CostEstimationHome } from "~/components/craft-repository/cost-estimations/home";
-import { type Metadata } from "next";
 import { CostFeatures } from "~/components/craft-repository/cost-estimations/features";
 import { CostApiGuide } from "~/components/craft-repository/cost-estimations/api-guide";
 import { Counter } from "~/components/animations/counter";
 import { BottomBanner } from "~/components/general/bottom-banner";
 
-export const metadata: Metadata = {
-  title: "CRAFTLORE | Cost estimation",
-};
+
 
 const counter = [
   { name: 'Verified artisans', value: 25000 },

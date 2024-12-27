@@ -1,13 +1,9 @@
 import { BlockchainHome } from "~/components/craft-repository/blockchain/home";
-import { type Metadata } from "next";
 import { BottomBanner } from "~/components/general/bottom-banner";
 import { Counter } from "~/components/animations/counter";
 import { BlockFeatures } from "~/components/craft-repository/blockchain/feature";
 import { BlockApiGuide } from "~/components/craft-repository/blockchain/api-guide";
 
-export const metadata: Metadata = {
-  title: "CRAFTLORE | Blockchain",
-};
 
 const counter = [
   { name: "Registered Artisans", value: 25000 },

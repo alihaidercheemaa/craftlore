@@ -81,7 +81,7 @@ export const MissionGraph = () => {
     };
 
     return (
-        <section className="col-span-12 bg-[#e5edf7] gap-4 mt-12 py-10">
+        <section className="col-span-12 bg-[#e5edf7] gap-4 mt-12 py-32">
             <div className="mx-6 lg:container">
                 <div className="grid gap-7">
                     <h2 className="text-xl sm:text-2xl lg:text-4xl font-montserrat text-secondary text-center">

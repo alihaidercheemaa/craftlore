@@ -1,13 +1,10 @@
 import { CarbonEstimationHome } from "~/components/craft-repository/carbon-footprint/home";
-import { type Metadata } from "next";
 import { CarbonApiGuide } from "~/components/craft-repository/carbon-footprint/api-guide";
 import { CarbonFeatures } from "~/components/craft-repository/carbon-footprint/features";
 import { Counter } from "~/components/animations/counter";
 import { BottomBanner } from "~/components/general/bottom-banner";
 
-export const metadata: Metadata = {
-  title: "CRAFTLORE | Carbon footprint",
-};
+
 
 const counter = [
   { name: "Verified artisans", value: 25000 },

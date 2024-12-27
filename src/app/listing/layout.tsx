@@ -2,6 +2,7 @@
 
 import { type Metadata } from "next";
 import { Banner } from "~/components/general/landing/banner";
+import { BUSINESSBANNER } from "~/constants";
 
 export const metadata: Metadata = {
     title: 'CRAFTLORE | Registration',
@@ -13,7 +14,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <>
-            <Banner />
+            <Banner banner={BUSINESSBANNER} />
             <div className="col-span-12 relative -mt-16">
                 {children}
             </div>

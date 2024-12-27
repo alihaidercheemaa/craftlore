@@ -1,169 +1,151 @@
-'use client'
-import { Button } from "~/components/ui/button"
-import { useState, useEffect } from "react"
-import { BANNERS } from "~/constants"
-import { motion, AnimatePresence } from "framer-motion"
+"use client";
+import { Button } from "~/components/ui/button";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export const Banner = () => {
-    const [activeIndex, setActiveIndex] = useState<number>(0)
-  
+type ComponentProps = {
+  banner: {
+    title: string;
+    subtitle: string;
+    buttonText: string;
+  }[]
+};
 
-    // Set up interval for automatic banner change every 5 seconds
-    useEffect(() => {
+export const Banner = ({ banner }: ComponentProps) => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
-        const interval = setInterval(() => {
-            setActiveIndex(prev => (prev + 1) % BANNERS.length)
-        }, 5000) // 5 seconds interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % banner.length);
+    }, 5000);
 
-        return () => clearInterval(interval)
-    }, [])
+    return () => clearInterval(interval);
+  }, [banner.length]);
 
-    // Split the title into words
-    const title = BANNERS[activeIndex]?.title ?? '';
-    const words = title.split(' ');
+  const title = banner[activeIndex]?.title ?? "";
+  const words = title.split(" ");
 
-    // Define first and second lines
-    const firstLine = words.slice(0, 2).join(' ');
-    const secondLine = words.slice(2).join(' ');
+  const firstLine = words.slice(0, 2).join(" ");
+  const secondLine = words.slice(2).join(" ");
 
-    // Parent banner variants
-    const bannerVariants = {
-        hidden: { y: '-100%', opacity: 0 },
-        visible: { 
-            y: '0%', 
-            opacity: 1,
-            transition: {
-                duration: 1, // Increased duration for smoother animation
-                ease: 'easeInOut',
-            },
-        },
-        exit: { 
-            y: '100%', 
-            opacity: 0,
-            transition: {
-                duration: 1, // Matching exit duration
-                ease: 'easeInOut',
-            },
-        },
-    }
+  const bannerVariants = {
+    hidden: { y: "-100%", opacity: 0 },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+    exit: {
+      y: "100%",
+      opacity: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
 
-    // Container variants to stagger child animations
-    const containerVariants = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.3, // 0.3 seconds between each child animation
-                delayChildren: 0.2,   // Delay before child animations start
-            }
-        },
-        exit: {
-            transition: {
-                staggerChildren: 0.2,       // 0.2 seconds between each exit animation
-                staggerDirection: -1,        // Reverse order on exit
-            }
-        }
-    }
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+    exit: {
+      transition: {
+        staggerChildren: 0.2,
+        staggerDirection: -1,
+      },
+    },
+  };
 
-    // Child variants for Title
-    const titleVariants = {
-        hidden: { y: -100, opacity: 0 },
-        visible: { 
-            y: 0, 
-            opacity: 1,
-            transition: { duration: 3, ease: 'easeOut' },
-        },
-        exit: { 
-            y: -100, 
-            opacity: 0,
-            transition: { duration: 3, ease: 'easeIn' },
-        },
-    }
+  const titleVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 3, ease: "easeOut" },
+    },
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: { duration: 3, ease: "easeIn" },
+    },
+  };
 
-    // Child variants for Subtitle
-    const subtitleVariants = {
-        hidden: { y: -30, opacity: 0 },
-        visible: { 
-            y: 0, 
-            opacity: 1,
-            transition: { duration: 2, ease: 'easeOut' },
-        },
-        exit: { 
-            y: -30, 
-            opacity: 0,
-            transition: { duration: 2, ease: 'easeIn' },
-        },
-    }
+  const subtitleVariants = {
+    hidden: { y: -30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 2, ease: "easeOut" },
+    },
+    exit: {
+      y: -30,
+      opacity: 0,
+      transition: { duration: 2, ease: "easeIn" },
+    },
+  };
 
-    // Child variants for Button
-    const buttonVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: { 
-            y: 0, 
-            opacity: 1,
-            transition: { duration: 0.6, ease: 'easeOut' },
-        },
-        exit: { 
-            y: 50, 
-            opacity: 0,
-            transition: { duration: 0.6, ease: 'easeIn' },
-        },
-    }
+  const buttonVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+    exit: {
+      y: 50,
+      opacity: 0,
+      transition: { duration: 0.6, ease: "easeIn" },
+    },
+  };
 
-    return (
-        <section
-            className="col-span-12 relative h-[calc(100dvh)] bg-primary text-white overflow-hidden"
-        >
-            <div className="container grid items-center h-full">
-                <AnimatePresence>
-                    <motion.div
-                        key={activeIndex}
-                        variants={bannerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="absolute inset-0 flex items-center justify-center"
-                    >
-                        {/* Container for banner content with containerVariants */}
-                        <motion.div
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                            className="lg:container mx-6 grid gap-2"
-                        >
-                            {/* Title */}
-                            <motion.p
-                                variants={titleVariants}
-                                className="font-extrabold font-montserrat text-[2rem] md:text-[5.5rem] lg:text-[6.3rem] lg:leading-[7rem] whitespace-normal"
-                            >
-                                {firstLine} <span className="block">{secondLine}</span>
-                            </motion.p>
-                            
-                            {/* Subtitle */}
-                            <motion.p
-                                variants={subtitleVariants}
-                                className="font-montserrat text-base md:text-lg lg:text-2xl mt-2"
-                            >
-                                {BANNERS[activeIndex]?.subtitle}
-                            </motion.p>
-                            
-                            {/* Button */}
-                            <motion.div
-                                variants={buttonVariants}
-                                className="mt-6"
-                            >
-                                <Button
-                                    variant="secondary"
-                                    size="lg"
-                                    className="w-fit text-xl"
-                                >
-                                    {BANNERS[activeIndex]?.buttonText}
-                                </Button>
-                            </motion.div>
-                        </motion.div>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-        </section>
-    )
-}
+  return (
+    <section className="relative col-span-12 h-[calc(70dvh)] overflow-hidden bg-primary text-white">
+      <div className="container grid h-full items-center">
+        <AnimatePresence>
+          <motion.div
+            key={activeIndex}
+            variants={bannerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="absolute inset-0 mt-12 flex items-start"
+          >
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="mx-6 grid gap-2 lg:container"
+            >
+              <motion.p
+                variants={titleVariants}
+                className="whitespace-normal font-montserrat text-[2rem] font-extrabold md:text-[5.5rem] lg:text-[6.3rem] lg:leading-[7rem]"
+              >
+                {firstLine} <span className="block">{secondLine}</span>
+              </motion.p>
+              <motion.p
+                variants={subtitleVariants}
+                className="mt-2 font-montserrat text-base md:text-lg lg:text-2xl"
+              >
+                {banner[activeIndex]?.subtitle}
+              </motion.p>
+              <motion.div variants={buttonVariants} className="mt-6">
+                <Button variant="secondary" size="lg" className="w-fit text-xl">
+                  {banner[activeIndex]?.buttonText}
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+};

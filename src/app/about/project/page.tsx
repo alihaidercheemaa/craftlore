@@ -1,13 +1,14 @@
 
-import { AboutBackGround } from "~/components/general/about/background";
 import { ProjectGraph } from "~/components/graphs/project-graph";
 import { ProjectSection } from "~/components/general/about/projects/project-section";
+import { Banner } from "~/components/general/landing/banner";
+import { PROJECTBANNER } from "~/constants";
 
 export default async function AboutProductPage() {
 
     return (
         <>
-            <AboutBackGround />
+            <Banner banner={PROJECTBANNER}/>
             <ProjectSection/>
             <ProjectGraph/>
         </>

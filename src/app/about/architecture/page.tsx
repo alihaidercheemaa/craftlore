@@ -1,10 +1,12 @@
 import { ArchitectureList } from "~/components/general/about/architecture/architecture-list";
+import { Banner } from "~/components/general/landing/banner";
+import { ARCHBANNER } from "~/constants";
 
 export default async function AboutArchitecturePage() {
 
   return (
     <>
-      <div className="col-span-12 bg-[#e5edf7] h-60" />
+      <Banner banner={ARCHBANNER}/>
       <ArchitectureList />
     </>
   );
