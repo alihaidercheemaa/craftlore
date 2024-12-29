@@ -22,7 +22,6 @@ export default async function CostEstimatorPage({
 }: PageProps) {
   const searchProps = await searchParams;
   const paramProps = await params;
-  console.log(searchProps, paramProps);
   return (
     <section className="col-span-12 mx-6 grid grid-cols-3 gap-6 px-24 py-12">
       <div className="col-span-2 space-y-6">
