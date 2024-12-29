@@ -4,13 +4,14 @@ import { TRPCClientError } from "@trpc/client";
 import { z } from "zod";
 
 
-
-
 export const CraftRouter = createTRPCRouter({
 
     getAllCategoriesAndSubCategories: publicProcedure.query(async ({ ctx }) => {
         try {
             const data = await ctx.db.category.findMany({
+                orderBy: {
+                    rank: 'asc'
+                },
                 include: {
                     SubCategory: true
                 }
@@ -39,6 +40,9 @@ export const CraftRouter = createTRPCRouter({
                 const data = await ctx.db.craftSection.findMany({
                     where: {
                         subCategoryId: input.subcategoryId
+                    },
+                    orderBy:{
+                        rank:'asc'
                     }
                 })
                 return data
@@ -65,6 +69,9 @@ export const CraftRouter = createTRPCRouter({
                 const data = await ctx.db.craftSubSection.findMany({
                     where: {
                         sectionId: input.sectionId
+                    },
+                    orderBy:{
+                        rank:'asc'
                     },
                     include: {
                         CraftContent: true

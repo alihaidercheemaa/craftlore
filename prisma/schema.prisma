@@ -231,6 +231,7 @@ model Account {
 model Category {
   categoryId   String        @id @default(cuid())
   categoryName String        @unique
+  rank         Int           @default(100)
   SubCategory  SubCategory[]
 }
 
@@ -302,6 +303,7 @@ model CraftSection {
   craftsectionId  String            @id @default(cuid())
   sectionName     String            @default("none")
   subCategoryId   String
+  rank            Int               @default(100)
   SubCategory     SubCategory       @relation(fields: [subCategoryId], references: [subcategoryId], onDelete: Cascade)
   CraftSubSection CraftSubSection[]
 }
@@ -310,6 +312,7 @@ model CraftSubSection {
   craftsubsectionId String         @id @default(cuid())
   sectionName       String         @default("none")
   sectionId         String
+  rank              Int            @default(100)
   CraftContent      CraftContent[]
   CraftSection      CraftSection   @relation(fields: [sectionId], references: [craftsectionId], onDelete: Cascade)
 }
