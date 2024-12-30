@@ -6,8 +6,6 @@ import { z } from 'zod';
 import { db } from '~/server/db'
 import { BusinessLevel, InstitutionType, MarketType, type ListingRanks, SkillLevel } from "@prisma/client";
 
-
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const requestSchema = z.object({
     user: z.object({
@@ -79,7 +77,7 @@ const requestSchema = z.object({
 
 type RequestProps = z.infer<typeof requestSchema>
 
-export async function PATCH(req: NextRequest) {
+export async function POST(req: NextRequest) {
 
     try {
 
@@ -87,6 +85,7 @@ export async function PATCH(req: NextRequest) {
             return NextResponse.json({ message: 'Body not found' }, { status: 404 })
 
         const jsonObject = await req.json() as RequestProps
+
 
         const { user, listingCriteria, artisan, business, institute } = jsonObject;
 
@@ -263,7 +262,9 @@ export async function PATCH(req: NextRequest) {
         }
         return NextResponse.json({ message: "Listing added" }, { status: 202 });
     } catch (error) {
+        console.log(error)
         if (error instanceof SyntaxError) {
+            console.log('syntax error',error)
             return NextResponse.json({ message: error.message }, { status: 500 });
         }
         else if (error instanceof TRPCClientError) {
