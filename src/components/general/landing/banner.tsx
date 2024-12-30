@@ -116,7 +116,7 @@ export const Banner = ({ banner }: ComponentProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute inset-0 mt-12 flex items-start"
+            className="absolute inset-0 flex items-center"
           >
             <motion.div
               variants={containerVariants}
