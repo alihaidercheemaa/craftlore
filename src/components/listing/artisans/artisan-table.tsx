@@ -11,6 +11,16 @@ import { ScrollArea, ScrollBar } from "~/components/ui/scroll-area";
 
 const columns: ColumnDef<ArtisanProps>[] = [
     {
+        id: 'listingRank',
+        accessorFn: (row) => row.criteria.listingRank,
+        accessorKey: "listingRank",
+        header: "Rank",
+        filterFn: "includesString",
+        cell: ({ row }) => (
+            <div className="min-w-[5rem]">{row.getValue("listingRank")}</div>
+        ),
+    },
+    {
         id: 'fullName',
         accessorFn: (row) => row.user.fullName,
         accessorKey: "fullName",

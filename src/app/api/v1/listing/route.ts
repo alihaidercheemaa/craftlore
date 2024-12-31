@@ -57,6 +57,7 @@ const requestSchema = z.object({
             businessType: z.string().optional(),
             businessSold: z.string().optional(),
             businessEmployee: z.number().optional(),
+            businessYear:z.number().optional(),
             documents: z.array(z.string()).optional(),
         })
         .optional(),
@@ -235,6 +236,7 @@ export async function POST(req: NextRequest) {
                         ? (business.businessType as BusinessLevel)
                         : BusinessLevel.None,
                     businessSold: business.businessSold ?? "none",
+                    yearOfOperation:business.businessYear,
                     businessEmployee: business.businessEmployee ?? 0,
                     documents: business.documents ?? [],
                     listingCriteria: newCriteria.criteraId,

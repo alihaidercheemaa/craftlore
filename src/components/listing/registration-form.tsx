@@ -363,6 +363,7 @@ export const RegistrationForm = () => {
                         businessType: rest.businessType ?? "None",
                         businessSold: rest.businessSold ?? "none",
                         businessEmployee: rest.businessEmployee ?? 0,
+                        businessYear : rest.businessYear ?? 1,
                         documents: rest.businessLicense ? [rest.businessLicense] : [],
                     }
                     : undefined,
@@ -381,9 +382,7 @@ export const RegistrationForm = () => {
                     : undefined,
         };
 
-        // Call the mutation
         registerListing.mutate(payload);
-
     }
 
     return (
