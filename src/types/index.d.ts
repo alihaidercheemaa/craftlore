@@ -1,4 +1,3 @@
-// Enums
 type InstitutionType = "None" | "Governance" | "NGO" | "Training_Body" | "Educational_Body";
 type BusinessLevel = "None" | "Large_Enterprice" | "Mid_sized_Business" | "Small_Business" | "Startup";
 type SkillLevel = "None" | "Expert" | "Advanced" | "Beginner"
@@ -6,7 +5,7 @@ type RegisterType = "None" | "Artisan" | "Business" | "Institution" | "BuyerMemb
 type MarketType = "None" | "Local" | "National" | "International";
 type Status = "Pending" | "Actice";
 type Ranks = "None" | "Gold" | "Silver" | "Bronze"
-// Models
+
 type AppliedJob = {
     jobId: string;
     fullName: string;
@@ -71,8 +70,47 @@ type ArtisanProps = {
         fullName: string
         address: string
     };
+    criteria:{
+        listingRank : Ranks
+    }
 };
 
+type InstituteProps = {
+    instituteId: string;
+    instituteName: string;
+    instituteEmail: string;
+    instituteType: InstitutionType;
+    instituteAddress: string;
+    instituteMission: string;
+    instituteRep: string;
+    repDes: string;
+    documents: string[];
+    status: string;
+    listingCriteria: string;
+    userId: string;
+    criteria:{
+        listingRank : Ranks
+    }
+};
+
+type BusinessProps = {
+    businessId: string;
+    businessName: string;
+    businessEmail: string;
+    businessAddress: string;
+    businessType: BusinessLevel;
+    businessSold: string;
+    businessEmployee: number;
+    businessMarket:MarketType
+    documents: string[];
+    yearOfOperation:number
+    status: string;
+    listingCriteria: string;
+    userId: string;
+    criteria:{
+        listingRank : Ranks
+    }
+};
 
 type Business = {
     businessId: string;
@@ -90,19 +128,7 @@ type Business = {
     user: User;
 };
 
-type BusinessProps = {
-    businessId: string;
-    businessName: string;
-    businessEmail: string;
-    businessAddress: string;
-    businessType: BusinessLevel;
-    businessSold: string;
-    businessEmployee: number;
-    documents: string[];
-    status: string;
-    listingCriteria: string;
-    userId: string;
-};
+
 
 type Institute = {
     instituteId: string;
@@ -121,20 +147,7 @@ type Institute = {
     user: User;
 };
 
-type InstituteProps = {
-    instituteId: string;
-    instituteName: string;
-    instituteEmail: string;
-    instituteType: InstitutionType;
-    instituteAddress: string;
-    instituteMission: string;
-    instituteRep: string;
-    repDes: string;
-    documents: string[];
-    status: string;
-    listingCriteria: string;
-    userId: string;
-};
+
 
 type BuyerMembership = {
     buyerMemberId: string;
@@ -260,6 +273,7 @@ type ValueProps = {
     value: string
     name: string
 }
+
 type SubCategoryProps = {
     name: string
     RawMaterial: ValueProps[]
@@ -275,6 +289,7 @@ type SubCategoryProps = {
     PaintingAndLacquering?: { name: string, values: ValueProps[] }[]
     Embroidery?: { name: string, values: ValueProps[] }[]
 }
+
 type CarbonProps = {
     category: string
     subcategory: SubCategoryProps[]

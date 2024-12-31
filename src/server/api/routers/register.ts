@@ -58,6 +58,7 @@ export const RegistrationRouter = createTRPCRouter({
                         businessType: z.string().optional(),
                         businessSold: z.string().optional(),
                         businessEmployee: z.number().optional(),
+                        businessYear:z.number().optional(),
                         documents: z.array(z.string()).optional(),
                     })
                     .optional(),
@@ -225,6 +226,10 @@ export const RegistrationRouter = createTRPCRouter({
                                 ? (business.businessType as BusinessLevel)
                                 : BusinessLevel.None,
                             businessSold: business.businessSold ?? "none",
+                            businessMarket: (Object.values(MarketType) as string[]).includes(input.market ?? "")
+                            ? (input.market as MarketType)
+                            : MarketType.None,
+                            yearOfOperation : business.businessYear,
                             businessEmployee: business.businessEmployee ?? 0,
                             documents: business.documents ?? [],
                             listingCriteria: newCriteria.criteraId,
@@ -278,6 +283,11 @@ export const RegistrationRouter = createTRPCRouter({
                             select: {
                                 fullName: true,
                                 address: true,
+                            }
+                        },
+                        criteria: {
+                            select: {
+                                listingRank: true,
                             }
                         }
                     }
@@ -361,6 +371,13 @@ export const RegistrationRouter = createTRPCRouter({
             try {
 
                 const businesses: BusinessProps[] = await ctx.db.business.findMany({
+                    include: {
+                        criteria: {
+                            select: {
+                                listingRank: true,
+                            }
+                        }
+                    }
                 })
                 return businesses
             } catch (error) {
@@ -441,6 +458,13 @@ export const RegistrationRouter = createTRPCRouter({
         .query(async ({ ctx }) => {
             try {
                 const institutes: InstituteProps[] = await ctx.db.institute.findMany({
+                    include: {
+                        criteria: {
+                            select: {
+                                listingRank: true
+                            }
+                        }
+                    }
                 })
                 return institutes
             } catch (error) {
