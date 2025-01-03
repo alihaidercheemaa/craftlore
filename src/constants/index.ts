@@ -1553,6 +1553,10 @@ export const PROFILEFEATURES = [
     {
         title: "Buyer Interests and Preferences",
         des: "Understanding buyer behavior is key to sustaining the demand for Kashmiri crafts. The registry provides in-depth buyer line insights, capturing demographic trends and evolving preferences. Buyers value the therapeutic benefits of products like Pashmina shawls, which offer unmatched softness and warmth. Customization options, such as personalized designs and monograms, enhance appeal, offering unique ownership experiences. The registry highlights how chromatic artistry and design variations cater to diverse tastes, ensuring relevance across cultural and geographic boundaries. Buyers increasingly prioritize sustainability, and eco innovations like natural dyes and ethical production practices align with these values. By connecting artisans to these preferences, the registry fosters relationships built on trust, transparency, and shared values. This buyer-centric approach ensures long-term loyalty and drives global appreciation for Kashmiri craftsmanship."
+    },
+    {
+        title:"Craft Science: Inspiring the Next Generation in Kashmir's Legacy",
+        des:"Moving Beyond Colonial Narratives to Redefine Heritage with Innovation and Science"
     }
 ];
 
@@ -1582,7 +1586,7 @@ export const PROFILEBENEFITS = [
  */
 export const PROFILEBANNER = [
     {
-      title: "Kashmir Craft Profiling Registry Page",
+      title: "Kashmir Craft Profiling Repository",
       subtitle: "Global Craft Connection – Bridging Kashmir’s artistry with worldwide markets.",
       buttonText: "Learn More",
     },

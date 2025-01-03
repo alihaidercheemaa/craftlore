@@ -4,6 +4,8 @@ import { SectionData } from "~/components/craft-repository/profiling/section-dat
 import { SectionTracking } from "~/components/craft-repository/profiling/section-tracker";
 import { AsideSkeleton } from "~/components/skeletons/aside-skeleton";
 import { SectionDataSkeleton } from "~/components/skeletons/craft-skeleton";
+import { KashmirCraftsRepository } from "~/components/testing";
+import { ScientificCraftsRepository } from "~/components/testing1";
 
 export const metadata: Metadata = {
   title: "CRAFTLORE | Cost profiling",
@@ -29,9 +31,18 @@ export default async function CostEstimatorPage({
           <SectionData sectionId={searchProps?.sectionId ?? ""} />
         </Suspense>
       </div>
-        <Suspense fallback={<AsideSkeleton />}>
-          <SectionTracking subcategoryId={paramProps.subcategoryId} className="col-span-1 sticky top-[16rem]"/>
-        </Suspense>
+      <Suspense fallback={<AsideSkeleton />}>
+        <SectionTracking
+          subcategoryId={paramProps.subcategoryId}
+          className="sticky top-[16rem] col-span-1"
+        />
+      </Suspense>
+      <div className="col-span-2">
+        <KashmirCraftsRepository />
+      </div>
+      <div className="col-span-2">
+        <ScientificCraftsRepository />
+      </div>
     </section>
   );
 }
