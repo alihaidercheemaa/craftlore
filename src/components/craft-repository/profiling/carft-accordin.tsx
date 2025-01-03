@@ -19,25 +19,23 @@ export const CraftAccordin = async () => {
           key={category.categoryId}
           className="rounded-lg border border-white/20 bg-white backdrop-blur-sm"
         >
-          <AccordionTrigger className="group px-4 hover:no-underline">
-            <div className="flex items-center gap-3 font-montserrat text-primary">
-              <span className="text-lg">{category.categoryName}</span>
-            </div>
+          <AccordionTrigger className="group px-4 hover:no-underline font-opensans">
+            {category.categoryName}
           </AccordionTrigger>
 
           <AccordionContent className="space-y-4 px-4 pb-4">
             <div className="rounded-lg bg-white/5 p-4">
               <p className="text-justify font-opensans leading-relaxed text-primary">
-                Kashmir&apos;s iconic weaving crafts—Pashmina, Kani, Carpet, and Silk
-                weaving—reflect unparalleled artistry and cultural heritage.
-                Through CraftLore&apos;s Kashmir Craft Profiling Repository Registry,
-                these crafts are preserved and empowered using blockchain
-                authentication and sustainable practices. From luxurious
-                Pashmina shawls and intricate Kani designs to Persian-inspired
-                carpets and shimmering silk textiles, these crafts symbolize
-                tradition and innovation. The registry bridges heritage and
-                modernity, ensuring these treasures thrive globally while
-                safeguarding their authenticity for future generations.
+                Kashmir&apos;s iconic weaving crafts—Pashmina, Kani, Carpet, and
+                Silk weaving—reflect unparalleled artistry and cultural
+                heritage. Through CraftLore&apos;s Kashmir Craft Profiling
+                Repository Registry, these crafts are preserved and empowered
+                using blockchain authentication and sustainable practices. From
+                luxurious Pashmina shawls and intricate Kani designs to
+                Persian-inspired carpets and shimmering silk textiles, these
+                crafts symbolize tradition and innovation. The registry bridges
+                heritage and modernity, ensuring these treasures thrive globally
+                while safeguarding their authenticity for future generations.
               </p>
             </div>
 
@@ -54,7 +52,7 @@ export const CraftAccordin = async () => {
                     className="flex items-center gap-3"
                   >
                     <Circle className="h-2 w-2 text-secondary/70" />
-                    <span className="font-montserrat text-base font-medium text-secondary transition-colors hover:text-secondary/80">
+                    <span className="font-opensans text-base font-medium text-secondary transition-colors hover:text-secondary/80">
                       {subcategory.subcategoryName}
                     </span>
                   </Link>
