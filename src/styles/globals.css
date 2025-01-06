@@ -13,7 +13,7 @@
     /* Backgrounds and Foregrounds */
     --background: 212 99% 95%; /* Very light shade of primary */
     --foreground: 212 99% 10%; /* Darker shade for primary text */
-    --card: 212 99% 98%; /* Lightest tone of primary */
+    --card: 212 53% 93%; /* Lightest tone of primary */
     --card-foreground: 212 99% 10%; /* Darker primary color */
     --popover: 212 99% 95%; /* Light shade of primary */
     --popover-foreground: 212 99% 10%; /* Darker primary for popover text */

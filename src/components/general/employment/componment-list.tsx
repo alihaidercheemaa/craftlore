@@ -1,4 +1,4 @@
-import { EMPLOYMENTCOMPONENTS } from "~/constants"
+import { EMPLOYMENTCOMPONENTS } from "~/constants/data"
 
 
 export const EmploymentComponentList = ()=>{

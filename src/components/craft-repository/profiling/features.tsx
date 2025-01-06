@@ -1,4 +1,4 @@
-import { PROFILEBENEFITS, PROFILEFEATURES } from "~/constants";
+import { PROFILEBENEFITS, PROFILEFEATURES } from "~/constants/data";
 
 export const ProfileFeatures = () => {
   return (

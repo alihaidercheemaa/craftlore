@@ -1,4 +1,4 @@
-import { PURPOSEVISION } from "~/constants"
+import { PURPOSEVISION } from "~/constants/data"
 
 
 

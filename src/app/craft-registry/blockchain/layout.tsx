@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import { Banner } from "~/components/general/landing/banner";
-import { BLOCKBANNER } from "~/constants";
+import { BLOCKBANNER } from "~/constants/banner";
 
 export const metadata: Metadata = {
     title: "CRAFTLORE | Blockchain",

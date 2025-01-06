@@ -1,5 +1,5 @@
 import React from 'react';
-import { JOBS } from "~/constants";
+import { JOBS } from "~/constants/data";
 import dayjs from 'dayjs';
 import { cn } from '~/lib/utils';
 

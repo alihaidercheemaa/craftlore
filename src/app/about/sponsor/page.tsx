@@ -1,6 +1,6 @@
 import { SponsorList } from "~/components/general/about/sponsors/sponsor-list";
 import { Banner } from "~/components/general/landing/banner";
-import { SPOBANNER } from "~/constants";
+import { SPOBANNER } from "~/constants/banner";
 
 export default async function AboutNetworkPage() {
 

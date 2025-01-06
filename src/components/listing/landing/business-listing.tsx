@@ -1,4 +1,4 @@
-import { BUSINESSLISTINGS } from "~/constants"
+import { BUSINESSLISTINGS } from "~/constants/data"
 
 
 export const BusinessListing = () => {

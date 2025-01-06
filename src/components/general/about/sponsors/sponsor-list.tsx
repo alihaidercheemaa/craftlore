@@ -1,4 +1,4 @@
-import { SPONSORS } from "~/constants"
+import { SPONSORS } from "~/constants/data"
 
 
 

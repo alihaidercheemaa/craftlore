@@ -1,4 +1,4 @@
-import { GENDERSTAKHOLDERS } from "~/constants"
+import { GENDERSTAKHOLDERS } from "~/constants/data"
 
 export const GenderStakHolder= () => {
 

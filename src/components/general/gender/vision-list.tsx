@@ -1,4 +1,4 @@
-import { GENDERVISION } from "~/constants"
+import { GENDERVISION } from "~/constants/data"
 
 
 export const GenderVisionList = () => {

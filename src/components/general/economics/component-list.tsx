@@ -1,4 +1,4 @@
-import { KEYCOMPONENTS } from "~/constants"
+import { KEYCOMPONENTS } from "~/constants/data"
 
 
 export const ComponentList = ()=>{

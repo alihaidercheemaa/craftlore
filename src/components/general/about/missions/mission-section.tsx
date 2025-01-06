@@ -1,5 +1,5 @@
 'use client';
-import { MISSIONS } from '~/constants';
+import { MISSIONS } from '~/constants/data';
 import { MissionCard } from '~/components/general/about/missions/misson-card';
 import { useMissionStore } from '~/hooks/use-mission';
 

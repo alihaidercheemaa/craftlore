@@ -1,4 +1,4 @@
-import { LISTINGBENEFITS } from "~/constants"
+import { LISTINGBENEFITS } from "~/constants/data"
 import { BusinessListing } from "~/components/listing/landing/business-listing"
 
 
