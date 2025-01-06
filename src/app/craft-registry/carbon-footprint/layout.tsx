@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import { Banner } from "~/components/general/landing/banner";
-import { CARBONBANNER } from "~/constants";
+import { CARBONBANNER } from "~/constants/banner";
 
 export const metadata: Metadata = {
     title: "CRAFTLORE | Carbon footprint",

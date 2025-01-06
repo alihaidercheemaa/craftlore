@@ -1,4 +1,4 @@
-import { EMPLOYMENTSTAKHOLDERS } from "~/constants"
+import { EMPLOYMENTSTAKHOLDERS } from "~/constants/data"
 
 
 export const EmploymentStakHolder= () => {

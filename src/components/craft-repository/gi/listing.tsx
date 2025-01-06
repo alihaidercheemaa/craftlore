@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { Button } from "~/components/ui/button";
-import { GILISTING } from "~/constants";
+import { GILISTING } from "~/constants/data";
 
 export const GIListing = () => {
   const [value, setValue] = useState<string>("all");

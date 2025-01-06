@@ -1,6 +1,6 @@
 import { ArchitectureList } from "~/components/general/about/architecture/architecture-list";
 import { Banner } from "~/components/general/landing/banner";
-import { ARCHBANNER } from "~/constants";
+import { ARCHBANNER } from "~/constants/banner";
 
 export default async function AboutArchitecturePage() {
 

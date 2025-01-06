@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import { Banner } from "~/components/general/landing/banner";
-import { MEMBERBANNER } from "~/constants";
+import { MEMBERBANNER } from "~/constants/banner";
 
 export const metadata: Metadata = {
     title: "CRAFTLORE | Membership",

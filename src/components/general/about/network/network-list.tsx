@@ -1,4 +1,4 @@
-import { ORGANIZATIONS } from "~/constants"
+import { ORGANIZATIONS } from "~/constants/data"
 
 
 

@@ -1,11 +1,10 @@
 import { type Metadata } from "next";
 import { Banner } from "~/components/general/landing/banner";
-import { ECBANNNER } from "~/constants";
+import { ECBANNNER } from "~/constants/banner";
 
 export const metadata: Metadata = {
-    title: "CRAFTLORE | Economics",
-  };
-  
+  title: "CRAFTLORE | Economics",
+};
 
 export default function EconomicsLayout({
   children,

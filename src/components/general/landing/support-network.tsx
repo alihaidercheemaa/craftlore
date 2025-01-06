@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { NETWORK } from "~/constants"
+import { NETWORK } from "~/constants/data"
 
 export const SupportNetwork = () => {
 

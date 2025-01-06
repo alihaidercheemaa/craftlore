@@ -68,10 +68,10 @@ model Business {
   businessEmployee Int             @default(0)
   documents        String[]        @default([])
   status           String          @default("active")
-  businessMarket   MarketType      @default(None)
-  yearOfOperation  Int             @default(1)
   listingCriteria  String
   userId           String
+  businessMarket   MarketType      @default(None)
+  yearOfOperation  Int             @default(1)
   criteria         LisitingCritera @relation(fields: [listingCriteria], references: [criteraId], onDelete: Cascade)
   user             User            @relation(fields: [userId], references: [userId], onDelete: Cascade)
 
@@ -233,6 +233,7 @@ model Account {
 model Category {
   categoryId   String        @id @default(cuid())
   categoryName String        @unique
+  description  String        @default("none")
   rank         Int           @default(100)
   SubCategory  SubCategory[]
 }
@@ -251,6 +252,7 @@ model SubCategory {
   subcategoryName String          @default("none")
   categoryId      String
   CarbonSection   CarbonSection[]
+  CraftPicture    CraftPicture[]
   CraftSection    CraftSection[]
   Material        Material[]
   PriceSection    PriceSection[]
@@ -337,6 +339,13 @@ model CraftQuiz {
   answer       String       @default("none")
   sectionId    String
   CraftSection CraftSection @relation(fields: [sectionId], references: [craftsectionId], onDelete: Cascade)
+}
+
+model CraftPicture {
+  pictureId      String      @id
+  subcategroryId String
+  picture        String      @default("none")
+  SubCategory    SubCategory @relation(fields: [subcategroryId], references: [subcategoryId], onDelete: Cascade)
 }
 
 enum InstitutionType {

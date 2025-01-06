@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { HELPUS } from "~/constants"
+import { HELPUS } from "~/constants/data"
 
 
 

@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { GIPROCESS } from "~/constants";
+import { GIPROCESS } from "~/constants/data";
 
 
 

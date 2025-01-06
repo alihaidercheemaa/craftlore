@@ -1,4 +1,4 @@
-import { ARCHITECTURE } from "~/constants"
+import { ARCHITECTURE } from "~/constants/data"
 
 
 

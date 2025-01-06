@@ -1,6 +1,6 @@
 'use client'
 
-import { REGISTRIES } from "~/constants"
+import { REGISTRIES } from "~/constants/data"
 import { useRegister } from "~/hooks/use-register"
 import { RegisterCard } from "~/components/general/about/registeries/register-card"
 

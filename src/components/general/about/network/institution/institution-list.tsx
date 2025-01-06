@@ -1,4 +1,4 @@
-import { INDIAORGANIZATIONS } from "~/constants"
+import { INDIAORGANIZATIONS } from "~/constants/data"
 
 
 

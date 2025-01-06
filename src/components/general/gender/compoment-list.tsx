@@ -1,4 +1,4 @@
-import { GENDERCOMPONENTS } from "~/constants"
+import { GENDERCOMPONENTS } from "~/constants/data"
 
 
 export const GenderComponentList = ()=>{

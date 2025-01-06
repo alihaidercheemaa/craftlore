@@ -1,4 +1,4 @@
-import { COSTBENEFITS, COSTFEATURES } from "~/constants";
+import { COSTBENEFITS, COSTFEATURES } from "~/constants/data";
 
 export const CostFeatures = () => {
   return (

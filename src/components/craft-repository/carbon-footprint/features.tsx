@@ -1,4 +1,4 @@
-import { CARBONFEATURES, CARBONBENEFITS } from "~/constants";
+import { CARBONFEATURES, CARBONBENEFITS } from "~/constants/data";
 
 export const CarbonFeatures = () => {
   return (

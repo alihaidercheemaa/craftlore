@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { TypedComponent } from "~/components/animations/typo";
-import { TYPETEXT } from "~/constants";
+import { TYPETEXT } from "~/constants/data";
 
 export const WelcomeCard = () => {
     return (

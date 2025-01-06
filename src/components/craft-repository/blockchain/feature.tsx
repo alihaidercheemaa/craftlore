@@ -1,4 +1,4 @@
-import { BLOCKCHAINFEATURES, BLOCKCHAINBENEFITS } from "~/constants";
+import { BLOCKCHAINFEATURES, BLOCKCHAINBENEFITS } from "~/constants/data";
 
 export const BlockFeatures = () => {
   return (

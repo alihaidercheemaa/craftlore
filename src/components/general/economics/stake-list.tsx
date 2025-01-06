@@ -1,4 +1,4 @@
-import { STAKHOLDERS } from "~/constants"
+import { STAKHOLDERS } from "~/constants/data"
 
 
 
