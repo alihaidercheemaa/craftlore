@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
 import { PROFILES } from "~/constants/profiling";
 import { useCraft } from "~/hooks/use-craft";
 
-export const CraftDetail = () => {
+export const CraftIntro = () => {
   const { craft } = useCraft();
   const profile = PROFILES[craft as keyof typeof PROFILES];
   

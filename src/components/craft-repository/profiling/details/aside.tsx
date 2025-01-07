@@ -1,6 +1,6 @@
 import { Book, Microscope, History } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
-import { SectionTracking } from "~/components/craft-repository/profiling/section-tracker";
+import { SectionTracking } from "~/components/craft-repository/profiling/details/section-tracker";
 
 export const DetailAside = () => {
   return (
@@ -29,7 +29,7 @@ export const DetailAside = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Crafts </CardTitle>
+          <CardTitle className="text-lg">Kashmir Craft  </CardTitle>
         </CardHeader>
         <CardContent>
           <SectionTracking />
