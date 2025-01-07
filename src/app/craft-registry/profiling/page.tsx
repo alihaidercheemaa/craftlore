@@ -21,9 +21,10 @@ const counter = [
 export default function CraftProfilingPage() {
   return (
     <section className="col-span-12">
-      <Container className="grid gap-32 my-12">
+      <div className="my-12 grid gap-32 mx-6 px-24">
         <ProfileHome />
-      </Container>
+      </div>
+
       <Background color="#e5edf7">
         <Container>
           <ProfileFeatures />
