@@ -12,6 +12,7 @@ type ComponentProps = {
 };
 
 export const Banner = ({ banner }: ComponentProps) => {
+  
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {

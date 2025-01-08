@@ -15,7 +15,7 @@ export const CraftIntro = () => {
       <CardContent className="col-span-2 grid">
         <div className="relative mb-4 aspect-video rounded-lg">
           <Image
-            src="/crafts/R.jpeg"
+            src="/crafts/pashmina.jpeg"
             alt="pashmina image"
             fill
             sizes="100%"

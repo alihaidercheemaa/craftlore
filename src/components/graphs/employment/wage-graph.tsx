@@ -1,6 +1,7 @@
 'use client'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, type ChartOptions, type ChartData } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { ChartContainer } from '~/components/common/chart';
 
 ChartJS.register(
     CategoryScale,
@@ -83,9 +84,9 @@ export const WageGraph = () => {
         maintainAspectRatio: true
     };
     return (
-        <div className='h-[400px]'>
+        <ChartContainer>
             <Bar data={data} options={options} />
-        </div>
+        </ChartContainer>
 
     )
 }

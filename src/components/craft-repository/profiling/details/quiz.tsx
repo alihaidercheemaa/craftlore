@@ -8,18 +8,12 @@ import {
 } from "~/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
-import { Gift, Trophy, Timer, Loader2, Check, Copy } from "lucide-react";
-import { useQuizStore } from "~/hooks/use-quiz";
+import { Gift, Trophy, Timer, Loader2 } from "lucide-react";
+import { useQuiz } from "~/hooks/use-quiz";
 import { api } from "~/trpc/react";
 import { Button } from "~/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "~/components/ui/dialog";
 import { useState } from "react";
+import { QuizResultDialog } from "~/components/craft-repository/profiling/details/quiz-dialog";
 
 type QuizQuestion = {
   quizId: string;
@@ -34,16 +28,17 @@ type QuizCardProps = {
   questions: QuizQuestion[];
 };
 
+
 export const QuizCard = ({ questions }: QuizCardProps) => {
-  const { answers, setAnswer, clearAnswers } = useQuizStore();
+  const { answers, setAnswer, clearAnswers } = useQuiz();
+
   const [resultDialog, setResultDialog] = useState<{
     isOpen: boolean;
-    data: { success: boolean; message: string; couponCode?: string } | null;
+    data: { success: boolean; message: string } | null;
   }>({
     isOpen: false,
     data: null,
   });
-  const [copied, setCopied] = useState(false);
 
   const handleOptionChange = (quizId: string, value: string) => {
     setAnswer(quizId, value);
@@ -51,11 +46,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
 
   const submitMutation = api.craft.submitQuizAnswers.useMutation({
     onSuccess: (data) => {
-      //   toast({
-      //     title: "Quiz Submitted!",
-      //     description: data.message,
-      //     variant: data.success ? "default" : "destructive",
-      //   });
       setResultDialog({
         isOpen: true,
         data,
@@ -63,11 +53,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
       clearAnswers();
     },
     onError: (error) => {
-      //   toast({
-      //     title: "Submission Failed",
-      //     description: error.message,
-      //     variant: "destructive",
-      //   });
       setResultDialog({
         isOpen: true,
         data: { success: false, message: error.message },
@@ -76,15 +61,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
   });
 
   const handleSubmit = () => {
-    // if (answers.length !== questions.length) {
-    //   toast({
-    //     title: "Incomplete Quiz",
-    //     description: "Please answer all questions before submitting.",
-    //     variant: "destructive",
-    //   });
-    //   return;
-    // }
-
     if (answers.length !== questions.length) {
       setResultDialog({
         isOpen: true,
@@ -104,15 +80,10 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
     });
   };
 
-  const copyToClipboard = async (code: string) => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+
 
   return (
     <div className="space-y-8">
-      {/* Instructions Card */}
       <Card className="bg-gradient-to-br from-primary/5 to-primary/10">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-2xl">
@@ -165,8 +136,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
           </div>
         </CardContent>
       </Card>
-
-      {/* Questions */}
       <div className="grid gap-6">
         {questions.map((question, questionIndex) => (
           <Card key={question.quizId} className="overflow-hidden">
@@ -178,7 +147,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
                 {question.question}
               </CardTitle>
             </CardHeader>
-
             <CardContent className="p-6">
               <RadioGroup
                 className="space-y-3"
@@ -242,91 +210,13 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         </CardContent>
       </Card>
 
-      <Dialog
-        open={resultDialog.isOpen}
+      <QuizResultDialog
+        isOpen={resultDialog.isOpen}
         onOpenChange={(open) =>
           setResultDialog((prev) => ({ ...prev, isOpen: open }))
         }
-      >
-        
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              {resultDialog.data?.success ? (
-                <>
-                  <Trophy className="h-5 w-5 text-primary" />
-                  Congratulations!
-                </>
-              ) : (
-                <>
-                  <AlertTitle className="h-5 w-5 text-destructive" />
-                  Quiz Results
-                </>
-              )}
-            </DialogTitle>
-            <DialogDescription className="text-base">
-              {resultDialog.data?.message}
-            </DialogDescription>
-          </DialogHeader>
-
-          {resultDialog.data?.success && resultDialog.data?.couponCode && (
-            <div className="mt-4 space-y-4">
-              <div className="rounded-lg border bg-muted p-4">
-                <div className="flex items-center justify-between">
-                  <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-                    {resultDialog.data.couponCode}
-                  </code>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={async () => {
-                      if (resultDialog.data?.couponCode) {
-                       await  copyToClipboard(resultDialog.data.couponCode);
-                      }
-                    }}
-                  >
-                    {copied ? (
-                      <Check className="h-4 w-4" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </Button>
-                </div>
-              </div>
-
-              <Alert>
-                <Gift className="h-4 w-4" />
-                <AlertTitle>How to use your discount</AlertTitle>
-                <AlertDescription>
-                  Enter this code at checkout to receive your discount. This
-                  code is valid for one-time use only.
-                </AlertDescription>
-              </Alert>
-            </div>
-          )}
-
-          <div className="mt-4 flex justify-end gap-3">
-            {!resultDialog.data?.success && (
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setResultDialog((prev) => ({ ...prev, isOpen: false }));
-                  clearAnswers();
-                }}
-              >
-                Try Again
-              </Button>
-            )}
-            <Button
-              onClick={() =>
-                setResultDialog((prev) => ({ ...prev, isOpen: false }))
-              }
-            >
-              Close
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+        data={resultDialog.data}
+      />
     </div>
   );
 };
