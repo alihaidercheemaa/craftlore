@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "CRAFTLORE | Membership",
   };
 
-export default function CarbonLayout({
+export default function MembershipLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (

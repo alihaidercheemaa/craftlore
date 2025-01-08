@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 import { Counter } from "~/components/animations/counter";
+import { Background } from "~/components/common/background";
+import { Container } from "~/components/common/container";
 import { ProfileApiGuide } from "~/components/craft-repository/profiling/api-guide";
 import { ProfileFeatures } from "~/components/craft-repository/profiling/features";
 import { ProfileHome } from "~/components/craft-repository/profiling/home";
@@ -10,16 +12,16 @@ export const metadata: Metadata = {
 };
 
 const counter = [
-  { name: 'Verified artisans', value: 25000 },
-  { name: 'Green Networks', value: 20 },
-  { name: 'Eco Institutions', value: 8 },
-  { name: 'Great Businesses', value: 120 }
-]
+  { name: "Verified artisans", value: 25000 },
+  { name: "Green Networks", value: 20 },
+  { name: "Eco Institutions", value: 8 },
+  { name: "Great Businesses", value: 120 },
+];
 
 export default function CraftProfilingPage() {
   return (
     <section className="relative col-span-12 -mt-16">
-      <div className="mx-6 flex gap-10 lg:container">
+      <Container className="flex gap-10">
         <div className="grid h-[183px] w-72 place-content-center border-4 border-white bg-secondary p-10 text-center text-white">
           <h1 className="whitespace-pre-line font-montserrat text-xl font-bold">
             CARBON FOOTPRINT CRAFT REGISTRY
@@ -58,19 +60,19 @@ export default function CraftProfilingPage() {
             Eco leadership.
           </p>
         </div>
-      </div>
-      <div className="mx-6 mt-6 grid gap-32 lg:container">
+      </Container>
+      <Container className="mt-6 grid gap-32">
         <ProfileHome />
-      </div>
-      <div className="bg-[#e5edf7]">
-        <div className="mx-6 lg:container">
+      </Container>
+      <Background color="#e5edf7">
+        <Container>
           <ProfileFeatures />
-        </div>
-      </div>
-      <div className="mx-6 lg:container">
+        </Container>
+      </Background>
+      <Container>
         <ProfileApiGuide />
-      </div>
-      <div className="bg-[#e5edf7]">
+      </Container>
+      <Background color="#e5edf7">
         <div className="mx-6 space-y-[6rem] pt-[5rem] lg:container">
           <h2 className="text-center font-montserrat text-xl text-secondary">
             Defend Fair Trade, Empower Artisans: Join the Movement for
@@ -83,7 +85,7 @@ export default function CraftProfilingPage() {
           <Counter counterValues={counter} />
           <BottomBanner />
         </div>
-      </div>
+      </Background>
     </section>
   );
 }

@@ -343,10 +343,17 @@ model CraftQuiz {
 }
 
 model CraftPicture {
-  pictureId      String      @id
+  pictureId      String      @id @default(cuid())
   subcategroryId String
   picture        String      @default("none")
   SubCategory    SubCategory @relation(fields: [subcategroryId], references: [subcategoryId], onDelete: Cascade)
+}
+
+model CraftDiscount {
+  discountId         String @id @default(cuid())
+  discountPercentage Int    @default(0)
+  code               String @default("none")
+  email              String @unique
 }
 
 enum InstitutionType {

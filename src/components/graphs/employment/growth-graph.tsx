@@ -1,6 +1,7 @@
 'use client'
 import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,BarElement,Title,Tooltip,Legend} from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import { ChartContainer } from '~/components/common/chart';
 
 // Register ChartJS components
 ChartJS.register(
@@ -110,10 +111,8 @@ export const GrowthGraph = () => {
   };
 
   return (
-    <div className="h-[400px]">
+    <ChartContainer>
       <Chart type="bar" data={data} options={options} />
-    </div>
+    </ChartContainer>
   );
 };
-
-export default GrowthGraph;

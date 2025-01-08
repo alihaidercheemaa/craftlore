@@ -1,14 +1,14 @@
-'use client';
-import { MISSIONS } from '~/constants/data';
-import { MissionCard } from '~/components/general/about/missions/misson-card';
-import { useMissionStore } from '~/hooks/use-mission';
+"use client";
+import { MISSIONS } from "~/constants/data";
+import { MissionCard } from "~/components/general/about/missions/misson-card";
+import { useMissionStore } from "~/hooks/use-mission";
+import { Container } from "~/components/common/container";
 
 export const MissionSection = () => {
   const { mission } = useMissionStore();
   return (
-    <section className="col-span-12 mx-6 lg:container gap-4 mt-12">
-      {/* Top Mission Cards */}
-      <div className="lg:container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 relative -mt-36">
+    <Container className="col-span-12 mt-12 gap-4">
+      <Container className="relative -mt-36 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
         {MISSIONS.slice(0, 4).map((missionItem) => (
           <MissionCard
             className="col-span-1"
@@ -18,18 +18,16 @@ export const MissionSection = () => {
             key={missionItem.id}
           />
         ))}
-      </div>
-
-      {/* Mission Description */}
-      <div className="mx-6 lg:container grid gap-6 my-32 text-center">
-        <h6 className="text-2xl sm:text-4xl lg:text-6xl font-montserrat text-primary">
+      </Container>
+      <Container className="my-32 grid gap-6 text-center">
+        <h2 className="font-montserrat text-2xl text-primary sm:text-4xl lg:text-6xl">
           {mission.title}
-        </h6>
-        <p className="text-base sm:text-xl lg:text-2xl">{mission.description}</p>
-      </div>
-
-      {/* Bottom Mission Cards */}
-      <div className="lg:container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 relative -mb-36">
+        </h2>
+        <p className="text-base sm:text-xl lg:text-2xl">
+          {mission.description}
+        </p>
+      </Container>
+      <Container className="relative -mb-36 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
         {MISSIONS.slice(4, 8).map((missionItem) => (
           <MissionCard
             className="col-span-1"
@@ -39,7 +37,7 @@ export const MissionSection = () => {
             key={missionItem.id}
           />
         ))}
-      </div>
-    </section>
+      </Container>
+    </Container>
   );
 };

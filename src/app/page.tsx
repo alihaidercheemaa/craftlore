@@ -7,7 +7,8 @@ import { RegisterCard } from "~/components/general/landing/register-card";
 import { ServiceCard } from "~/components/general/landing/service-card";
 import { SupportNetwork } from "~/components/general/landing/support-network";
 import { WelcomeCard } from "~/components/general/landing/welcome-card";
-import { BANNERS } from "~/constants/data";
+import { BANNERS } from "~/constants/banner";
+
 export default async function Home() {
 
   return (

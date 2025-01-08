@@ -29,7 +29,7 @@ export const DetailAside = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Kashmir Craft  </CardTitle>
+          <CardTitle className="text-lg">Kashmir Crafts</CardTitle>
         </CardHeader>
         <CardContent>
           <SectionTracking />

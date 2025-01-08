@@ -12,7 +12,7 @@ type QuizStore = {
     clearAnswers: () => void;
 };
 
-export const useQuizStore = create<QuizStore>()(persist(
+export const useQuiz = create<QuizStore>()(persist<QuizStore>(
     (set) => ({
         answers: [],
         setAnswer: (quizId, selectedOption) =>

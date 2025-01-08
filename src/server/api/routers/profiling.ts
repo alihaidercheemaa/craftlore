@@ -145,8 +145,6 @@ export const CraftRouter = createTRPCRouter({
                 let correctCount = 0;
                 input.answers.forEach(userAnswer => {
                     const correct = correctAnswers.find(a => a.quizId === userAnswer.quizId);
-                    console.log(correct)
-                    console.log(correct?.answer,userAnswer.selectedOption)
                     if (correct && correct.answer === userAnswer.selectedOption) {
                         correctCount++;
                     }
@@ -159,7 +157,6 @@ export const CraftRouter = createTRPCRouter({
                         success: true,
                         message: `Congratulations! You scored ${score}%. Your discount code is QUIZ2024`,
                         score,
-                        couponCode:'This is yout code GY73425H'
                     };
                 } else {
                     return {
@@ -181,6 +178,46 @@ export const CraftRouter = createTRPCRouter({
                     code: 'INTERNAL_SERVER_ERROR',
                     message: 'Something went wrong'
                 })
+            }
+        }),
+
+    validateDiscount: publicProcedure
+        .input(z.object({ email: z.string().email() }))
+        .mutation(async ({ ctx, input }) => {
+
+            const existingDiscount = await ctx.db.craftDiscount.findUnique({
+                where: { email: input.email },
+            });
+
+            if (existingDiscount) {
+                const updatedDiscount = await ctx.db.craftDiscount.update({
+                    where: { email: input.email },
+                    data: {
+                        discountPercentage: existingDiscount.discountPercentage + 3,
+                        code: `CRAFT${Math.random().toString(36).substring(2, 8).toUpperCase()}`,
+                    },
+                });
+
+                return {
+                    success: true,
+                    totalDiscount: updatedDiscount.discountPercentage,
+                    code: updatedDiscount.code,
+                };
+            } else {
+                // Create new discount entry
+                const newDiscount = await ctx.db.craftDiscount.create({
+                    data: {
+                        email: input.email,
+                        discountPercentage: 3,
+                        code: `CRAFT${Math.random().toString(36).substring(2, 8).toUpperCase()}`,
+                    },
+                });
+
+                return {
+                    success: true,
+                    totalDiscount: newDiscount.discountPercentage,
+                    code: newDiscount.code,
+                };
             }
         })
 })
