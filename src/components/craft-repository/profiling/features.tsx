@@ -20,7 +20,7 @@ export const ProfileFeatures = () => {
           {PROFILEFEATURES.map((feature, index) => (
             <article
               key={index}
-              className="space-y-6 rounded-lg bg-white p-8 shadow-lg duration-300 hover:bg-primary hover:text-white"
+              className="col-span-2 md:col-span-1 space-y-6 rounded-lg bg-white p-8 shadow-lg duration-300 hover:bg-primary hover:text-white"
             >
               <h3 className="font-montserrat text-xl">
                 {index + 1}. {feature.title}
@@ -38,7 +38,7 @@ export const ProfileFeatures = () => {
           {PROFILEBENEFITS.map((benefit, index) => (
             <article
               key={index}
-              className="space-y-6 rounded-lg bg-white p-8 shadow-lg duration-300 hover:bg-primary hover:text-white"
+              className="col-span-2 md:col-span-1 space-y-6 rounded-lg bg-white p-8 shadow-lg duration-300 hover:bg-primary hover:text-white"
             >
               <h3 className="font-montserrat text-xl">{benefit.title}</h3>
               <p className="font-opensans">{benefit.des}</p>
