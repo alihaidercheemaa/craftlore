@@ -30,7 +30,6 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { api } from "~/trpc/react";
-import { useQuiz } from "~/hooks/use-quiz";
 
 const discountFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -52,7 +51,6 @@ export const QuizResultDialog = ({
   onOpenChange,
   data,
 }: QuizResultDialogProps) => {
-  const { clearAnswers } = useQuiz();
   const [copied, setCopied] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
 
@@ -162,27 +160,30 @@ export const QuizResultDialog = ({
               </Form>
             )}
 
-            <div className="rounded-lg border bg-muted p-4">
-              <div className="flex items-center justify-between">
-                <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-                  Your total discount is {validateDiscount.data?.totalDiscount}%{" "}
-                  {validateDiscount.data?.code}
-                </code>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() =>
-                    copyToClipboard(validateDiscount.data?.code ?? "")
-                  }
-                >
-                  {copied ? (
-                    <Check className="h-4 w-4" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                </Button>
+            {validateDiscount.data?.code && (
+              <div className="rounded-lg border bg-muted p-4">
+                <div className="flex items-center justify-between">
+                  <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                    Your total discount is{" "}
+                    {validateDiscount.data?.totalDiscount}%{" "}
+                    {validateDiscount.data?.code}
+                  </code>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() =>
+                      copyToClipboard(validateDiscount.data?.code ?? "")
+                    }
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
               </div>
-            </div>
+            )}
 
             <Alert>
               <Gift className="h-4 w-4" />
@@ -201,7 +202,6 @@ export const QuizResultDialog = ({
               variant="outline"
               onClick={() => {
                 onOpenChange(false);
-                clearAnswers();
               }}
             >
               Try Again
@@ -210,7 +210,6 @@ export const QuizResultDialog = ({
           <Button
             onClick={() => {
               onOpenChange(false);
-              clearAnswers();
             }}
           >
             Close

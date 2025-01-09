@@ -59,7 +59,7 @@ export const ProfileHome = () => {
       </Card>
 
       <div className="col-span-3 space-y-4 md:col-span-1">
-        <Card>
+        <Card className="hidden md:block">
           <CardHeader>
             <CardTitle className="text-lg">Quick Stats</CardTitle>
           </CardHeader>

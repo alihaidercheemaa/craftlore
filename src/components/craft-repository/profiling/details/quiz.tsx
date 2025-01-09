@@ -14,6 +14,8 @@ import { api } from "~/trpc/react";
 import { Button } from "~/components/ui/button";
 import { useState } from "react";
 import { QuizResultDialog } from "~/components/craft-repository/profiling/details/quiz-dialog";
+import { cn } from "~/lib/utils";
+import { useOpen } from "~/hooks/use-profile";
 
 type QuizQuestion = {
   quizId: string;
@@ -28,9 +30,9 @@ type QuizCardProps = {
   questions: QuizQuestion[];
 };
 
-
 export const QuizCard = ({ questions }: QuizCardProps) => {
   const { answers, setAnswer, clearAnswers } = useQuiz();
+  const { setSection } = useOpen();
 
   const [resultDialog, setResultDialog] = useState<{
     isOpen: boolean;
@@ -50,6 +52,8 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         isOpen: true,
         data,
       });
+      if (data.success) {
+      }
       clearAnswers();
     },
     onError: (error) => {
@@ -78,9 +82,9 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         selectedOption: answer.selectedOption,
       })),
     });
+
+    clearAnswers();
   };
-
-
 
   return (
     <div className="space-y-8">
@@ -140,11 +144,11 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         {questions.map((question, questionIndex) => (
           <Card key={question.quizId} className="overflow-hidden">
             <CardHeader className="border-b bg-muted/20">
-              <CardTitle className="flex items-center gap-2 font-montserrat text-lg">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-sm text-white">
+              <CardTitle className="flex items-start gap-3 font-montserrat text-lg sm:items-center">
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-base text-white sm:h-6 sm:w-6 sm:text-sm">
                   {questionIndex + 1}
                 </span>
-                {question.question}
+                <span className="pt-1 sm:pt-0">{question.question}</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
@@ -181,10 +185,10 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         ))}
       </div>
       <Card className="border-t-4 border-t-primary">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+        <CardContent className="p-4 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
             <div className="space-y-1">
-              <h3 className="font-medium">Ready to submit?</h3>
+              <h3 className="text-lg font-medium">Ready to submit?</h3>
               <p className="text-sm text-muted-foreground">
                 You&apos;ve answered {answers.length} out of {questions.length}{" "}
                 questions
@@ -195,13 +199,13 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
               disabled={
                 submitMutation.isPending || answers.length !== questions.length
               }
-              className="min-w-[120px]"
+              className="w-full sm:w-auto sm:min-w-[120px]"
             >
               {submitMutation.isPending ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Checking...
-                </>
+                <div className="flex items-center justify-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Checking...</span>
+                </div>
               ) : (
                 "Submit Quiz"
               )}
@@ -209,7 +213,6 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
           </div>
         </CardContent>
       </Card>
-
       <QuizResultDialog
         isOpen={resultDialog.isOpen}
         onOpenChange={(open) =>

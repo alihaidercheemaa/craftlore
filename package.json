@@ -1,6 +1,6 @@
 {
   "name": "craftlore",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "private": true,
   "type": "module",
   "scripts": {
@@ -28,6 +28,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-menubar": "^1.1.4",
     "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-progress": "^1.1.1",
     "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-select": "^2.1.2",

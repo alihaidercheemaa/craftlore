@@ -1,37 +1,17 @@
 import { Book, Microscope, History } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "~/components/ui/card";
 import { SectionTracking } from "~/components/craft-repository/profiling/details/section-tracker";
+import { SectionProgress } from "~/components/craft-repository/profiling/details/progress";
 
 export const DetailAside = () => {
   return (
     <aside className="col-span-3 space-y-4 md:col-span-1">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Quick Stats</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span>Active Artisans</span>
-              <span className="font-bold">2,450+</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Documented Techniques</span>
-              <span className="font-bold">180+</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Heritage Items</span>
-              <span className="font-bold">5,000+</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
+      <SectionProgress />
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Kashmir Crafts</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-1">
           <SectionTracking />
         </CardContent>
       </Card>
