@@ -8,6 +8,7 @@ import { AsideSkeleton } from "~/components/skeletons/aside-skeleton";
 import { Button } from "~/components/ui/button";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { useOpen } from "~/hooks/use-profile";
+import { useTracker } from "~/hooks/use-tracker";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/react";
 
@@ -18,6 +19,7 @@ export const SectionTracking = () => {
   const currentSectionId = searchParams.get("sectionId");
   const subcategoryId = params.subcategoryId as string;
   const { sections, setSection, setProgress } = useOpen();
+  const {setList} = useTracker()
 
   const sectionData = api.craft.getAllSections.useQuery(
     { subcategoryId },
@@ -34,9 +36,10 @@ export const SectionTracking = () => {
         id: sectionData.data[0]?.craftsectionId ?? "",
         completed: false,
       });
+      setList(sectionData.data.map((section)=>section.craftsectionId) ?? [] )
       setProgress({ total: sectionData.data.length ?? 0 });
     }
-  }, [sectionData.data, sections, setProgress, setSection]);
+  }, [sectionData.data, sections, setList, setProgress, setSection]);
 
   if (sectionData.isPending) return <AsideSkeleton />;
 
@@ -52,9 +55,7 @@ export const SectionTracking = () => {
             const baseBtnClasses = cn(
               "flex justify-start gap-2 text-xs md:text-lg font-montserrat transition-colors",
               {
-                "bg-primary text-white rounded-md md:px-2 md:py-1": isOpen,
-                // "text-white": isOpen && !isSelected,
-                // "text-primary ": !isOpen || (isOpen && !isSelected),
+                "bg-primary text-white rounded-md md:px-2 md:py-1": isSelected,
               },
             );
 

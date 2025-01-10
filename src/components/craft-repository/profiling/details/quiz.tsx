@@ -13,8 +13,7 @@ import { useQuiz } from "~/hooks/use-quiz";
 import { api } from "~/trpc/react";
 import { Button } from "~/components/ui/button";
 import { useState } from "react";
-import { QuizResultDialog } from "~/components/craft-repository/profiling/details/quiz-dialog";
-import { cn } from "~/lib/utils";
+import { QuizResultDialog } from "~/components/craft-repository/profiling/details/result-dialog";
 import { useOpen } from "~/hooks/use-profile";
 
 type QuizQuestion = {
@@ -28,12 +27,12 @@ type QuizQuestion = {
 
 type QuizCardProps = {
   questions: QuizQuestion[];
+  sectionId: string;
 };
 
-export const QuizCard = ({ questions }: QuizCardProps) => {
+export const QuizCard = ({ questions, sectionId }: QuizCardProps) => {
+  const { sections } = useOpen();
   const { answers, setAnswer, clearAnswers } = useQuiz();
-  const { setSection } = useOpen();
-
   const [resultDialog, setResultDialog] = useState<{
     isOpen: boolean;
     data: { success: boolean; message: string } | null;
@@ -42,19 +41,12 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
     data: null,
   });
 
-  const handleOptionChange = (quizId: string, value: string) => {
-    setAnswer(quizId, value);
-  };
-
   const submitMutation = api.craft.submitQuizAnswers.useMutation({
     onSuccess: (data) => {
       setResultDialog({
         isOpen: true,
         data,
       });
-      if (data.success) {
-      }
-      clearAnswers();
     },
     onError: (error) => {
       setResultDialog({
@@ -82,10 +74,17 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
         selectedOption: answer.selectedOption,
       })),
     });
-
     clearAnswers();
   };
 
+  const handleOptionChange = (quizId: string, value: string) => {
+    setAnswer(quizId, value);
+  };
+
+  const section = sections.find((sec) => sec.id === sectionId);
+  const isSectionCompleted = section?.completed ?? false;
+
+  if (isSectionCompleted) return null;
   return (
     <div className="space-y-8">
       <Card className="bg-gradient-to-br from-primary/5 to-primary/10">
@@ -94,7 +93,7 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
             <Trophy className="h-6 w-6 text-primary" />
             Knowledge Check Challenge
           </CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-base font-bold">
             Complete this quiz to test your understanding and unlock special
             rewards!
           </CardDescription>
@@ -137,6 +136,14 @@ export const QuizCard = ({ questions }: QuizCardProps) => {
                 </p>
               </div>
             </div>
+          </div>
+          <div className="space-y-2">
+            <p className="text-lg font-medium text-primary">
+              When Knowledge is the True Currency, Every Purchase Matters
+            </p>
+            <p className="text-base font-bold text-secondary">
+              Make Informed Purchases, Not Just Transactions
+            </p>
           </div>
         </CardContent>
       </Card>
