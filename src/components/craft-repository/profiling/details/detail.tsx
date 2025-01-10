@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { api } from "~/trpc/server";
 import { Loader2 } from "lucide-react";
@@ -42,8 +41,8 @@ export const CraftDetail = async ({ sectionId }: ComponentProps) => {
             key={subsection.craftsubsectionId}
             className="group grid transition-all duration-300 hover:shadow-xl"
           >
-            <CardHeader className="rounded-t-lg transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
-              <CardTitle className="flex items-center justify-between font-montserrat text-xl">
+            <CardHeader className="rounded-t-lg transition-colors duration-300 group-hover:bg-primary ">
+              <CardTitle className="flex items-center justify-between font-montserrat text-xl group-hover:text-white">
                 {subsection.sectionName}
               </CardTitle>
             </CardHeader>
@@ -66,7 +65,7 @@ export const CraftDetail = async ({ sectionId }: ComponentProps) => {
           </Card>
         ))}
       </div>
-      <QuizCard questions={questions} />
+      <QuizCard questions={questions} sectionId={sectionId}/>
     </div>
   );
 };

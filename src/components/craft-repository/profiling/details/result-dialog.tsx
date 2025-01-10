@@ -30,6 +30,9 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { api } from "~/trpc/react";
+import { useOpen } from "~/hooks/use-profile";
+import { useSearchParams } from "next/navigation";
+import { useTracker } from "~/hooks/use-tracker";
 
 const discountFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -53,14 +56,34 @@ export const QuizResultDialog = ({
 }: QuizResultDialogProps) => {
   const [copied, setCopied] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
-
+  const searchParams = useSearchParams();
+  const currentSectionId = searchParams.get("sectionId");
+  const { setEmail, progress, setProgress, setSection } = useOpen();
+  const { sectionList } = useTracker();
   const form = useForm<DiscountFormValues>({
     resolver: zodResolver(discountFormSchema),
   });
 
   const validateDiscount = api.craft.validateDiscount.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
       setShowEmailForm(() => false);
+      if (data.code) {
+        setEmail(form.getValues("email"));
+        setProgress({ completed: progress.completed + 1 });
+        setSection({
+          id: currentSectionId ?? "",
+          completed: true,
+        });
+
+        const idx = sectionList.indexOf(currentSectionId ?? "");
+        if (idx !== -1 && idx + 1 < sectionList.length) {
+          const nextSectionId = sectionList[idx + 1];
+          setSection({
+            id: nextSectionId ?? '',
+            completed: false,
+          });
+        }
+      }
     },
   });
 
