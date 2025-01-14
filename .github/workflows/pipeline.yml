@@ -1,0 +1,39 @@
+name: Deployment of craftlore on server 
+
+on:
+  push:
+    branches:
+      - master 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # GitHub hosted runner
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22' 
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ${{ secrets.VPS_PROJECT_PATH }}  #  project path
+
+    - name: Build the project
+      run: npm run build
+      working-directory: ${{ secrets.VPS_PROJECT_PATH }}  # project path
+
+    - name: SSH into VPS and restart PM2 process
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.VPS_HOST }}  # VPS IP address
+        username: ${{ secrets.VPS_USER }}  # VPS SSH username
+        key: ${{ secrets.VPS_SSH_KEY }}  # SSH private key for authentication
+        script: |
+          cd ${{ secrets.VPS_PROJECT_PATH }}  # Navigate to the project directory 
+          npm install  # Install any new dependencies 
+          npm run build  # Rebuild the project
+          pm2 restart craftlore-instance-1  # Restart the PM2 process
