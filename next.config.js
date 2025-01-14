@@ -11,7 +11,6 @@ const config = {
       async headers() {
         return [
           {
-            // Match all routes under /api/
             source: '/api/:path*',
             headers: [
               { key: 'Access-Control-Allow-Origin', value: '*' },

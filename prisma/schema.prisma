@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["omitApi"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -234,8 +233,8 @@ model Account {
 model Category {
   categoryId   String        @id @default(cuid())
   categoryName String        @unique
-  description  String        @default("none")
   rank         Int           @default(100)
+  description  String        @default("none")
   SubCategory  SubCategory[]
 }
 

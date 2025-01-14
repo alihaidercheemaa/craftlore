@@ -2,17 +2,17 @@
 import { Button } from "~/components/ui/button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Container } from "~/components/common/container";
 
 type ComponentProps = {
   banner: {
     title: string;
     subtitle: string;
     buttonText: string;
-  }[]
+  }[];
 };
 
 export const Banner = ({ banner }: ComponentProps) => {
-  
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -108,8 +108,8 @@ export const Banner = ({ banner }: ComponentProps) => {
   };
 
   return (
-    <section className="relative col-span-12 h-[calc(70dvh)] overflow-hidden bg-primary text-white">
-      <div className="container grid h-full items-center">
+    <section className="h-[calc(70dvh)] bg-primary text-white">
+      <Container className="grid h-full items-center">
         <AnimatePresence>
           <motion.div
             key={activeIndex}
@@ -128,7 +128,7 @@ export const Banner = ({ banner }: ComponentProps) => {
             >
               <motion.p
                 variants={titleVariants}
-                className="whitespace-normal font-montserrat text-[2rem] font-extrabold md:text-[5.5rem] lg:text-[6.3rem] lg:leading-[7rem]"
+                className="whitespace-normal font-montserrat text-[2rem] font-extrabold leading-[5rem] lg:leading-[7rem] lg:text-[3rem] xl:text-[5rem] 2xl:text-[6rem]"
               >
                 {firstLine} <span className="block">{secondLine}</span>
               </motion.p>
@@ -146,7 +146,7 @@ export const Banner = ({ banner }: ComponentProps) => {
             </motion.div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </Container>
     </section>
   );
 };

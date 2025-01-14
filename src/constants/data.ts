@@ -6,26 +6,32 @@ export const SERVICES = [
         description: "History, Art, Science of Crafts"
     },
     {
+        icon: '/icons/trade.png',
+        href: '/',
+        title: "TRADE REGISTORY",
+        description: "Ranking, Linking, Black listed"
+    },
+    {
         icon: '/icons/location.png',
-        href: '/craft-registry/listing',
+        href: '/',
         title: "GEOGRAPHICAL INDICATION",
         description: "Geo-Certified Kashmir Craft Origins"
     },
     {
         icon: '/icons/blockchain.png',
-        href: '/craft-registry/blockchain',
+        href: '/',
         title: "BLOCK-CHAIN TRACEABILITY",
         description: "Verified Journey, Counterfeit Protection"
     },
     {
         icon: '/icons/carbon.png',
-        href: '/craft-registry/carbon-footprint',
+        href: '/',
         title: "CARBON FOOTPRINT",
         description: "Eco-Friendly Crafts, Carbon Tracked"
     },
     {
         icon: '/icons/money.png',
-        href: '/craft-registry/cost-estimation',
+        href: '/',
         title: "PRICE VALUATION",
         description: "Self-Priced Kashmir Crafts Valuation"
     }
@@ -54,47 +60,56 @@ export const REGISTER = [
     {
         icon: '/icons/profile.png',
         title: "Craft Profiling",
-        description: "Historical, Artistic, & Scientific Exploration of Kashmir Craft"
+        description: "Historical, Artistic, & Scientific Exploration of Kashmir Craft",
+        link:'#'
     },
     {
         icon: '/icons/location.png',
         title: "Geographical Indicators",
-        description: "Geo-Certification Protocols and Standardization of Kashmir Craft"
+        description: "Geo-Certification Protocols and Standardization of Kashmir Craft",
+        link:"#"
     },
     {
         icon: '/icons/blockchain.png',
         title: "Block Chain Traceability",
-        description: "Verified Kashmir Craft Journey against the Threat of Counterfeits"
+        description: "Verified Kashmir Craft Journey against the Threat of Counterfeits",
+        link:'#'
     },
     {
         icon: '/icons/carbon.png',
         title: "Craft Carbon Footprint",
-        description: "Measuring and Endorsing Kashmir Eco-Friendly Practices in Artisan Crafts"
+        description: "Measuring and Endorsing Kashmir Eco-Friendly Practices in Artisan Crafts",
+        link:'#'
     },
     {
         icon: '/icons/money.png',
         title: "Craft Price Valuation",
-        description: "Self Estimator – Your Kashmir Craft, Your Price, Your Value"
+        description: "Self Estimator – Your Kashmir Craft, Your Price, Your Value",
+        link:'#'
     },
     {
         icon: '/icons/vulnerability.png',
         title: "Craft Vulnerability",
-        description: "Undermining authenticity & disrupting the Kashmir Craft Industry"
+        description: "Undermining authenticity & disrupting the Kashmir Craft Industry",
+        link:'#'
     },
     {
         icon: '/icons/economy.png',
         title: "Craft Economics",
-        description: "The Lifeblood of Kashmir Craft Artisans and Heritage Industry"
+        description: "The Lifeblood of Kashmir Craft Artisans and Heritage Industry",
+        link:'#'
     },
     {
         icon: '/icons/business.png',
         title: "Craft Business Evaluation",
-        description: "Regulating Ethical Standards in Kashmir Craft Commerece as Whistleblower"
+        description: "Regulating Ethical Standards in Kashmir Craft Commerece as Whistleblower",
+        link:'#'
     },
     {
         icon: '/icons/wages.png',
         title: "Fair Wages Monitoring",
-        description: "Empowerment through Education, building a sustainable future for artisans"
+        description: "Empowerment through Education, building a sustainable future for artisans",
+        link:'#'
     }
 ];
 
@@ -107,10 +122,10 @@ export const HELPUS = [
 ]
 
 export const NETWORK = [
-    { title: 'Grant Support', description: 'B2B Connect USA', link: 'www.b2b.dekosgurcrafts.com', redirect: '' },
-    { title: 'Administrative Support', description: 'Hamdan Craft Revival Foundation', link: 'www.hcrf.com', redirect: '#' },
-    { title: 'Technology Support', description: 'Prime Logic Solutions USA', link: 'www.primelogical.com', redirect: '#' },
-    { title: 'Marketing Support', description: 'Kasmir ArtStay India', link: 'Kashmirstay.com', redirect: '#' },
+    { title: 'Administrative Support', description: 'Hamdan Craft Revival Foundation', link: 'www.khcrf.org', redirect: '#' },
+    { title: 'Technology Support', description: 'Prime Logic Solutions USA', link: 'www.primelogicsol.com', redirect: '#' },
+    { title: 'Marketing Support', description: 'Kasmir ArtStay India', link: 'www.kashmirartstay.com', redirect: '#' },
+    { title: 'Business Support', description: 'B2B Connect USA', link: 'www.b2b.dekoshurcrafts.com', redirect: '#' },
 ]
 
 
