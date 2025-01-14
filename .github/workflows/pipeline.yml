@@ -20,11 +20,11 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: ${{ secrets.VPS_PROJECT_PATH }}  #  project path
+      
 
     - name: Build the project
       run: npm run build
-      working-directory: ${{ secrets.VPS_PROJECT_PATH }}  # project path
+      
 
     - name: SSH into VPS and restart PM2 process
       uses: appleboy/ssh-action@v0.1.5
