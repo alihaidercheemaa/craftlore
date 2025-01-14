@@ -99,13 +99,17 @@ export const CraftRouter = createTRPCRouter({
         .query(async ({ ctx, input }) => {
             try {
                 return await ctx.db.craftQuiz.findMany({
-                    omit: {
-                        answer: true,
-                    },
                     where: {
                         sectionId: input.sectionId
                     },
-
+                    select : {
+                        quizId:true,
+                        question:true,
+                        option1:true,
+                        option2:true,
+                        option3:true,
+                        option4:true
+                    }
                 });
             } catch (error) {
                 if (error instanceof TRPCClientError) {
