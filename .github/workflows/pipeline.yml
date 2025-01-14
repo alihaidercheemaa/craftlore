@@ -3,7 +3,7 @@ name: Deployment of craftlore on server
 on:
   push:
     branches:
-      - master 
+      - master
 
 jobs:
   deploy:
@@ -13,26 +13,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '22' 
-
-    - name: Install dependencies
-      run: npm install
-      
-
-    - name: Build the project
-      run: npm run build
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
-        CLOUD_KEY: ${{ secrets.CLOUD_KEY }}
-        CLOUD_SECERT: ${{ secrets.CLOUD_SECERT }}
-        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
-      
-
-    - name: SSH into VPS and restart PM2 process
+    - name: SSH into VPS and deploy
       uses: appleboy/ssh-action@v0.1.5
       with:
         host: ${{ secrets.VPS_HOST }}  # VPS IP address
@@ -40,7 +21,16 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}  # SSH private key for authentication
         script: |
           source ~/.bashrc  # Load the environment variables from .bashrc
+
+          # Export only the required environment variables for build
+          export DATABASE_URL=${{ secrets.DATABASE_URL }}
+          export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
+          export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
+          export CLOUD_SECERT=${{ secrets.CLOUD_SECERT }}
+          export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+
           cd ${{ secrets.VPS_PROJECT_PATH }}  # Navigate to the project directory 
-          npm install  # Install any new dependencies 
+          git pull origin master  # Pull the latest code from GitHub
+          npm install  # Install dependencies
           npm run build  # Rebuild the project
           pm2 restart craftlore-instance-1  # Restart the PM2 process
