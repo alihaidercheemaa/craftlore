@@ -70,8 +70,8 @@ type ArtisanProps = {
         fullName: string
         address: string
     };
-    criteria:{
-        listingRank : Ranks
+    criteria: {
+        listingRank: Ranks
     }
 };
 
@@ -88,8 +88,8 @@ type InstituteProps = {
     status: string;
     listingCriteria: string;
     userId: string;
-    criteria:{
-        listingRank : Ranks
+    criteria: {
+        listingRank: Ranks
     }
 };
 
@@ -101,14 +101,14 @@ type BusinessProps = {
     businessType: BusinessLevel;
     businessSold: string;
     businessEmployee: number;
-    businessMarket:MarketType
+    businessMarket: MarketType
     documents: string[];
-    yearOfOperation:number
+    yearOfOperation: number
     status: string;
     listingCriteria: string;
     userId: string;
-    criteria:{
-        listingRank : Ranks
+    criteria: {
+        listingRank: Ranks
     }
 };
 
@@ -360,5 +360,15 @@ type SectionTypeProps =
     "Preparation" |
     "CookingProcess" |
     "PaintingAndLacquering" |
-    "Embroidery" | 
-    "ProductionMethod" 
+    "Embroidery" |
+    "ProductionMethod"
+
+type MenuItemProps = {
+    title: string;
+    href: string;
+    submenu?: MenuItemProps[];
+};
+
+type SubMenuProps = {
+    items: MenuItemProps[];
+};

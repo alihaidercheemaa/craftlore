@@ -49,10 +49,10 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${opensans.variable} ${manrope.variable}`}
     >
-      <body className="grid grid-cols-12">
+      <body className="flex min-h-screen flex-col">
         <Providers>
-          <Header />
-          <main className="col-span-12 grid grid-cols-12">{children}</main>
+          <Header  disabled/>
+          <main className="flex-grow">{children}</main>
           <ScrollToTop />
           <Footer />
           <Toaster />

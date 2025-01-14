@@ -5,6 +5,7 @@ import { HelpUs } from "~/components/general/landing/helpus-card";
 import { InfoCard } from "~/components/general/landing/info-card";
 import { RegisterCard } from "~/components/general/landing/register-card";
 import { ServiceCard } from "~/components/general/landing/service-card";
+import { CraftloreComing } from "~/components/general/landing/soon-counter";
 import { SupportNetwork } from "~/components/general/landing/support-network";
 import { WelcomeCard } from "~/components/general/landing/welcome-card";
 import { BANNERS } from "~/constants/banner";
@@ -15,6 +16,7 @@ export default async function Home() {
     <>
       <Banner banner={BANNERS}/>
       <ServiceCard />
+      <CraftloreComing/>
       <WelcomeCard />
       <RegisterCard />
       <GraphCard />

@@ -1,12 +1,12 @@
 import dayjs from 'dayjs'
 export const BANNERS = [
   {
-    title: "CraftLore Non-Commercial Platform",
+    title: "Craftlore Non-Commercial Platform",
     subtitle: "In-depth analysis of Kashmir’s rich craft heritage.",
     buttonText: "Learn More"
   },
   {
-    title: "Welcome to CraftLore",
+    title: "Welcome to Craftlore",
     subtitle: "Eliminating middlemen, empowering artisans and buyers alike.",
     buttonText: "Learn More"
   },

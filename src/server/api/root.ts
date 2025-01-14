@@ -10,7 +10,6 @@ import { CategoryRouter } from "~/server/api/routers/category";
 import { GIRouter } from "~/server/api/routers/gi";
 import { CraftRouter } from "~/server/api/routers/profiling";
 
-
 export const appRouter = createTRPCRouter({
   application: ApplicationRouter,
   employ:EmployRouter,
@@ -26,6 +25,4 @@ export const appRouter = createTRPCRouter({
 
 
 export type AppRouter = typeof appRouter;
-
-
 export const createCaller = createCallerFactory(appRouter);

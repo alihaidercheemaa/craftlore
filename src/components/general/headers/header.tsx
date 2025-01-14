@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FC } from "react";
 import {
   FaBars,
   FaChevronRight,
@@ -26,26 +26,54 @@ import {
   SheetTrigger,
 } from "~/components/ui/sheet";
 import { cn } from "~/lib/utils";
+import { MenuItems } from "~/constants/variable";
 
-type MenuItem = {
+/* -------------------------------
+   1) Add a prop interface
+------------------------------- */
+interface HeaderProps {
+  /** If true, all links in the header become disabled (no navigation). */
+  disabled?: boolean;
+}
+
+/** For convenience in submenus, define a type for each menu item. */
+interface SubMenuItem {
   title: string;
   href: string;
-  submenu?: MenuItem[];
-};
+  submenu?: SubMenuItem[];
+}
 
-type SubMenuProps = {
-  items: MenuItem[];
-};
+/* ------------------------------------------
+   2) Helper function to handle link props
+------------------------------------------ */
+function getLinkProps(
+  href: string,
+  disabled?: boolean,
+  baseClass?: string,
+) {
+  return {
+    // Override href to "#" when disabled so it won't navigate
+    href: disabled ? "#" : href,
+    // Prevent default navigation if disabled
+    onClick: disabled ? (e: React.MouseEvent) => e.preventDefault() : undefined,
+    // Add classes to visually indicate “disabled” 
+    className: cn(
+      baseClass,
+      disabled && "cursor-not-allowed pointer-events-none text-gray-400"
+    ),
+  };
+}
 
-export const Header = () => {
+/* ------------------------------------------
+   3) Your main Header component
+------------------------------------------ */
+export const Header: FC<HeaderProps> = ({ disabled = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 0);
+      setIsScrolled(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -53,156 +81,31 @@ export const Header = () => {
     };
   }, []);
 
-  const menuItems = [
-    {
-      title: "HOME",
-      href: "/",
-    },
-    {
-      title: "CRAFT REPOSITORY REGISTRY",
-      href: "#",
-      submenu: [
-        {
-          title: "KASHMIR CRAFT PROFILE",
-          href: "/craft-registry/profiling",
-        },
-        {
-          title: "GEOGRAPHICAL INDICATION",
-          href: "#",
-          submenu: [
-            { title: "ABOUT GI & IT PROCESS", href: "/craft-registry/process" },
-            { title: "CONSUMER REPORTING", href: "/craft-registry/reporting" },
-            { title: "GI LISTING", href: "/craft-registry/listing" },
-          ],
-        },
-        {
-          title: "BLOCK CHAIN TRACEABILITY",
-          href: "/craft-registry/blockchain",
-        },
-        {
-          title: "CRAFT CARBON FOOTPRINT",
-          href: "/craft-registry/carbon-footprint",
-        },
-        {
-          title: "CRAFT PRICE ESITMATOR",
-          href: "/craft-registry/cost-estimation",
-        },
-        {
-          title: "CRAFT TRADE REGISTRY",
-          href: "/listing",
-        },
-      ],
-    },
-    {
-      title: "CRAFT TRADE REGISTRY",
-      href: "/listing",
-    },
-    {
-      title: "CRAFT VULNERABILITY",
-      href: "#",
-      submenu: [
-        {
-          title: "INTELLECTUAL PROPERTY",
-          href: "/craft-vulnerability/property",
-        },
-        { title: "COUNTERFEITS", href: "/craft-vulnerability/counterfeit" },
-        { title: "DEPENDENCY", href: "/craft-vulnerability/dependency" },
-        { title: "TECHNOLOGICAL GAPS", href: "/craft-vulnerability/gap" },
-        { title: "GENERATIONAL SHIFT", href: "/craft-vulnerability/shift" },
-      ],
-    },
-    {
-      title: "CRAFT SOCIO-ECONOMICS",
-      href: "#",
-      submenu: [
-        {
-          title: "ECONOMICS",
-          href: "/economics",
-          submenu: [
-            { title: "PRODUCTION INSIGHTS", href: "/economics/production" },
-            { title: "EXPORT DATA", href: "/economics/export" },
-          ],
-        },
-        {
-          title: "EMPLOYMENT",
-          href: "/employment",
-          submenu: [
-            { title: "WAGE EQUITY", href: "/employment/wage" },
-            { title: "EMPLOYMENT TRENDS", href: "/employment/trend" },
-            { title: "EMPLOYMENT GROWTH", href: "/employment/growth" },
-          ],
-        },
-        {
-          title: "GENDER DYNMAICS",
-          href: "/gender",
-          submenu: [{ title: "STATISTICAL INSIGHTS", href: "/gender/insight" }],
-        },
-      ],
-    },
-    {
-      title: "ABOUT CRATFLORE",
-      href: "#",
-      submenu: [
-        { title: "MISSION", href: "/about/mission" },
-        { title: "CRAFTLORE PROJECTS", href: "/about/project" },
-        { title: "CRAFTLORE REGISTRY", href: "/about/registry" },
-        { title: "REGISTRY ARCHITECTURE", href: "/about/architecture" },
-        {
-          title: "LISTING",
-          href: "#",
-          submenu: [
-            { title: "ARTISANS", href: "/listing/registration" },
-            { title: "BUSINESSES", href: "/listing/registration" },
-            { title: "INSTITUTES", href: "/listing/registration" },
-          ],
-        },
-        {
-          title: "CRAFT ALLIANCE",
-          href: "#",
-          submenu: [{ title: "SPONSORS", href: "/about/sponsor" }],
-        },
-        {
-          title: "MEMBERSHIP",
-          href: "#",
-          submenu: [
-            { title: "BUYER SUPPORT MEMBERSHIP", href: "/buyer" },
-            { title: "CORPORATE MEMBERSHIP", href: "/corporate" },
-            { title: "SPONSOR MEMBERSHIP", href: "/sponsorship" },
-          ],
-        },
-        {
-          title: "NETWORK",
-          href: "#",
-          submenu: [
-            { title: "INTERNATIONAL", href: "/about/network" },
-            { title: "INDIA", href: "/about/network/institution" },
-          ],
-        },
-        { title: "CAREER", href: "/about/career" },
-        { title: "TEAM", href: "/about/team" },
-        { title: "CONTACT US", href: "/about/contact-us" },
-      ],
-    },
-  ];
-
-  const SubMenu = ({ items }: SubMenuProps) => (
-    <ul className="invisible absolute left-1/2 top-full min-w-[200px] -translate-x-1/2 border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
+  // Desktop submenu (fly-out)
+  const SubMenu = ({ items }: { items: SubMenuItem[] }) => (
+    <ul className="invisible absolute left-1/2 top-full -translate-x-1/2 border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 lg:min-w-[150px] xl:min-w-[200px]">
       {items.map((item, index) => (
         <li key={index} className="group/nested relative border-b">
           <Link
-            href={item.href}
-            className="flex h-full w-full items-center justify-between px-4 py-2 text-base text-primary hover:bg-secondary/80 hover:text-white"
+            {...getLinkProps(
+              item.href,
+              disabled,
+              "flex h-full w-full items-center justify-between px-4 py-2 text-primary hover:bg-secondary/80 hover:text-white lg:text-xs xl:text-sm 2xl:text-base"
+            )}
           >
             {item.title}
             {item.submenu && <FaChevronRight size={10} />}
           </Link>
           {item.submenu && (
-            <ul className="invisible absolute left-full top-0 min-w-[200px] border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover/nested:visible group-hover/nested:opacity-100">
+            <ul className="invisible absolute top-0 border-t-2 border-secondary bg-white opacity-0 transition-all duration-300 group-hover/nested:visible group-hover/nested:opacity-100 lg:right-full lg:min-w-[150px] xl:min-w-[200px] 2xl:left-full">
               {item.submenu.map((subItem, subIndex) => (
                 <li key={subIndex} className="border-b">
                   <Link
-                    href={subItem.href}
-                    className="block h-full w-full px-4 py-2 text-base text-primary hover:bg-secondary/80 hover:text-white"
+                    {...getLinkProps(
+                      subItem.href,
+                      disabled,
+                      "block h-full w-full px-4 py-2 text-primary hover:bg-secondary/80 hover:text-white lg:text-xs xl:text-sm 2xl:text-base"
+                    )}
                   >
                     {subItem.title}
                   </Link>
@@ -218,75 +121,97 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "sticky top-0 z-20 col-span-12 flex w-full flex-col bg-white text-primary transition-colors duration-300",
-        isScrolled && "bg-primary text-white",
+        "sticky top-0 z-20 flex w-full flex-col bg-white text-primary transition-colors duration-300",
+        isScrolled && "bg-primary text-white"
       )}
     >
-      <div className="ml-auto hidden lg:flex  justify-between gap-6 rounded-bl-lg bg-primary p-6 py-2 text-white ">
-        <div className="flex flex-col items-center gap-1 font-opensans md:flex-row md:gap-12">
-          <p className="text-lg font-bold md:text-2xl">
+      {/* ---------- Top Banner ---------- */}
+      <div className="ml-auto hidden justify-between gap-6 rounded-bl-lg bg-primary p-6 py-2 text-white lg:flex">
+        <div className="flex flex-col items-center gap-1 font-opensans md:flex-row xl:gap-3 2xl:gap-12">
+          <p className="text-xs font-bold 2xl:text-2xl">
             <strong className="text-secondary">Craftlore</strong> - Kashmir
             Craft Repository System
           </p>
           <div className="hidden h-7 w-1 bg-secondary md:block" />
-          <p className="text-xlmd:text-2xl">
+          <p className="text-sm 2xl:text-2xl">
             Initiative of Hamadan Craft Revival Foundation
           </p>
         </div>
         <div className="flex gap-4">
-          <Button variant="secondary" className="text- text-white" asChild>
-            <Link href="#">Register / Login</Link>
+          {/* Register / Login */}
+          <Button
+            size="sm"
+            variant="secondary"
+            className={cn(
+              "text-white text-xs xl:text-base",
+              disabled && "pointer-events-none cursor-not-allowed opacity-50"
+            )}
+            asChild
+          >
+            {/* We can disable the Link inside the Button if we want. */}
+            <Link
+              {...getLinkProps("#", disabled)}
+            >
+              Register / Login
+            </Link>
           </Button>
+
+          {/* Social Icons */}
           <div className="flex gap-6">
             <Link
-              className="flex items-center gap-2 hover:text-secondary"
-              href="#"
+              {...getLinkProps("#", disabled, "flex items-center gap-2 hover:text-secondary text-sm xl:text-base")}
             >
               <FaTwitter />
             </Link>
             <Link
-              className="flex items-center gap-2 hover:text-secondary"
-              href="#"
+              {...getLinkProps("#", disabled, "flex items-center gap-2 hover:text-secondary text-sm xl:text-base")}
             >
               <FaFacebook />
             </Link>
             <Link
-              className="flex items-center gap-2 hover:text-secondary"
-              href="#"
+              {...getLinkProps("#", disabled, "flex items-center gap-2 hover:text-secondary text-sm xl:text-base")}
             >
               <FaLinkedin />
             </Link>
             <Link
-              className="flex items-center gap-2 hover:text-secondary"
-              href="#"
+              {...getLinkProps("#", disabled, "flex items-center gap-2 hover:text-secondary text-sm xl:text-base")}
             >
               <FaSignal />
             </Link>
           </div>
         </div>
       </div>
-      <div className="flex w-full p-4">
+
+      {/* ---------- Main Nav Bar ---------- */}
+      <div className="flex w-full justify-between p-4">
+        {/* Logo */}
         <div
           className={cn(
-            "relative h-[100px] w-[100px] ml-6 md:ml-0",
-            !isScrolled && "lg:h-[150px] lg:w-[150px]",
+            "relative ml-6 h-[100px] w-[100px] md:ml-0",
+            !isScrolled && "xl:h-[150px] xl:w-[150px]"
           )}
         >
           <Image
             src="/logo/logo.png"
             alt="logo for craftlore"
             fill
-            sizes="100vw"
+            sizes="100%"
+            priority
           />
         </div>
-        <div className="flex items-center mx-auto  px-6 py-4">
+
+        {/* -------- Desktop Nav -------- */}
+        <div className="flex items-center px-6 py-4 lg:mx-auto">
           <nav className="hidden lg:flex">
             <ul className="flex gap-6 font-bold">
-              {menuItems.map((item, index) => (
+              {MenuItems.map((item, index) => (
                 <li key={index} className="group relative">
                   <Link
-                    href={item.href}
-                    className="flex items-center gap-1 px-3 py-2 text-base hover:text-secondary"
+                    {...getLinkProps(
+                      item.href,
+                      disabled,
+                      "flex items-center gap-1 px-3 py-2 hover:text-secondary lg:text-xs xl:text-sm 2xl:text-base"
+                    )}
                   >
                     {item.title}
                     {item.submenu && (
@@ -302,29 +227,38 @@ export const Header = () => {
                       </span>
                     )}
                   </Link>
+                  {/* Render desktop SubMenu if present */}
                   {item.submenu && <SubMenu items={item.submenu} />}
                 </li>
               ))}
             </ul>
           </nav>
+
+          {/* -------- Mobile Menu (Sheet) -------- */}
           <Sheet>
-            <SheetTrigger  className={cn(
-            "text-white lg:hidden ",
-            !isScrolled && "text-primary",
-          )}>
+            <SheetTrigger
+              className={cn(
+                "text-white lg:hidden",
+                !isScrolled && "text-primary",
+                disabled && "pointer-events-none cursor-not-allowed opacity-50"
+              )}
+            >
               <FaBars size={32} />
             </SheetTrigger>
             <SheetContent className="bg-white">
               <SheetHeader>
-                <SheetTitle>Craftlore </SheetTitle>
+                <SheetTitle>Craftlore</SheetTitle>
                 <ul className="grid gap-6">
-                  {menuItems.map((item, index) => (
+                  {MenuItems.map((item, index) => (
                     <li key={index} className="relative">
                       <Collapsible>
                         <CollapsibleTrigger asChild>
                           <Link
-                            href={item.href}
-                            className="flex items-center gap-1 px-3 py-2 text-sm text-gray-900 hover:text-secondary"
+                            {...getLinkProps(
+                              item.href,
+                              disabled,
+                              "flex items-center gap-1 px-3 py-2 text-sm text-gray-900 hover:text-secondary"
+                            )}
                           >
                             {item.title}
                             {item.submenu && (
@@ -341,14 +275,19 @@ export const Header = () => {
                             )}
                           </Link>
                         </CollapsibleTrigger>
+
+                        {/* Mobile Submenu */}
                         {item.submenu && (
                           <CollapsibleContent className="flex-start flex">
                             <ul className="pl-4">
                               {item.submenu.map((subItem, subIndex) => (
                                 <li key={subIndex} className="py-2">
                                   <Link
-                                    href={subItem.href}
-                                    className="block text-sm text-gray-700 hover:text-secondary"
+                                    {...getLinkProps(
+                                      subItem.href,
+                                      disabled,
+                                      "block text-sm text-gray-700 hover:text-secondary"
+                                    )}
                                   >
                                     {subItem.title}
                                   </Link>
