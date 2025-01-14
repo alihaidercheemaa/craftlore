@@ -24,6 +24,12 @@ jobs:
 
     - name: Build the project
       run: npm run build
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+        CLOUD_KEY: ${{ secrets.CLOUD_KEY }}
+        CLOUD_SECERT: ${{ secrets.CLOUD_SECERT }}
+        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
       
 
     - name: SSH into VPS and restart PM2 process
