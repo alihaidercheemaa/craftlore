@@ -34,4 +34,4 @@ jobs:
             npm run build &&
             pm2 restart craftlore-instance-1 &&
             pm2 save
-          '
+           '
