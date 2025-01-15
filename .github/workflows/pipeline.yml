@@ -27,6 +27,7 @@ jobs:
            
            # Installing dependencies
            npm ci
+           npm install pm2 -g
            export DATABASE_URL=${{ secrets.DATABASE_URL }}
            export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
            export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
