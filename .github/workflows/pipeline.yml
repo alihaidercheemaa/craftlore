@@ -22,26 +22,16 @@ jobs:
 
       - name: Deploy to server
         run: |
-           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 deployerdev@69.48.206.67 "cd /home/deployerdev/coding/projects/craftlore/frontendandbackend"
-           git pull origin master
-           
-           # Installing dependencies
-           npm ci
-           npm install pm2 -g
-           export DATABASE_URL=${{ secrets.DATABASE_URL }}
-           export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
-           export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
-           export CLOUD_SECERT=${{ secrets.CLOUD_SECERT }}
-           export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
-           # Build the project
-           npm run build || { echo "Build failed"; exit 1; }
-            
-           # Restart PM2 process
-           
-           # In your CI/CD script
-           sudo -u deployerdev pm2 restart craftlore-instance-1 || { echo "PM2 restart failed"; exit 1; }
-            
-           # Save the PM2 process list
-           pm2 save || { echo "PM2 save failed"; exit 1; }
-
-           EOF
+           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 deployerdev@69.48.206.67 '
+            cd /home/deployerdev/coding/projects/craftlore/frontendandbackend &&
+            git pull origin master &&
+            npm ci &&
+            export DATABASE_URL='"'$DATABASE_URL'"' &&
+            export CLOUD_NAME='"'$CLOUD_NAME'"' &&
+            export CLOUD_KEY='"'$CLOUD_KEY'"' &&
+            export CLOUD_SECERT='"'$CLOUD_SECERT'"' &&
+            export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME='"'$NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME'"' &&
+            npm run build &&
+            pm2 restart craftlore-instance-1 &&
+            pm2 save
+          '
