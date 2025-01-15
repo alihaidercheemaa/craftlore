@@ -37,9 +37,9 @@ jobs:
            npm run build || { echo "Build failed"; exit 1; }
             
            # Restart PM2 process
-           pm2 delete craftlore-instance-1
-           pm2 start npm --name craftlore-instance-1 -- run start
-           pm2 restart craftlore-instance-1 --update-env || { echo "PM2 restart failed"; exit 1; }
+           
+           # In your CI/CD script
+           sudo -u deployerdev pm2 restart craftlore-instance-1 || { echo "PM2 restart failed"; exit 1; }
             
            # Save the PM2 process list
            pm2 save || { echo "PM2 save failed"; exit 1; }
