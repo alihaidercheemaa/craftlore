@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22'
+        node-version: '18'
 
     - name: SSH into VPS and deploy
       uses: appleboy/ssh-action@v0.1.5
@@ -25,30 +25,32 @@ jobs:
         username: ${{ secrets.VPS_USER }}  # VPS SSH username
         key: ${{ secrets.VPS_SSH_KEY }}  # SSH private key for authentication
         script: |
-          set -x  # Enable shell debugging for detailed output
-          
-          # Debugging: Test SSH connection with verbose output
-          ssh -vT ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 
 
-          # Load the environment variables from .bashrc
-          source ~/.bashrc  # Make sure to source bashrc to access the environment variables
+           # Confirmation Message
+           echo "SSH connection Succesfull!"
+           
+           # Navigate to the project directory
+           cd ${{ secrets.VPS_PROJECT_PATH }}
 
-          # Export the required environment variables for the build process
-          export DATABASE_URL=${{ secrets.DATABASE_URL }}
-          export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
-          export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
-          export CLOUD_SECERT=${{ secrets.CLOUD_SECERT }}
-          export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+           # Making sure the source bashrc to access the environment variables
+           source ~/.bashrc
 
-          # Navigate to the project directory
-          cd ${{ secrets.VPS_PROJECT_PATH }}  # Set the project path here
+           # Exporting the required environment variable for the build process
+           export DATABASE_URL=${{ secrets.DATABASE_URL }}
+           export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
+           export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
+           export CLOUD_SECERT=${{ secrets.CLOUD_SECERT }}
+           export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+           
+           # Pulling up the latest changes
+           git pull origin master  
+           
 
-          # Pull the latest changes from the GitHub repository (if needed)
-          git pull origin master  # Ensure you're on the master branch and up to date
+           # Building the project
+           npm run build
 
-          # Install dependencies and build the project
-          npm install  # Install the dependencies
-          npm run build  # Build the project
+           # Pm2 restarting process
+           pm2 restart craftlore-instance-1
 
-          # Restart the PM2 process for the Next.js app
-          pm2 restart craftlore-instance-1  # Replace with your PM2 instance name if different
+           # Saving the process
+           pm2 save  
