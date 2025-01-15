@@ -32,8 +32,8 @@ jobs:
            export CLOUD_KEY=$CLOUD_KEY
            export CLOUD_SECERT=$CLOUD_SECERT
            export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=$NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-           # Pulling new changes from the repository (if needed)
-          
+           # Installing dependencies
+           npm ci
            # Build the project
            npm run build || { echo "Build failed"; exit 1; }
             
