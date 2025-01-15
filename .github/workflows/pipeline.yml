@@ -27,7 +27,11 @@ jobs:
            
            # Installing dependencies
            npm ci
-           
+           export DATABASE_URL=${{ secrets.DATABASE_URL }}
+           export CLOUD_NAME=${{ secrets.CLOUD_NAME }}
+           export CLOUD_KEY=${{ secrets.CLOUD_KEY }}
+           export CLOUD_SECRET=${{ secrets.CLOUD_SECRET }}
+           export NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
            # Build the project
            npm run build || { echo "Build failed"; exit 1; }
             
