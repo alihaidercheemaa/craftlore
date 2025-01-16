@@ -37,4 +37,4 @@ jobs:
             pm2 list && \
             pm2 restart craftlore-instance-1 || { echo "PM2 restart failed"; exit 1; } && \
             pm2 save || { echo "PM2 save failed"; exit 1; }
-            EOF
+         EOF
