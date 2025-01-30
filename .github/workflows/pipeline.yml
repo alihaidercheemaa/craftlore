@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to server
         run: |
          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 deployerdev@69.48.206.67 << 'EOF'
-            cd /home/deployerdev/coding/projects/craftlore/frontendandbackend && \
+            cd /home/deployerdev/coding/projects/craftlore/craftlore-instance-1 && \
             export PATH=$PATH:/home/deployerdev/.nvm/versions/node/v22.11.0/bin && \
             git pull origin master && \
             npm ci && \
